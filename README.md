@@ -1,9 +1,6 @@
 ## 官方文档
 https://hexo.io/zh-cn/docs/
 
-## 本地启动
-npm run server
-
 ## 新增文档
 ```text
 1.source/_posts文件夹下新增对应目录&文件夹
@@ -16,5 +13,18 @@ tags:          -- 标签，可多个
 categories:    -- 菜单，多个表示一级、二级
 - Java
 - 笔记
+
+```
+
+
+## 相关命令
+```text
+1.本地启动
+npm run server
+
+2.编译静态文件
+hexo clean 
+hexo generate
+
 
 ```
