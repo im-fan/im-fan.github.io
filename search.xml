@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>首页</title>
+      <link href="2020/09/30/index/"/>
+      <url>2020/09/30/index/</url>
+      
+        <content type="html"><![CDATA[<h1 id="技术文档中心使用说明"><a href="#技术文档中心使用说明" class="headerlink" title="技术文档中心使用说明"></a>技术文档中心使用说明</h1><h2 id="wiki文档中心技术架构"><a href="#wiki文档中心技术架构" class="headerlink" title="wiki文档中心技术架构"></a>wiki文档中心技术架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph TB </span><br><span class="line">wiki[文档中心服务&lt;br&gt;^10s自动更新^]--&gt;|浏览器和docsify&lt;br&gt;将md文档渲染出目录和正文|user[浏览者]</span><br><span class="line">jenkins--&gt;|部署wiki|wiki</span><br><span class="line">wiki--&gt;|资源通过wiki的后台node服务,&lt;br&gt;使用scp上传到59机器|mediaFile[资源图片服务]</span><br><span class="line">gitlab--&gt;|git hook推送更新|wiki </span><br><span class="line">user_edit[文档编辑者]--&gt;|gitlab编辑|resouce</span><br><span class="line">user_edit--&gt;|开发本地编辑|resouce</span><br><span class="line">resouce[文档源文件]--&gt;|push推送至git仓库|gitlab[gitlab仓库wiki]</span><br></pre></td></tr></table></figure><h2 id="如何修改菜单，"><a href="#如何修改菜单，" class="headerlink" title="如何修改菜单，"></a>如何修改菜单，</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">0.</span> 默认当前服务地址：&#123; &#123;baseDomain&#125; &#125; 需去掉&#x27;&#123; &#123;&#x27;和&#x27;&#125; &#125;&#x27;中的空格。会自动解析成&#123;&#123;baseDomain&#125;&#125;</span><br><span class="line"><span class="bullet">1.</span> 修改主目录菜单：     main/wiki/sidebar.md</span><br><span class="line"><span class="bullet">2.</span> 修改具体业务目录菜单: doc/api/wiki/sidebar.md</span><br><span class="line"><span class="bullet">3.</span> 子菜单,具体由业务文档自动生成  </span><br><span class="line"><span class="bullet">4.</span> 插入图片：![<span class="string">eureka.png</span>](<span class="link">http://192.168.1.59/wiki/dist/20181113/d637f7f5e738.png &#x27;:size=825x581&#x27;</span>)</span><br><span class="line"><span class="bullet">5.</span> 指定打开sidebar=doc/ops菜单中的页面：  - [<span class="string">ECS部署</span>](<span class="link">&#123;&#123;baseDomain&#125;&#125;/browse/?sidebar=doc/ops&amp;module=/doc/ops/resource/ecs/ecs#/</span>)</span><br><span class="line"><span class="bullet">6.</span> 指定打开某个单独页面： (&#123; &#123;baseDomain&#125; &#125;/browse/#/doc/develop/back-end/technique/malfunction/record)</span><br><span class="line"><span class="bullet">7.</span> 指定页面插入sql文件:[<span class="string">交易平台</span>](<span class="link">&#123; &#123;baseDomain&#125; &#125;/wiki/md?md=doc/develop/back-end/middleground/sql/trade.sql&amp;type=sql&amp;name=trade.md &#x27;:include :type=md&#x27;</span>)</span><br><span class="line"><span class="bullet">8.</span> 插入markdown页面: [<span class="string">商品系统</span>](<span class="link">../product/product-programming.md &#x27;:include :type=md&#x27;</span>)</span><br></pre></td></tr></table></figure><h2 id="如何编辑文档"><a href="#如何编辑文档" class="headerlink" title="如何编辑文档"></a>如何编辑文档</h2><ul><li><a href="https://docsify.js.org/#/zh-cn/more-pages">docsify</a>(wiki框架)</li><li><a href="http://xianbai.me/learn-md/article/about/helloworld.html">markdown语法</a></li><li><a href="http://pad.haroopress.com/user.html">Haroopad编辑器</a></li><li><a href="https://mermaidjs.github.io/flowchart.html">工作流和甘特图</a></li><li><a href="https://mermaidjs.github.io/mermaid-live-editor">在线甘特图工具</a></li><li><a href="https://www.webfx.com/tools/emoji-cheat-sheet/">emoji表情</a></li></ul><h2 id="编辑器推荐"><a href="#编辑器推荐" class="headerlink" title="编辑器推荐"></a>编辑器推荐</h2><ul><li>Idea(git版本管理)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">git clone ssh:&#x2F;&#x2F;git@git.mbyundian.com:23&#x2F;maidao&#x2F;wiki.git</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">  - [GitLab 在线编辑](https:&#x2F;&#x2F;git.mbyundian.com&#x2F;maidao&#x2F;wiki&#x2F;tree&#x2F;master)</span><br><span class="line">  - Sublime Text   </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">## 目录说明</span><br><span class="line">&#96;&#96;&#96;markdown</span><br><span class="line">- auto-test 基于js实现端对端测试</span><br><span class="line">- doc 文档(markdown格式)</span><br><span class="line"> - api  脉宝api接口</span><br><span class="line"> - develop 开发文档</span><br><span class="line">    - back-end  大后端文档</span><br><span class="line">    - front-end 大前端文档 </span><br><span class="line"> - ops  运维相关</span><br><span class="line"> </span><br><span class="line">- main 文档中心服务</span><br><span class="line">  - dist 文档中心静态资源(css、js)</span><br><span class="line">  - node-express (node express web框架)</span><br><span class="line">    - node_modules node 依赖包(注意不要提交到git)</span><br><span class="line">    - web (node express web代码,node 服务开发)</span><br><span class="line">      + conf 配置文件</span><br><span class="line">      + dao  sqlDao</span><br><span class="line">      + model bean 对象</span><br><span class="line">      + routes url路由 </span><br><span class="line">  - wiki </span><br><span class="line">      - sidebar 主页左侧菜单(可修改,不能删除)</span><br><span class="line">      - home   主页(默认)内容(可修改,不能删除)</span><br><span class="line">   - run-node-express.bat  windows服务启用命令</span><br><span class="line">   - run-node-express.sh   mac服务启用命令</span><br></pre></td></tr></table></figure><h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><ul><li><a href="http://192.168.1.59/wiki/dist/20180809/08036a839f76.mp4">开始使用</a></li><li><a href="http://192.168.1.59/wiki/dist/20180809/11e5fa01af7c.mp4">gitlab编辑内容</a>-(点击404时联系后端分配git权限)</li><li><a href="http://192.168.1.59/wiki/dist/20180809/e6918f0b0b34.mp4">idea菜单管理</a></li><li><a href="http://192.168.1.59/wiki/dist/20180809/7152fbd1b9d3.mp4">上传多媒体</a></li></ul></li></ul><h2 id="本地启动文档服务"><a href="#本地启动文档服务" class="headerlink" title="本地启动文档服务"></a><strong>本地启动文档服务</strong></h2><h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><ul><li>下载&amp;安装node： <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a> </li><li>安装淘宝npm：   npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></li><li>安装supervisor（类似热加载）：   cnpm -g install supervisor</li></ul><h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><ul><li>$&gt;  cd main </li><li>mac系统输入命令     ./run-node-express.sh</li><li>windows系统命令     run-node-express.bat</li></ul><h3 id="访问项目"><a href="#访问项目" class="headerlink" title="访问项目"></a>访问项目</h3><p><a href="http://localhost:3300/">http://localhost:3300</a></p><h3 id="公司内网环境Docker"><a href="#公司内网环境Docker" class="headerlink" title="公司内网环境Docker"></a>公司内网环境Docker</h3><p> <a href="http://192.168.1.200:3300/">http://192.168.1.200:3300</a></p><h3 id="在线ide编辑"><a href="#在线ide编辑" class="headerlink" title="在线ide编辑"></a>在线ide编辑</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull webide/webide</span><br><span class="line">docker rm -f wiki-webide</span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> --name wiki-webide -d -p 3301:8080 -v /storage/data/wiki-webide:/root/.coding-ide webide/webide</span></span><br></pre></td></tr></table></figure><p><a href="http://192.168.1.201:3301/">http://192.168.1.201:3301</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>DDD(领域驱动设计相关)</title>
+      <link href="2020/09/30/framework/DDD/"/>
+      <url>2020/09/30/framework/DDD/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ddd </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java</title>
+      <link href="2020/09/30/java/java/"/>
+      <url>2020/09/30/java/java/</url>
+      
+        <content type="html"><![CDATA[<h3 id="标题一"><a href="#标题一" class="headerlink" title="标题一"></a>标题一</h3><blockquote><p>aaaaa</p></blockquote><h3 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h3><ul><li>aaa</li><li>bbb</li></ul><h3 id="标题三"><a href="#标题三" class="headerlink" title="标题三"></a>标题三</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this is text</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
