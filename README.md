@@ -26,5 +26,9 @@ npm run server
 hexo clean 
 hexo generate
 
-
+3.部署
+    1.本地部署
+    hexo deploy
+    
+    2.gite上重新部署
 ```

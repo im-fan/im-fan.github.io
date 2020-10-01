@@ -6,20 +6,21 @@
   <meta name="keywords" content="">
   <meta name="description" content="首页 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="技术文档中心使用说明wiki文档中心技术架构12345678graph TB wiki[文档中心服务&lt;br&gt;^10s自动更新^]--&gt;|浏览器和docsify&lt;br&gt;将md文档渲染出目录和正文|user[浏览者]jenkins--&gt;|部署wiki|wikiwiki--&gt;|资源通过wiki的后台node服务,&lt;br&gt;使用scp上传到59机器|me">
+<meta name="description" content="记录一切有趣的技术和事情">
 <meta property="og:type" content="article">
-<meta property="og:title" content="首页">
-<meta property="og:url" content="http://imfan.com/2020/09/30/index/index.html">
+<meta property="og:title" content="DDD(领域驱动设计相关)">
+<meta property="og:url" content="http://imfan.com/2020/09/30/framework/DDD/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="技术文档中心使用说明wiki文档中心技术架构12345678graph TB wiki[文档中心服务&lt;br&gt;^10s自动更新^]--&gt;|浏览器和docsify&lt;br&gt;将md文档渲染出目录和正文|user[浏览者]jenkins--&gt;|部署wiki|wikiwiki--&gt;|资源通过wiki的后台node服务,&lt;br&gt;使用scp上传到59机器|me">
+<meta property="og:description" content="记录一切有趣的技术和事情">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-30T06:51:20.000Z">
-<meta property="article:modified_time" content="2020-09-30T08:59:04.438Z">
+<meta property="article:modified_time" content="2020-09-30T09:49:13.351Z">
 <meta property="article:author" content="imfan">
+<meta property="article:tag" content="ddd">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="icon" href="/img/role.png">
+<link rel="icon" href="/img/road.png">
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
@@ -59,7 +60,7 @@
 <aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
-    <img class="avatar" src="/img/role.png" />
+    <img class="avatar" src="/img/road.png" />
 </a>
 <div class="author">
     <span>imfan</span>
@@ -448,12 +449,12 @@
     
     
     .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
-        color: #383636;
+        color: #c0bfbf;
     }
     
     
     .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
-        color: #5e5e5f;
+        color: #2b2929;
     }
     
     
@@ -475,6 +476,25 @@
     
 
     /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/moon.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
     
 
     
