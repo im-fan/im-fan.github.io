@@ -327,7 +327,7 @@
 }
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  font-size: 15px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -720,7 +720,7 @@
   top: 50%;
   transform: translate(0, -50%);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
 }
 .nav-right .title-list .right-top #default-panel .iconfont.icon-search,
 .nav-right .title-list .right-top #outline-panel .iconfont.icon-search {
@@ -1019,7 +1019,7 @@
   clear: both;
   margin: 5px 0;
   padding-left: 32px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 22px;
   white-space: nowrap;
   text-decoration: none;
@@ -1209,7 +1209,7 @@
 #post {
   height: 100%;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.75;
   background: #f4f5f5;
   overflow-x: hidden;
@@ -1611,7 +1611,7 @@
   font-weight: 700;
   line-height: 22px;
   color: #444;
-  font-size: 16px;
+  font-size: 15px;
 }
 #post .article_copyright .copy-title {
   color: #000;
@@ -1798,7 +1798,7 @@ img.pswp__img {
     height: 80px;
   }
   .nav-left ul {
-    font-size: 16px;
+    font-size: 15px;
   }
   .nav-right {
     width: 240px;
@@ -1810,7 +1810,7 @@ img.pswp__img {
     top: 9px;
   }
   .nav-right .title-list nav a .post-title {
-    font-size: 15px;
+    font-size: 14px;
   }
   .nav-right .title-list nav a .post-date {
     font-size: 14px;
@@ -2085,6 +2085,6 @@ font-size
     width: 150px;
   }
   .shang_box .shang_payselect {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
