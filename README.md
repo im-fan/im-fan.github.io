@@ -1,6 +1,7 @@
 ## 官方文档
-https://hexo.io/zh-cn/docs/
-
+- [官方文档](https://hexo.io/zh-cn/docs/)
+- [Imfan博客地址](https://im-fan.gitee.io/)
+ 
 ## 新增文档
 ```text
 1.source/_posts文件夹下新增对应目录&文件夹
