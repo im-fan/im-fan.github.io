@@ -31,5 +31,7 @@ hexo generate
     1.本地部署
     hexo deploy
     
-    2.gite上重新部署
+    2.gitee上重新部署
+    
 ```
+
