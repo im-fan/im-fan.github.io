@@ -2,7 +2,7 @@
 title: Hexo搭建博客
 date: 2020-09-30 14:51:20
 tags: 
-- Tool
+- tool
 categories: 
 - 其他
 - 博客工具

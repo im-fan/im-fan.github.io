@@ -2,7 +2,7 @@
 title: 软件推荐
 date: 2020-10-02 14:34:06
 tags: 
-- Tool
+- tool
 categories:
 - 其他
 - 软件

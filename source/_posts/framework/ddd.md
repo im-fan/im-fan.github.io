@@ -1,7 +1,7 @@
 ---
-title: ddd
-description: ddd
-top: 1
+title: DDD
+description: DDD-领域驱动设计
+#top: 1
 date: 2020-10-09 16:51:54
 tags:
 - DDD

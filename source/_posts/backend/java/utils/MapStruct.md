@@ -2,10 +2,11 @@
 title: MapStruct
 description: MapStruct
 date: 2020-10-02 15:51:46
-tags: 对象转换工具
+tags:
+- utils
 categories:
 - 后端
-- MapStruct
+- Java
 ---
 
 
