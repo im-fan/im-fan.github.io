@@ -104,4 +104,9 @@ cp -R example example2
 
 3.Canal Admin中添加新配置
    Instance名称-example2
+
+4.集成zookeeper
+修改canal-server/conf/下配置canal.properties
+canal.register.ip = zk服务器IP
+canal.zkServers = zk服务器IP:2181
 ```
