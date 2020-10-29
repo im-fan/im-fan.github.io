@@ -16,7 +16,8 @@ categories:
 ```text
 1.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class
 2.启动时注意端口号是否已经被占用
-``` 
+
+```
 
 ### 单机部署步骤
 ```text
@@ -37,6 +38,7 @@ categories:
 4.启动
     cd zookeeper/bin
     ./zkServer.sh start / restart / stop / status
+
 ```
 
 ### zookeeper数据查看工具

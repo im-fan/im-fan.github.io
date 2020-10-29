@@ -6,15 +6,15 @@
   <meta name="keywords" content=" zookeeper ">
   <meta name="description" content="Zookeeper搭建 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="相关链接 官网  注意事项12345678910111213141516171819202122231.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class2.启动时注意端口号是否已经被占用&#96;&#96;&#96; ### 单机部署步骤&#96;&#96;&#96;text1.解压文件    tar -zxvf xxx-bin.tar.gz zookeeper2.修改配置    cd zookeeper">
+<meta name="description" content="相关链接 官网  注意事项1231.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class2.启动时注意端口号是否已经被占用  单机部署步骤1234567891011121314151617181.解压文件    tar -zxvf xxx-bin.tar.gz zookeeper2.修改配置    cd zookeeper&#x2F;conf    cp zoo_samp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zookeeper搭建">
 <meta property="og:url" content="http://imfan.com/2020/10/29/backend/service/zookeeper/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="相关链接 官网  注意事项12345678910111213141516171819202122231.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class2.启动时注意端口号是否已经被占用&#96;&#96;&#96; ### 单机部署步骤&#96;&#96;&#96;text1.解压文件    tar -zxvf xxx-bin.tar.gz zookeeper2.修改配置    cd zookeeper">
+<meta property="og:description" content="相关链接 官网  注意事项1231.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class2.启动时注意端口号是否已经被占用  单机部署步骤1234567891011121314151617181.解压文件    tar -zxvf xxx-bin.tar.gz zookeeper2.修改配置    cd zookeeper&#x2F;conf    cp zoo_samp">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-29T07:40:46.000Z">
-<meta property="article:modified_time" content="2020-10-29T08:37:25.925Z">
+<meta property="article:modified_time" content="2020-10-29T10:39:04.250Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="zookeeper">
 <meta name="twitter:card" content="summary">
@@ -469,7 +469,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-10-29 16:37:25'>2020-10-29 15:40</time>
+            发布时间 : <time class="date" title='最后更新: 2020-10-29 18:39:04'>2020-10-29 15:40</time>
         
     </div>
     <div class="article-meta">
@@ -493,7 +493,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zookeeper%E6%95%B0%E6%8D%AE%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7"><span class="toc-text">zookeeper数据查看工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="toc-text">单机部署步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zookeeper%E6%95%B0%E6%8D%AE%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7"><span class="toc-text">zookeeper数据查看工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -512,7 +512,9 @@
         <h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://zookeeper.apache.org/releases.html">官网</a></li>
 </ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class</span><br><span class="line">2.启动时注意端口号是否已经被占用</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 单机部署步骤</span><br><span class="line">```text</span><br><span class="line">1.解压文件</span><br><span class="line">    tar -zxvf xxx-bin.tar.gz zookeeper</span><br><span class="line">2.修改配置</span><br><span class="line">    cd zookeeper/conf</span><br><span class="line">    cp zoo_sample.cfg zoo.cfg</span><br><span class="line">    vim zoo.cfg</span><br><span class="line">    修改以下配置项</span><br><span class="line">        dataDir= xxx/dataDir</span><br><span class="line">        dataLogDir= xxx/logs/zookeeper</span><br><span class="line">        </span><br><span class="line">3.新增配置</span><br><span class="line">    cd xxx/dataDir</span><br><span class="line">    echo 1001&gt;myid</span><br><span class="line"></span><br><span class="line">4.启动</span><br><span class="line">    cd zookeeper/bin</span><br><span class="line">    ./zkServer.sh start / restart / stop / status</span><br></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class</span><br><span class="line">2.启动时注意端口号是否已经被占用</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="单机部署步骤"><a href="#单机部署步骤" class="headerlink" title="单机部署步骤"></a>单机部署步骤</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1.解压文件</span><br><span class="line">    tar -zxvf xxx-bin.tar.gz zookeeper</span><br><span class="line">2.修改配置</span><br><span class="line">    cd zookeeper/conf</span><br><span class="line">    cp zoo_sample.cfg zoo.cfg</span><br><span class="line">    vim zoo.cfg</span><br><span class="line">    修改以下配置项</span><br><span class="line">        dataDir= xxx/dataDir</span><br><span class="line">        dataLogDir= xxx/logs/zookeeper</span><br><span class="line">        </span><br><span class="line">3.新增配置</span><br><span class="line">    cd xxx/dataDir</span><br><span class="line">    echo 1001&gt;myid</span><br><span class="line"></span><br><span class="line">4.启动</span><br><span class="line">    cd zookeeper/bin</span><br><span class="line">    ./zkServer.sh start / restart / stop / status</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="zookeeper数据查看工具"><a href="#zookeeper数据查看工具" class="headerlink" title="zookeeper数据查看工具"></a>zookeeper数据查看工具</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip">下载地址</a></li>
