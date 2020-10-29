@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>软件推荐 | Imfan笔记</title>
-  <meta name="keywords" content=" tool ">
-  <meta name="description" content="软件推荐 | Imfan笔记">
+  <title>Zookeeper搭建 | Imfan笔记</title>
+  <meta name="keywords" content=" zookeeper ">
+  <meta name="description" content="Zookeeper搭建 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="相关链接 官网  注意事项12345678910111213141516171819202122231.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class2.启动时注意端口号是否已经被占用&#96;&#96;&#96; ### 单机部署步骤&#96;&#96;&#96;text1.解压文件    tar -zxvf xxx-bin.tar.gz zookeeper2.修改配置    cd zookeeper">
 <meta property="og:type" content="article">
@@ -440,9 +440,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-tools/software" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-backend/service/zookeeper" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">软件推荐</h1>
+        <h1 class="article-title">Zookeeper搭建</h1>
     
     <div class="article-meta">
         
@@ -452,9 +452,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="其他">其他</a> > 
+            <a  data-rel="服务搭建">服务搭建</a> > 
             
-            <a  data-rel="其他&lt;---&gt;软件">软件</a>
+            <a  data-rel="服务搭建&lt;---&gt;zookeeper">zookeeper</a>
             
         </span>
         
@@ -462,19 +462,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">tool</a>
+            <a class="color5">zookeeper</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-10-20 17:45:39'>2020-10-02 14:34</time>
+            发布时间 : <time class="date" title='最后更新: 2020-10-29 16:37:25'>2020-10-29 15:40</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:62</span>
+        <span>字数:252</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -493,7 +493,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac%E8%BD%AF%E4%BB%B6-amp-%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99"><span class="toc-text">Mac软件&amp;工具网站</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zookeeper%E6%95%B0%E6%8D%AE%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7"><span class="toc-text">zookeeper数据查看工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -509,50 +509,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Mac软件-amp-工具网站"><a href="#Mac软件-amp-工具网站" class="headerlink" title="Mac软件&amp;工具网站"></a>Mac软件&amp;工具网站</h3><table>
-<thead>
-<tr>
-<th>主要功能</th>
-<th>软件名</th>
-<th>相关网址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>图片编辑器</td>
-<td>PixelStyle</td>
-<td></td>
-</tr>
-<tr>
-<td>视频播放</td>
-<td>IINA</td>
-<td></td>
-</tr>
-<tr>
-<td>录屏软件</td>
-<td>LICEcap</td>
-<td></td>
-</tr>
-<tr>
-<td>文件比较</td>
-<td>Beyond Compare</td>
-<td></td>
-</tr>
-<tr>
-<td>Markdown编辑工具</td>
-<td>Haroopad</td>
-<td></td>
-</tr>
-<tr>
-<td>Mac包管理工具</td>
-<td>Homebrew</td>
-<td></td>
-</tr>
-<tr>
-<td>Mac破解软件</td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://xclient.info/">https://xclient.info</a></td>
-</tr>
-</tbody></table>
+        <h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zookeeper.apache.org/releases.html">官网</a></li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class</span><br><span class="line">2.启动时注意端口号是否已经被占用</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 单机部署步骤</span><br><span class="line">```text</span><br><span class="line">1.解压文件</span><br><span class="line">    tar -zxvf xxx-bin.tar.gz zookeeper</span><br><span class="line">2.修改配置</span><br><span class="line">    cd zookeeper/conf</span><br><span class="line">    cp zoo_sample.cfg zoo.cfg</span><br><span class="line">    vim zoo.cfg</span><br><span class="line">    修改以下配置项</span><br><span class="line">        dataDir= xxx/dataDir</span><br><span class="line">        dataLogDir= xxx/logs/zookeeper</span><br><span class="line">        </span><br><span class="line">3.新增配置</span><br><span class="line">    cd xxx/dataDir</span><br><span class="line">    echo 1001&gt;myid</span><br><span class="line"></span><br><span class="line">4.启动</span><br><span class="line">    cd zookeeper/bin</span><br><span class="line">    ./zkServer.sh start / restart / stop / status</span><br></pre></td></tr></table></figure>
+
+<h3 id="zookeeper数据查看工具"><a href="#zookeeper数据查看工具" class="headerlink" title="zookeeper数据查看工具"></a>zookeeper数据查看工具</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip">下载地址</a></li>
+<li>使用<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.解压后进入build文件夹</span><br><span class="line">2.运行jar</span><br><span class="line">    nohup java -jar zookeeper-dev-ZooInspector.jar &amp;</span><br><span class="line">3.左上角连接按钮，输入zk地址并连接</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ul>
+<li><p>启动报ClassNotFound</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">重新下载zookeeper包，注意是xxxx-bin.tar.gz这种的</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动失败</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.检查配置的文件夹路径和权限是否正常</span><br><span class="line">2.检查zookeeper是否已经被启动</span><br><span class="line">    ps -ef | grep zookeeper</span><br><span class="line">    kill进程</span><br><span class="line">3.删除 dataDir 和 dataLogDir 路径下 version-2 文件夹后重启</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>

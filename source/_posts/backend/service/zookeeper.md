@@ -39,6 +39,17 @@ categories:
     ./zkServer.sh start / restart / stop / status
 ```
 
+### zookeeper数据查看工具
+- [下载地址](https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip)
+- 使用
+```text
+1.解压后进入build文件夹
+2.运行jar
+    nohup java -jar zookeeper-dev-ZooInspector.jar &
+3.左上角连接按钮，输入zk地址并连接
+```
+
+
 ### 常见问题
 - 启动报ClassNotFound
 ```text
