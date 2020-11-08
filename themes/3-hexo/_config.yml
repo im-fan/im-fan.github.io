@@ -28,9 +28,11 @@ category:
   sub: true # 开启多级分类
   sort:     # 标题排序
     - 后端
-    - 数据库
     - 架构
+    - 数据库
+    - 服务搭建
     - 阅读
+    - 思考
     - 其他
   width:
     lg: 120 # 1468px<屏幕宽度 左侧分类宽度
@@ -216,7 +218,7 @@ friends:
 
 ##########评论设置#############
 comment:
-  on: false
+  on: true
   type: gitalk  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
   comment_count: true  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
   ## 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/
@@ -229,11 +231,11 @@ disqus:
 
 
 gitalk:
-  githubID: yelog
-  repo: yelog.github.io
-  ClientID:
-  ClientSecret:
-  adminUser: yelog
+  githubID: im-fan
+  repo: im-fan.github.io
+  ClientID: 0d360a48a118f28fc354
+  ClientSecret: 34e0d983f72faad9f987a8098593865b74dc1ba4
+  adminUser: im-fan
   distractionFreeMode: true
   language: zh-CN
   perPage: 10
@@ -247,7 +249,6 @@ gitalk:
 # distractionFreeMode: 全屏遮罩效果
 # language: 语言：支持：en / zh-CN / zh-TW 三种
 # perPage: 每次加载的数据大小，默认10，最大100
-
 
 gitment:
   owner: yelog

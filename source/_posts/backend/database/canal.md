@@ -5,7 +5,6 @@ tags:
 - canal
 categories: 
 - 数据库
-- Canal搭建
 ---
 
 ### 相关网址
