@@ -141,7 +141,7 @@ canal.zkServers = zk服务器IP:2181
 ```text
 # 用以下配置项是需要修改的，其他默认配置项保留原来设置
 # canal地址
-canal.register.ip = local:2181
+canal.register.ip = zk所在地址
 
 # zk配置，如果有用到则配置，没用到则保留默认设置
 canal.admin.register.auto = true
@@ -158,5 +158,7 @@ canal.instance.dbUsername = 用户名
 canal.instance.dbPassword = 密码
 canal.instance.defaultDatabaseName = 要监控的库名，不设置则监听当前实例下所有库
 canal.instance.connectionCharset = UTF-8
+
+canal.instance.tsdb.enable=false
 
 ```
