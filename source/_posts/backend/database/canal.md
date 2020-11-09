@@ -1,5 +1,5 @@
 ---
-title: Canal-Docker搭建
+title: Canal服务搭建
 date: 2020-10-02 15:51:46
 tags: 
 - canal
@@ -10,12 +10,51 @@ categories:
 ### 相关网址
 - [官网](https://github.com/alibaba/canal/wiki/Home)
 - [快速开始](https://github.com/alibaba/canal/wiki/QuickStart)
+- [Release下载](https://github.com/alibaba/canal/releases)
 - [Docker镜像地址](https://hub.docker.com/r/canal/canal-server/tags/)
 - [Canal Admin QuickStart](https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart)
 - [Canal Client Example](https://github.com/alibaba/canal/wiki/ClientExample)
 
-### 搭建步骤
-- 推荐docker方式部署,注意配置时mysql的IP地址
+### 直接部署
+#### 准备
+```text
+1.下载安装包(点击上面Release)
+这里用1.1.4版本,下载 canal.deployer-1.1.4.tar.gz(主要程序) 和 canal.admin-1.1.4.tar.gz(管理程序)
+
+2.解压&配置
+  mkdir canal-deployer
+  mkdir canal-admin
+  tar -zxvf canal.deployer-1.1.4.tar.gz -C canal-deployer
+  tar -zxvg canal.admin-1.1.4.tar.gz -C canal-admin
+  修改 canal-deployer/conf 中 canal.properties(参考 快速开始，或参考底部配置)
+
+3.修改Instance配置
+  cd cd canal-deployer/conf/example/instance.properties
+  参考官网或底部instance.peroperties配置
+
+4.多Instance - 可选
+  cd canal-deployer/conf
+  cp -R example example2
+  修改example2中配置
+
+5.配置canal-admin
+  初始化数据脚本，脚本所在位置 canal-admin/conf/canal_manager.sql
+  修改配置，配置所在位置 canal-admin/conf/application.yml
+  修改其中的数据库配置、端口号、用户名密码等-可选
+
+6.启动
+  canal-admin启动( 访问链接 localhost:80 )
+  sh ./canal-admin/bin/startup.sh
+  
+  canal-server启动
+  sh ./canal-deployer/bin/startup.sh
+  
+  日志所在文件夹
+  cd canal-deployer/logs
+```
+
+### Docker搭建步骤
+- docker方式部署,注意配置时mysql的IP地址
 #### 准备
 ```text
 1.mysql
@@ -61,10 +100,6 @@ zk地址-127.0.0.1:2181 (可以不搭建zk)
     canal.admin.port = 11110
     canal.admin.user = admin
     canal.admin.passwd = 4ACFE3202A5FF5CF467898FC58AAB1D615029441
-    # admin auto register
-    canal.admin.register.auto = true
-    canal.admin.register.cluster =
-  
 ```
 
 - 2.Server管理
@@ -77,17 +112,7 @@ admin端口号-11110
 - 3.Instance管理
 ```text
 注意：Instance名称要与cancal-server容器中文件夹一致，默认有example
-Instance配置项
-    ## mysql serverId
-    canal.instance.mysql.slaveId = 1002
-    #position info，需要改成自己的数据库信息
-    canal.instance.master.address = 127.0.0.1:3306
-    #username/password，需要改成自己的数据库信息
-    canal.instance.dbUsername = root  
-    canal.instance.dbPassword = 123456
-    canal.instance.connectionCharset = UTF-8
-    #table regex，过滤规则
-    canal.instance.filter.regex = .\*\\\\..\*
+Instance配置项参考官网或底部配置
 
 ```
 
@@ -108,4 +133,30 @@ cp -R example example2
 修改canal-server/conf/下配置canal.properties
 canal.register.ip = zk服务器IP
 canal.zkServers = zk服务器IP:2181
+```
+
+### 参考配置(基础版，其他配置参考官网)
+
+#### canal.properties
+```text
+# 用以下配置项是需要修改的，其他默认配置项保留原来设置
+# canal地址
+canal.register.ip = local:2181
+
+# zk配置，如果有用到则配置，没用到则保留默认设置
+canal.admin.register.auto = true
+canal.admin.register.cluster = 192.168.154.231:2181
+canal.zkServers = 192.168.154.231:2181
+```
+
+#### instance.properties
+```text
+# 用以下配置项是需要修改的，其他默认配置项保留原来设置(example2配置同下)
+# 数据库配置
+canal.instance.master.address= 数据库IP:端口号
+canal.instance.dbUsername = 用户名 
+canal.instance.dbPassword = 密码
+canal.instance.defaultDatabaseName = 要监控的库名，不设置则监听当前实例下所有库
+canal.instance.connectionCharset = UTF-8
+
 ```
