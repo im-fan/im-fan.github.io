@@ -162,3 +162,15 @@ canal.instance.connectionCharset = UTF-8
 canal.instance.tsdb.enable=false
 
 ```
+
+#### 常见问题
+- 服务都启动成功，客户端拉不到变更日志
+```text
+注意客户端中 canalConnector.subscribe() 中设置项，设置了值则服务中配置的过滤条件不生效
+参考配置 canalConnector.subscribe("sap_system\\..*,user_center\\..*")
+```
+
+- 一个Canal-Service,多个client，运行时报错
+```text
+改为一个canal一个client，原因是多个client提交
+```
