@@ -7,6 +7,7 @@
 
 少年易学老难成，一寸光阴不可轻。 ——朱熹
 
+Stay hungry,Stay foolish     ——Steve Jobs
 
 ### 关于
 本博客通过 [Hexo](https://hexo.io/) 生成，部署在 [Gitee Pages](https://gitee.com/help/articles/4136#article-header0)<p>

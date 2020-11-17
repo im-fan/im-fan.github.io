@@ -7,24 +7,21 @@ categories:
 - 架构
 ---
 
-```
-http://www.runoob.com/design-pattern
-设计模式在 Spring 框架中的良好实践
-https://mp.weixin.qq.com/s?__biz=MzI4ODQ3NjE2OA==&mid=2247485687&idx=2&sn=d1a405491311488c576197b556d357ec&chksm=ec3c9590db4b1c86a13ff39894dbeead2bbcee738a58da96bcb1bc404b6a948bd1f38312176a&mpshare=1&scene=1&srcid=&sharer_sharetime=1570684867528&sharer_shareid=4c8872b4436b495590f58ccf1453ba58&rd2werd=1#wechat_redirect
-```
+- [菜鸟教程](http://www.runoob.com/design-pattern)
+- [设计模式在Spring框架中的良好实践](https://mp.weixin.qq.com/s?__biz=MzI4ODQ3NjE2OA==&mid=2247485687&idx=2&sn=d1a405491311488c576197b556d357ec&chksm=ec3c9590db4b1c86a13ff39894dbeead2bbcee738a58da96bcb1bc404b6a948bd1f38312176a&mpshare=1&scene=1&srcid=&sharer_sharetime=1570684867528&sharer_shareid=4c8872b4436b495590f58ccf1453ba58&rd2werd=1#wechat_redirect)
 
 ## 基础
 ### 设计模式的类型
 ```
 设计模式可以分为三大类：创建型模式（Creational Patterns）、结构型模式（Structural Patterns）、行为型模式（Behavioral Patterns）。当然，还有另一类设计模式：J2EE 设计模式。
 
-## 创建型模式
+1. 创建型模式
 这些设计模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用 new 运算符直接实例化对象。这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活。
 
-## 结构型模式
+2. 结构型模式
 这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。
 
-## 行为型模式
+3. 行为型模式
 这些设计模式特别关注对象之间的通信。
 
 详情见：http://www.runoob.com/design-pattern/design-pattern-intro.html

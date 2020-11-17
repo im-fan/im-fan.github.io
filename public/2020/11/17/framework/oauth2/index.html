@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>软件推荐 | Imfan笔记</title>
-  <meta name="keywords" content=" tool ">
-  <meta name="description" content="软件推荐 | Imfan笔记">
+  <title>OAuth2学习笔记 | Imfan笔记</title>
+  <meta name="keywords" content=" oauth2 ">
+  <meta name="description" content="OAuth2学习笔记 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="oauth2">
 <meta property="og:type" content="article">
@@ -416,9 +416,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-tools/software" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-framework/oauth2" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">软件推荐</h1>
+        <h1 class="article-title">OAuth2学习笔记</h1>
     
     <div class="article-meta">
         
@@ -428,9 +428,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="其他">其他</a> > 
-            
-            <a  data-rel="其他&lt;---&gt;软件">软件</a>
+            <a  data-rel="架构">架构</a>
             
         </span>
         
@@ -438,19 +436,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">tool</a>
+            <a class="color2">oauth2</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-10-20 17:45:39'>2020-10-02 14:34</time>
+            发布时间 : <time class="date" title='最后更新: 2020-11-17 10:40:36'>2020-11-17 09:58</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:62</span>
+        <span>字数:1.4k</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -480,7 +478,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac%E8%BD%AF%E4%BB%B6-amp-%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99"><span class="toc-text">Mac软件&amp;工具网站</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3"><span class="toc-text">框架相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E6%A8%A1%E5%BC%8F"><span class="toc-text">授权模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%8E%88%E6%9D%83%E6%A8%A1%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-text">不同授权模式请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E4%B8%9A%E5%8A%A1%E6%8E%A5%E5%8F%A3"><span class="toc-text">请求业务接口</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -496,50 +494,58 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Mac软件-amp-工具网站"><a href="#Mac软件-amp-工具网站" class="headerlink" title="Mac软件&amp;工具网站"></a>Mac软件&amp;工具网站</h3><table>
-<thead>
-<tr>
-<th>主要功能</th>
-<th>软件名</th>
-<th>相关网址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>图片编辑器</td>
-<td>PixelStyle</td>
-<td></td>
-</tr>
-<tr>
-<td>视频播放</td>
-<td>IINA</td>
-<td></td>
-</tr>
-<tr>
-<td>录屏软件</td>
-<td>LICEcap</td>
-<td></td>
-</tr>
-<tr>
-<td>文件比较</td>
-<td>Beyond Compare</td>
-<td></td>
-</tr>
-<tr>
-<td>Markdown编辑工具</td>
-<td>Haroopad</td>
-<td></td>
-</tr>
-<tr>
-<td>Mac包管理工具</td>
-<td>Homebrew</td>
-<td></td>
-</tr>
-<tr>
-<td>Mac破解软件</td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://xclient.info/">https://xclient.info</a></td>
-</tr>
-</tbody></table>
+        <ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/lexburner/oauth2-demo">参考demo</a></li>
+<li><a target="_blank" rel="noopener" href="https://colobu.com/2017/04/28/oauth2-rfc6749/">OAuth2 RFC6749中文翻译</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">理解OAuth 2.0-阮一峰</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/im-fan/my-project/tree/release/1.0/my-oauth2">文档对应demo</a></li>
+</ul>
+<h4 id="框架相关"><a href="#框架相关" class="headerlink" title="框架相关"></a>框架相关</h4><ul>
+<li>OAuth2<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">解释：</span><br><span class="line">    OAuth 2.0是一个关于授权的开放网络协议，它允许用户让第三方网站访问该用户在某一网站上存储的信息和资源，</span><br><span class="line">    如账户信息，照片，联系人等，而不需要给第三方网站提供某一网站上的账户和密码。</span><br><span class="line">流程：</span><br><span class="line">    1、用户打开客户端，客户端要求授权。</span><br><span class="line">    2、用户同意客户端授权。</span><br><span class="line">    3、客户端使用上一步提供的授权，向服务器授权层申请令牌。</span><br><span class="line">    4、授权服务器对客户端进行认证后，同意发放令牌。</span><br><span class="line">    5、客户端使用令牌，向资源服务器申请资源。</span><br><span class="line">    6、资源服务器确认令牌，向客户端开放资源。</span><br></pre></td></tr></table></figure></li>
+<li>LDAP<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">解释：</span><br><span class="line">    LDAP是一种基于轻量目录访问协议，全称是Lightweight Directory Access Protocol，是由一个为查询、</span><br><span class="line">    浏览和搜索而优化的数据库构成，它成树状结构组织数据，类似文件目录一样。</span><br><span class="line">    LDAP单点登录认证主要是改变原有的认证策略，使得需要的软件都通过LDAP服务器进行认证，在统一身份认证后，</span><br><span class="line">    用户的所有信息都存储在AD Server中，终端用户在需要使用公司内部服务的时候，都需要通过AD服务器进行认证。</span><br><span class="line">登录流程：</span><br><span class="line">    1、连接到LDAP服务器。</span><br><span class="line">    2、绑定到LDAP服务器。</span><br><span class="line">    3、在LDAP服务器上执行所需要的操作。</span><br><span class="line">    4、释放LDAP服务器的连接。</span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lihuidu/p/6495247.html">CAS(Central Authentication Service-中央式认证服务)</a><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SSO 仅仅是一种架构，一种设计，而 CAS 则是实现 SSO 的一种手段。两者是抽象与具体的关系。</span><br><span class="line">CAS即Central Authentication Service模型（中央式认证服务），该协议是为应用提供可信身份认证的单点登录系统，最初是由耶鲁大学开发的。</span><br><span class="line">CAS 包含两个部分： CAS Server 和 CAS Client。CAS Server 需要独立部署，主要负责对用户的认证工作；CAS Client 负责处理对客户端受保护资源的访问请求，需要登录时，重定向到 CAS Server。</span><br></pre></td></tr></table></figure></li>
+<li>适用场景<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OAuth协议能广泛应用于互联网中，基于大企业的巨大用户量，能减少小网站的注册推广成本，并且能做到更加便捷的资源共享。</span><br><span class="line">LDAP协议适用于企业用户使用，通过LDAP协议，能较好地管理员工在公司各系统之间的授权与访问。</span><br><span class="line">CAS模型，作为权威机构开发的系统，具有很好的兼容性与安全性，广泛应用于各大高校等大型组织，能很好地完成大量系统的对接与大量人员的使用。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="授权模式"><a href="#授权模式" class="headerlink" title="授权模式"></a>授权模式</h4><ul>
+<li><p>授权码模式（authorization code）</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">功能最完整、流程最严密的授权模式。它的特点就是通过客户端的后台服务器，与&quot;服务提供商&quot;的认证服务器进行互动。</span><br></pre></td></tr></table></figure></li>
+<li><p>简化模式（implicit）</p>
+</li>
+<li><p>密码模式（resource owner password credentials）</p>
+</li>
+<li><p>客户端模式（client credentials）</p>
+</li>
+<li><p>主要配置</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Oauth2ServerConfig</span><br><span class="line">WebSecurityConfigurer</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="不同授权模式请求"><a href="#不同授权模式请求" class="headerlink" title="不同授权模式请求"></a>不同授权模式请求</h4><ul>
+<li><p>授权码模式(在浏览器中访问接口)</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">配置项：需要将返回地址添加到client中</span><br><span class="line">    clients.redirectUris(&quot;http://www.baidu.com&quot;)</span><br><span class="line"></span><br><span class="line">http://localhost:8200/oauth/authorize?response_type=code&amp;client_id=client_1&amp;redirect_uri=http://www.baidu.com&amp;state=123</span><br><span class="line"></span><br><span class="line">所需参数解释</span><br><span class="line">    response_type：表示授权类型，必选项，此处的值固定为&quot;code&quot;</span><br><span class="line">    client_id：表示客户端的ID，必选项</span><br><span class="line">    redirect_uri：表示重定向URI，可选项</span><br><span class="line">    scope：表示申请的权限范围，可选项</span><br><span class="line">    state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简化模式(在浏览器中访问接口)</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8200/oauth/authorize?response_type=token&amp;client_id=client_1&amp;redirect_uri=http://www.baidu.com&amp;state=123&amp;scope=select</span><br><span class="line"></span><br><span class="line">参数解释：</span><br><span class="line">    response_type：表示授权类型，此处的值固定为&quot;token&quot;，必选项。</span><br><span class="line">    client_id：表示客户端的ID，必选项。</span><br><span class="line">    redirect_uri：表示重定向的URI，可选项。</span><br><span class="line">    scope：表示权限范围，可选项。</span><br><span class="line">    state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>password方式获取toke</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">POST http://localhost:8200/oauth/token?grant_type=password&amp;scope=select&amp;client_id=client_1&amp;client_secret=123456&amp;username=user_1&amp;password=123456</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;access_token&quot;: &quot;39be5ea6-fdcd-4b15-a4dd-1f3dbaf8fc63&quot;,</span><br><span class="line">    &quot;token_type&quot;: &quot;bearer&quot;,</span><br><span class="line">    &quot;refresh_token&quot;: &quot;396e6c5e-9d79-420a-8b25-945098b10c82&quot;,</span><br><span class="line">    &quot;expires_in&quot;: 43021,</span><br><span class="line">    &quot;scope&quot;: &quot;select&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">参数解释</span><br><span class="line">    grant_type：表示授权类型，此处的值固定为&quot;password&quot;，必选项。</span><br><span class="line">    username：表示用户名，必选项。</span><br><span class="line">    password：表示用户的密码，必选项。</span><br><span class="line">    scope：表示权限范围，可选项。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>client方式获取access_token</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST http://localhost:8200/oauth/token?grant_type=client_credentials&amp;scope=select&amp;client_id=client_2&amp;client_secret=123456</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;access_token&quot;: &quot;17fc17a9-83b2-41c3-8621-c727d8329bbd&quot;,</span><br><span class="line">    &quot;token_type&quot;: &quot;bearer&quot;,</span><br><span class="line">    &quot;expires_in&quot;: 42400,</span><br><span class="line">    &quot;scope&quot;: &quot;select&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">参数解释</span><br><span class="line">    granttype：表示授权类型，此处的值固定为&quot;clientcredentials&quot;，必选项。</span><br><span class="line">    scope：表示权限范围，可选项。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li>刷新token<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">POST http://localhost:8200/oauth/token?grant_type=refresh_token&amp;refresh_token=396e6c5e-9d79-420a-8b25-945098b10c82&amp;client_id=client_2&amp;client_secret=123456</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;access_token&quot;: &quot;e0e64627-f157-4718-81f0-069ca21549ad&quot;,</span><br><span class="line">    &quot;token_type&quot;: &quot;bearer&quot;,</span><br><span class="line">    &quot;refresh_token&quot;: &quot;396e6c5e-9d79-420a-8b25-945098b10c82&quot;,</span><br><span class="line">    &quot;expires_in&quot;: 43199,</span><br><span class="line">    &quot;scope&quot;: &quot;select&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="请求业务接口"><a href="#请求业务接口" class="headerlink" title="请求业务接口"></a>请求业务接口</h4><ul>
+<li>请求接口<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">配置拦截：</span><br><span class="line">    HttpSecurity中配置 http.antMatchers(&quot;/user/**&quot;).authenticated()</span><br><span class="line"></span><br><span class="line">使用client方式获取的access_token</span><br><span class="line">GET http://localhost:8200/user/info?access_token=d8f47460-c0a6-4247-9f87-1712bae5325e</span><br><span class="line"></span><br><span class="line">返回结果</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>

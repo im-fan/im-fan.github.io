@@ -172,5 +172,5 @@ canal.instance.tsdb.enable=false
 
 - 一个Canal-Service,多个client，运行时报错
 ```text
-改为一个canal一个client，原因是多个client提交
+改为一个canal一个client，原因是多个client同时提交ack时，可能会存在重复提交的问题
 ```

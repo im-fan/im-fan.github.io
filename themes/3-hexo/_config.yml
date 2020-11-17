@@ -232,7 +232,7 @@ disqus:
 
 gitalk:
   githubID: im-fan
-  repo: https://im-fan.gitee.io/
+  repo: im-fan.gitee.io
   ClientID: 0d360a48a118f28fc354
   ClientSecret: 34e0d983f72faad9f987a8098593865b74dc1ba4
   adminUser: im-fan
