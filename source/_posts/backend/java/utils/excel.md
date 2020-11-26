@@ -9,6 +9,119 @@ categories:
 - 工具
 ---
 
+### 导出设置标题格式
+- TitleHandler
+```java
+public class TitleHandler implements CellWriteHandler{
+
+    //操作列
+    private List<Integer> columnIndexs;
+    //颜色
+    private Short colorIndex;
+
+    public TitleHandler(List<Integer> columnIndexs, Short colorIndex) {
+        this.columnIndexs = columnIndexs;
+        this.colorIndex = colorIndex;
+    }
+
+    @Override
+    public void beforeCellCreate(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Row row, Head head, Integer columnIndex, Integer relativeRowIndex, Boolean isHead) {
+
+    }
+
+    @Override
+    public void afterCellCreate(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+
+    }
+
+    @Override
+    public void afterCellDataConverted(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, CellData cellData, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+
+    }
+
+    @Override
+    public void afterCellDispose(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, List<CellData> cellDataList, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+        if(isHead){
+            // 设置列宽
+            Sheet sheet = writeSheetHolder.getSheet();
+            sheet.setColumnWidth(cell.getColumnIndex(), 20 * 256);
+            writeSheetHolder.getSheet().getRow(0).setHeight((short)(3*256));
+            Workbook workbook = writeSheetHolder.getSheet().getWorkbook();
+
+            // 设置标题字体样式
+            WriteCellStyle headWriteCellStyle = new WriteCellStyle();
+            WriteFont headWriteFont = new WriteFont();
+            headWriteFont.setFontName("宋体");
+            headWriteFont.setFontHeightInPoints((short)14);
+            headWriteFont.setBold(true);
+            if (CollectionUtils.isNotEmpty(columnIndexs) &&
+                    colorIndex != null &&
+                    columnIndexs.contains(cell.getColumnIndex())) {
+                // 设置字体颜色
+                headWriteFont.setColor(colorIndex);
+            }
+            headWriteCellStyle.setWriteFont(headWriteFont);
+            headWriteCellStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+            CellStyle cellStyle = StyleUtil.buildHeadCellStyle(workbook, headWriteCellStyle);
+            cell.setCellStyle(cellStyle);
+        }
+    }
+}
+```
+
+- ExcelUtils
+```java
+public class ExcelUtils {
+    /** 导出Excel **/
+    public static void exportExcel(String fileName, String sheetName,Class clazz,
+                                   List data, HttpServletResponse response,
+                                   CellWriteHandler... cellWriteHandlers) throws IOException {
+        response.setContentType("application/vnd.ms-excel");
+        response.setCharacterEncoding("utf-8");
+        fileName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
+
+        // 列标题的策略
+        WriteCellStyle headWriteCellStyle = new WriteCellStyle();
+        // 单元格策略
+        WriteCellStyle contentWriteCellStyle = new WriteCellStyle();
+        // 初始化表格样式
+        HorizontalCellStyleStrategy horizontalCellStyleStrategy = new HorizontalCellStyleStrategy(headWriteCellStyle, contentWriteCellStyle);
+
+        ExcelWriterSheetBuilder excelWriterSheetBuilder = EasyExcel.write(response.getOutputStream(), clazz)
+                .sheet(sheetName)
+                .registerWriteHandler(horizontalCellStyleStrategy);
+
+        if (null != cellWriteHandlers && cellWriteHandlers.length > 0) {
+            for (int i = 0; i < cellWriteHandlers.length; i++) {
+                excelWriterSheetBuilder.registerWriteHandler(cellWriteHandlers[i]);
+            }
+        }
+        // 开始导出
+        excelWriterSheetBuilder.doWrite(data);
+    }
+}
+```
+- 使用
+```text
+/** 导出excel模板**/
+public void exportTemplate(List<Integer> ids,HttpServletResponse response){
+    try {
+        List<XXX> result = getByIds(ids);
+
+        // 指定标红色的列
+        List<Integer> columns = Arrays.asList(0,1,2,3);
+
+        TitleHandler titleHandler = new TitleHandler(columns, IndexedColors.RED.index);
+        ExcelUtils.exportExcel("文件名","sheet名称",
+                XXX.class,result,response,titleHandler);
+    } catch (IOException e) {
+        log.warn("导出失败,error={}",e);
+    }
+}
+
+```
+
 ### 设置中文文件名
 ```text
 // 代码中添加
