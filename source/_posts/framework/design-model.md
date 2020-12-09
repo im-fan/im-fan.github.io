@@ -9,6 +9,7 @@ categories:
 
 - [菜鸟教程](http://www.runoob.com/design-pattern)
 - [设计模式在Spring框架中的良好实践](https://mp.weixin.qq.com/s?__biz=MzI4ODQ3NjE2OA==&mid=2247485687&idx=2&sn=d1a405491311488c576197b556d357ec&chksm=ec3c9590db4b1c86a13ff39894dbeead2bbcee738a58da96bcb1bc404b6a948bd1f38312176a&mpshare=1&scene=1&srcid=&sharer_sharetime=1570684867528&sharer_shareid=4c8872b4436b495590f58ccf1453ba58&rd2werd=1#wechat_redirect)
+- [自己写的demo](https://github.com/im-fan/my-design-mode.git)
 
 ## 基础
 ### 设计模式的类型
