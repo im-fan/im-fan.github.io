@@ -9,6 +9,7 @@ categories:
 - 架构
 ---
 
+- [有赞DDD实践](https://mp.weixin.qq.com/s/9eGZZ2wsZoaCVRy0oKt0iw)
 
 ### 方法论
 ```text
@@ -74,3 +75,6 @@ API 层是领域层的入口，它使用领域中的术语和对象。
 4.为聚合根设计仓储（一般情况下，一个聚合分配一个仓储），同时，思考实体、值对象的创建方式，是通过工厂创建，还是直接通过构造函数；
 5.走查需求场景，验证设计的领域模型的合理性。
 ```
+
+- DDD架构图
+<img src="https://im-fan.gitee.io/img/ddd/ddd-framework.png"/>

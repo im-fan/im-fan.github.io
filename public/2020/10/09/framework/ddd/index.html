@@ -475,12 +475,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-18 15:36:49'>2020-10-09 16:51</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-18 16:14:20'>2020-10-09 16:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:884</span>
+        <span>字数:893</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -526,7 +526,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">六边形架构、洋葱架构、整洁架构、四色原型</span><br><span class="line"></span><br><span class="line">SIDE-EFFECT-FREE模式被称为无副作用模式，熟悉函数时编程的朋友都知道，严格的函数就是一个无副作用的函数，对于一个给定的输入，总是返回固定的结果，通常查询功能就是一个函数，命令功能就不是一个函数，它通常会执行某些修改。</span><br><span class="line"></span><br><span class="line">在DDD架构中，通常会将查询和命令操作分开，我们称之为CQRS(命令查询的责任分离Command Query Responsibility Segregation)，具体落地时，是否将Command和Query分开成两个项目可以看情况决定，大多数情况下放在一个项目可以提高业务内聚性，</span><br></pre></td></tr></table></figure>
+        <ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9eGZZ2wsZoaCVRy0oKt0iw">有赞DDD实践</a></li>
+</ul>
+<h3 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">六边形架构、洋葱架构、整洁架构、四色原型</span><br><span class="line"></span><br><span class="line">SIDE-EFFECT-FREE模式被称为无副作用模式，熟悉函数时编程的朋友都知道，严格的函数就是一个无副作用的函数，对于一个给定的输入，总是返回固定的结果，通常查询功能就是一个函数，命令功能就不是一个函数，它通常会执行某些修改。</span><br><span class="line"></span><br><span class="line">在DDD架构中，通常会将查询和命令操作分开，我们称之为CQRS(命令查询的责任分离Command Query Responsibility Segregation)，具体落地时，是否将Command和Query分开成两个项目可以看情况决定，大多数情况下放在一个项目可以提高业务内聚性，</span><br></pre></td></tr></table></figure>
 
 <h4 id="六边形架构"><a href="#六边形架构" class="headerlink" title="六边形架构"></a>六边形架构</h4><ul>
 <li><a target="_blank" rel="noopener" href="http://alistair.cockburn.us/Hexagonal+architecture">起源文章</a></li>
@@ -560,6 +563,10 @@
 <li>仓储</li>
 </ul>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">结合四色原型图，设计领域模型的步骤可概括为以下几步：</span><br><span class="line">1.根据需求，采用四色原型分析法建立一个初步的领域模型；</span><br><span class="line">2.进一步分析领域模型，识别出哪些是实体，哪些是值对象，哪些是领域服务；</span><br><span class="line">3.对实体、值对象进行关联和聚合，提炼出聚合边界和聚合根；</span><br><span class="line">4.为聚合根设计仓储（一般情况下，一个聚合分配一个仓储），同时，思考实体、值对象的创建方式，是通过工厂创建，还是直接通过构造函数；</span><br><span class="line">5.走查需求场景，验证设计的领域模型的合理性。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DDD架构图<img src="https://im-fan.gitee.io/img/ddd/ddd-framework.png"/></li>
+</ul>
 
       
     </div>
