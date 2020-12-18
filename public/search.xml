@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>COLA</title>
+      <link href="2020/12/15/framework/cola/"/>
+      <url>2020/12/15/framework/cola/</url>
+      
+        <content type="html"><![CDATA[<h3 id="相关网址"><a href="#相关网址" class="headerlink" title="相关网址"></a>相关网址</h3><ul><li><a href="https://github.com/alibaba/COLA">COLA 4.0</a></li><li><a href="https://blog.csdn.net/significantfrank/article/details/110934799?utm_source=app">COLA 4.0：应用架构的最佳实践</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> COLA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MybatisPlus使用笔记</title>
+      <link href="2020/12/10/backend/java/utils/mybatis-plus/"/>
+      <url>2020/12/10/backend/java/utils/mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mybatis</span></span><br><span class="line"><span class="comment"># 配置是否打印日志 true-打印  false-不打印</span></span><br><span class="line"><span class="comment"># paginationInterceptor-true 改为false则分页功能无效</span></span><br><span class="line"><span class="attr">sql:</span></span><br><span class="line">  <span class="attr">performanceInterceptor:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath*:/mapper/**/*.xml</span></span><br><span class="line">  <span class="comment">#实体扫描，多个package用逗号或者分号分隔</span></span><br><span class="line">  <span class="attr">typeAliasesPackage:</span> <span class="string">com.ruoyi.**.domain</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="comment">#数据库相关配置</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="comment">#主键类型  AUTO:&quot;数据库ID自增&quot;, INPUT:&quot;用户输入ID&quot;, ID_WORKER:&quot;全局唯一ID (数字类型唯一ID)&quot;, UUID:&quot;全局唯一ID UUID&quot;;</span></span><br><span class="line">      <span class="attr">id-type:</span> <span class="string">AUTO</span></span><br><span class="line">      <span class="comment">#字段策略 IGNORED:&quot;忽略判断&quot;,NOT_NULL:&quot;非 NULL 判断&quot;),NOT_EMPTY:&quot;非空判断&quot;</span></span><br><span class="line">      <span class="attr">field-strategy:</span> <span class="string">NOT_NULL</span></span><br><span class="line">      <span class="comment">#驼峰下划线转换</span></span><br><span class="line">      <span class="attr">column-underline:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">logic-delete-value:</span> <span class="number">-1</span></span><br><span class="line">      <span class="attr">logic-not-delete-value:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">banner:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">#原生配置</span></span><br><span class="line">  <span class="attr">configuration:</span></span><br><span class="line">    <span class="comment">#不加无法打印执行脚本及内容</span></span><br><span class="line">    <span class="attr">log-impl:</span> <span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br><span class="line">    <span class="attr">map-underscore-to-camel-case:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">cache-enabled:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">call-setters-on-nulls:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">jdbc-type-for-null:</span> <span class="string">&#x27;null&#x27;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> utils </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OAuth2学习笔记</title>
       <link href="2020/11/17/framework/oauth2/"/>
       <url>2020/11/17/framework/oauth2/</url>

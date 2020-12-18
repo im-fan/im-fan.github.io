@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Zookeeper搭建 | Imfan笔记</title>
+  <meta name="keywords" content=" zookeeper ">
+  <meta name="description" content="Zookeeper搭建 | Imfan笔记">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="mybatis-plus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MybatisPlus使用笔记">
+<meta property="og:url" content="http://imfan.com/2020/12/10/backend/java/utils/mybatis-plus/index.html">
+<meta property="og:site_name" content="Imfan笔记">
+<meta property="og:description" content="mybatis-plus">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-10T04:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-10T04:03:27.002Z">
+<meta property="article:author" content="imfan">
+<meta property="article:tag" content="utils">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/road.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/road.png" />
+</a>
+<div class="author">
+    <span>imfan</span>
+</div>
+
+<!--个人联系方式icon-->
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/im-fan" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:wyf3634@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(15)</small></div></li>
+    
+        
+            
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(4)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="后端<--->工具">工具<small>(4)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="架构">架构<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数据库">数据库<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="服务搭建">服务搭建<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="思考"><i class="fold iconfont icon-right"></i>思考<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="思考<--->阅读">阅读<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="思考<--->常用语">常用语<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他"><i class="fold iconfont icon-right"></i>其他<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="其他<--->博客工具">博客工具<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="其他<--->软件">软件<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+
+<!-- 左边导航栏 关于&友链
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+-->
+<input type="hidden" id="yelog_site_posts_number" value="15">
+<input type="hidden" id="yelog_site_word_count" value="13.4k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>canal</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>COLA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DDD</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>oauth2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utils</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用语</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>思维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/15/framework/cola/"
+           data-tag="COLA"
+           data-author="" >
+            <span class="post-title" title="COLA">COLA</span>
+            <span class="post-date" title="2020-12-15 16:24:00">2020/12/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/12/10/backend/java/utils/mybatis-plus/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="MybatisPlus使用笔记">MybatisPlus使用笔记</span>
+            <span class="post-date" title="2020-12-10 12:00:00">2020/12/10</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/11/17/framework/oauth2/"
+           data-tag="oauth2"
+           data-author="" >
+            <span class="post-title" title="OAuth2学习笔记">OAuth2学习笔记</span>
+            <span class="post-date" title="2020-11-17 09:58:26">2020/11/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/11/11/backend/java/utils/swagger/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="Java解析Swagger文档接口及参数">Java解析Swagger文档接口及参数</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 思考 常用语 "
+           href="/2020/11/04/thinking/ali-words/"
+           data-tag="常用语"
+           data-author="" >
+            <span class="post-title" title="互联网常用语记录">互联网常用语记录</span>
+            <span class="post-date" title="2020-11-04 22:31:24">2020/11/04</span>
+        </a>
+        
+        <a  class="全部文章 服务搭建 "
+           href="/2020/10/29/backend/service/zookeeper/"
+           data-tag="zookeeper"
+           data-author="" >
+            <span class="post-title" title="Zookeeper搭建">Zookeeper搭建</span>
+            <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/20/backend/java/utils/excel/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="EasyExcel使用遇到的问题">EasyExcel使用遇到的问题</span>
+            <span class="post-date" title="2020-10-20 17:22:53">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/09/framework/ddd/"
+           data-tag="DDD"
+           data-author="" >
+            <span class="post-title" title="DDD">DDD</span>
+            <span class="post-date" title="2020-10-09 16:51:54">2020/10/09</span>
+        </a>
+        
+        <a  class="全部文章 数据库 "
+           href="/2020/10/02/backend/database/canal/"
+           data-tag="canal"
+           data-author="" >
+            <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 数据库 "
+           href="/2020/10/02/backend/database/mysql-other/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关">MySQL相关</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/02/backend/java/utils/map-struct/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="MapStruct">MapStruct</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/02/framework/design-model/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="14种常用设计模式">14种常用设计模式</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 阅读 "
+           href="/2020/10/02/thinking/book/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 软件 "
+           href="/2020/10/02/tools/software/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="软件推荐">软件推荐</span>
+            <span class="post-date" title="2020-10-02 14:34:06">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 博客工具 "
+           href="/2020/09/30/tools/hexo/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Hexo搭建博客">Hexo搭建博客</span>
+            <span class="post-date" title="2020-09-30 14:51:20">2020/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <!-- <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div> -->
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-backend/service/zookeeper" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Zookeeper搭建</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="服务搭建">服务搭建</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">zookeeper</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-11-08 11:31:42'>2020-10-29 15:40</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:252</span>
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="toc-text">单机部署步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zookeeper%E6%95%B0%E6%8D%AE%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7"><span class="toc-text">zookeeper数据查看工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zookeeper.apache.org/releases.html">官网</a></li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class</span><br><span class="line">2.启动时注意端口号是否已经被占用</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="单机部署步骤"><a href="#单机部署步骤" class="headerlink" title="单机部署步骤"></a>单机部署步骤</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1.解压文件</span><br><span class="line">    tar -zxvf xxx-bin.tar.gz zookeeper</span><br><span class="line">2.修改配置</span><br><span class="line">    cd zookeeper/conf</span><br><span class="line">    cp zoo_sample.cfg zoo.cfg</span><br><span class="line">    vim zoo.cfg</span><br><span class="line">    修改以下配置项</span><br><span class="line">        dataDir= xxx/dataDir</span><br><span class="line">        dataLogDir= xxx/logs/zookeeper</span><br><span class="line">        </span><br><span class="line">3.新增配置</span><br><span class="line">    cd xxx/dataDir</span><br><span class="line">    echo 1001&gt;myid</span><br><span class="line"></span><br><span class="line">4.启动</span><br><span class="line">    cd zookeeper/bin</span><br><span class="line">    ./zkServer.sh start / restart / stop / status</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="zookeeper数据查看工具"><a href="#zookeeper数据查看工具" class="headerlink" title="zookeeper数据查看工具"></a>zookeeper数据查看工具</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip">下载地址</a></li>
+<li>使用<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.解压后进入build文件夹</span><br><span class="line">2.运行jar</span><br><span class="line">    nohup java -jar zookeeper-dev-ZooInspector.jar &amp;</span><br><span class="line">3.左上角连接按钮，输入zk地址并连接</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ul>
+<li><p>启动报ClassNotFound</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">重新下载zookeeper包，注意是xxxx-bin.tar.gz这种的</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动失败</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.检查配置的文件夹路径和权限是否正常</span><br><span class="line">2.检查zookeeper是否已经被启动</span><br><span class="line">    ps -ef | grep zookeeper</span><br><span class="line">    kill进程</span><br><span class="line">3.删除 dataDir 和 dataLogDir 路径下 version-2 文件夹后重启</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '0d360a48a118f28fc354',
+            clientSecret: '34e0d983f72faad9f987a8098593865b74dc1ba4',
+            repo: 'im-fan.gitee.io',
+            owner: 'im-fan',
+            admin: ['im-fan'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <!--
+<p class="footer-entry">
+    ©2015-2020 Imfan
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+ -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #c0bfbf;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #2b2929;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/moon.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
