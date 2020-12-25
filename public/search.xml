@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>UML类图</title>
+      <link href="2020/12/25/framework/design/uml/"/>
+      <url>2020/12/25/framework/design/uml/</url>
+      
+        <content type="html"><![CDATA[<h3 id="常用元素"><a href="#常用元素" class="headerlink" title="常用元素"></a>常用元素</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.类</span><br><span class="line">  用三层矩形框表示，第一层类名及解释(斜体表示抽象类)、第二层字段和属性、第三层方法</span><br><span class="line">  前面的符号，‘+’表示public，‘-’表示private，‘#’表示protected。</span><br><span class="line">2.接口</span><br><span class="line">  用两层矩形框表示，第一层接口名及解释、第二层方法</span><br></pre></td></tr></table></figure><h3 id="常见的几种关系"><a href="#常见的几种关系" class="headerlink" title="常见的几种关系"></a>常见的几种关系</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1.泛化(Generalization)</span><br><span class="line">    表示继承。是is-a的关系。 用 空心三角箭头+实线 表示，箭头指向继承的类</span><br><span class="line">2.依赖(Dependency)</span><br><span class="line">    是一种类与接口的关系，表示类是接口所有特征和行为的实现. 空心三角箭头+虚线 箭头指向接口</span><br><span class="line">3.关联(Association)</span><br><span class="line">    描述类与类之间的连接，是has­-a的关系。它使一个类知道另一个类的属性和方法; 实心三角箭头+实线，两边关联则有两个箭头</span><br><span class="line">4.聚合(Aggregation)</span><br><span class="line">    是整体与部分的关系，且部分可以离开整体而单独存在。空心菱形+实线，菱形指向整体</span><br><span class="line">5.组合(Composition)</span><br><span class="line">    是整体与部分的关系，但部分不能离开整体而单独存在。实心菱形+实线，菱形指向整体</span><br><span class="line">6. 实现(Realization)</span><br><span class="line">    是一种类与接口的关系，表示类是接口所有特征和行为的实现。空心三角箭头+虚线，箭头指向接口</span><br><span class="line"></span><br><span class="line">基数: 线两端的数字表明这一端的类可以有几个实例，比如：一个鸟应该有两只翅膀。如果一个类可能有无数个实例，则就用‘n’来表示。关联、聚合、组合是有基数的。</span><br></pre></td></tr></table></figure><img src="https://im-fan.gitee.io/img/uml/uml-line.png"/><h3 id="示例-标识了所有关系"><a href="#示例-标识了所有关系" class="headerlink" title="示例-标识了所有关系"></a>示例-标识了所有关系</h3><img src="https://im-fan.gitee.io/img/uml/uml.png"/>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计图 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uml </tag>
+            
+            <tag> 类图 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>COLA</title>
       <link href="2020/12/15/framework/cola/"/>
       <url>2020/12/15/framework/cola/</url>

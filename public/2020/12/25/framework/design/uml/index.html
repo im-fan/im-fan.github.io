@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>互联网常用语记录 | Imfan笔记</title>
-  <meta name="keywords" content=" 常用语 ">
-  <meta name="description" content="互联网常用语记录 | Imfan笔记">
+  <title>UML类图 | Imfan笔记</title>
+  <meta name="keywords" content=" uml , 类图 ">
+  <meta name="description" content="UML类图 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="UML类图">
 <meta property="og:type" content="article">
@@ -476,9 +476,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-thinking/ali-words" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-framework/design/uml" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">互联网常用语记录</h1>
+        <h1 class="article-title">UML类图</h1>
     
     <div class="article-meta">
         
@@ -488,9 +488,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="思考">思考</a> > 
-            
-            <a  data-rel="思考&lt;---&gt;常用语">常用语</a>
+            <a  data-rel="设计图">设计图</a>
             
         </span>
         
@@ -498,19 +496,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color4">常用语</a>
+            <a class="color4">uml</a>
+            
+            <a class="color3">类图</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-11-04 23:53:46'>2020-11-04 22:31</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-25 19:20:59'>2020-12-25 18:57</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:314</span>
+        <span>字数:416</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -540,7 +540,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%AD%97%E5%8A%A8%E8%AF%8D"><span class="toc-text">二字动词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%AD%97%E5%90%8D%E8%AF%8D"><span class="toc-text">二字名词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%AD%97%E5%90%8D%E8%AF%8D"><span class="toc-text">三字名词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E5%AD%97%E5%90%8D%E8%AF%8D"><span class="toc-text">四字名词</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%85%83%E7%B4%A0"><span class="toc-text">常用元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E7%A7%8D%E5%85%B3%E7%B3%BB"><span class="toc-text">常见的几种关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-%E6%A0%87%E8%AF%86%E4%BA%86%E6%89%80%E6%9C%89%E5%85%B3%E7%B3%BB"><span class="toc-text">示例-标识了所有关系</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -556,13 +556,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="二字动词"><a href="#二字动词" class="headerlink" title="二字动词"></a>二字动词</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">复盘、赋能、沉淀、倒逼、落地、串联、协同、反哺、兼容、</span><br><span class="line">包装、重组、履约、响应、量化、发力、布局、联动、开拓、</span><br><span class="line">细分、梳理、输出、加速、共建、支撑、融合、聚合、解耦、</span><br><span class="line">集成、对齐、对标、对焦、抓手、拆解、拉通、抽象、摸索、</span><br><span class="line">提炼、打通、打透、吃透、迁移、分发、分层、分装、穿梭、</span><br><span class="line">辐射、围绕、复用、渗透、扩展、</span><br></pre></td></tr></table></figure>
+        <h3 id="常用元素"><a href="#常用元素" class="headerlink" title="常用元素"></a>常用元素</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.类</span><br><span class="line">  用三层矩形框表示，第一层类名及解释(斜体表示抽象类)、第二层字段和属性、第三层方法</span><br><span class="line">  前面的符号，‘+’表示public，‘-’表示private，‘#’表示protected。</span><br><span class="line">2.接口</span><br><span class="line">  用两层矩形框表示，第一层接口名及解释、第二层方法</span><br></pre></td></tr></table></figure>
 
-<h3 id="二字名词"><a href="#二字名词" class="headerlink" title="二字名词"></a>二字名词</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">漏斗、中台、闭环、打法、拉通、纽带、矩阵、刺激、</span><br><span class="line">规模、场景、聚焦、维度、格局、形态、生态、话术、</span><br><span class="line">体系、认知、玩法、体感、感知、调性、心智、战役、</span><br><span class="line">合力、心力、赛道、因子、模型、载体、横向、通道、</span><br><span class="line">补位、链路、试点</span><br></pre></td></tr></table></figure>
+<h3 id="常见的几种关系"><a href="#常见的几种关系" class="headerlink" title="常见的几种关系"></a>常见的几种关系</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1.泛化(Generalization)</span><br><span class="line">    表示继承。是is-a的关系。 用 空心三角箭头+实线 表示，箭头指向继承的类</span><br><span class="line">2.依赖(Dependency)</span><br><span class="line">    是一种类与接口的关系，表示类是接口所有特征和行为的实现. 空心三角箭头+虚线 箭头指向接口</span><br><span class="line">3.关联(Association)</span><br><span class="line">    描述类与类之间的连接，是has­-a的关系。它使一个类知道另一个类的属性和方法; 实心三角箭头+实线，两边关联则有两个箭头</span><br><span class="line">4.聚合(Aggregation)</span><br><span class="line">    是整体与部分的关系，且部分可以离开整体而单独存在。空心菱形+实线，菱形指向整体</span><br><span class="line">5.组合(Composition)</span><br><span class="line">    是整体与部分的关系，但部分不能离开整体而单独存在。实心菱形+实线，菱形指向整体</span><br><span class="line">6. 实现(Realization)</span><br><span class="line">    是一种类与接口的关系，表示类是接口所有特征和行为的实现。空心三角箭头+虚线，箭头指向接口</span><br><span class="line"></span><br><span class="line">基数: 线两端的数字表明这一端的类可以有几个实例，比如：一个鸟应该有两只翅膀。如果一个类可能有无数个实例，则就用‘n’来表示。关联、聚合、组合是有基数的。</span><br></pre></td></tr></table></figure>
+<img src="https://im-fan.gitee.io/img/uml/uml-line.png"/>
 
-<h3 id="三字名词"><a href="#三字名词" class="headerlink" title="三字名词"></a>三字名词</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">颗粒度、感知度、方法论、组合拳、引爆点、点线面、</span><br><span class="line">精细化、差异化、平台化、结构化、影响力、耦合性、</span><br><span class="line">易用性、一致性、端到端、短平快</span><br></pre></td></tr></table></figure>
 
-<h3 id="四字名词"><a href="#四字名词" class="headerlink" title="四字名词"></a>四字名词</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">生命周期、价值转化、强化认知、资源倾斜、完善逻辑、</span><br><span class="line">抽离透传、复用打法、商业价值、商业模式、快速响应、</span><br><span class="line">定性定量、关键链路、去中心化、结果导向、垂直领域、</span><br><span class="line">如何收口、归因分析、体验度量、信息屏障</span><br></pre></td></tr></table></figure>
+<h3 id="示例-标识了所有关系"><a href="#示例-标识了所有关系" class="headerlink" title="示例-标识了所有关系"></a>示例-标识了所有关系</h3><img src="https://im-fan.gitee.io/img/uml/uml.png"/>
+
       
     </div>
 </article>
