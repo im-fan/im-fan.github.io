@@ -78,10 +78,10 @@ bottom_text: ©2015-2020 Imfan
 # 如果不填，则自定义为 ©2017 author (这个author为hexo根目录_config.yml中配置的)
 
 # 底部备案号
-miit:
-  on: false
-  info: 京ICP证030173号
-  url: http://beian.miit.gov.cn/ # 默认链接为 http://beian.miit.gov.cn/
+#miit:
+#  on: false
+#  info: 京ICP证030173号
+#  url: http://beian.miit.gov.cn/ # 默认链接为 http://beian.miit.gov.cn/
 
 # true 开启打赏功能
 reward: false
@@ -154,7 +154,7 @@ table: green_title
 # 首页背景图
 index_bg_img:
 # 其他页面背景图
-other_bg_img:
+#other_bg_img:
 
 # 点击图片放大样式
 img_resize: default
@@ -164,7 +164,7 @@ img_resize: default
 
 # 代码段高亮样式，markdown 语法 `demo`
 code:
-  theme: dark-red
+  theme: github
 # 支持主题：
 # dark-red: 红字(默认)
 # github: github样式（灰色底，黑字）
@@ -173,11 +173,11 @@ highlight:
   on: true # true开启代码高亮，开启需要关闭博客 _config.yml 中的 highlight
   lineNum: false # true显示行号
   copy: true # 复制功能
-  theme: atom-light
+  theme: atom-dark
 # 代码高亮主题,效果可以查看 https://highlightjs.org/static/demo/
 # 支持主题：
-# sublime : 参考sublime的高亮主题
-# darcula : 参考idea中的darcula的主题
+# sublime : 参考sublime的高亮主题  √
+# darcula : 参考idea中的darcula的主题 √
 # atom-dark : 参考Atom的dark主题
 # atom-light : 参考Atom的light主题
 # github : 参考GitHub版的高亮主题
@@ -200,7 +200,7 @@ mathjax:
 
 # Mermaid 支持
 mermaid:
-  on: false
+  on: true
   cdn: //cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js
   #cdn: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js
   options: # 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidAPI
@@ -214,11 +214,11 @@ mermaid:
 
 # 友情链接
 friends:
-  叶落阁: http://yelog.org/
+  #叶落阁: http://yelog.org/
 
 ##########评论设置#############
 comment:
-  on: true
+  on: false
   type: gitalk  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
   comment_count: true  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
   ## 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/
