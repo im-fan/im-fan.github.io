@@ -7,27 +7,13 @@ categories:
 - 架构
 ---
 
-- [菜鸟教程](http://www.runoob.com/design-pattern)
-- [设计模式在Spring框架中的良好实践](https://mp.weixin.qq.com/s?__biz=MzI4ODQ3NjE2OA==&mid=2247485687&idx=2&sn=d1a405491311488c576197b556d357ec&chksm=ec3c9590db4b1c86a13ff39894dbeead2bbcee738a58da96bcb1bc404b6a948bd1f38312176a&mpshare=1&scene=1&srcid=&sharer_sharetime=1570684867528&sharer_shareid=4c8872b4436b495590f58ccf1453ba58&rd2werd=1#wechat_redirect)
-- [自己写的demo](https://github.com/im-fan/my-design-mode.git)
+> [菜鸟教程](http://www.runoob.com/design-pattern)
+> [设计模式在Spring框架中的良好实践](https://mp.weixin.qq.com/s?__biz=MzI4ODQ3NjE2OA==&mid=2247485687&idx=2&sn=d1a405491311488c576197b556d357ec&chksm=ec3c9590db4b1c86a13ff39894dbeead2bbcee738a58da96bcb1bc404b6a948bd1f38312176a&mpshare=1&scene=1&srcid=&sharer_sharetime=1570684867528&sharer_shareid=4c8872b4436b495590f58ccf1453ba58&rd2werd=1#wechat_redirect)
+> [实现的demo](https://github.com/im-fan/my-design-mode.git)
 
 ## 基础
 ### 设计模式的类型
-```
-设计模式可以分为三大类：创建型模式（Creational Patterns）、结构型模式（Structural Patterns）、行为型模式（Behavioral Patterns）。当然，还有另一类设计模式：J2EE 设计模式。
-
-1. 创建型模式
-这些设计模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用 new 运算符直接实例化对象。这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活。
-
-2. 结构型模式
-这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。
-
-3. 行为型模式
-这些设计模式特别关注对象之间的通信。
-
-详情见：http://www.runoob.com/design-pattern/design-pattern-intro.html
-```
-
+<img class="magplus" title="设计模式类型" src="https://im-fan.gitee.io/img/design-model/design-model-type.jpg" alt="设计模式类型" width="700" height="840">
 
 ### 设计模式实践的关系
 <img class="magplus" title="设计模式之间的关系" src="http://www.runoob.com/wp-content/uploads/2014/08/the-relationship-between-design-patterns.jpg" alt="设计模式之间的关系" width="700" height="840">
@@ -35,28 +21,17 @@ categories:
 ### 设计模式的六大原则
 ```
 1、开闭原则（Open Close Principle）
-
-开闭原则的意思是：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。简言之，是为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。
-
+    开闭原则的意思是：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。简言之，是为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类。
 2、里氏代换原则（Liskov Substitution Principle）
-
-里氏代换原则是面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。LSP 是继承复用的基石，只有当派生类可以替换掉基类，且软件单位的功能不受到影响时，基类才能真正被复用，而派生类也能够在基类的基础上增加新的行为。里氏代换原则是对开闭原则的补充。实现开闭原则的关键步骤就是抽象化，而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。
-
+    里氏代换原则是面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。LSP 是继承复用的基石，只有当派生类可以替换掉基类，且软件单位的功能不受到影响时，基类才能真正被复用，而派生类也能够在基类的基础上增加新的行为。里氏代换原则是对开闭原则的补充。实现开闭原则的关键步骤就是抽象化，而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。
 3、依赖倒转原则（Dependence Inversion Principle）
-
-这个原则是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体。
-
+    这个原则是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体。
 4、接口隔离原则（Interface Segregation Principle）
-
-这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。它还有另外一个意思是：降低类之间的耦合度。由此可见，其实设计模式就是从大型软件架构出发、便于升级和维护的软件设计思想，它强调降低依赖，降低耦合。
-
+    这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。它还有另外一个意思是：降低类之间的耦合度。由此可见，其实设计模式就是从大型软件架构出发、便于升级和维护的软件设计思想，它强调降低依赖，降低耦合。
 5、迪米特法则，又称最少知道原则（Demeter Principle）
-
-最少知道原则是指：一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立。
-
+    最少知道原则是指：一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立。
 6、合成复用原则（Composite Reuse Principle）
-
-合成复用原则是指：尽量使用合成/聚合的方式，而不是使用继承。
+    合成复用原则是指：尽量使用合成/聚合的方式，而不是使用继承。
 ```
 
 ## 模式详解
@@ -101,9 +76,9 @@ https://blog.csdn.net/hguisu/article/details/7505909
 
 最终是客户只要对轿车的销售员说：我要宝马空调车，销售员就直接给他宝马空调车了。而不用自己去创建车.
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/abstractfactory_pattern_uml_diagram.jpg" alt="抽象工厂模式的 UML 图">
+<img src="https://www.runoob.com/wp-content/uploads/2014/08/3E13CDD1-2CD2-4C66-BD33-DECBF172AE03.jpg" alt="抽象工厂模式的 UML 图">
 
-### 5.装饰者模式( Decorator )
+### 5.装饰器模式( Decorator )
 ```
 动态的给一个对象添加一些额外的功能，属于结构型模式
 优点：装饰类和被装饰类可以独立发展，不会相互耦合，装饰模式是继承的一个替代模式，装饰模式可以动态扩展一个实现类的功能。
@@ -113,7 +88,7 @@ https://blog.csdn.net/hguisu/article/details/7505909
 
 其他：下图，RedShapeDecorator extends ShapeDecorator
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/decorator_pattern_uml_diagram.jpg" alt="装饰器模式的 UML 图"/>
+<img src="http://www.runoob.com/wp-content/uploads/2014/08/decorator_pattern_uml_diagram.jpg" alt="装饰器模式的UML图"/>
 
 ### 6.代理模式( Proxy )
 ```
@@ -125,7 +100,7 @@ https://blog.csdn.net/hguisu/article/details/7505909
 1、和适配器模式的区别：适配器模式主要改变所考虑对象的接口，而代理模式不能改变所代理类的接口。
 2、和装饰器模式的区别：装饰器模式为了增强功能，而代理模式是为了加以控制。
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/proxy_pattern_uml_diagram.jpg" alt="代理模式的 UML 图">
+<img src="https://www.runoob.com/wp-content/uploads/2014/08/20201015-proxy.svg" alt="代理模式的UML图">
 
 ### 7.模板方法模式( Template )
 ```
@@ -150,8 +125,6 @@ https://blog.csdn.net/hguisu/article/details/7505909
 使用场景： 1、为复杂的模块或子系统提供外界访问的模块。 2、子系统相对独立。 3、预防低水平人员带来的风险。
 注意事项：在层次化结构中，可以使用外观模式定义系统中每一层的入口。
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/facade_pattern_uml_diagram.jpg" alt="外观模式的 UML 图">
-
 
 ### 9.适配器模式( Adapter )
 ```
@@ -166,7 +139,7 @@ https://blog.csdn.net/hguisu/article/details/7505909
 
 注意事项：适配器不是在详细设计时添加的，而是解决正在服役的项目的问题。
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/adapter_pattern_uml_diagram.jpg" alt="适配器模式的 UML 图">
+<img src="https://www.runoob.com/wp-content/uploads/2014/08/20201204-adapter.png" alt="适配器模式的UML图">
 
 ### 10.桥接模式( Bridge )
 ```
@@ -180,7 +153,7 @@ https://blog.csdn.net/hguisu/article/details/7505909
 
 注意事项：对于两个独立变化的维度，使用桥接模式再适合不过了。
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/bridge_pattern_uml_diagram.jpg" alt="桥接模式的 UML 图">
+<img src="https://www.runoob.com/wp-content/uploads/2014/08/20201015-bridge.svg" alt="桥接模式的UML图">
 
 ### 11.建造者模式( Builder )
 ```
@@ -190,7 +163,7 @@ https://blog.csdn.net/hguisu/article/details/7505909
 缺点： 1、产品必须有共同点，范围有限制。 2、如内部变化复杂，会有很多的建造类。
 注意事项：与工厂模式的区别是：建造者模式更加关注与零件装配的顺序。
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/builder_pattern_uml_diagram.jpg" alt="建造者模式的 UML 图">
+<img src="https://www.runoob.com/wp-content/uploads/2014/08/20201015-builder-pattern.svg" alt="建造者模式的UML图">
 
 ### 12.观察者模式( Observer )
 ```
@@ -247,4 +220,4 @@ getInstance() 的性能对应用程序很关键。
 2、新的命令可以很容易添加到系统中去。
 缺点：使用命令模式可能会导致某些系统有过多的具体命令类。
 ```
-<img src="http://www.runoob.com/wp-content/uploads/2014/08/command_pattern_uml_diagram.jpg" alt="命令模式的 UML 图">
+<img src="https://www.runoob.com/wp-content/uploads/2014/08/20201015-command-1.svg" alt="命令模式的 UML 图">

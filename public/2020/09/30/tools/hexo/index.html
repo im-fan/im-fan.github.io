@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml-line.png">
 <meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml.png">
 <meta property="article:published_time" content="2020-12-25T10:57:00.000Z">
-<meta property="article:modified_time" content="2020-12-25T11:20:59.923Z">
+<meta property="article:modified_time" content="2020-12-26T08:21:25.749Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="uml">
 <meta property="article:tag" content="类图">
@@ -28,7 +28,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -223,7 +223,7 @@
 </div>
 -->
 <input type="hidden" id="yelog_site_posts_number" value="16">
-<input type="hidden" id="yelog_site_word_count" value="14.2k">
+<input type="hidden" id="yelog_site_word_count" value="14k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -238,8 +238,6 @@
     </div>
     <div class="friends-content">
         <ul>
-            
-            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
             
         </ul>
     </div>
@@ -505,12 +503,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-10-20 17:45:39'>2020-09-30 14:51</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-26 16:56:36'>2020-09-30 14:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:716</span>
+        <span>字数:717</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -524,17 +522,6 @@
             </span>
         </span> -->
         
-        
-        <span class="top-comment" title="跳转至评论区">
-            <a href="#comments">
-                评论:<span class="count-comment">
-                    <span class="spinner">
-                      <div class="cube1"></div>
-                      <div class="cube2"></div>
-                    </span>
-                </span>
-            </a>
-        </span>
         
     </div>
     
@@ -573,25 +560,60 @@
 <li>安装Git</li>
 <li>安装Node.js</li>
 </ul>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><ul>
-<li>安装完全包<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">注：my-hexo - 项目名/项目文件夹名</span><br><span class="line">hexo init my-hexo</span><br><span class="line">cd my-hexo</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><pre><code class="textmate">npm install -g hexo-cli</code></pre>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><pre><code class="shell">注：my-hexo - 项目名/项目文件夹名
+hexo init my-hexo
+cd my-hexo
+npm install</code></pre>
 <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><ul>
-<li>目录<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></li>
-<li>目录介绍<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1._config.yml</span><br><span class="line">网站的 配置 信息，您可以在此配置大部分的参数</span><br><span class="line">2.package.json</span><br><span class="line">应用程序的信息。</span><br><span class="line">3.scaffolds</span><br><span class="line">模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。</span><br><span class="line">4.source</span><br><span class="line">资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</span><br><span class="line">5.themes</span><br><span class="line">主题 文件夹。Hexo 会根据主题来生成静态页面。</span><br></pre></td></tr></table></figure>
-<h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3></li>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/themes/">官网主题</a></li>
-<li>本博客使用的主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.项目根目录下执行(下载其他主题，修改为themes/xxx即可)</span><br><span class="line">git clone https://github.com/yelog/hexo-theme-3-hexo.git themes/3-hexo</span><br><span class="line">2.修改配置</span><br><span class="line">修改hexo根目录的_config.yml，theme: 3-hexo</span><br><span class="line">3.主题更新</span><br><span class="line">cd themes/3-hexo</span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line">在此感谢提供主题的作者</span><br></pre></td></tr></table></figure>
-
+<li><p>目录</p>
+<pre><code class="textmate">.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes</code></pre>
+</li>
+<li><p>目录介绍</p>
 </li>
 </ul>
+<pre><code class="textmate">1._config.yml
+网站的 配置 信息，您可以在此配置大部分的参数
+2.package.json
+应用程序的信息。
+3.scaffolds
+模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。
+4.source
+资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。
+5.themes
+主题 文件夹。Hexo 会根据主题来生成静态页面。</code></pre>
+<h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/themes/">官网主题</a></li>
+<li>本博客使用的主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a></li>
+</ul>
+<pre><code class="textmate">1.项目根目录下执行(下载其他主题，修改为themes/xxx即可)
+git clone https://github.com/yelog/hexo-theme-3-hexo.git themes/3-hexo
+2.修改配置
+修改hexo根目录的_config.yml，theme: 3-hexo
+3.主题更新
+cd themes/3-hexo
+git pull
+
+在此感谢提供主题的作者</code></pre>
 <h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><ul>
-<li><p>常用文档命令</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.新建文档</span><br><span class="line">hexo new [layout] &lt;title&gt;</span><br><span class="line"></span><br><span class="line">2.新建草稿文档</span><br><span class="line">hexo new [layout] &lt;title&gt;</span><br><span class="line"></span><br><span class="line">3.草稿&lt;-&gt;发布</span><br><span class="line">hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></li>
+<li>常用文档命令</li>
+</ul>
+<pre><code class="textmate">1.新建文档
+hexo new [layout] &lt;title&gt;
+
+2.新建草稿文档
+hexo new [layout] &lt;title&gt;
+
+3.草稿&lt;-&gt;发布
+hexo publish [layout] &lt;title&gt;</code></pre>
+<ul>
 <li><p>参数介绍</p>
 <table>
 <thead>
@@ -629,9 +651,20 @@
 </tbody></table>
 </li>
 <li><p>文档头部信息格式</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Java</span><br><span class="line">date: 2020-09-30 14:51:20</span><br><span class="line">tags: </span><br><span class="line">- Java</span><br><span class="line">categories: </span><br><span class="line">- Java</span><br><span class="line">- 笔记</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>文档头部信息解释</p>
+</ul>
+<pre><code class="textmate">---
+title: Java
+date: 2020-09-30 14:51:20
+tags: 
+- Java
+categories: 
+- Java
+- 笔记
+---</code></pre>
+<ul>
+<li>文档头部信息解释</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -676,11 +709,12 @@
 <td>网站时区。Hexo 默认使用您电脑的时区。请参考 时区列表 进行设置，如 America/New_York, Japan, 和 UTC 。一般的，对于中国大陆地区可以使用 Asia/Shanghai。</td>
 </tr>
 </tbody></table>
-</li>
-</ul>
 <h3 id="运行-amp-发布"><a href="#运行-amp-发布" class="headerlink" title="运行&amp;发布"></a>运行&amp;发布</h3><ul>
-<li>本地运行<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run server</span><br></pre></td></tr></table></figure></li>
-<li>编译&amp;部署<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo generate</span><br><span class="line">编译后会生成public文件夹，部署gitpage可以直接指定public为资源文件夹即可</span><br></pre></td></tr></table></figure>
+<li>本地运行<pre><code class="textmate">npm run server</code></pre>
+</li>
+<li>编译&amp;部署<pre><code class="textmate">hexo clean 
+hexo generate
+编译后会生成public文件夹，部署gitpage可以直接指定public为资源文件夹即可</code></pre>
 </li>
 </ul>
 
@@ -690,27 +724,6 @@
 
 
 
-
-
-    <div id="comments"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
-<script type="text/javascript">
-    $.getScript('/js/gitalk.js', function () {
-        var gitalk = new Gitalk({
-            clientID: '0d360a48a118f28fc354',
-            clientSecret: '34e0d983f72faad9f987a8098593865b74dc1ba4',
-            repo: 'im-fan.gitee.io',
-            owner: 'im-fan',
-            admin: ['im-fan'],
-            id: decodeURI(location.pathname),
-            distractionFreeMode: 'true',
-            language: 'zh-CN',
-            perPage: parseInt('10',10)
-        })
-        gitalk.render('comments')
-    })
-</script>
 
 
 
@@ -764,6 +777,25 @@
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
 
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
 
@@ -871,6 +903,16 @@
     }
     
 
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
     
 </style>
 

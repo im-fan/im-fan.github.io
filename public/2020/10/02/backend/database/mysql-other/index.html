@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml-line.png">
 <meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml.png">
 <meta property="article:published_time" content="2020-12-25T10:57:00.000Z">
-<meta property="article:modified_time" content="2020-12-25T11:20:59.923Z">
+<meta property="article:modified_time" content="2020-12-26T08:21:25.749Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="uml">
 <meta property="article:tag" content="类图">
@@ -28,7 +28,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -223,7 +223,7 @@
 </div>
 -->
 <input type="hidden" id="yelog_site_posts_number" value="16">
-<input type="hidden" id="yelog_site_word_count" value="14.2k">
+<input type="hidden" id="yelog_site_word_count" value="14k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -238,8 +238,6 @@
     </div>
     <div class="friends-content">
         <ul>
-            
-            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
             
         </ul>
     </div>
@@ -503,7 +501,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-11-08 11:32:57'>2020-10-02 15:51</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-26 16:50:40'>2020-10-02 15:51</time>
         
     </div>
     <div class="article-meta">
@@ -522,17 +520,6 @@
             </span>
         </span> -->
         
-        
-        <span class="top-comment" title="跳转至评论区">
-            <a href="#comments">
-                评论:<span class="count-comment">
-                    <span class="spinner">
-                      <div class="cube1"></div>
-                      <div class="cube2"></div>
-                    </span>
-                </span>
-            </a>
-        </span>
         
     </div>
     
@@ -555,8 +542,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="存储引擎区别"><a href="#存储引擎区别" class="headerlink" title="存储引擎区别"></a>存储引擎区别</h3><ul>
-<li>查看数据库支持的存储引擎<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">engines</span>;</span><br></pre></td></tr></table></figure>
-
+<li>查看数据库支持的存储引擎<pre><code class="sql">show engines;</code></pre>
 </li>
 </ul>
 <table>
@@ -635,71 +621,134 @@
 <td>存储速度快，查询速度略慢与InnoDB,支持事务等，未来替代InnoDB</td>
 </tr>
 </tbody></table>
-<h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.表结构完全复制</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user_bak <span class="keyword">LIKE</span> <span class="keyword">user</span>;</span><br><span class="line"></span><br><span class="line">2.使用某些字段建表</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user_bak <span class="keyword">select</span> <span class="keyword">now</span>() <span class="keyword">as</span> <span class="built_in">time</span> ;</span><br><span class="line"></span><br><span class="line">3.建表时字段值强制转换</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user_bak <span class="keyword">select</span> <span class="keyword">CAST</span>(<span class="string">&#x27;2019-8-01&#x27;</span> <span class="keyword">as</span> <span class="keyword">UNSIGNED</span>) <span class="keyword">as</span> <span class="built_in">time</span>;</span><br><span class="line"></span><br><span class="line">4.临时表</span><br><span class="line">解释：只对当前会话有效，有同名表则原表隐藏不可见，会话结束自动清除</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">temporary</span> <span class="keyword">table</span> user_bak  <span class="keyword">like</span> <span class="keyword">user</span>;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">temporary</span> <span class="keyword">table</span> user_bak;</span><br></pre></td></tr></table></figure>
+<h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><pre><code class="sql">1.表结构完全复制
+create table user_bak LIKE user;
 
-<h3 id="Cast类型强制转换"><a href="#Cast类型强制转换" class="headerlink" title="Cast类型强制转换"></a>Cast类型强制转换</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">语法: </span><br><span class="line">    Cast(字段名 as 转换的类型 )</span><br><span class="line"></span><br><span class="line">支持的类型:</span><br><span class="line">    CHAR[(N)] 字符型 </span><br><span class="line">    DATE 日期型</span><br><span class="line">    DATETIME 日期和时间型</span><br><span class="line">    DECIMAL float型</span><br><span class="line">    SIGNED int</span><br><span class="line">    TIME 时间型</span><br><span class="line"></span><br><span class="line">场景:</span><br><span class="line">    1.解决utf8字符查询时传入表情符，导致报错；</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+2.使用某些字段建表
+create table user_bak select now() as time ;
 
+3.建表时字段值强制转换
+create table user_bak select CAST(&#39;2019-8-01&#39; as UNSIGNED) as time;
+
+4.临时表
+解释：只对当前会话有效，有同名表则原表隐藏不可见，会话结束自动清除
+create temporary table user_bak  like user;
+drop temporary table user_bak;</code></pre>
+<h3 id="Cast类型强制转换"><a href="#Cast类型强制转换" class="headerlink" title="Cast类型强制转换"></a>Cast类型强制转换</h3><pre><code class="sql">语法: 
+    Cast(字段名 as 转换的类型 )
+
+支持的类型:
+    CHAR[(N)] 字符型 
+    DATE 日期型
+    DATETIME 日期和时间型
+    DECIMAL float型
+    SIGNED int
+    TIME 时间型
+
+场景:
+    1.解决utf8字符查询时传入表情符，导致报错；
+</code></pre>
 <h3 id="新建分区表"><a href="#新建分区表" class="headerlink" title="新建分区表"></a>新建分区表</h3><ul>
 <li><p>示例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user_bak (</span><br><span class="line"> <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">UNSIGNED</span> AUTO_INCREMENT ,</span><br><span class="line"> <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">200</span>) <span class="keyword">DEFAULT</span> <span class="literal">null</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;名称&#x27;</span>,</span><br><span class="line"> rand_num <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;随机数&#x27;</span>,</span><br><span class="line"> birthday datetime <span class="keyword">default</span> <span class="literal">null</span> <span class="keyword">comment</span> <span class="string">&#x27;生日&#x27;</span>,</span><br><span class="line"> PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>,rand_num)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">INNODB</span> <span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">RANGE</span> (rand_num)</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">THAN</span> (<span class="number">20</span>),</span><br><span class="line">	<span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">THAN</span> (<span class="number">40</span>),</span><br><span class="line">	<span class="keyword">PARTITION</span> p2 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">THAN</span> (<span class="number">60</span>),</span><br><span class="line">	<span class="keyword">PARTITION</span> p3 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">THAN</span> (<span class="number">80</span>),</span><br><span class="line">	<span class="keyword">PARTITION</span> p4 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">THAN</span> MAXVALUE</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<pre><code class="sql">create table user_bak (
+id int(11) UNSIGNED AUTO_INCREMENT ,
+`name` varchar(200) DEFAULT null COMMENT &#39;名称&#39;,
+rand_num int(11) DEFAULT NULL COMMENT &#39;随机数&#39;,
+birthday datetime default null comment &#39;生日&#39;,
+PRIMARY KEY (`id`,rand_num)
+) ENGINE = INNODB partition by RANGE (rand_num)
+(
+  PARTITION p0 VALUES less THAN (20),
+  PARTITION p1 VALUES less THAN (40),
+  PARTITION p2 VALUES less THAN (60),
+  PARTITION p3 VALUES less THAN (80),
+  PARTITION p4 VALUES less THAN MAXVALUE
+);</code></pre>
+</li>
 <li><p>注意点</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.PRIMARY必须包含分区的字段</span><br><span class="line">2.不能单独创建分区，建表时就要创建</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>常见异常</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.ERROR 1064  不能单独创建分区</span><br><span class="line">解决：建表时就要把分区创建好</span><br><span class="line"></span><br><span class="line">2.ERROR 1503 主键必须包含分区函数中所有列</span><br><span class="line">解决：创建分区的字段必须放在主键索引中</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
-<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.ALL - 查询返回单个结果,类似in操作</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> user_bak <span class="keyword">where</span> (<span class="keyword">id</span>) </span><br><span class="line">&gt;= <span class="keyword">ALL</span>(<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> user_bak <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span><span class="keyword">ANY</span> &amp; <span class="keyword">SUM</span> -效果一样,类似<span class="keyword">or</span>操作</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> user_bak <span class="keyword">where</span> (<span class="keyword">name</span>,<span class="keyword">id</span>) </span><br><span class="line">= <span class="keyword">SOME</span>(<span class="keyword">select</span> <span class="keyword">name</span>,<span class="keyword">id</span> <span class="keyword">from</span> user_bak <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span> <span class="keyword">or</span> <span class="keyword">name</span> = <span class="string">&#x27;eee&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="textmate">1.PRIMARY必须包含分区的字段
+2.不能单独创建分区，建表时就要创建</code></pre>
+<ul>
+<li>常见异常</li>
+</ul>
+<pre><code class="textmate">1.ERROR 1064  不能单独创建分区
+解决：建表时就要把分区创建好
 
+2.ERROR 1503 主键必须包含分区函数中所有列
+解决：创建分区的字段必须放在主键索引中</code></pre>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><pre><code class="sql">-- 1.ALL - 查询返回单个结果,类似in操作
+select * from user_bak where (id) 
+&gt;= ALL(select id from user_bak where id = 10)
+
+-- 2.ANY &amp; SUM -效果一样,类似or操作
+select * from user_bak where (name,id) 
+= SOME(select name,id from user_bak where id = 1 or name = &#39;eee&#39;)</code></pre>
 <h3 id="FullText全文搜索"><a href="#FullText全文搜索" class="headerlink" title="FullText全文搜索"></a>FullText全文搜索</h3><ul>
-<li><p>全文搜索类型</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.自然语言搜索-搜索包含匹配词的信息</span><br><span class="line">2.布尔模式搜索-</span><br><span class="line">3.查询扩展搜索</span><br></pre></td></tr></table></figure></li>
-<li><p>创建索引需要满足的条件</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.表类型为MyISAM,version5.6以后引入了对InnoDB支持</span><br><span class="line">2.字段类型只能是char/varchar/text类型</span><br><span class="line">3.全文搜索会自动忽略掉常用词(在记录中出现几率为50%以上)-验证可以查出来</span><br><span class="line">4.停用词会被过滤掉(the/after/other等)</span><br><span class="line">5.少于4个字符会被忽略，查不出来(默认4-84个字符范围，可更改)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>语法</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.自然语言</span><br><span class="line">select *,match(`name`) against(&#x27;good boy&#x27;) </span><br><span class="line">as &#x27;percentage&#x27; from `user` where match(`name`) against(&#x27;good boy&#x27;);</span><br><span class="line"></span><br><span class="line">2.布尔模式</span><br><span class="line">select *,match(`name`) against(&#x27;good boy&#x27; in boolean MODE) as &#x27;percentage&#x27; from `user` where match(`name`) against(&#x27;good boy&#x27; in boolean MODE);</span><br><span class="line"></span><br><span class="line">-- 内容顺序完全匹配</span><br><span class="line">select *,match(`name`) against(&#x27;&quot;good boy&quot;&#x27; in boolean MODE) as &#x27;percentage&#x27; from `user` where match(`name`) against(&#x27;&quot;good boy&quot;&#x27; in boolean MODE);</span><br><span class="line"></span><br><span class="line">3.扩展查询</span><br><span class="line">select *,match(`name`) against(&#x27;good boy&#x27; with query expansion) as &#x27;percentage&#x27; from `user` where match(`name`) against(&#x27;good boy&#x27;  with query expansion);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改查询字符长度</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.my.cnf文件中ft_min_word_len</span><br><span class="line">2.重建FullText索引或者快速修复</span><br><span class="line">repair table table_name quick;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-</li>
+<li>全文搜索类型</li>
 </ul>
-<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><h3 id="有字符集有关的系统设置"><a href="#有字符集有关的系统设置" class="headerlink" title="有字符集有关的系统设置"></a>有字符集有关的系统设置</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">character_set_system 用于存储的字符集</span><br><span class="line"></span><br><span class="line">character_set_server 服务器默认字符集</span><br><span class="line">collation_server  系统排序规则</span><br><span class="line">character_set_database 数据库字符集</span><br><span class="line">collation_database  数据库排序规则</span><br><span class="line">character_set_client 客户端向服务器发送SQL时使用的字符集</span><br><span class="line">character_set_result 表示服务器返回结果时使用的字符集</span><br><span class="line">character_set_connection 连接时使用的字符串</span><br><span class="line">character_set_filesystem 文件系统字符集</span><br></pre></td></tr></table></figure>
+<pre><code class="textmate">1.自然语言搜索-搜索包含匹配词的信息
+2.布尔模式搜索-
+3.查询扩展搜索</code></pre>
+<ul>
+<li>创建索引需要满足的条件</li>
+</ul>
+<pre><code class="textmate">1.表类型为MyISAM,version5.6以后引入了对InnoDB支持
+2.字段类型只能是char/varchar/text类型
+3.全文搜索会自动忽略掉常用词(在记录中出现几率为50%以上)-验证可以查出来
+4.停用词会被过滤掉(the/after/other等)
+5.少于4个字符会被忽略，查不出来(默认4-84个字符范围，可更改)</code></pre>
+<ul>
+<li>语法</li>
+</ul>
+<pre><code class="sql">-- 自然语言
+select *,match(`name`) against(&#39;good boy&#39;) 
+as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;);
 
-<h3 id="空间值"><a href="#空间值" class="headerlink" title="空间值"></a>空间值</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OpenGIS规范</span><br><span class="line">point 类型值,只支持InnoDB/MyISAM/NDB/ARCHIVE引擎</span><br><span class="line">point(xxxx,xxxx)</span><br></pre></td></tr></table></figure>
+-- 布尔模式
+select *,match(`name`) against(&#39;good boy&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39; in boolean MODE);
 
-<h3 id="模糊匹配查询"><a href="#模糊匹配查询" class="headerlink" title="模糊匹配查询"></a>模糊匹配查询</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.like</span><br><span class="line">    % 匹配任意数量的字符序列</span><br><span class="line">    _ 只能匹配单个字符</span><br><span class="line">    \%  \_  转义</span><br><span class="line">2.REGEXP-正则查询</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+-- 内容顺序完全匹配
+select *,match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE);
 
-<h3 id="新建用户后授权"><a href="#新建用户后授权" class="headerlink" title="新建用户后授权"></a>新建用户后授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- %表示所有IP可连接</span><br><span class="line">CREATE USER &#96;用户名&#96;@&#96;%&#96; IDENTIFIED BY &#39;密码&#39;;</span><br><span class="line">grant all privileges on jwgateway.* to &#39;用户名&#39;@&#39;%&#39; identified by &#39;密码&#39;;</span><br><span class="line">select * from mysql.user;</span><br></pre></td></tr></table></figure>
+-- 扩展查询
+select *,match(`name`) against(&#39;good boy&#39; with query expansion) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;  with query expansion);</code></pre>
+<ul>
+<li>修改查询字符长度</li>
+</ul>
+<pre><code class="textmate">1.my.cnf文件中ft_min_word_len
+2.重建FullText索引或者快速修复
+repair table table_name quick;</code></pre>
+<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><h3 id="有字符集有关的系统设置"><a href="#有字符集有关的系统设置" class="headerlink" title="有字符集有关的系统设置"></a>有字符集有关的系统设置</h3><pre><code class="yaml">character_set_system 用于存储的字符集
+character_set_server 服务器默认字符集
+collation_server  系统排序规则
+character_set_database 数据库字符集
+collation_database  数据库排序规则
+character_set_client 客户端向服务器发送SQL时使用的字符集
+character_set_result 表示服务器返回结果时使用的字符集
+character_set_connection 连接时使用的字符串
+character_set_filesystem 文件系统字符集</code></pre>
+<h3 id="空间值"><a href="#空间值" class="headerlink" title="空间值"></a>空间值</h3><pre><code class="textmate">OpenGIS规范
+point 类型值,只支持InnoDB/MyISAM/NDB/ARCHIVE引擎
+point(xxxx,xxxx)</code></pre>
+<h3 id="模糊匹配查询"><a href="#模糊匹配查询" class="headerlink" title="模糊匹配查询"></a>模糊匹配查询</h3><pre><code class="textmate">1.like
+    % 匹配任意数量的字符序列
+    _ 只能匹配单个字符
+    \%  \_  转义
+2.REGEXP-正则查询
+</code></pre>
+<h3 id="新建用户后授权"><a href="#新建用户后授权" class="headerlink" title="新建用户后授权"></a>新建用户后授权</h3><pre><code class="sql">-- %表示所有IP可连接
+CREATE USER `用户名`@`%` IDENTIFIED BY &#39;密码&#39;;
+grant all privileges on jwgateway.* to &#39;用户名&#39;@&#39;%&#39; identified by &#39;密码&#39;;
+select * from mysql.user;</code></pre>
+
       
     </div>
 </article>
 
 
 
-
-
-    <div id="comments"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
-<script type="text/javascript">
-    $.getScript('/js/gitalk.js', function () {
-        var gitalk = new Gitalk({
-            clientID: '0d360a48a118f28fc354',
-            clientSecret: '34e0d983f72faad9f987a8098593865b74dc1ba4',
-            repo: 'im-fan.gitee.io',
-            owner: 'im-fan',
-            admin: ['im-fan'],
-            id: decodeURI(location.pathname),
-            distractionFreeMode: 'true',
-            language: 'zh-CN',
-            perPage: parseInt('10',10)
-        })
-        gitalk.render('comments')
-    })
-</script>
 
 
 
@@ -753,6 +802,25 @@
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
 
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
 
@@ -860,6 +928,16 @@
     }
     
 
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
     
 </style>
 

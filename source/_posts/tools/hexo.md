@@ -24,8 +24,7 @@ categories:
 - 安装Node.js
 
 ### 安装Hexo
-- 安装完全包
-```text
+```textmate
 npm install -g hexo-cli
 ```
 
@@ -38,8 +37,9 @@ npm install
 ```
 
 ### 项目结构
+
 - 目录
-```text
+```textmate
 .
 ├── _config.yml
 ├── package.json
@@ -49,8 +49,10 @@ npm install
 |   └── _posts
 └── themes
 ```
+
 - 目录介绍
-```text
+
+```textmate
 1._config.yml
 网站的 配置 信息，您可以在此配置大部分的参数
 2.package.json
@@ -65,7 +67,8 @@ npm install
 ### 配置主题
 - [官网主题](https://hexo.io/themes/)
 - 本博客使用的主题 [3-hexo](https://github.com/yelog/hexo-theme-3-hexo)
-```text
+
+```textmate
 1.项目根目录下执行(下载其他主题，修改为themes/xxx即可)
 git clone https://github.com/yelog/hexo-theme-3-hexo.git themes/3-hexo
 2.修改配置
@@ -79,7 +82,8 @@ git pull
 
 ### 写作
 - 常用文档命令
-```text
+
+```textmate
 1.新建文档
 hexo new [layout] <title>
 
@@ -98,7 +102,8 @@ hexo publish [layout] <title>
 |title|-|文章标题&文件名|-|
 
 - 文档头部信息格式
-```text
+
+```textmate
 ---
 title: Java
 date: 2020-09-30 14:51:20
@@ -111,6 +116,7 @@ categories:
 ```
 
 - 文档头部信息解释
+
 |参数|作用|
 |-|-|
 |title|	网站标题|
@@ -125,11 +131,11 @@ categories:
 
 ### 运行&发布
 - 本地运行
-```text
+```textmate
 npm run server
 ```
 - 编译&部署
-```text
+```textmate
 hexo clean 
 hexo generate
 编译后会生成public文件夹，部署gitpage可以直接指定public为资源文件夹即可

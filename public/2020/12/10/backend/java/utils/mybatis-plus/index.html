@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml-line.png">
 <meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml.png">
 <meta property="article:published_time" content="2020-12-25T10:57:00.000Z">
-<meta property="article:modified_time" content="2020-12-25T11:20:59.923Z">
+<meta property="article:modified_time" content="2020-12-26T08:21:25.749Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="uml">
 <meta property="article:tag" content="类图">
@@ -28,7 +28,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -223,7 +223,7 @@
 </div>
 -->
 <input type="hidden" id="yelog_site_posts_number" value="16">
-<input type="hidden" id="yelog_site_word_count" value="14.2k">
+<input type="hidden" id="yelog_site_word_count" value="14k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -238,8 +238,6 @@
     </div>
     <div class="friends-content">
         <ul>
-            
-            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
             
         </ul>
     </div>
@@ -510,7 +508,7 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:216</span>
+        <span>字数:217</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -524,17 +522,6 @@
             </span>
         </span> -->
         
-        
-        <span class="top-comment" title="跳转至评论区">
-            <a href="#comments">
-                评论:<span class="count-comment">
-                    <span class="spinner">
-                      <div class="cube1"></div>
-                      <div class="cube2"></div>
-                    </span>
-                </span>
-            </a>
-        </span>
         
     </div>
     
@@ -556,7 +543,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mybatis</span></span><br><span class="line"><span class="comment"># 配置是否打印日志 true-打印  false-不打印</span></span><br><span class="line"><span class="comment"># paginationInterceptor-true 改为false则分页功能无效</span></span><br><span class="line"><span class="attr">sql:</span></span><br><span class="line">  <span class="attr">performanceInterceptor:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath*:/mapper/**/*.xml</span></span><br><span class="line">  <span class="comment">#实体扫描，多个package用逗号或者分号分隔</span></span><br><span class="line">  <span class="attr">typeAliasesPackage:</span> <span class="string">com.ruoyi.**.domain</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="comment">#数据库相关配置</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="comment">#主键类型  AUTO:&quot;数据库ID自增&quot;, INPUT:&quot;用户输入ID&quot;, ID_WORKER:&quot;全局唯一ID (数字类型唯一ID)&quot;, UUID:&quot;全局唯一ID UUID&quot;;</span></span><br><span class="line">      <span class="attr">id-type:</span> <span class="string">AUTO</span></span><br><span class="line">      <span class="comment">#字段策略 IGNORED:&quot;忽略判断&quot;,NOT_NULL:&quot;非 NULL 判断&quot;),NOT_EMPTY:&quot;非空判断&quot;</span></span><br><span class="line">      <span class="attr">field-strategy:</span> <span class="string">NOT_NULL</span></span><br><span class="line">      <span class="comment">#驼峰下划线转换</span></span><br><span class="line">      <span class="attr">column-underline:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">logic-delete-value:</span> <span class="number">-1</span></span><br><span class="line">      <span class="attr">logic-not-delete-value:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">banner:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment">#原生配置</span></span><br><span class="line">  <span class="attr">configuration:</span></span><br><span class="line">    <span class="comment">#不加无法打印执行脚本及内容</span></span><br><span class="line">    <span class="attr">log-impl:</span> <span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br><span class="line">    <span class="attr">map-underscore-to-camel-case:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">cache-enabled:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">call-setters-on-nulls:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">jdbc-type-for-null:</span> <span class="string">&#x27;null&#x27;</span></span><br></pre></td></tr></table></figure>
+        <h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><pre><code class="yaml">#mybatis
+# 配置是否打印日志 true-打印  false-不打印
+# paginationInterceptor-true 改为false则分页功能无效
+sql:
+  performanceInterceptor: true
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.ruoyi.**.domain
+  global-config:
+    #数据库相关配置
+    db-config:
+      #主键类型  AUTO:&quot;数据库ID自增&quot;, INPUT:&quot;用户输入ID&quot;, ID_WORKER:&quot;全局唯一ID (数字类型唯一ID)&quot;, UUID:&quot;全局唯一ID UUID&quot;;
+      id-type: AUTO
+      #字段策略 IGNORED:&quot;忽略判断&quot;,NOT_NULL:&quot;非 NULL 判断&quot;),NOT_EMPTY:&quot;非空判断&quot;
+      field-strategy: NOT_NULL
+      #驼峰下划线转换
+      column-underline: true
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+    banner: false
+  #原生配置
+  configuration:
+    #不加无法打印执行脚本及内容
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: &#39;null&#39;</code></pre>
 
       
     </div>
@@ -564,27 +579,6 @@
 
 
 
-
-
-    <div id="comments"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
-<script type="text/javascript">
-    $.getScript('/js/gitalk.js', function () {
-        var gitalk = new Gitalk({
-            clientID: '0d360a48a118f28fc354',
-            clientSecret: '34e0d983f72faad9f987a8098593865b74dc1ba4',
-            repo: 'im-fan.gitee.io',
-            owner: 'im-fan',
-            admin: ['im-fan'],
-            id: decodeURI(location.pathname),
-            distractionFreeMode: 'true',
-            language: 'zh-CN',
-            perPage: parseInt('10',10)
-        })
-        gitalk.render('comments')
-    })
-</script>
 
 
 
@@ -638,6 +632,25 @@
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
 
         
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
         
     }
 
@@ -745,6 +758,16 @@
     }
     
 
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
     
 </style>
 

@@ -103,7 +103,7 @@ public class ExcelUtils {
 }
 ```
 - 使用
-```text
+```java
 /** 导出excel模板**/
 public void exportTemplate(List<Integer> ids,HttpServletResponse response){
     try {
@@ -119,20 +119,19 @@ public void exportTemplate(List<Integer> ids,HttpServletResponse response){
         log.warn("导出失败,error={}",e);
     }
 }
-
 ```
 
 ### 设置中文文件名
-```text
+
+```java
 // 代码中添加
 response.setContentType("application/vnd.ms-excel;charset=UTF-8");
 response.setCharacterEncoding("utf-8");
 response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
-
 ```
 
 ### 导出失败返回错误信息
-```text
+```java
 // 重写响应信息数据类型
 response.reset();
 response.setContentType("application/json");
@@ -144,17 +143,14 @@ try {
 }
 ```
 
-### 导出成功但是后台日志报类型转换异常
-- 错误日志
-```text
--No converter for [class com.hzrys.dashboard.common.result.R] with preset Content-Type 'application/vnd.ms-excel;charset=utf-8'
-org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class com.hzrys.dashboard.common.result.R] with preset Content-Type 'application/vnd.ms-excel;charset=utf-8'
-```
-- 原因
-```text
-导出方法不能有返回值，导出文件时会设置相应头为文件格式；如果有返回值，则就会出现数据转换异常的错误
-```
-- 解决方法
-```text
-修改Controller中方法，改为 void 即可
+### 常见错误
+#### 导出成功但是后台日志报类型转换异常
+```textmate
+错误日志
+    No converter for [class com.hzrys.dashboard.common.result.R] with preset Content-Type 'application/vnd.ms-excel;charset=utf-8'
+    org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class com.hzrys.dashboard.common.result.R] with preset Content-Type 'application/vnd.ms-excel;charset=utf-8'
+原因
+    导出方法不能有返回值，导出文件时会设置相应头为文件格式；如果有返回值，则就会出现数据转换异常的错误
+解决方法
+    修改Controller中方法，改为 void 即可
 ```

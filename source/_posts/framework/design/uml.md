@@ -10,7 +10,7 @@ categories:
 - 设计图
 ---
 ### 常用元素
-```text
+```textmate
 1.类
   用三层矩形框表示，第一层类名及解释(斜体表示抽象类)、第二层字段和属性、第三层方法
   前面的符号，‘+’表示public，‘-’表示private，‘#’表示protected。
@@ -19,7 +19,7 @@ categories:
 ```
 
 ### 常见的几种关系
-```text
+```textmate
 1.泛化(Generalization)
     表示继承。是is-a的关系。 用 空心三角箭头+实线 表示，箭头指向继承的类
 2.依赖(Dependency)
@@ -35,8 +35,7 @@ categories:
 
 基数: 线两端的数字表明这一端的类可以有几个实例，比如：一个鸟应该有两只翅膀。如果一个类可能有无数个实例，则就用‘n’来表示。关联、聚合、组合是有基数的。
 ```
-<img src="https://im-fan.gitee.io/img/uml/uml-line.png"/>
-
+<img src="https://im-fan.gitee.io/img/uml/uml-line.png" width="500" height="300"/>
 
 ### 示例-标识了所有关系
 <img src="https://im-fan.gitee.io/img/uml/uml.png"/>

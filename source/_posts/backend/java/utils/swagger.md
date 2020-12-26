@@ -10,7 +10,7 @@ categories:
 ---
 
 ### 相关依赖包
-```text
+```xml
 <!--swagger依赖-->
 <dependency>
     <groupId>io.springfox</groupId>
@@ -37,19 +37,16 @@ categories:
 ```
 
 ### Swagger文档相关接口
-```text
+```textmate
 1.接口文档地址
     https://localhost:8080/swagger-ui.html
     https://localhost:8080/doc.html
-
 2.JSON格式接口数据(group参数由项目中swagger配置决定)
     http://localhost:8080/v2/api-docs?group=V1版本
-
 ```
 
 ### 主要代码
-```text
-
+```java
 /**
  * 加载swagger文档中的接口信息
  * @Date 2020/11/6 11:31
@@ -189,7 +186,6 @@ private Object parseRequestToJson(Map<String,Integer> forEachCache,Map<String,JS
         value = setValueByType(type,value);
         columnMap.put(key,value);
     }
-
     return columnMap;
 }
 

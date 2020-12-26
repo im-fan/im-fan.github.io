@@ -82,14 +82,17 @@ create table user_bak (
 	PARTITION p4 VALUES less THAN MAXVALUE
 );
 ```
+
 - 注意点
-```text
+
+```textmate
 1.PRIMARY必须包含分区的字段
 2.不能单独创建分区，建表时就要创建
 ```
 
 - 常见异常
-```text
+
+```textmate
 1.ERROR 1064  不能单独创建分区
 解决：建表时就要把分区创建好
 
@@ -99,25 +102,26 @@ create table user_bak (
 
 ### 子查询
 ```sql
-1.ALL - 查询返回单个结果,类似in操作
+-- 1.ALL - 查询返回单个结果,类似in操作
 select * from user_bak where (id) 
 >= ALL(select id from user_bak where id = 10)
 
-2.ANY & SUM -效果一样,类似or操作
+-- 2.ANY & SUM -效果一样,类似or操作
 select * from user_bak where (name,id) 
 = SOME(select name,id from user_bak where id = 1 or name = 'eee')
-
 ```
 
 ### FullText全文搜索
 - 全文搜索类型
-```text
+
+```textmate
 1.自然语言搜索-搜索包含匹配词的信息
 2.布尔模式搜索-
 3.查询扩展搜索
 ```
 - 创建索引需要满足的条件
-```text
+
+```textmate
 1.表类型为MyISAM,version5.6以后引入了对InnoDB支持
 2.字段类型只能是char/varchar/text类型
 3.全文搜索会自动忽略掉常用词(在记录中出现几率为50%以上)-验证可以查出来
@@ -126,35 +130,34 @@ select * from user_bak where (name,id)
 ```
 
 - 语法
-```text
-1.自然语言
+
+```sql
+-- 自然语言
 select *,match(`name`) against('good boy') 
 as 'percentage' from `user` where match(`name`) against('good boy');
 
-2.布尔模式
+-- 布尔模式
 select *,match(`name`) against('good boy' in boolean MODE) as 'percentage' from `user` where match(`name`) against('good boy' in boolean MODE);
 
 -- 内容顺序完全匹配
 select *,match(`name`) against('"good boy"' in boolean MODE) as 'percentage' from `user` where match(`name`) against('"good boy"' in boolean MODE);
 
-3.扩展查询
+-- 扩展查询
 select *,match(`name`) against('good boy' with query expansion) as 'percentage' from `user` where match(`name`) against('good boy'  with query expansion);
-
 ```
 
 - 修改查询字符长度
-```text
+
+```textmate
 1.my.cnf文件中ft_min_word_len
 2.重建FullText索引或者快速修复
 repair table table_name quick;
-
 ```
 
 ## 字符集
 ### 有字符集有关的系统设置
-```text
+```yaml
 character_set_system 用于存储的字符集
-
 character_set_server 服务器默认字符集
 collation_server  系统排序规则
 character_set_database 数据库字符集
@@ -166,14 +169,14 @@ character_set_filesystem 文件系统字符集
 ```
 
 ### 空间值
-```text
+```textmate
 OpenGIS规范
 point 类型值,只支持InnoDB/MyISAM/NDB/ARCHIVE引擎
 point(xxxx,xxxx)
 ```
 
 ### 模糊匹配查询
-```text
+```textmate
 1.like
     % 匹配任意数量的字符序列
     _ 只能匹配单个字符
@@ -183,8 +186,8 @@ point(xxxx,xxxx)
 ```
 
 ### 新建用户后授权
-```
-- %表示所有IP可连接
+```sql
+-- %表示所有IP可连接
 CREATE USER `用户名`@`%` IDENTIFIED BY '密码';
 grant all privileges on jwgateway.* to '用户名'@'%' identified by '密码';
 select * from mysql.user;
