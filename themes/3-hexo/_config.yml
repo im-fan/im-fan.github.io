@@ -154,10 +154,10 @@ table: green_title
 # 首页背景图
 index_bg_img:
 # 其他页面背景图
-#other_bg_img:
+other_bg_img:
 
 # 点击图片放大样式
-img_resize: default
+img_resize: photoSwipe
 # 可选值：
 # default: 默认(自己写的简单的放大)
 # photoSwipe: 使用photoSwipe插件
@@ -218,7 +218,7 @@ friends:
 
 ##########评论设置#############
 comment:
-  on: false
+  on: true
   type: gitalk  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
   comment_count: true  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
   ## 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/
@@ -233,9 +233,9 @@ disqus:
 gitalk:
   githubID: im-fan
   repo: im-fan.gitee.io
-  ClientID: 0d360a48a118f28fc354
-  ClientSecret: 34e0d983f72faad9f987a8098593865b74dc1ba4
-  adminUser: im-fan
+  ClientID: cd9c7d8003d54ab55feb
+  ClientSecret: f32edd931a003b89b50d28a4d762a2535438c221
+  adminUser: wyf3634@163.com
   distractionFreeMode: true
   language: zh-CN
   perPage: 10
@@ -251,8 +251,8 @@ gitalk:
 # perPage: 每次加载的数据大小，默认10，最大100
 
 gitment:
-  owner: yelog
-  repo: yelog.github.io
+  owner:
+  repo:
   client_id:
   client_secret:
   # gitment : 通过github issue实现的评论系统
