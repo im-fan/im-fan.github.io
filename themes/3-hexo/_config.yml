@@ -219,15 +219,25 @@ friends:
 ##########评论设置#############
 comment:
   on: true
-  type: gitalk  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
+  type: giteement  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
   comment_count: true  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
   ## 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/
 # 各评论系统配置 ↓↓
 
-disqus:
-  shortname:
-  # disqus评论系统， 2016年9月被GFW认证，大陆不能使用。
-  # 获取shortname：https://help.disqus.com/customer/en/portal/articles/466208-what-s-a-shortname-
+## 码云评论
+giteement:
+  enable: true  # 是否启用码云评论系统
+  # 是否使用官方js(false可以提升访问速度)
+  remote: false
+  redirect_uri: http://im-fan.gitee.io   # 应用回调地址(请和配置的第三方应用保持一致)
+  # 不能更改(网上开源项目https://github.com/Rob--W/cors-anywhere作者提供的专门用来跨域服务器的配置)
+  oauth_uri: https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token
+  giteeID: imfan  # 你的码云账号英文名
+  # 存储评论的 repo
+  repo: https://gitee.com/im-fan/blogtalk
+  gitment_oauth:
+    client_id: 'ed8a4c5db37a491103b4a87ece6295efd8309e9fc59da77b3f995ea6a1bafa3b' #client ID
+    client_secret: '3d86d4c5b7baf83d66e2bfc5424c8f5ad2acb274d789aec2282d56849e99b108' #client secret
 
 
 gitalk:
@@ -235,7 +245,7 @@ gitalk:
   repo: im-fan.gitee.io
   ClientID: cd9c7d8003d54ab55feb
   ClientSecret: f32edd931a003b89b50d28a4d762a2535438c221
-  adminUser: wyf3634@163.com
+  adminUser: im-fan
   distractionFreeMode: true
   language: zh-CN
   perPage: 10
