@@ -41,3 +41,36 @@ mybatis-plus:
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
 ```
+### 常见问题
+
+- 1.selectOne() 查询出多条数据会报错
+```textmate
+selectOne不是存在多条数据时只返回一条！！！
+报错信息：
+   org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.TooManyResultsException:
+   Expected one result (or null) to be returned by selectOne(), but found: 2
+解决方法:
+    1.手动添加
+    wrapper最后加上(最好带上排序，每次返回固定的值) .last("limit 1")
+    2.切面统一处理,如下
+```
+```java
+@Aspect
+@Component
+public class MybatisPlusAspect {
+
+    // 配置织入点
+    @Pointcut("execution(public * com.baomidou.mybatisplus.core.mapper.BaseMapper.selectOne(..))")
+    public void selectOneAspect() {
+    }
+
+    @Before("selectOneAspect()")
+    public void beforeSelect(JoinPoint point) {
+        Object arg = point.getArgs()[0];
+        if (arg instanceof AbstractWrapper) {
+            arg = (AbstractWrapper) arg;
+            ((AbstractWrapper) arg).last("limit 1");
+        }
+    }
+}
+```
