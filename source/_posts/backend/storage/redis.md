@@ -58,12 +58,16 @@ Map<String,String> hashMap = new HashMap<>();
 hashMap.put("a",JSON.toJSONString(new Object()));
 hashMap.put("b",JSON.toJSONString(new Object()));
 
-//设置值
+//所有值
 redisTemplate.opsForHash().putAll(key,hashMap);
 
-//取值
+//获取单个值
 List<String> hashKey = new ArrayList<>();
 hashKey.add("a"); // 获取hash中的某个key下的值
-redisTemplate.opsForHash().multiGet(MonitorConstant.MONITOR_RULE_CACHE_KEY,hashKey);
+redisTemplate.opsForHash().multiGet(key,hashKey);
 
+//设置单个值
+String hk = "hash 的key";
+String hv = "hash 的value";
+redisTemplate.opsForHash().put(key,hk,hv);
 ```
