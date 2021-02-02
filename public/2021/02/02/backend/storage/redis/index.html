@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://im-fan.gitee.io/img/cache/redisTemplate-serialize.png">
 <meta property="article:published_time" content="2021-02-02T11:59:00.000Z">
-<meta property="article:modified_time" content="2021-02-02T12:11:04.905Z">
+<meta property="article:modified_time" content="2021-02-02T12:24:11.038Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="cache">
 <meta name="twitter:card" content="summary">
@@ -542,12 +542,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-02-02 20:11:04'>2021-02-02 19:59</time>
+            发布时间 : <time class="date" title='最后更新: 2021-02-02 20:24:11'>2021-02-02 19:59</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:226</span>
+        <span>字数:253</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -623,14 +623,18 @@ Map&lt;String,String&gt; hashMap = new HashMap&lt;&gt;();
 hashMap.put(&quot;a&quot;,JSON.toJSONString(new Object()));
 hashMap.put(&quot;b&quot;,JSON.toJSONString(new Object()));
 
-//设置值
+//所有值
 redisTemplate.opsForHash().putAll(key,hashMap);
 
-//取值
+//获取单个值
 List&lt;String&gt; hashKey = new ArrayList&lt;&gt;();
 hashKey.add(&quot;a&quot;); // 获取hash中的某个key下的值
-redisTemplate.opsForHash().multiGet(MonitorConstant.MONITOR_RULE_CACHE_KEY,hashKey);
-</code></pre>
+redisTemplate.opsForHash().multiGet(key,hashKey);
+
+//设置单个值
+String hk = &quot;hash 的key&quot;;
+String hv = &quot;hash 的value&quot;;
+redisTemplate.opsForHash().put(key,hk,hv);</code></pre>
 
       
     </div>
