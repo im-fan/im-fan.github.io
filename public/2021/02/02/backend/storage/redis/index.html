@@ -2,26 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MySQL相关 | Imfan笔记</title>
-  <meta name="keywords" content=" mysql ">
-  <meta name="description" content="MySQL相关 | Imfan笔记">
+  <title>Redis学习笔记 | Imfan笔记</title>
+  <meta name="keywords" content=" cache ">
+  <meta name="description" content="Redis学习笔记 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="UML类图">
+<meta name="description" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UML类图">
-<meta property="og:url" content="http://imfan.com/2020/12/25/framework/design/uml/index.html">
+<meta property="og:title" content="Redis学习笔记">
+<meta property="og:url" content="http://imfan.com/2021/02/02/backend/storage/redis/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="UML类图">
+<meta property="og:description" content="redis">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml-line.png">
-<meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml.png">
-<meta property="article:published_time" content="2020-12-25T10:57:00.000Z">
-<meta property="article:modified_time" content="2020-12-26T08:21:25.749Z">
+<meta property="og:image" content="https://im-fan.gitee.io/img/cache/redisTemplate-serialize.png">
+<meta property="article:published_time" content="2021-02-02T11:59:00.000Z">
+<meta property="article:modified_time" content="2021-02-02T12:11:04.905Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="uml">
-<meta property="article:tag" content="类图">
+<meta property="article:tag" content="cache">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://im-fan.gitee.io/img/uml/uml-line.png">
+<meta name="twitter:image" content="https://im-fan.gitee.io/img/cache/redisTemplate-serialize.png">
 
 
 <link rel="icon" href="/img/road.png">
@@ -102,15 +100,23 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(16)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(18)</small></div></li>
     
         
             
-            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(4)</small></div>
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(6)</small></div>
                 
                     <ul class="sub hide">
                         
+                        <li><div data-rel="后端<--->cache">cache<small>(1)</small></div>
+                            
+                        </li>
+                        
                         <li><div data-rel="后端<--->工具">工具<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->项目编译">项目编译<small>(1)</small></div>
                             
                         </li>
                         
@@ -202,9 +208,17 @@
     
         
             
+        
+    
+        
+            
             <li><div data-rel="设计图">设计图<small>(1)</small></div>
                 
             </li>
+            
+        
+    
+        
             
         
     
@@ -223,8 +237,8 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 -->
-<input type="hidden" id="yelog_site_posts_number" value="16">
-<input type="hidden" id="yelog_site_word_count" value="14.4k">
+<input type="hidden" id="yelog_site_posts_number" value="18">
+<input type="hidden" id="yelog_site_word_count" value="14.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -266,6 +280,10 @@
     <div class="tags-list">
     <input id="tag-search" />
     <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cache</a>
+            </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>canal</a>
@@ -319,6 +337,10 @@
                 <i class="iconfont icon-tag"></i><a>设计模式</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目编译</a>
+            </li>
+        
     </div>
 
 </div>
@@ -329,6 +351,22 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 后端 cache "
+           href="/2021/02/02/backend/storage/redis/"
+           data-tag="cache"
+           data-author="" >
+            <span class="post-title" title="Redis学习笔记">Redis学习笔记</span>
+            <span class="post-date" title="2021-02-02 19:59:00">2021/02/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 项目编译 "
+           href="/2021/01/21/backend/java/build/gradle/"
+           data-tag="项目编译"
+           data-author="" >
+            <span class="post-title" title="Gradle学习笔记">Gradle学习笔记</span>
+            <span class="post-date" title="2021-01-21 13:24:22">2021/01/21</span>
+        </a>
         
         <a  class="全部文章 设计图 "
            href="/2020/12/25/framework/design/uml/"
@@ -403,7 +441,7 @@
         </a>
         
         <a  class="全部文章 数据库 "
-           href="/2020/10/02/backend/database/canal/"
+           href="/2020/10/02/backend/storage/canal/"
            data-tag="canal"
            data-author="" >
             <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
@@ -411,7 +449,7 @@
         </a>
         
         <a  class="全部文章 数据库 "
-           href="/2020/10/02/backend/database/mysql-other/"
+           href="/2020/10/02/backend/storage/mysql-other/"
            data-tag="mysql"
            data-author="" >
             <span class="post-title" title="MySQL相关">MySQL相关</span>
@@ -475,9 +513,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-backend/database/mysql-other" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-backend/storage/redis" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MySQL相关</h1>
+        <h1 class="article-title">Redis学习笔记</h1>
     
     <div class="article-meta">
         
@@ -487,7 +525,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="数据库">数据库</a>
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;cache">cache</a>
             
         </span>
         
@@ -495,19 +535,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">mysql</a>
+            <a class="color1">cache</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-26 16:50:40'>2020-10-02 15:51</time>
+            发布时间 : <time class="date" title='最后更新: 2021-02-02 20:11:04'>2021-02-02 19:59</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.2k</span>
+        <span>字数:226</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -526,7 +566,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB"><span class="toc-text">存储引擎区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5"><span class="toc-text">建表语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cast%E7%B1%BB%E5%9E%8B%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">Cast类型强制转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="toc-text">新建分区表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FullText%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2"><span class="toc-text">FullText全文搜索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-text">字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%AD%97%E7%AC%A6%E9%9B%86%E6%9C%89%E5%85%B3%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="toc-text">有字符集有关的系统设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%80%BC"><span class="toc-text">空间值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%E6%9F%A5%E8%AF%A2"><span class="toc-text">模糊匹配查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7%E5%90%8E%E6%8E%88%E6%9D%83"><span class="toc-text">新建用户后授权</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%9B%B8%E5%85%B3"><span class="toc-text">Redis相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RedisTemplate%E9%85%8D%E7%BD%AE"><span class="toc-text">RedisTemplate配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RedisTemplate-k-v%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%AE%E5%BC%82"><span class="toc-text">RedisTemplate k-v序列化差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RedisTemplate-%E6%93%8D%E4%BD%9Chash"><span class="toc-text">RedisTemplate 操作hash</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -542,207 +582,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="存储引擎区别"><a href="#存储引擎区别" class="headerlink" title="存储引擎区别"></a>存储引擎区别</h3><ul>
-<li>查看数据库支持的存储引擎<pre><code class="sql">show engines;</code></pre>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>磁盘文件</th>
-<th>特性</th>
-<th>适用场景</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>FEDERATED</td>
-<td></td>
-<td>用来访问远程表存储引擎</td>
-<td>访问远程表</td>
-</tr>
-<tr>
-<td>MRG_MYISAM</td>
-<td></td>
-<td>把多个MyISAM表合并为一个逻辑单元；查询一个表时，相当与查询其所有成员表</td>
-<td>可以用分区表替换merge表</td>
-</tr>
-<tr>
-<td>MyISAM</td>
-<td>.MDY数据)<br/> .MYI(索引)</td>
-<td>主要的非实物处理存储引擎</td>
-<td></td>
-</tr>
-<tr>
-<td>BLACKHOLE</td>
-<td></td>
-<td>丢弃写操作，读操作返回空内容</td>
-<td></td>
-</tr>
-<tr>
-<td>CSV</td>
-<td>.CSV(数据)<br/>.CSM(元数据)</td>
-<td>存储数据时，会以逗号作为数据项之间的分割符号</td>
-<td>不支持索引，数据存在为普通文本文件</td>
-</tr>
-<tr>
-<td>MEMORY</td>
-<td></td>
-<td>置于内存的表</td>
-<td></td>
-</tr>
-<tr>
-<td>ARCHIVE</td>
-<td></td>
-<td>用于数据存档(行插入后不能再修改)</td>
-<td>数据归档，大批量存储后不修改</td>
-</tr>
-<tr>
-<td>InnoDB</td>
-<td>.ibd(数据&amp;索引)</td>
-<td>具备外键支持功能的事务处理引擎</td>
-<td></td>
-</tr>
-<tr>
-<td>PERFORMANCE_SCHEMA</td>
-<td></td>
-<td>用于监视MySQL服务器</td>
-<td></td>
-</tr>
-<tr>
-<td>NDB</td>
-<td></td>
-<td>集群存储引擎</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>TokuDB</td>
-<td></td>
-<td>存储速度快，查询速度略慢与InnoDB,支持事务等，未来替代InnoDB</td>
-</tr>
-</tbody></table>
-<h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><pre><code class="sql">1.表结构完全复制
-create table user_bak LIKE user;
+        <h3 id="Redis相关"><a href="#Redis相关" class="headerlink" title="Redis相关"></a>Redis相关</h3><h4 id="RedisTemplate配置"><a href="#RedisTemplate配置" class="headerlink" title="RedisTemplate配置"></a>RedisTemplate配置</h4><pre><code class="java">@Configuration
+@EnableCaching
+public class RedisConfig extends CachingConfigurerSupport &#123;
+    @Bean
+    public RedisTemplate&lt;String, Object&gt; redisTemplate(RedisConnectionFactory connectionFactory)&#123;
+        RedisTemplate&lt;Object, Object&gt; template = new RedisTemplate&lt;&gt;();
+        template.setConnectionFactory(connectionFactory);
 
-2.使用某些字段建表
-create table user_bak select now() as time ;
+        //key的序列化方式
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        // string的key序列化方式
+        template.setKeySerializer(stringRedisSerializer);
+        // hash的key也采用String的序列化方式
+        template.setHashKeySerializer(stringRedisSerializer);
 
-3.建表时字段值强制转换
-create table user_bak select CAST(&#39;2019-8-01&#39; as UNSIGNED) as time;
+        //value的序列化方式
+        FastJson2JsonRedisSerializer serializer = new FastJson2JsonRedisSerializer(Object.class);
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        om.registerModule(new JavaTimeModule());
+        serializer.setObjectMapper(om);
 
-4.临时表
-解释：只对当前会话有效，有同名表则原表隐藏不可见，会话结束自动清除
-create temporary table user_bak  like user;
-drop temporary table user_bak;</code></pre>
-<h3 id="Cast类型强制转换"><a href="#Cast类型强制转换" class="headerlink" title="Cast类型强制转换"></a>Cast类型强制转换</h3><pre><code class="sql">语法: 
-    Cast(字段名 as 转换的类型 )
+        //string的value序列化方式
+        template.setValueSerializer(serializer);
+        // hash的value序列化方式
+        template.setHashValueSerializer(stringRedisSerializer);
 
-支持的类型:
-    CHAR[(N)] 字符型 
-    DATE 日期型
-    DATETIME 日期和时间型
-    DECIMAL float型
-    SIGNED int
-    TIME 时间型
+        template.afterPropertiesSet();
+        return template;
+    &#125;
+&#125;</code></pre>
+<h3 id="RedisTemplate-k-v序列化差异"><a href="#RedisTemplate-k-v序列化差异" class="headerlink" title="RedisTemplate k-v序列化差异"></a>RedisTemplate k-v序列化差异</h3><img src="https://im-fan.gitee.io/img/cache/redisTemplate-serialize.png"/>
 
-场景:
-    1.解决utf8字符查询时传入表情符，导致报错；
+<h3 id="RedisTemplate-操作hash"><a href="#RedisTemplate-操作hash" class="headerlink" title="RedisTemplate 操作hash"></a>RedisTemplate 操作hash</h3><pre><code class="java">//redis中的hash相当于java中的HashMap
+
+String key = &quot;key&quot;;
+Map&lt;String,String&gt; hashMap = new HashMap&lt;&gt;();
+hashMap.put(&quot;a&quot;,JSON.toJSONString(new Object()));
+hashMap.put(&quot;b&quot;,JSON.toJSONString(new Object()));
+
+//设置值
+redisTemplate.opsForHash().putAll(key,hashMap);
+
+//取值
+List&lt;String&gt; hashKey = new ArrayList&lt;&gt;();
+hashKey.add(&quot;a&quot;); // 获取hash中的某个key下的值
+redisTemplate.opsForHash().multiGet(MonitorConstant.MONITOR_RULE_CACHE_KEY,hashKey);
 </code></pre>
-<h3 id="新建分区表"><a href="#新建分区表" class="headerlink" title="新建分区表"></a>新建分区表</h3><ul>
-<li><p>示例</p>
-<pre><code class="sql">create table user_bak (
-id int(11) UNSIGNED AUTO_INCREMENT ,
-`name` varchar(200) DEFAULT null COMMENT &#39;名称&#39;,
-rand_num int(11) DEFAULT NULL COMMENT &#39;随机数&#39;,
-birthday datetime default null comment &#39;生日&#39;,
-PRIMARY KEY (`id`,rand_num)
-) ENGINE = INNODB partition by RANGE (rand_num)
-(
-  PARTITION p0 VALUES less THAN (20),
-  PARTITION p1 VALUES less THAN (40),
-  PARTITION p2 VALUES less THAN (60),
-  PARTITION p3 VALUES less THAN (80),
-  PARTITION p4 VALUES less THAN MAXVALUE
-);</code></pre>
-</li>
-<li><p>注意点</p>
-</li>
-</ul>
-<pre><code class="textmate">1.PRIMARY必须包含分区的字段
-2.不能单独创建分区，建表时就要创建</code></pre>
-<ul>
-<li>常见异常</li>
-</ul>
-<pre><code class="textmate">1.ERROR 1064  不能单独创建分区
-解决：建表时就要把分区创建好
-
-2.ERROR 1503 主键必须包含分区函数中所有列
-解决：创建分区的字段必须放在主键索引中</code></pre>
-<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><pre><code class="sql">-- 1.ALL - 查询返回单个结果,类似in操作
-select * from user_bak where (id) 
-&gt;= ALL(select id from user_bak where id = 10)
-
--- 2.ANY &amp; SUM -效果一样,类似or操作
-select * from user_bak where (name,id) 
-= SOME(select name,id from user_bak where id = 1 or name = &#39;eee&#39;)</code></pre>
-<h3 id="FullText全文搜索"><a href="#FullText全文搜索" class="headerlink" title="FullText全文搜索"></a>FullText全文搜索</h3><ul>
-<li>全文搜索类型</li>
-</ul>
-<pre><code class="textmate">1.自然语言搜索-搜索包含匹配词的信息
-2.布尔模式搜索-
-3.查询扩展搜索</code></pre>
-<ul>
-<li>创建索引需要满足的条件</li>
-</ul>
-<pre><code class="textmate">1.表类型为MyISAM,version5.6以后引入了对InnoDB支持
-2.字段类型只能是char/varchar/text类型
-3.全文搜索会自动忽略掉常用词(在记录中出现几率为50%以上)-验证可以查出来
-4.停用词会被过滤掉(the/after/other等)
-5.少于4个字符会被忽略，查不出来(默认4-84个字符范围，可更改)</code></pre>
-<ul>
-<li>语法</li>
-</ul>
-<pre><code class="sql">-- 自然语言
-select *,match(`name`) against(&#39;good boy&#39;) 
-as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;);
-
--- 布尔模式
-select *,match(`name`) against(&#39;good boy&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39; in boolean MODE);
-
--- 内容顺序完全匹配
-select *,match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE);
-
--- 扩展查询
-select *,match(`name`) against(&#39;good boy&#39; with query expansion) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;  with query expansion);</code></pre>
-<ul>
-<li>修改查询字符长度</li>
-</ul>
-<pre><code class="textmate">1.my.cnf文件中ft_min_word_len
-2.重建FullText索引或者快速修复
-repair table table_name quick;</code></pre>
-<h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><h3 id="有字符集有关的系统设置"><a href="#有字符集有关的系统设置" class="headerlink" title="有字符集有关的系统设置"></a>有字符集有关的系统设置</h3><pre><code class="yaml">character_set_system 用于存储的字符集
-character_set_server 服务器默认字符集
-collation_server  系统排序规则
-character_set_database 数据库字符集
-collation_database  数据库排序规则
-character_set_client 客户端向服务器发送SQL时使用的字符集
-character_set_result 表示服务器返回结果时使用的字符集
-character_set_connection 连接时使用的字符串
-character_set_filesystem 文件系统字符集</code></pre>
-<h3 id="空间值"><a href="#空间值" class="headerlink" title="空间值"></a>空间值</h3><pre><code class="textmate">OpenGIS规范
-point 类型值,只支持InnoDB/MyISAM/NDB/ARCHIVE引擎
-point(xxxx,xxxx)</code></pre>
-<h3 id="模糊匹配查询"><a href="#模糊匹配查询" class="headerlink" title="模糊匹配查询"></a>模糊匹配查询</h3><pre><code class="textmate">1.like
-    % 匹配任意数量的字符序列
-    _ 只能匹配单个字符
-    \%  \_  转义
-2.REGEXP-正则查询
-</code></pre>
-<h3 id="新建用户后授权"><a href="#新建用户后授权" class="headerlink" title="新建用户后授权"></a>新建用户后授权</h3><pre><code class="sql">-- %表示所有IP可连接
-CREATE USER `用户名`@`%` IDENTIFIED BY &#39;密码&#39;;
-grant all privileges on jwgateway.* to &#39;用户名&#39;@&#39;%&#39; identified by &#39;密码&#39;;
-select * from mysql.user;</code></pre>
 
       
     </div>

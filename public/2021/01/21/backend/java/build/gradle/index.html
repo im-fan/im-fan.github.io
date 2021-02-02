@@ -2,26 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Canal服务搭建 | Imfan笔记</title>
-  <meta name="keywords" content=" canal ">
-  <meta name="description" content="Canal服务搭建 | Imfan笔记">
+  <title>Gradle学习笔记 | Imfan笔记</title>
+  <meta name="keywords" content=" 项目编译 ">
+  <meta name="description" content="Gradle学习笔记 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="UML类图">
+<meta name="description" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UML类图">
-<meta property="og:url" content="http://imfan.com/2020/12/25/framework/design/uml/index.html">
+<meta property="og:title" content="Redis学习笔记">
+<meta property="og:url" content="http://imfan.com/2021/02/02/backend/storage/redis/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="UML类图">
+<meta property="og:description" content="redis">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml-line.png">
-<meta property="og:image" content="https://im-fan.gitee.io/img/uml/uml.png">
-<meta property="article:published_time" content="2020-12-25T10:57:00.000Z">
-<meta property="article:modified_time" content="2020-12-26T08:21:25.749Z">
+<meta property="og:image" content="https://im-fan.gitee.io/img/cache/redisTemplate-serialize.png">
+<meta property="article:published_time" content="2021-02-02T11:59:00.000Z">
+<meta property="article:modified_time" content="2021-02-02T12:11:04.905Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="uml">
-<meta property="article:tag" content="类图">
+<meta property="article:tag" content="cache">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://im-fan.gitee.io/img/uml/uml-line.png">
+<meta name="twitter:image" content="https://im-fan.gitee.io/img/cache/redisTemplate-serialize.png">
 
 
 <link rel="icon" href="/img/road.png">
@@ -102,15 +100,23 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(16)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(18)</small></div></li>
     
         
             
-            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(4)</small></div>
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(6)</small></div>
                 
                     <ul class="sub hide">
                         
+                        <li><div data-rel="后端<--->cache">cache<small>(1)</small></div>
+                            
+                        </li>
+                        
                         <li><div data-rel="后端<--->工具">工具<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->项目编译">项目编译<small>(1)</small></div>
                             
                         </li>
                         
@@ -202,9 +208,17 @@
     
         
             
+        
+    
+        
+            
             <li><div data-rel="设计图">设计图<small>(1)</small></div>
                 
             </li>
+            
+        
+    
+        
             
         
     
@@ -223,8 +237,8 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 -->
-<input type="hidden" id="yelog_site_posts_number" value="16">
-<input type="hidden" id="yelog_site_word_count" value="14.4k">
+<input type="hidden" id="yelog_site_posts_number" value="18">
+<input type="hidden" id="yelog_site_word_count" value="14.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -266,6 +280,10 @@
     <div class="tags-list">
     <input id="tag-search" />
     <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cache</a>
+            </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>canal</a>
@@ -319,6 +337,10 @@
                 <i class="iconfont icon-tag"></i><a>设计模式</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目编译</a>
+            </li>
+        
     </div>
 
 </div>
@@ -329,6 +351,22 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 后端 cache "
+           href="/2021/02/02/backend/storage/redis/"
+           data-tag="cache"
+           data-author="" >
+            <span class="post-title" title="Redis学习笔记">Redis学习笔记</span>
+            <span class="post-date" title="2021-02-02 19:59:00">2021/02/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 项目编译 "
+           href="/2021/01/21/backend/java/build/gradle/"
+           data-tag="项目编译"
+           data-author="" >
+            <span class="post-title" title="Gradle学习笔记">Gradle学习笔记</span>
+            <span class="post-date" title="2021-01-21 13:24:22">2021/01/21</span>
+        </a>
         
         <a  class="全部文章 设计图 "
            href="/2020/12/25/framework/design/uml/"
@@ -403,7 +441,7 @@
         </a>
         
         <a  class="全部文章 数据库 "
-           href="/2020/10/02/backend/database/canal/"
+           href="/2020/10/02/backend/storage/canal/"
            data-tag="canal"
            data-author="" >
             <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
@@ -411,7 +449,7 @@
         </a>
         
         <a  class="全部文章 数据库 "
-           href="/2020/10/02/backend/database/mysql-other/"
+           href="/2020/10/02/backend/storage/mysql-other/"
            data-tag="mysql"
            data-author="" >
             <span class="post-title" title="MySQL相关">MySQL相关</span>
@@ -475,9 +513,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-backend/database/canal" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-backend/java/build/gradle" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Canal服务搭建</h1>
+        <h1 class="article-title">Gradle学习笔记</h1>
     
     <div class="article-meta">
         
@@ -487,7 +525,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="数据库">数据库</a>
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;项目编译">项目编译</a>
             
         </span>
         
@@ -495,19 +535,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">canal</a>
+            <a class="color5">项目编译</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-26 16:44:52'>2020-10-02 15:51</time>
+            发布时间 : <time class="date" title='最后更新: 2021-01-21 13:44:07'>2021-01-21 13:24</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1k</span>
+        <span>字数:285</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -526,7 +566,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E5%9D%80"><span class="toc-text">相关网址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E9%83%A8%E7%BD%B2"><span class="toc-text">直接部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">准备</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-text">Docker搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87-1"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">启动命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CanalAdmin%E9%85%8D%E7%BD%AE"><span class="toc-text">CanalAdmin配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%B8%AACanal%E6%9C%8D%E5%8A%A1%E8%AF%BB%E5%8F%96%E5%A4%9A%E4%B8%AAMySQL%E5%AE%9E%E4%BE%8B-docker%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">一个Canal服务读取多个MySQL实例(docker中操作)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%85%8D%E7%BD%AE-%E5%9F%BA%E7%A1%80%E7%89%88%EF%BC%8C%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE%E5%8F%82%E8%80%83%E5%AE%98%E7%BD%91"><span class="toc-text">参考配置(基础版，其他配置参考官网)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E9%87%8A"><span class="toc-text">关键字解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dependencies%E4%BE%9D%E8%B5%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">dependencies依赖关键字</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -542,133 +582,141 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="相关网址"><a href="#相关网址" class="headerlink" title="相关网址"></a>相关网址</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/canal/wiki/Home">官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/canal/wiki/QuickStart">快速开始</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/canal/releases">Release下载</a></li>
-<li><a target="_blank" rel="noopener" href="https://hub.docker.com/r/canal/canal-server/tags/">Docker镜像地址</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart">Canal Admin QuickStart</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/canal/wiki/ClientExample">Canal Client Example</a></li>
+        <ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/gdeer/article/details/104815986">Gradle理解：configuration、dependency</a></li>
 </ul>
-<h3 id="直接部署"><a href="#直接部署" class="headerlink" title="直接部署"></a>直接部署</h3><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><pre><code class="textmate">1.下载安装包(点击上面Release)
-    这里用1.1.4版本,下载 canal.deployer-1.1.4.tar.gz(主要程序) 和 canal.admin-1.1.4.tar.gz(管理程序)
-
-2.解压&amp;配置
-    mkdir canal-deployer
-    mkdir canal-admin
-    tar -zxvf canal.deployer-1.1.4.tar.gz -C canal-deployer
-    tar -zxvg canal.admin-1.1.4.tar.gz -C canal-admin
-    修改 canal-deployer/conf 中 canal.properties(参考 快速开始，或参考底部配置)
-
-3.修改Instance配置
-    cd cd canal-deployer/conf/example/instance.properties
-    参考官网或底部instance.peroperties配置
-
-4.多Instance - 可选
-    cd canal-deployer/conf
-    cp -R example example2
-    修改example2中配置
-
-5.配置canal-admin
-    初始化数据脚本，脚本所在位置 canal-admin/conf/canal_manager.sql
-    修改配置，配置所在位置 canal-admin/conf/application.yml
-    修改其中的数据库配置、端口号、用户名密码等-可选
-
-6.启动
-    6-1.canal-admin启动( 访问链接 localhost:80 )
-        sh ./canal-admin/bin/startup.sh
-    6-2.canal-server启动
-        sh ./canal-deployer/bin/startup.sh
-    6-3.日志所在文件夹
-        cd canal-deployer/logs</code></pre>
-<h3 id="Docker搭建步骤"><a href="#Docker搭建步骤" class="headerlink" title="Docker搭建步骤"></a>Docker搭建步骤</h3><blockquote>
-<p>docker方式部署,注意配置时mysql的IP地址</p>
-</blockquote>
-<h4 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h4><pre><code class="textmate">1.mysql
-  需要确认mysql已开启binlog设置
-2.拉取canal-server镜像
-  docker pull canal/canal-server:v1.1.4
-3.下载docker启动脚本
-   wget https://github.com/alibaba/canal/blob/master/docker/run.sh
-4.修改启动脚本中数据库配置
-5.下载canal-admin包,修改配置(或者复制run.sh并修改启动命令，启动canal-admin)-可选
-   wget https://github.com/alibaba/canal/releases/download/canal-1.1.4/canal.admin-1.1.4.tar.gz
-   mkdir canal-admin
-   tar -zxvf canal.admin-1.1.4.tar.gz -C canal-admin
-   修改conf/application.yml中数据库配置
-   初始化mysql脚本，conf/canal_manager.sql
-6.canal-client
-   参考 Canal Client Example</code></pre>
-<h4 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h4><pre><code class="textmate">1.canal-server
-   运行 sh run.sh 会出现提示，复制提示后运行
-2.canal-admin
-   sh bin/startup.sh
-3.启动程序(canal-client)
-    成功后会打印出empty count : xx</code></pre>
-<h4 id="CanalAdmin配置"><a href="#CanalAdmin配置" class="headerlink" title="CanalAdmin配置"></a>CanalAdmin配置</h4><ul>
-<li><p>1.集群配置</p>
-<pre><code class="yaml">#集群名-local
-#zk地址-127.0.0.1:2181 (可以不搭建zk)
-#以下为配置项
-# register ip
-canal.register.ip =
-# canal admin config
-canal.admin.manager = 127.0.0.1:8089
-canal.admin.port = 11110
-canal.admin.user = admin
-canal.admin.passwd = 4ACFE3202A5FF5CF467898FC58AAB1D615029441</code></pre>
-</li>
-<li><p>2.Server管理</p>
-<pre><code class="textmate">ServerIP-127.0.0.1 (同一集群下server ip不能重复)
-admin端口号-11110</code></pre>
-</li>
-<li><p>3.Instance管理</p>
-<pre><code class="textmate">注意：Instance名称要与cancal-server容器中文件夹一致，默认有example
-Instance配置项参考官网或底部配置</code></pre>
-</li>
-</ul>
-<h4 id="一个Canal服务读取多个MySQL实例-docker中操作"><a href="#一个Canal服务读取多个MySQL实例-docker中操作" class="headerlink" title="一个Canal服务读取多个MySQL实例(docker中操作)"></a>一个Canal服务读取多个MySQL实例(docker中操作)</h4><pre><code class="textmate">1.进入canal容器内部关闭服务(不关闭复制会导致写入db2失败)
-    docker exec -it canal-server bash
-    ./stop.sh
-2.复制一份Instatnce配置(注意确认example2中文件权限与example中是否一样)
-    cd canal-server/conf
-    cp -R example example2
-3.Canal Admin中添加新配置
-    Instance名称-example2
-4.集成zookeeper
-    修改canal-server/conf/下配置canal.properties
-    canal.register.ip = zk服务器IP
-    canal.zkServers = zk服务器IP:2181</code></pre>
-<h3 id="参考配置-基础版，其他配置参考官网"><a href="#参考配置-基础版，其他配置参考官网" class="headerlink" title="参考配置(基础版，其他配置参考官网)"></a>参考配置(基础版，其他配置参考官网)</h3><ul>
-<li><p>canal.properties</p>
-<pre><code class="yaml"># 用以下配置项是需要修改的，其他默认配置项保留原来设置
-# canal地址
-canal.register.ip = zk所在地址
-# zk配置，如果有用到则配置，没用到则保留默认设置
-canal.admin.register.auto = true
-canal.admin.register.cluster = 192.168.154.231:2181
-canal.zkServers = 192.168.154.231:2181</code></pre>
-</li>
-<li><p>instance.properties</p>
-<pre><code class="yaml"># 用以下配置项是需要修改的，其他默认配置项保留原来设置(example2配置同下)
-# 数据库配置
-canal.instance.master.address= 数据库IP:端口号
-canal.instance.dbUsername = 用户名 
-canal.instance.dbPassword = 密码
-canal.instance.defaultDatabaseName = 要监控的库名，不设置则监听当前实例下所有库
-canal.instance.connectionCharset = UTF-8
-canal.instance.tsdb.enable=false</code></pre>
-</li>
-</ul>
-<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ul>
-<li><p>服务都启动成功，客户端拉不到变更日志</p>
-<pre><code class="textmate">注意客户端中 canalConnector.subscribe() 中设置项，设置了值则服务中配置的过滤条件不生效
-参考配置 canalConnector.subscribe(&quot;sap_system\\..*,user_center\\..*&quot;)</code></pre>
-</li>
-<li><p>一个Canal-Service,多个client，运行时报错</p>
-<pre><code class="textmate">改为一个canal一个client，原因是多个client同时提交ack时，可能会存在重复提交的问题</code></pre>
-</li>
-</ul>
+<h3 id="关键字解释"><a href="#关键字解释" class="headerlink" title="关键字解释"></a>关键字解释</h3><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th align="center">关键字解释</th>
+<th>值</th>
+<th align="center">值解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>plugins</td>
+<td align="center"></td>
+<td>id</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>group</td>
+<td align="center">定义模块</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>version</td>
+<td align="center">模块版本号</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>sourceCompatibility</td>
+<td align="center"></td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>configurations</td>
+<td align="center">不同的 configuration 用来引用不同领域</br>（或不同用途）的 dependencies</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>buildscript</td>
+<td align="center">用于声明gradle自身依赖的插件，优先执行</td>
+<td>ext</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td>repositories</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td>dependencies</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>allprojects</td>
+<td align="center">对所有project的配置,包括root project</td>
+<td>repositories</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>subprojects</td>
+<td align="center">对所有Child Project的配置</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>repositories</td>
+<td align="center">查找jar包顺序</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>dependencies</td>
+<td align="center">定义依赖</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>test</td>
+<td align="center">定义测试依赖信息</td>
+<td></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="dependencies依赖关键字"><a href="#dependencies依赖关键字" class="headerlink" title="dependencies依赖关键字"></a>dependencies依赖关键字</h3><table>
+<thead>
+<tr>
+<th>3+</th>
+<th>2.+</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>implementation</td>
+<td></td>
+<td align="center">所依赖的库仅可在当前module使用，编译速度快</td>
+</tr>
+<tr>
+<td>api</td>
+<td>compile</td>
+<td align="center">所依赖的库可在整工程使用，编译速度较implementation慢</td>
+</tr>
+<tr>
+<td>provided</td>
+<td>compileOnly</td>
+<td align="center">仅在编译时有效，不参与打包，一般在发布no jar的库时候会用到，很少用</td>
+</tr>
+<tr>
+<td>apk</td>
+<td>runtimeOnly</td>
+<td align="center">仅在生成apk的时候参与打包，编译时不参与</td>
+</tr>
+<tr>
+<td>testImplementation</td>
+<td>testCompile</td>
+<td align="center">仅在单元测试代码的编译以及最终打包测试apk时有效</td>
+</tr>
+<tr>
+<td>debugImplementation</td>
+<td>debugCompile</td>
+<td align="center">仅在debug模式的编译和最终的debug apk打包时有效</td>
+</tr>
+<tr>
+<td>releaseImplementation</td>
+<td>releaseCompile</td>
+<td align="center">仅在Release模式的编译和最终的Release apk打包时有效</td>
+</tr>
+</tbody></table>
 
       
     </div>
