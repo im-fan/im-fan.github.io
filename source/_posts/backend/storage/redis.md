@@ -70,4 +70,9 @@ redisTemplate.opsForHash().multiGet(key,hashKey);
 String hk = "hash 的key";
 String hv = "hash 的value";
 redisTemplate.opsForHash().put(key,hk,hv);
+
+//删除key
+String[] hkeys = {hk};
+redisTemplate.opsForHash().delete(key, hkeys);
+
 ```
