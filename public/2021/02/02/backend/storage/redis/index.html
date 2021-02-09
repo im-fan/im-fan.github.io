@@ -6,18 +6,17 @@
   <meta name="keywords" content=" cache ">
   <meta name="description" content="Redis学习笔记 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="简单案例引用包&lt;!-- 设置了版本号，有可能会报错ClassNotFound --&gt; &lt;dependency&gt;     &lt;groupId&gt;org.springframework.kafka&lt;&#x2F;groupId&gt;     &lt;artifactId&gt;spring-kafka&lt;&#x2F;artifactId&gt; &lt;&#x2F;dependency&amp;g">
+<meta name="description" content="线程池">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot集成Kafka">
-<meta property="og:url" content="http://imfan.com/2021/02/03/backend/mq/kafka/index.html">
+<meta property="og:title" content="ThreadPool详解">
+<meta property="og:url" content="http://imfan.com/2021/02/09/backend/java/thread/threadPool/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="简单案例引用包&lt;!-- 设置了版本号，有可能会报错ClassNotFound --&gt; &lt;dependency&gt;     &lt;groupId&gt;org.springframework.kafka&lt;&#x2F;groupId&gt;     &lt;artifactId&gt;spring-kafka&lt;&#x2F;artifactId&gt; &lt;&#x2F;dependency&amp;g">
+<meta property="og:description" content="线程池">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-03T08:06:00.000Z">
-<meta property="article:modified_time" content="2021-02-03T08:21:36.846Z">
+<meta property="article:published_time" content="2021-02-09T06:12:45.000Z">
+<meta property="article:modified_time" content="2021-02-09T06:27:29.796Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="message">
-<meta property="article:tag" content="kafka">
+<meta property="article:tag" content="线程池">
 <meta name="twitter:card" content="summary">
 
 
@@ -99,11 +98,11 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(19)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(20)</small></div></li>
     
         
             
-            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(6)</small></div>
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(7)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -112,6 +111,10 @@
                         </li>
                         
                         <li><div data-rel="后端<--->工具">工具<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->线程池">线程池<small>(1)</small></div>
                             
                         </li>
                         
@@ -231,6 +234,10 @@
     
         
             
+        
+    
+        
+            
             <li><div data-rel="设计图">设计图<small>(1)</small></div>
                 
             </li>
@@ -256,8 +263,8 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 -->
-<input type="hidden" id="yelog_site_posts_number" value="19">
-<input type="hidden" id="yelog_site_word_count" value="15.6k">
+<input type="hidden" id="yelog_site_posts_number" value="20">
+<input type="hidden" id="yelog_site_word_count" value="17.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -361,6 +368,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线程池</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>设计模式</a>
             </li>
         
@@ -378,6 +389,14 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 后端 线程池 "
+           href="/2021/02/09/backend/java/thread/threadPool/"
+           data-tag="线程池"
+           data-author="" >
+            <span class="post-title" title="ThreadPool详解">ThreadPool详解</span>
+            <span class="post-date" title="2021-02-09 14:12:45">2021/02/09</span>
+        </a>
         
         <a  class="全部文章 消息队列 kafka "
            href="/2021/02/03/backend/mq/kafka/"
@@ -577,12 +596,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-02-02 20:43:31'>2021-02-02 19:59</time>
+            发布时间 : <time class="date" title='最后更新: 2021-02-09 14:07:32'>2021-02-02 19:59</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:266</span>
+        <span>字数:642</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -601,7 +620,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%9B%B8%E5%85%B3"><span class="toc-text">Redis相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RedisTemplate%E9%85%8D%E7%BD%AE"><span class="toc-text">RedisTemplate配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RedisTemplate-k-v%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%AE%E5%BC%82"><span class="toc-text">RedisTemplate k-v序列化差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RedisTemplate-%E6%93%8D%E4%BD%9Chash"><span class="toc-text">RedisTemplate 操作hash</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%9B%B8%E5%85%B3"><span class="toc-text">Redis相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RedisTemplate%E9%85%8D%E7%BD%AE"><span class="toc-text">RedisTemplate配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RedisTemplate-k-v%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%AE%E5%BC%82"><span class="toc-text">RedisTemplate k-v序列化差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RedisTemplate-%E6%93%8D%E4%BD%9Chash"><span class="toc-text">RedisTemplate 操作hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">Redis原子操作的两种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Lua%E8%84%9A%E6%9C%AC"><span class="toc-text">Lua脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set%E5%91%BD%E4%BB%A4%E6%96%B9%E5%BC%8F"><span class="toc-text">Set命令方式</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -674,6 +693,76 @@ redisTemplate.opsForHash().put(key,hk,hv);
 //删除key
 String[] hkeys = &#123;hk&#125;;
 redisTemplate.opsForHash().delete(key, hkeys);
+</code></pre>
+<h3 id="Redis原子操作的两种方式"><a href="#Redis原子操作的两种方式" class="headerlink" title="Redis原子操作的两种方式"></a>Redis原子操作的两种方式</h3><h4 id="Lua脚本"><a href="#Lua脚本" class="headerlink" title="Lua脚本"></a>Lua脚本</h4><pre><code class="shell">-- lua语法 https://www.runoob.com/lua/lua-tutorial.html
+-- 实现一个原子锁,存在key则返回失败,否则返回存储并返回成功
+-- 关键字必须大写 参数1:value 参数2:有效时长
+
+-- call 与 pcall区别  call执行错误就直接返回,pcall错误则返回一个带 err 域的 Lua 表(table),用于表示错误
+
+-- 存在则直接返回失败
+local val = redis.call(&quot;get&quot;,KEYS[1])
+
+-- 不存在,则获取锁
+if val then
+    return 0
+else
+    redis.call(&quot;set&quot;,KEYS[1],ARGV[1])
+    redis.call(&#39;expire&#39;,KEYS[1],ARGV[2])
+    return 1
+end</code></pre>
+<pre><code class="java">@Service
+public class LuaService &#123;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    /**
+     * lua文件所在路径
+     * @parm key 键
+     * @param ttl 过期时间，秒
+     **/
+    public boolean getAtomLock(String key,long ttl)&#123;
+        String lockKey = &quot;my:lock:&quot; + key;
+        // lua脚本所在resource目录下的相对路径
+        String luaName = &quot;lua/atom_lock.lua&quot;;
+        // 执行 lua 脚本
+        DefaultRedisScript&lt;Long&gt; redisScript = new DefaultRedisScript&lt;&gt;();
+        // 指定 lua 脚本
+        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource(luaName)));
+        // 指定返回类型
+        redisScript.setResultType(Long.class);
+        // 参数一：redisScript，参数二：key列表，参数三：arg（可多个）
+        Long result = (Long) redisTemplate.execute(redisScript, Collections.singletonList(lockKey),1,ttl);
+        return result != null &amp;&amp; result == 1L;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="Set命令方式"><a href="#Set命令方式" class="headerlink" title="Set命令方式"></a>Set命令方式</h4><pre><code class="java">@Service
+public class RedisService &#123;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    /**
+     * 不存则在获取锁
+     * @param key
+     * @param value 值
+     * @param expire 过期时间，秒
+     * **/
+    public boolean setAndExpireIfAbsent(final String key, final String value, final long expire) &#123;
+        boolean isSuccess = (boolean) redisTemplate.execute((RedisCallback) connection -&gt; &#123;
+            Object object = connection.execute(&quot;set&quot;,
+                    key.getBytes(),
+                    value.getBytes(),
+                    SafeEncoder.encode(&quot;NX&quot;),
+                    SafeEncoder.encode(&quot;EX&quot;),
+                    Protocol.toByteArray(expire));
+            return null != object;
+        &#125;);
+        return isSuccess;
+    &#125;
+&#125;
 </code></pre>
 
       
