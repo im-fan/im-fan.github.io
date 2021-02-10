@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MapStruct | Imfan笔记</title>
-  <meta name="keywords" content=" utils ">
-  <meta name="description" content="MapStruct | Imfan笔记">
+  <title>服务常见问题排查 | Imfan笔记</title>
+  <meta name="keywords" content=" devops ">
+  <meta name="description" content="服务常见问题排查 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="死锁问题排查 模拟死锁 @Slf4j public class ThreadTest &amp;#123;    public static String a1 &#x3D; &quot;a1&quot;;   public static String a2 &#x3D; &quot;a2&quot;;    public static void main(String[] args) &amp;#123;       new Th">
 <meta property="og:type" content="article">
@@ -599,9 +599,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-backend/java/utils/map-struct" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-devops/check" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">MapStruct</h1>
+        <h1 class="article-title">服务常见问题排查</h1>
     
     <div class="article-meta">
         
@@ -611,9 +611,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="后端">后端</a> > 
+            <a  data-rel="devops">devops</a> > 
             
-            <a  data-rel="后端&lt;---&gt;工具">工具</a>
+            <a  data-rel="devops&lt;---&gt;服务问题排查">服务问题排查</a>
             
         </span>
         
@@ -621,19 +621,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">utils</a>
+            <a class="color2">devops</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-11-08 12:52:36'>2020-10-02 15:51</time>
+            发布时间 : <time class="date" title='最后更新: 2021-02-09 17:51:56'>2021-02-09 17:08</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1k</span>
+        <span>字数:360</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -652,7 +652,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MapStruct"><span class="toc-text">MapStruct</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%A5%E5%85%A5MapStruct"><span class="toc-text">如何接入MapStruct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-Bean%E5%B1%9E%E6%80%A7%E6%8B%B7%E8%B4%9D%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-text">Java Bean属性拷贝性能对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo"><span class="toc-text">demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">实现原理</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-text">死锁问题排查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E7%B9%81FullGC%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-text">频繁FullGC问题排查</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -668,139 +668,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="MapStruct"><a href="#MapStruct" class="headerlink" title="MapStruct"></a>MapStruct</h2><p><a target="_blank" rel="noopener" href="http://mapstruct.org/">MapStruct</a>是一个代码生成器，它基于约定优于配置方法极大地简化了Java bean类型之间映射的实现。<br>生成的映射代码使用普通方法调用，因此快速，类型安全且易于理解。</p>
-<h3 id="如何接入MapStruct"><a href="#如何接入MapStruct" class="headerlink" title="如何接入MapStruct"></a>如何接入MapStruct</h3><pre><code class="xml">maidao-commons 已经完成对[MapStruct 的mvn依赖](http://mapstruct.org/documentation/installation/)，并解决了与swagger2的兼容问题。
-&lt;dependency&gt;
-    &lt;groupId&gt;com.maidao&lt;/groupId&gt;
-    &lt;artifactId&gt;maidao-commons&lt;/artifactId&gt;
-&lt;/dependency&gt;</code></pre>
-<p>IDEA Support: <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support/versions">https://plugins.jetbrains.com/plugin/10036-mapstruct-support/versions</a></p>
-<h3 id="Java-Bean属性拷贝性能对比"><a href="#Java-Bean属性拷贝性能对比" class="headerlink" title="Java Bean属性拷贝性能对比"></a>Java Bean属性拷贝性能对比</h3><p>get/set &gt;= <a target="_blank" rel="noopener" href="http://mapstruct.org/">MapStruct</a> &gt; <a target="_blank" rel="noopener" href="https://jmapper-framework.github.io/jmapper-core/">JMapper</a>  &gt;  <a target="_blank" rel="noopener" href="https://github.com/cglib/cglib/blob/master/cglib/src/main/java/net/sf/cglib/beans/BeanCopier.java">“beanCopier(cglib)”</a> &gt; Orika &gt; ModelMapper &gt; Spring BeanUtils &gt; Dozer &gt; Apache BeanUtils</p>
-<p>性能对比数据来源：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-performance-mapping-frameworks">https://www.baeldung.com/java-performance-mapping-frameworks</a></li>
-<li><a target="_blank" rel="noopener" href="https://java.libhunt.com/categories/337-bean-mapping">https://java.libhunt.com/categories/337-bean-mapping</a></li>
-</ul>
-<p>说明：</p>
-<ul>
-<li>get/set 需要手动编写大量转换代码，代码简洁性差、重复性高和工作量大。</li>
-<li>beanCopier 性能较高，属性名和类型有较高的匹配要求。</li>
-<li>MapStruct 性能较高，在编译阶段，生成Get/Set代码,支持不同属性之间自定义转换。</li>
-<li>Orika 性能较高,支持自定义属性拷贝，性能略差与前两种，当比后面几种高很多。</li>
-<li>Spring BeanUtils 性能一般，只能支持相关名称的拷贝。</li>
-<li>Dozer 性能差，使用简单，编写xml不方便。</li>
-<li>Apache BeanUtils 性能差。</li>
-</ul>
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p>实例代码:</p>
-<pre><code class="java">/**
-* 定义对象之间转换Mapper
- * @Mapper 只有在接口加上这个注解， MapStruct 才会去实现该接口
- *     @Mapper
- *     componentModel ：主要是指定实现类的类型，
- *         - default：默认，可以通过 Mappers.getMapper(Class) 方式获取实例对象
- *         -  spring：在接口的实现类上自动添加注解 @Component，可通过 @Autowired 方式注入
- *     uses 使用用户自定义转换器
- *
- *     http://mapstruct.org/documentation/stable/reference/html/
- */
-//@Mapper(componentModel = &quot;spring&quot;,uses = &#123;DateHandWritten.class&#125;)
-@Mapper(
-        uses = &#123;DateHandWritten.class, UserNameHandWritten.class&#125;,
-        imports = &#123;LocalDateUtil.class&#125;
-        )
-public interface PersonMapper &#123;
+        <h3 id="死锁问题排查"><a href="#死锁问题排查" class="headerlink" title="死锁问题排查"></a>死锁问题排查</h3><ul>
+<li><p>模拟死锁</p>
+<pre><code class="java">@Slf4j
+public class ThreadTest &#123;
 
-    PersonMapper  INSTANCE  = Mappers.getMapper(PersonMapper.class);
+  public static String a1 = &quot;a1&quot;;
+  public static String a2 = &quot;a2&quot;;
 
-    @Mappings(&#123;
-            //@Mapping(source = &quot;name&quot;,target = &quot;name&quot;,ignore = true),
-            @Mapping(target = &quot;birthExpressionFormat&quot;, expression = &quot;java(LocalDateUtil.getDateNow().toString())&quot;),
-            @Mapping(source = &quot;name&quot;,target = &quot;address.name&quot;),
-            @Mapping(source = &quot;price&quot;,target = &quot;price&quot;,numberFormat = &quot;#.00&quot;),
-            @Mapping(source = &quot;birthDate&quot;,target = &quot;birthDateFormat&quot;,dateFormat = &quot;yyyy-MM-dd HH:mm:ss&quot;)
-    &#125;)
-    /***
-     * @Mapping：属性映射，若源对象属性与目标对象名字一致，会自动映射对应属性
-     *     source：源属性
-     *     target：目标属性
-     *     dateFormat：String 到 Date 日期之间相互转换，通过 SimpleDateFormat，该值为 SimpleDateFormat              的日期格式
-     *     ignore: 忽略这个字段
-     * @Mappings：配置多个@Mapping
-     */
-    PersonDto toDto(Person person);
-
-    @InheritConfiguration(name = &quot;toDto&quot;)
-    List&lt;PersonDto&gt; toDtos(List&lt;Person&gt; person);
-
-
-    /*@InheritInverseConfiguration()
-    PersonDto fromDto(Person person);*/
-
-    /**
-     * @InheritConfiguration 用于继承配置
-     * */
-  /*  @InheritConfiguration(name = &quot;toDto&quot;)
-    void update(Person person, @MappingTarget PersonDto personDto);*/
-&#125;
-
-/**定义自定义转换规则*/
-public class DateHandWritten &#123;
-
-    public String asString(Date date) &#123;
-        return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )
-            .format( date ) : null;
-    &#125;
-
-    public Date asDate(String date) &#123;
-        try &#123;
-            return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )
-                .parse( date ) : null;
-        &#125;
-        catch ( ParseException e ) &#123;
-            throw new RuntimeException( e );
-        &#125;
-    &#125;
-&#125;
-
-/**定义自定义转换规则*/
-public class UserNameHandWritten &#123;
-
-    public String asUsername(String username) &#123;
-        return  &quot;被修改后的name&quot;;
-    &#125; 
-&#125;
-
-/***使用实例*/
-public class MapStructTest &#123;
-
-    @Test
-    public void personTest()&#123;
-        Person person = buildPerson();
-        PersonDto personDto = PersonMapper.INSTANCE.toDto(person);
-        System.out.println(JSON.toJSONString(personDto));
-        /**
-        * &#123;&quot;address&quot;:&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;,&quot;addresses&quot;:[&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;],&quot;age&quot;:0,&quot;birthDate&quot;:1555573411245,&quot;birthDateFormat&quot;:&quot;2019-04-18&quot;,&quot;birthExpressionFormat&quot;:&quot;Thu Apr 18 15:43:31 CST 2019&quot;,&quot;name&quot;:&quot;被修改后的name&quot;,&quot;price&quot;:&quot;2.35&quot;&#125;
-        * */
-    &#125;
-
-    @Test
-    public void personListTest()&#123;
-        Person person = buildPerson();
-        List&lt;PersonDto&gt; personDtos = PersonMapper.INSTANCE.toDtos(Lists.newArrayList(person));
-        System.out.println(JSON.toJSONString(personDtos));
-        /**
-        * [&#123;&quot;address&quot;:&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;,&quot;addresses&quot;:[&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;],&quot;age&quot;:0,&quot;birthDate&quot;:1555573439123,&quot;birthDateFormat&quot;:&quot;2019-04-18&quot;,&quot;birthExpressionFormat&quot;:&quot;Thu Apr 18 15:43:59 CST 2019&quot;,&quot;name&quot;:&quot;被修改后的name&quot;,&quot;price&quot;:&quot;2.35&quot;&#125;]
-        * */
-    &#125;
-
-    private Person buildPerson()&#123;
-        Address a = new Address();
-        a.setName(&quot;demo&quot;);
-        return Person.builder().birthDate(new Date()).price(BigDecimal.valueOf(2.347)).name(&quot;中国人&quot;).addresses(Lists.newArrayList(a)).build();
-    &#125;
+  public static void main(String[] args) &#123;
+      new Thread(new PrintA()).start();
+      new Thread(new PrintB()).start();
+  &#125;
 &#125;
 </code></pre>
-<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>在Maven 编译阶段将自动实现PersonMapper的对象属性转换接口,生成PersonMapperImpl文件。</p>
+</li>
+</ul>
+<p>@Slf4j<br>class PrintA implements Runnable{<br>    @SneakyThrows<br>    @Override<br>    public void run() {<br>        synchronized (ThreadTest.a1){<br>            log.info(“PrintA =====&gt; a1”);<br>            Thread.sleep(3000);<br>            synchronized (ThreadTest.a2){<br>                log.info(“PrintA =====&gt; a2”);<br>            }<br>        }<br>    }<br>}<br>@Slf4j<br>class PrintB implements Runnable{</p>
+<pre><code>@SneakyThrows
+@Override
+public void run() &#123;
+    synchronized (ThreadTest.a2)&#123;
+        log.info(&quot;PrintB =====&gt; a2&quot;);
+        Thread.sleep(3000);
+        synchronized (ThreadTest.a1)&#123;
+            log.info(&quot;PrintB =====&gt; a1&quot;);
+        &#125;
+    &#125;
+&#125;</code></pre>
+<p>}</p>
+<pre><code>- 排查命令
+```shell
+# 查找到运行中java进程
+jps -l
+
+# 查看进程堆栈信息
+jstack pid</code></pre>
+<ul>
+<li>工具<pre><code class="textmate">jconsole 或者 jvisualvm</code></pre>
+</li>
+</ul>
+<h3 id="频繁FullGC问题排查"><a href="#频繁FullGC问题排查" class="headerlink" title="频繁FullGC问题排查"></a>频繁FullGC问题排查</h3><ul>
+<li><p>模拟频繁GC</p>
+<pre><code class="java">@Slf4j
+public class OOMTest extends TestCore &#123;
+
+  @Autowired
+  private ThreadPoolConfig poolConfig;
+
+  @Test
+  public void newInstance()&#123;
+      for(;;)&#123;
+          ConcurrentHashMap map = new ConcurrentHashMap&lt;&gt;(3000);
+          map.put(&quot;a&quot;,&quot;b&quot;);
+          log.info(&quot;&#123;&#125; size=&#123;&#125;&quot;,map.toString(),map.size());
+      &#125;
+  &#125;
+&#125;</code></pre>
+</li>
+<li><p>排查<br>```textmate</p>
+</li>
+</ul>
+<p>1.配置项目启动参数<br>    #出现 OOME 时生成堆 dump:<br>    -XX:+HeapDumpOnOutOfMemoryError<br>    #生成堆文件地址：<br>    -XX:HeapDumpPath=/home/project/jvmlogs/</p>
+<p>2.查看哪些对象较大<br>    jmap -histo pid | head -20</p>
+<p>3.通过指令排查(堆栈较大的话可能会将系统卡死)<br>    jmap -dump:file=文件名.dump [pid]<br>    # format=b 指定为二进制文件<br>    jmap -dump:format=b,file=文件名 [pid]</p>
+<pre><code>- 分析
+```textmate
+工具 
+    1.jhat - jdk自带分析工具
+        jhat &lt;heap-dump-file&gt;  heap-dump-file 是文件的路径和文件名
+        执行后访问浏览器访问 http://localhost:7000/ 查看 
+    2.Eclipse Memory Analyzer(MAT)
+    3.IBM Heap Analyzer</code></pre>
 
       
     </div>

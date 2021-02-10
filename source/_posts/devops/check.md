@@ -88,7 +88,7 @@ public class OOMTest extends TestCore {
 - 排查
 ```textmate
 1.配置项目启动参数
-    #出现 OOME 时生成堆 dump: 
+    #出现 OOM 时生成堆 dump: 
     -XX:+HeapDumpOnOutOfMemoryError
     #生成堆文件地址：
     -XX:HeapDumpPath=/home/project/jvmlogs/
