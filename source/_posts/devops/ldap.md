@@ -11,6 +11,16 @@ categories:
 ### 相关链接
 - [OpenLDAP](https://www.openldap.org/)
 
+### 常用名词
+```textmate
+o– organization（组织-公司）
+ou – organization unit（组织单元-部门）
+c - countryName（国家）
+dc - domainComponent（域名）
+sn – suer name（真实名称）
+cn - common name（常用名称)
+```
+
 ### Docker部署LDAP
 - ldap
 ```shell
@@ -41,7 +51,8 @@ docker run \
 --detach osixia/phpldapadmin
 ```
 
-### Java代码测试
+### 查询用户信息
+- 方式一
 ```java
 @Slf4j
 public class ldapService{
@@ -67,6 +78,93 @@ public class ldapService{
             log.info("LDAP登录失败 userName={},passWord={},error={}",username,password,e);
         }
         
+    }
+}
+```
+- 方式二(ldapTemplate)
+
+#### 配置
+```xml
+<!-- ldap -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-ldap</artifactId>
+    <version>2.3.2.RELEASE</version>
+</dependency>
+```
+```yaml
+  # LDAP连接配置,配置的base是不应该再加到节点的dn里面去的(dc=company,dc=com)
+spring:
+  ldap:
+    urls: ldap://127.0.0.1:389
+    base: dc=company,dc=com
+    username: cn=admin,dc=company,dc=com
+    password: 123456
+```
+
+#### 代码
+```java
+@Getter
+@Setter
+@ToString
+@Entry(objectClasses = {"simpleSecurityObject", "organizationalRole","top"}, base = "ou=cmdb,ou=People")
+public class LdapPerson {
+
+    @Id
+    @JsonIgnore
+    private Name dn;
+
+    /** 用户名 **/
+    @Attribute(name="cn")
+    private String personName;
+
+    @Attribute(name="sn")
+    private String sn;
+
+    @Attribute(name="email")
+    private String email;
+
+    /** 昵称 **/
+    @Attribute(name="displayName")
+    private String displayName;
+
+    @Attribute(name="password")
+    private String password;
+}
+```
+```java
+@Slf4j
+public class PersonAttributesMapper implements AttributesMapper<LdapPerson> {
+    @Override
+    public LdapPerson mapFromAttributes(Attributes attrs) throws NamingException {
+        LdapPerson person = new LdapPerson();
+        person.setPersonName((String)attrs.get("cn").get());
+
+        //获取密码
+        byte[] bts = (byte[]) attrs.get("userpassword").get();
+        String password = "";
+        for(byte bt : bts){
+            password = password + (char)bt;
+        }
+        person.setPassword(password);
+        return person;
+    }
+}
+```
+```java
+public class LoginService{
+    public AjaxResult<LdapPerson> ldapCheck(String username, String password) {
+        String dn = String.format(userDN,username);
+        LdapPerson person = ldapTemplate.lookup(dn, new PersonAttributesMapper());
+        log.info("LDAP登录 username:{},person={}",username,JSON.toJSONString(person));
+        if(person == null){
+            return AjaxResult.error("账号不存在");
+        }
+        if(!password.equals(person.getPassword())){
+            log.error("LDAP账号对应密码错误,username={},password={},realPwd={}",username,password,person.getPassword());
+            return AjaxResult.error("密码错误");
+        }
+        return AjaxResult.success(person);
     }
 }
 ```
