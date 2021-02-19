@@ -10,6 +10,7 @@ categories:
 
 ### 相关链接
 - [OpenLDAP](https://www.openldap.org/)
+- [LDAP-admin操作指南](https://www.cnblogs.com/xiaomifeng0510/p/9564688.html)
 
 ### 常用名词
 ```textmate
