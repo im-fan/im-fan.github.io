@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>OAuth2学习笔记 | Imfan笔记</title>
-  <meta name="keywords" content=" oauth2 ">
-  <meta name="description" content="OAuth2学习笔记 | Imfan笔记">
+  <title>LDAP学习笔记 | Imfan笔记</title>
+  <meta name="keywords" content=" devops ">
+  <meta name="description" content="LDAP学习笔记 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="相关链接 OpenLDAP LDAP-admin操作指南  常用名词o– organization（组织-公司） ou – organization unit（组织单元-部门） c - countryName（国家） dc - domainComponent（域名） sn – suer name（真实名称） cn - common name（常用名称) Docker部署LDAP ldap&#96;&#96;&#96;sh">
 <meta property="og:type" content="article">
@@ -615,9 +615,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-framework/oauth2" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-devops/ldap" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">OAuth2学习笔记</h1>
+        <h1 class="article-title">LDAP学习笔记</h1>
     
     <div class="article-meta">
         
@@ -627,7 +627,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="架构">架构</a>
+            <a  data-rel="devops">devops</a> > 
+            
+            <a  data-rel="devops&lt;---&gt;LDAP">LDAP</a>
             
         </span>
         
@@ -635,19 +637,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color2">oauth2</a>
+            <a class="color2">devops</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-26 16:13:32'>2020-11-17 09:58</time>
+            发布时间 : <time class="date" title='最后更新: 2021-03-06 10:04:40'>2021-02-18 14:25</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.4k</span>
+        <span>字数:719</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -666,7 +668,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3"><span class="toc-text">框架相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E6%A8%A1%E5%BC%8F"><span class="toc-text">授权模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%8E%88%E6%9D%83%E6%A8%A1%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="toc-text">不同授权模式请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E4%B8%9A%E5%8A%A1%E6%8E%A5%E5%8F%A3"><span class="toc-text">请求业务接口</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%90%8D%E8%AF%8D"><span class="toc-text">常用名词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E9%83%A8%E7%BD%B2LDAP"><span class="toc-text">Docker部署LDAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">查询用户信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -682,134 +684,157 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/lexburner/oauth2-demo">参考demo</a></li>
-<li><a target="_blank" rel="noopener" href="https://colobu.com/2017/04/28/oauth2-rfc6749/">OAuth2 RFC6749中文翻译</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">理解OAuth 2.0-阮一峰</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/im-fan/my-project/tree/release/1.0/my-oauth2">文档对应demo</a></li>
+        <h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.openldap.org/">OpenLDAP</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaomifeng0510/p/9564688.html">LDAP-admin操作指南</a></li>
 </ul>
-<h4 id="框架相关"><a href="#框架相关" class="headerlink" title="框架相关"></a>框架相关</h4><ul>
-<li>OAuth2<pre><code>解释：
-  OAuth 2.0是一个关于授权的开放网络协议，它允许用户让第三方网站访问该用户在某一网站上存储的信息和资源，
-  如账户信息，照片，联系人等，而不需要给第三方网站提供某一网站上的账户和密码。
-流程：
-  1、用户打开客户端，客户端要求授权。
-  2、用户同意客户端授权。
-  3、客户端使用上一步提供的授权，向服务器授权层申请令牌。
-  4、授权服务器对客户端进行认证后，同意发放令牌。
-  5、客户端使用令牌，向资源服务器申请资源。
-  6、资源服务器确认令牌，向客户端开放资源。</code></pre>
-</li>
-<li>LDAP<pre><code>解释：
-  LDAP是一种基于轻量目录访问协议，全称是Lightweight Directory Access Protocol，是由一个为查询、
-  浏览和搜索而优化的数据库构成，它成树状结构组织数据，类似文件目录一样。
-  LDAP单点登录认证主要是改变原有的认证策略，使得需要的软件都通过LDAP服务器进行认证，在统一身份认证后，
-  用户的所有信息都存储在AD Server中，终端用户在需要使用公司内部服务的时候，都需要通过AD服务器进行认证。
-登录流程：
-  1、连接到LDAP服务器。
-  2、绑定到LDAP服务器。
-  3、在LDAP服务器上执行所需要的操作。
-  4、释放LDAP服务器的连接。</code></pre>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lihuidu/p/6495247.html">CAS(Central Authentication Service-中央式认证服务)</a><pre><code>SSO 仅仅是一种架构，一种设计，而 CAS 则是实现 SSO 的一种手段。两者是抽象与具体的关系。
-CAS即Central Authentication Service模型（中央式认证服务），该协议是为应用提供可信身份认证的单点登录系统，最初是由耶鲁大学开发的。
-CAS 包含两个部分： CAS Server 和 CAS Client。CAS Server 需要独立部署，主要负责对用户的认证工作；CAS Client 负责处理对客户端受保护资源的访问请求，需要登录时，重定向到 CAS Server。</code></pre>
-</li>
-<li>适用场景<pre><code>OAuth协议能广泛应用于互联网中，基于大企业的巨大用户量，能减少小网站的注册推广成本，并且能做到更加便捷的资源共享。
-LDAP协议适用于企业用户使用，通过LDAP协议，能较好地管理员工在公司各系统之间的授权与访问。
-CAS模型，作为权威机构开发的系统，具有很好的兼容性与安全性，广泛应用于各大高校等大型组织，能很好地完成大量系统的对接与大量人员的使用。</code></pre>
+<h3 id="常用名词"><a href="#常用名词" class="headerlink" title="常用名词"></a>常用名词</h3><pre><code class="textmate">o– organization（组织-公司）
+ou – organization unit（组织单元-部门）
+c - countryName（国家）
+dc - domainComponent（域名）
+sn – suer name（真实名称）
+cn - common name（常用名称)</code></pre>
+<h3 id="Docker部署LDAP"><a href="#Docker部署LDAP" class="headerlink" title="Docker部署LDAP"></a>Docker部署LDAP</h3><ul>
+<li>ldap<br>```shell<br>#用户名 cn=admin,dc=company,dc=com<br>#密码 123456<br>#注意，\后面不能有空格<br>docker run \</li>
+<li>p 389:389 \</li>
+<li>p 636:636 \</li>
+<li>-name my-ldap \</li>
+<li>-network bridge \</li>
+<li>-hostname openldap-host \</li>
+<li>-env LDAP_ORGANISATION=”company” \</li>
+<li>-env LDAP_DOMAIN=”company.com” \</li>
+<li>-env LDAP_ADMIN_PASSWORD=”123456” \</li>
+<li>-detach osixia/openldap<br>```</li>
+<li>ldap-admin<br>```shell<br>#启动后浏览器访问<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a><br>docker run \</li>
+<li>d \</li>
+<li>-privileged \</li>
+<li>p 8080:80 \</li>
+<li>-name ldap-admin \</li>
+<li>-env PHPLDAPADMIN_HTTPS=false \</li>
+<li>-env PHPLDAPADMIN_LDAP_HOSTS=LDAP服务IP \</li>
+<li>-detach osixia/phpldapadmin<pre><code></code></pre>
 </li>
 </ul>
-<h4 id="授权模式"><a href="#授权模式" class="headerlink" title="授权模式"></a>授权模式</h4><ul>
-<li><p>授权码模式（authorization code）</p>
-<pre><code>功能最完整、流程最严密的授权模式。它的特点就是通过客户端的后台服务器，与&quot;服务提供商&quot;的认证服务器进行互动。</code></pre>
-</li>
-<li><p>简化模式（implicit）</p>
-</li>
-<li><p>密码模式（resource owner password credentials）</p>
-</li>
-<li><p>客户端模式（client credentials）</p>
-</li>
-<li><p>主要配置</p>
-<pre><code>Oauth2ServerConfig
-WebSecurityConfigurer</code></pre>
-</li>
-</ul>
-<h4 id="不同授权模式请求"><a href="#不同授权模式请求" class="headerlink" title="不同授权模式请求"></a>不同授权模式请求</h4><ul>
-<li><p>授权码模式(在浏览器中访问接口)</p>
-<pre><code>配置项：需要将返回地址添加到client中
-  clients.redirectUris(&quot;http://www.baidu.com&quot;)
-  GET http://localhost:8200/oauth/authorize?response_type=code&amp;client_id=client_1&amp;redirect_uri=http://www.baidu.com&amp;state=123
-所需参数解释
-  response_type：表示授权类型，必选项，此处的值固定为&quot;code&quot;
-  client_id：表示客户端的ID，必选项
-  redirect_uri：表示重定向URI，可选项
-  scope：表示申请的权限范围，可选项
-  state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</code></pre>
-</li>
-<li><p>简化模式(在浏览器中访问接口)</p>
-<pre><code>请求地址
-  GET http://localhost:8200/oauth/authorize?response_type=token&amp;client_id=client_1&amp;redirect_uri=http://www.baidu.com&amp;state=123&amp;scope=select
-参数解释：
-  response_type：表示授权类型，此处的值固定为&quot;token&quot;，必选项。
-  client_id：表示客户端的ID，必选项。
-  redirect_uri：表示重定向的URI，可选项。
-  scope：表示权限范围，可选项。
-  state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</code></pre>
-</li>
-<li><p>password方式获取toke</p>
-<pre><code>请求地址
-  POST http://localhost:8200/oauth/token?grant_type=password&amp;scope=select&amp;client_id=client_1&amp;client_secret=123456&amp;username=user_1&amp;password=123456
-返回信息
-  &#123;
-      &quot;access_token&quot;: &quot;39be5ea6-fdcd-4b15-a4dd-1f3dbaf8fc63&quot;,
-      &quot;token_type&quot;: &quot;bearer&quot;,
-      &quot;refresh_token&quot;: &quot;396e6c5e-9d79-420a-8b25-945098b10c82&quot;,
-      &quot;expires_in&quot;: 43021,
-      &quot;scope&quot;: &quot;select&quot;
+<h3 id="查询用户信息"><a href="#查询用户信息" class="headerlink" title="查询用户信息"></a>查询用户信息</h3><ul>
+<li><p>方式一</p>
+<pre><code class="java">@Slf4j
+public class ldapService&#123;
+  public static void main(String[] args) &#123;
+      try &#123;
+          String bindUserDN = &quot;cn=admin,dc=company,dc=com&quot;;
+          //用户密码
+          String bindPassword = &quot;123456&quot;;
+          //ldap服务器IP
+          String url = &quot;ldap://127.0.0.1:389/dc=company,dc=com&quot;;
+
+          Hashtable&lt;String, String&gt; env = new Hashtable&lt;&gt;();
+          env.put(javax.naming.Context.INITIAL_CONTEXT_FACTORY, &quot;com.sun.jndi.ldap.LdapCtxFactory&quot;);
+          env.put(javax.naming.Context.PROVIDER_URL, url);
+          env.put(javax.naming.Context.SECURITY_AUTHENTICATION, &quot;simple&quot;);
+          env.put(javax.naming.Context.SECURITY_PRINCIPAL, bindUserDN);
+          env.put(javax.naming.Context.SECURITY_CREDENTIALS, bindPassword);
+          env.put(&quot;java.naming.referral&quot;, &quot;follow&quot;);
+
+          DirContext ctx = new InitialDirContext(env);
+          log.info(&quot;ctx=&#123;&#125;&quot;, JSON.toJSONString(ctx));
+      &#125; catch (Exception e) &#123;
+          log.info(&quot;LDAP登录失败 userName=&#123;&#125;,passWord=&#123;&#125;,error=&#123;&#125;&quot;,username,password,e);
+      &#125;
+
   &#125;
-参数解释
-  grant_type：表示授权类型，此处的值固定为&quot;password&quot;，必选项。
-  username：表示用户名，必选项。
-  password：表示用户的密码，必选项。
-  scope：表示权限范围，可选项。</code></pre>
+&#125;</code></pre>
 </li>
-<li><p>client方式获取access_token</p>
-<pre><code>请求地址
-  POST http://localhost:8200/oauth/token?grant_type=client_credentials&amp;scope=select&amp;client_id=client_2&amp;client_secret=123456
-返回信息
-  &#123;
-      &quot;access_token&quot;: &quot;17fc17a9-83b2-41c3-8621-c727d8329bbd&quot;,
-      &quot;token_type&quot;: &quot;bearer&quot;,
-      &quot;expires_in&quot;: 42400,
-      &quot;scope&quot;: &quot;select&quot;
-  &#125;
-参数解释
-  granttype：表示授权类型，此处的值固定为&quot;clientcredentials&quot;，必选项。
-  scope：表示权限范围，可选项。</code></pre>
+<li><p>方式二(ldapTemplate)</p>
 </li>
 </ul>
-<ul>
-<li>刷新token<pre><code>请求地址
-  POST http://localhost:8200/oauth/token?grant_type=refresh_token&amp;refresh_token=396e6c5e-9d79-420a-8b25-945098b10c82&amp;client_id=client_2&amp;client_secret=123456
-返回信息
-  &#123;
-      &quot;access_token&quot;: &quot;e0e64627-f157-4718-81f0-069ca21549ad&quot;,
-      &quot;token_type&quot;: &quot;bearer&quot;,
-      &quot;refresh_token&quot;: &quot;396e6c5e-9d79-420a-8b25-945098b10c82&quot;,
-      &quot;expires_in&quot;: 43199,
-      &quot;scope&quot;: &quot;select&quot;
-  &#125;</code></pre>
-</li>
-</ul>
-<h4 id="请求业务接口"><a href="#请求业务接口" class="headerlink" title="请求业务接口"></a>请求业务接口</h4><ul>
-<li>请求接口<pre><code>配置拦截：
-  HttpSecurity中配置 http.antMatchers(&quot;/user/**&quot;).authenticated()
-使用client方式获取的access_token
-  GET http://localhost:8200/user/info?access_token=d8f47460-c0a6-4247-9f87-1712bae5325e
-接口可正常返回</code></pre>
-</li>
-</ul>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code class="xml">&lt;!-- ldap --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-ldap&lt;/artifactId&gt;
+    &lt;version&gt;2.3.2.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<pre><code class="yaml">  # LDAP连接配置,配置的base是不应该再加到节点的dn里面去的(dc=company,dc=com)
+spring:
+  ldap:
+    urls: ldap://127.0.0.1:389
+    base: dc=company,dc=com
+    username: cn=admin,dc=company,dc=com
+    password: 123456</code></pre>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code class="java">@Getter
+@Setter
+@ToString
+@Entry(objectClasses = &#123;&quot;simpleSecurityObject&quot;, &quot;organizationalRole&quot;,&quot;top&quot;&#125;, base = &quot;ou=cmdb,ou=People&quot;)
+public class LdapPerson &#123;
+
+    @Id
+    @JsonIgnore
+    private Name dn;
+
+    /** 用户名 **/
+    @Attribute(name=&quot;cn&quot;)
+    private String personName;
+
+    @Attribute(name=&quot;sn&quot;)
+    private String sn;
+
+    @Attribute(name=&quot;email&quot;)
+    private String email;
+
+    /** 昵称 **/
+    @Attribute(name=&quot;displayName&quot;)
+    private String displayName;
+
+    @Attribute(name=&quot;password&quot;)
+    private String password;
+&#125;</code></pre>
+<pre><code class="java">@Slf4j
+public class PersonAttributesMapper implements AttributesMapper&lt;LdapPerson&gt; &#123;
+    @Override
+    public LdapPerson mapFromAttributes(Attributes attrs) throws NamingException &#123;
+        LdapPerson person = new LdapPerson();
+        person.setPersonName((String)attrs.get(&quot;cn&quot;).get());
+
+        //获取密码
+        byte[] bts = (byte[]) attrs.get(&quot;userpassword&quot;).get();
+        String password = &quot;&quot;;
+        for(byte bt : bts)&#123;
+            password = password + (char)bt;
+        &#125;
+        person.setPassword(password);
+        return person;
+    &#125;
+&#125;</code></pre>
+<pre><code class="java">public class LoginService&#123;
+
+    //lookup查询(精确定位查询)
+    public AjaxResult&lt;LdapPerson&gt; ldapCheck(String username, String password) &#123;
+        String dn = String.format(userDN,username);
+        LdapPerson person = ldapTemplate.lookup(dn, new PersonAttributesMapper());
+        log.info(&quot;LDAP登录 username:&#123;&#125;,person=&#123;&#125;&quot;,username,JSON.toJSONString(person));
+        if(person == null)&#123;
+            return AjaxResult.error(&quot;账号不存在&quot;);
+        &#125;
+        if(!password.equals(person.getPassword()))&#123;
+            log.error(&quot;LDAP账号对应密码错误,username=&#123;&#125;,password=&#123;&#125;,realPwd=&#123;&#125;&quot;,username,password,person.getPassword());
+            return AjaxResult.error(&quot;密码错误&quot;);
+        &#125;
+        return AjaxResult.success(person);
+    &#125;
+
+    //search(遍历所有节点匹配)
+    public LdapPerson getLdapAccountByName(String name) &#123;
+
+        LdapQuery query = query()
+                .where(&quot;objectclass&quot;).is(objectclass)
+                .and(&quot;cn&quot;).is(name);
+
+        List&lt;LdapPerson&gt; persons = ldapTemplate.search(query,new PersonAttributesMapper());
+        if(CollectionUtils.isEmpty(persons))&#123;
+            return null;
+        &#125;
+        return persons.get(0);
+    &#125;
+&#125;</code></pre>
 
       
     </div>
