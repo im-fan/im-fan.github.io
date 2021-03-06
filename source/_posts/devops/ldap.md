@@ -11,6 +11,10 @@ categories:
 ### 相关链接
 - [OpenLDAP](https://www.openldap.org/)
 - [LDAP-admin操作指南](https://www.cnblogs.com/xiaomifeng0510/p/9564688.html)
+- [CSDN-Demo](https://blog.csdn.net/weixin_30338461/article/details/98920690)
+- [官方文档及例子(重要)](http://docs.spring.io/spring-ldap/docs/2.1.0.RELEASE/reference/)
+- [JAVA文档（重要）](http://docs.spring.io/spring-ldap/docs/2.1.0.RELEASE/apidocs/)
+- [GitHub（大量例子）](https://github.com/spring-projects/spring-ldap)
 
 ### 常用名词
 ```textmate
