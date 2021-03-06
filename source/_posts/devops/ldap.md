@@ -152,8 +152,11 @@ public class PersonAttributesMapper implements AttributesMapper<LdapPerson> {
     }
 }
 ```
+
 ```java
 public class LoginService{
+    
+    //lookup查询(精确定位查询)
     public AjaxResult<LdapPerson> ldapCheck(String username, String password) {
         String dn = String.format(userDN,username);
         LdapPerson person = ldapTemplate.lookup(dn, new PersonAttributesMapper());
@@ -166,6 +169,20 @@ public class LoginService{
             return AjaxResult.error("密码错误");
         }
         return AjaxResult.success(person);
+    }
+    
+    //search(遍历所有节点匹配)
+    public LdapPerson getLdapAccountByName(String name) {
+
+        LdapQuery query = query()
+                .where("objectclass").is(objectclass)
+                .and("cn").is(name);
+
+        List<LdapPerson> persons = ldapTemplate.search(query,new PersonAttributesMapper());
+        if(CollectionUtils.isEmpty(persons)){
+            return null;
+        }
+        return persons.get(0);
     }
 }
 ```
