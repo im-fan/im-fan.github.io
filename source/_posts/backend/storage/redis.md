@@ -127,7 +127,8 @@ public class LuaService {
 }
 
 ```
-#### Set命令方式
+#### 事务操作
+- execute方式
 ```java
 @Service
 public class RedisService {
@@ -154,5 +155,5 @@ public class RedisService {
         return isSuccess;
     }
 }
-
 ```
+

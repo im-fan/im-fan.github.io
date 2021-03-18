@@ -8,6 +8,10 @@ categories:
 - 服务问题排查
 ---
 
+### K8S相关(网上找的)
+- [k8s实践](https://k8s.imroc.io/troubleshooting/)
+- [k8s问题定位手册](https://www.processon.com/view/link/5e4662ade4b0d86ec4018e50#map)
+
 ### 死锁问题排查
 - 模拟死锁
 ```java
