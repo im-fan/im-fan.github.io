@@ -1,5 +1,5 @@
 ---
-title: 对象转换工具
+title: 对象转换工具-Orika
 description: 对象转换
 date: 2021-03-20 14:15:00
 tags:
@@ -8,10 +8,6 @@ categories:
 - 后端
 - 工具
 ---
-
-## DozerMap
-- [官方文档](http://dozer.sourceforge.net/)
-
 
 ## Orika
 - [官方文档](http://orika-mapper.github.io/orika-docs/)

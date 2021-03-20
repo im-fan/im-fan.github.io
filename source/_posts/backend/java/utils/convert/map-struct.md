@@ -1,6 +1,6 @@
 ---
-title: MapStruct
-description: MapStruct
+title: 对象转换工具-MapStruct
+description: 对象转换
 date: 2020-10-02 15:51:46
 tags:
 - utils
@@ -16,13 +16,7 @@ categories:
 
 ### 如何接入MapStruct
 
-```xml
-maidao-commons 已经完成对[MapStruct 的mvn依赖](http://mapstruct.org/documentation/installation/)，并解决了与swagger2的兼容问题。
-<dependency>
-    <groupId>com.maidao</groupId>
-    <artifactId>maidao-commons</artifactId>
-</dependency>
-```
+- [官网文档](http://mapstruct.org/documentation/installation/)
 
 IDEA Support: https://plugins.jetbrains.com/plugin/10036-mapstruct-support/versions
 

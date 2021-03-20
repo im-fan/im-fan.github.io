@@ -9,6 +9,8 @@ categories:
 - 工具
 ---
 
+- [官网](https://mp.baomidou.com/)
+
 ### 常用配置
 ```yaml
 #mybatis
@@ -74,3 +76,6 @@ public class MybatisPlusAspect {
     }
 }
 ```
+
+### Idea生成代码插件推荐
+- [EasyCode-MybatisCodeHelper](https://plugins.jetbrains.com/plugin/13847-easycode-mybatiscodehelper)
