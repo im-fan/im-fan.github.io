@@ -8,9 +8,9 @@ categories:
 - 服务问题排查
 ---
 
-### K8S相关(网上找的)
-- [k8s实践](https://k8s.imroc.io/troubleshooting/)
-- [k8s问题定位手册](https://www.processon.com/view/link/5e4662ade4b0d86ec4018e50#map)
+### K8S相关
+- [k8s实践(转)](https://k8s.imroc.io/troubleshooting/)
+- [k8s问题定位手册(转)](https://www.processon.com/view/link/5e4662ade4b0d86ec4018e50#map)
 
 ### 死锁问题排查
 - 模拟死锁
@@ -41,6 +41,7 @@ class PrintA implements Runnable{
         }
     }
 }
+
 @Slf4j
 class PrintB implements Runnable{
 
@@ -56,7 +57,9 @@ class PrintB implements Runnable{
         }
     }
 }
+
 ```
+
 - 排查命令
 ```shell
 # 查找到运行中java进程
@@ -64,10 +67,17 @@ jps -l
 
 # 查看进程堆栈信息
 jstack pid
+
+# 查看服务gc情况
+jstat -gcutil pid 1000
 ```
+
 - 工具
 ```textmate
-jconsole 或者 jvisualvm
+1.gceasy网站
+ https://www.gceasy.io/
+ 
+2.jconsole 或者 jvisualvm
 ```
 
 ### 频繁FullGC问题排查
@@ -89,6 +99,7 @@ public class OOMTest extends TestCore {
     }
 }
 ```
+
 - 排查
 ```textmate
 1.配置项目启动参数
@@ -105,6 +116,7 @@ public class OOMTest extends TestCore {
     # format=b 指定为二进制文件
     jmap -dump:format=b,file=文件名 [pid]
 ```
+
 - 分析
 ```textmate
 工具 
