@@ -14,6 +14,7 @@ categories:
 
 ### 死锁问题排查
 - 模拟死锁
+
 ```java
 @Slf4j
 public class ThreadTest {
@@ -26,7 +27,8 @@ public class ThreadTest {
         new Thread(new PrintB()).start();
     }
 }
-
+```
+```java
 @Slf4j
 class PrintA implements Runnable{
     @SneakyThrows
@@ -41,7 +43,8 @@ class PrintA implements Runnable{
         }
     }
 }
-
+```
+```java
 @Slf4j
 class PrintB implements Runnable{
 
@@ -57,10 +60,10 @@ class PrintB implements Runnable{
         }
     }
 }
-
 ```
 
 - 排查命令
+
 ```shell
 # 查找到运行中java进程
 jps -l
