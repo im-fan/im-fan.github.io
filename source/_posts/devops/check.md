@@ -76,15 +76,18 @@ jstat -gcutil pid 1000
 ```
 
 - 工具
+
 ```textmate
 1.gceasy网站
- https://www.gceasy.io/
+ https://www.gceasy.io
  
 2.jconsole 或者 jvisualvm
 ```
 
 ### 频繁FullGC问题排查
+
 - 模拟频繁GC
+
 ```java
 @Slf4j
 public class OOMTest extends TestCore {
@@ -104,6 +107,7 @@ public class OOMTest extends TestCore {
 ```
 
 - 排查
+
 ```textmate
 1.配置项目启动参数
     #出现 OOM 时生成堆 dump: 
@@ -121,6 +125,7 @@ public class OOMTest extends TestCore {
 ```
 
 - 分析
+
 ```textmate
 工具 
     1.jhat - jdk自带分析工具
