@@ -19,4 +19,4 @@ categories:
 |Markdown编辑工具|Haroopad||
 |Mac包管理工具|Homebrew||
 |Mac破解软件||https://xclient.info|
-|相似网站查询||https://www.similarsitesearch.com/cn|
+|相似网站查询||https://www.similarsites.com|
