@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>nginx</title>
+      <link href="2021/04/05/devops/nginx/"/>
+      <url>2021/04/05/devops/nginx/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="http://nginx.org/">官网</a></li><li><a href="https://www.runoob.com/linux/nginx-install-setup.html">菜鸟教程-Nginx 安装配置</a></li><li><a href="https://cloud.tencent.com/document/product/400/35244">Nginx服务器SSL证书安装部署-腾讯云</a></li></ul><h3 id="nginx命令"><a href="#nginx命令" class="headerlink" title="nginx命令"></a>nginx命令</h3><pre><code class="text">1.检测配置是否正常nginx -t 2.热部署配置nginx -s reload</code></pre><h3 id="ssl-nginx配置"><a href="#ssl-nginx配置" class="headerlink" title="ssl-nginx配置"></a>ssl-nginx配置</h3><pre><code class="text">具体参考云厂商ssl证书安装步骤1.下载ssl相关文件,服务器开启443端口权限2.解压后将文件夹Nginx中文件放到nginx安装目录下(或其他地方)3.添加nginx配置文件4.重启生效</code></pre><h3 id="同一域名不同服务配置"><a href="#同一域名不同服务配置" class="headerlink" title="同一域名不同服务配置"></a>同一域名不同服务配置</h3><pre><code class="text">server &#123;    listen       8888;    server_name  localhost;    location /service1/ &#123;         proxy_pass http://localhost:7001/;    &#125;    location /service2/ &#123;         proxy_pass http://localhost:7002/;    &#125;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> devops </category>
+          
+          <category> nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> devops </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot</title>
       <link href="2021/03/22/backend/spring/springboot/"/>
       <url>2021/03/22/backend/spring/springboot/</url>
