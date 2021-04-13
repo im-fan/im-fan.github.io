@@ -3,8 +3,11 @@ title: Zookeeper搭建
 date: 2020-10-29 15:40:46
 tags: 
 - zookeeper
+- 注册中心
+- 分布式锁
 categories: 
-- 服务搭建
+- 服务治理
+- zookeeper
 ---
 
 
