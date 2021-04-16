@@ -41,6 +41,11 @@ categories:
     docker update xx --restart=always
 ```
 
+#### 清理Docker
+```textmate
+https://dockerwebdev.com/tutorials/clean-up-docker
+```
+
 #### 配置阿里云镜像加速
 ```textmate
 阿里云控制台->容器服务->镜像加速器->选择不同系统的命令并执行
