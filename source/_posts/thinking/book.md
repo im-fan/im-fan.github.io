@@ -9,6 +9,8 @@ categories:
 - 阅读
 ---
 
+### 技术书
+- 《Netty、Zookeeper、Redis高并发实战》
 
-- **网址**
-  - [结构化思维](https://www.toutiao.com/i6619057728725729800/)
+### 思考方式
+- [结构化思维](https://www.toutiao.com/i6619057728725729800/)
