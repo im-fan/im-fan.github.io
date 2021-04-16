@@ -2,19 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Imfan笔记</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Imfan笔记">
+  <title>运维相关 | Imfan笔记</title>
+  <meta name="keywords" content=" devops ">
+  <meta name="description" content="运维相关 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="nginx">
+<meta name="description" content="K8S相关 k8s实践(转) k8s问题定位手册(转)  Docker相关 清理Docker Kubernetes中文社区 Istio(ServiceMesh) Kiali  本地启动K8S1.先下载安装docker desktop(建议3.2.2以上)     https:&#x2F;&#x2F;www.docker.com&#x2F;products&#x2F;docker-desktop  2.安装好后启动docker deskt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx">
-<meta property="og:url" content="http://imfan.com/2021/04/05/devops/nginx/index.html">
+<meta property="og:title" content="运维相关">
+<meta property="og:url" content="http://imfan.com/2021/04/16/devops/docker/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="nginx">
+<meta property="og:description" content="K8S相关 k8s实践(转) k8s问题定位手册(转)  Docker相关 清理Docker Kubernetes中文社区 Istio(ServiceMesh) Kiali  本地启动K8S1.先下载安装docker desktop(建议3.2.2以上)     https:&#x2F;&#x2F;www.docker.com&#x2F;products&#x2F;docker-desktop  2.安装好后启动docker deskt">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-05T02:26:05.000Z">
-<meta property="article:modified_time" content="2021-04-05T02:41:34.760Z">
+<meta property="article:published_time" content="2021-04-16T06:19:25.000Z">
+<meta property="article:modified_time" content="2021-04-16T06:25:55.429Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="devops">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/road.png" />
@@ -98,7 +98,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(25)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(29)</small></div></li>
     
         
             
@@ -139,14 +139,6 @@
         
             
             <li><div data-rel="数据库">数据库<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="服务搭建">服务搭建<small>(1)</small></div>
                 
             </li>
             
@@ -202,7 +194,7 @@
     
         
             
-            <li><div data-rel="devops"><i class="fold iconfont icon-right"></i>devops<small>(3)</small></div>
+            <li><div data-rel="devops"><i class="fold iconfont icon-right"></i>devops<small>(4)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -215,6 +207,10 @@
                         </li>
                         
                         <li><div data-rel="devops<--->服务问题排查">服务问题排查<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="devops<--->部署">部署<small>(1)</small></div>
                             
                         </li>
                         
@@ -249,6 +245,58 @@
         
     
         
+            
+        
+    
+        
+            
+            <li><div data-rel="test"><i class="fold iconfont icon-right"></i>test<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="test<--->jmh">jmh<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="服务治理"><i class="fold iconfont icon-right"></i>服务治理<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="服务治理<--->nacos">nacos<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="服务治理<--->zookeeper">zookeeper<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
             
         
     
@@ -294,9 +342,29 @@
     
         
             
+            <li><div data-rel="综合文档"><i class="fold iconfont icon-right"></i>综合文档<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="综合文档<--->doc">doc<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
             <li><div data-rel="设计图">设计图<small>(1)</small></div>
                 
             </li>
+            
+        
+    
+        
             
         
     
@@ -319,8 +387,8 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 -->
-<input type="hidden" id="yelog_site_posts_number" value="25">
-<input type="hidden" id="yelog_site_word_count" value="20.3k">
+<input type="hidden" id="yelog_site_posts_number" value="29">
+<input type="hidden" id="yelog_site_word_count" value="20.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -384,6 +452,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>doc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>kafka</a>
             </li>
         
@@ -396,11 +468,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>oauth2</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>test</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -420,11 +500,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>分布式锁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态配置</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>常用语</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>思维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>注册中心</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -453,6 +545,38 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 devops 部署 "
+           href="/2021/04/16/devops/docker/"
+           data-tag="devops"
+           data-author="" >
+            <span class="post-title" title="运维相关">运维相关</span>
+            <span class="post-date" title="2021-04-16 14:19:25">2021/04/16</span>
+        </a>
+        
+        <a  class="全部文章 综合文档 doc "
+           href="/2021/04/13/doc/work/"
+           data-tag="doc"
+           data-author="" >
+            <span class="post-title" title="综合文档地址备份">综合文档地址备份</span>
+            <span class="post-date" title="2021-04-13 13:59:00">2021/04/13</span>
+        </a>
+        
+        <a  class="全部文章 test jmh "
+           href="/2021/04/13/test/test/"
+           data-tag="test"
+           data-author="" >
+            <span class="post-title" title="测试相关">测试相关</span>
+            <span class="post-date" title="2021-04-13 11:56:00">2021/04/13</span>
+        </a>
+        
+        <a  class="全部文章 服务治理 nacos "
+           href="/2021/04/13/backend/service/nacos/"
+           data-tag="nacos,动态配置,注册中心"
+           data-author="" >
+            <span class="post-title" title="nacos">nacos</span>
+            <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
+        </a>
         
         <a  class="全部文章 devops nginx "
            href="/2021/04/05/devops/nginx/"
@@ -574,9 +698,9 @@
             <span class="post-date" title="2020-11-04 22:31:24">2020/11/04</span>
         </a>
         
-        <a  class="全部文章 服务搭建 "
+        <a  class="全部文章 服务治理 zookeeper "
            href="/2020/10/29/backend/service/zookeeper/"
-           data-tag="zookeeper"
+           data-tag="注册中心,zookeeper,分布式锁"
            data-author="" >
             <span class="post-title" title="Zookeeper搭建">Zookeeper搭建</span>
             <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
@@ -669,12 +793,62 @@
         </div>
     </div> -->
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-devops/docker" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Imfan"><span class="toc-text">Imfan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%A6%96%E9%A1%B5"><span class="toc-text">个人博客首页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E"><span class="toc-text">关于</span></a></li></ol></li></ol></li></ol>
+        <h1 class="article-title">运维相关</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="devops">devops</a> > 
+            
+            <a  data-rel="devops&lt;---&gt;部署">部署</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">devops</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-04-16 14:25:55'>2021-04-16 14:19</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:306</span>
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#K8S%E7%9B%B8%E5%85%B3"><span class="toc-text">K8S相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E7%9B%B8%E5%85%B3"><span class="toc-text">Docker相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8K8S"><span class="toc-text">本地启动K8S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#docker%E8%AE%BE%E7%BD%AE"><span class="toc-text">docker设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="toc-text">配置阿里云镜像加速</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker%E8%B8%A9%E5%9D%91"><span class="toc-text">Docker踩坑</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA-VirtualBox"><span class="toc-text">虚拟机-VirtualBox</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VirtualBox%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7"><span class="toc-text">VirtualBox虚拟机镜像安装工具</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -687,18 +861,59 @@
     }
 </style>
 </div>
-            <h1 id="Imfan"><a href="#Imfan" class="headerlink" title="Imfan"></a>Imfan</h1><hr>
-<blockquote>
-<p>思考、记录、回顾</p>
-</blockquote>
-<h2 id="个人博客首页"><a href="#个人博客首页" class="headerlink" title="个人博客首页"></a>个人博客首页</h2><p>少年易学老难成，一寸光阴不可轻。 ——朱熹</p>
-<p>Stay hungry,Stay foolish     ——Steve Jobs</p>
-<h3 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h3><p>本博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4136#article-header0">Gitee Pages</a><p><br>引用主题 <a target="_blank" rel="noopener" href="https://yelog.org/2017/03/23/3-hexo-instruction/">3-hexo</a></p>
-<p>总文章:<code class="article_number"></code>篇，所有文章总字数：<code class="site_word_count"></code>字<p><br>历史访问人数：<code class="site_uv"></code>人，历史访问量：<code class="site_pv"></code>次</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="K8S相关"><a href="#K8S相关" class="headerlink" title="K8S相关"></a>K8S相关</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://k8s.imroc.io/troubleshooting/">k8s实践(转)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.processon.com/view/link/5e4662ade4b0d86ec4018e50#map">k8s问题定位手册(转)</a></li>
+</ul>
+<h3 id="Docker相关"><a href="#Docker相关" class="headerlink" title="Docker相关"></a>Docker相关</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://dockerwebdev.com/tutorials/clean-up-docker/">清理Docker</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.kubernetes.org.cn/kubernetes-pod">Kubernetes中文社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://istio.io/latest/zh/docs/setup/getting-started/">Istio(ServiceMesh)</a></li>
+<li><a target="_blank" rel="noopener" href="https://kiali.io/documentation/latest/runtimes-monitoring/#_quarkus">Kiali</a></li>
+</ul>
+<h4 id="本地启动K8S"><a href="#本地启动K8S" class="headerlink" title="本地启动K8S"></a>本地启动K8S</h4><pre><code class="textmate">1.先下载安装docker desktop(建议3.2.2以上)
+    https://www.docker.com/products/docker-desktop
 
-        </article>
-        
-        
+2.安装好后启动docker desktop
+
+3.设置
+    3.1 Perferences ==&gt; Kubernetes ==&gt; 开启Enable Kubernetes，Show system containers
+    3.2 如果开启不了尝试手动下载k8s相关进行并重启docker desktop
+    3.3 下载与docker desktop中Kubernetes一致的版本
+        https://github.com/maguowei/k8s-docker-desktop-for-mac
+</code></pre>
+<h4 id="docker设置"><a href="#docker设置" class="headerlink" title="docker设置"></a>docker设置</h4><pre><code class="textmate">1.设置开机自启
+    sudo systemctl enable xx
+
+2.配置docker容器自动重启
+    docker update xx --restart=always</code></pre>
+<h4 id="配置阿里云镜像加速"><a href="#配置阿里云镜像加速" class="headerlink" title="配置阿里云镜像加速"></a>配置阿里云镜像加速</h4><pre><code class="textmate">阿里云控制台-&gt;容器服务-&gt;镜像加速器-&gt;选择不同系统的命令并执行</code></pre>
+<h4 id="Docker踩坑"><a href="#Docker踩坑" class="headerlink" title="Docker踩坑"></a>Docker踩坑</h4><pre><code class="textmate">1.目录挂载问题
+    如果要映射具体文件，需要先手工创建好，否则默认是作为文件夹创建的</code></pre>
+<h3 id="虚拟机-VirtualBox"><a href="#虚拟机-VirtualBox" class="headerlink" title="虚拟机-VirtualBox"></a>虚拟机-VirtualBox</h3><h4 id="VirtualBox虚拟机镜像安装工具"><a href="#VirtualBox虚拟机镜像安装工具" class="headerlink" title="VirtualBox虚拟机镜像安装工具"></a>VirtualBox虚拟机镜像安装工具</h4><pre><code class="textmate">   vargrant 软件(有对应的镜像仓库)
+   vargrant init center/7  ---&gt; 会生成类似dockerfile的文件,支持修改配置
+   vargrant up --&gt; 启动，相当于点虚拟机开机
+   vargrant ssh  ---&gt; ssh链接虚拟机
+   vargrant reload ---&gt; 重启虚拟机</code></pre>
+
+      
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <!--
@@ -709,11 +924,11 @@
  -->
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
