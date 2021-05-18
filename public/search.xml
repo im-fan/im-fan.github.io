@@ -4,11 +4,65 @@
   
     
     <entry>
+      <title>istio</title>
+      <link href="2021/05/18/devops/istio/"/>
+      <url>2021/05/18/devops/istio/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="https://istio.io/latest/zh/docs/examples/bookinfo/">官网</a></li><li><a href="https://www.jianshu.com/p/1f3f62ce3ea9">istio性能测试</a></li></ul><h3 id="流量管理"><a href="#流量管理" class="headerlink" title="流量管理"></a>流量管理</h3><ul><li><p>配置基本请求路由</p><pre><code class="yaml">spec:hosts:  - reviewshttp:  - route:      - destination:          host: reviews          subset: v1</code></pre></li><li><p>按照请求头中用户信息过滤</p><pre><code class="yaml">spec:hosts:  - reviewshttp:  - match:      - headers:          end-user:            exact: jason    route:      - destination:          host: reviews          subset: v2  - match:      - headers:          end-user:            exact: aaa    route:      - destination:          host: reviews          subset: v2  - route:      - destination:          host: reviews          subset: v3</code></pre></li><li><p>故障注入-延迟(jason登录，访问6s后页面才加载出来)</p><pre><code class="yaml">spec:hosts:  - ratingshttp:  - fault:      delay:        fixedDelay: 7s # 7s延迟        percentage:          value: 100    match:      - headers:          end-user:            exact: jason    route:      - destination:          host: ratings          subset: v1  - route:      - destination:          host: ratings          subset: v1</code></pre></li><li><p>故障注入-异常(jason登录，50几率访问返回500)</p><pre><code class="yaml">spec:hosts:- ratingshttp:- match:  - headers:      end-user:        exact: jason  fault:    abort:      percentage:        value: 50      httpStatus: 500 #注入500错误  route:  - destination:      host: ratings      subset: v1- route:  - destination:      host: ratings      subset: v1</code></pre></li><li><p>流量转移</p><pre><code class="yaml">spec:hosts:  - reviewshttp:- route:  - destination:      host: reviews      subset: v1    weight: 50  - destination:      host: reviews      subset: v3    weight: 50</code></pre></li><li><p>设置请求超时(2s延迟)</p><pre><code class="yaml">spec:hosts:- ratingshttp:- fault:    delay:      percent: 100      fixedDelay: 2s  route:  - destination:      host: ratings      subset: v1</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> devops </category>
+          
+          <category> istio </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> devops </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue</title>
+      <link href="2021/04/28/frontend/vue/"/>
+      <url>2021/04/28/frontend/vue/</url>
+      
+        <content type="html"><![CDATA[<h3 id="vue-es6接入Echarts"><a href="#vue-es6接入Echarts" class="headerlink" title="vue+es6接入Echarts"></a>vue+es6接入Echarts</h3><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><pre><code class="shell"># echarsnpm install echarts --save</code></pre><h4 id="2-实现图表下钻及还原demo"><a href="#2-实现图表下钻及还原demo" class="headerlink" title="2.实现图表下钻及还原demo"></a>2.实现图表下钻及还原demo</h4><ul><li><a href="https://im-fan.gitee.io/file/front/echarts-drillDown.html">Demo</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>运维相关</title>
       <link href="2021/04/16/devops/docker/"/>
       <url>2021/04/16/devops/docker/</url>
       
-        <content type="html"><![CDATA[<h3 id="K8S相关"><a href="#K8S相关" class="headerlink" title="K8S相关"></a>K8S相关</h3><ul><li><a href="https://k8s.imroc.io/troubleshooting/">k8s实践(转)</a></li><li><a href="https://www.processon.com/view/link/5e4662ade4b0d86ec4018e50#map">k8s问题定位手册(转)</a></li></ul><h3 id="Docker相关"><a href="#Docker相关" class="headerlink" title="Docker相关"></a>Docker相关</h3><ul><li><a href="https://dockerwebdev.com/tutorials/clean-up-docker/">清理Docker</a></li><li><a href="https://www.kubernetes.org.cn/kubernetes-pod">Kubernetes中文社区</a></li><li><a href="https://istio.io/latest/zh/docs/setup/getting-started/">Istio(ServiceMesh)</a></li><li><a href="https://kiali.io/documentation/latest/runtimes-monitoring/#_quarkus">Kiali</a></li></ul><h4 id="本地启动K8S"><a href="#本地启动K8S" class="headerlink" title="本地启动K8S"></a>本地启动K8S</h4><pre><code class="textmate">1.先下载安装docker desktop(建议3.2.2以上)    https://www.docker.com/products/docker-desktop2.安装好后启动docker desktop3.设置    3.1 Perferences ==&gt; Kubernetes ==&gt; 开启Enable Kubernetes，Show system containers    3.2 如果开启不了尝试手动下载k8s相关进行并重启docker desktop    3.3 下载与docker desktop中Kubernetes一致的版本        https://github.com/maguowei/k8s-docker-desktop-for-mac</code></pre><h4 id="docker设置"><a href="#docker设置" class="headerlink" title="docker设置"></a>docker设置</h4><pre><code class="textmate">1.设置开机自启    sudo systemctl enable xx2.配置docker容器自动重启    docker update xx --restart=always</code></pre><h4 id="配置阿里云镜像加速"><a href="#配置阿里云镜像加速" class="headerlink" title="配置阿里云镜像加速"></a>配置阿里云镜像加速</h4><pre><code class="textmate">阿里云控制台-&gt;容器服务-&gt;镜像加速器-&gt;选择不同系统的命令并执行</code></pre><h4 id="Docker踩坑"><a href="#Docker踩坑" class="headerlink" title="Docker踩坑"></a>Docker踩坑</h4><pre><code class="textmate">1.目录挂载问题    如果要映射具体文件，需要先手工创建好，否则默认是作为文件夹创建的</code></pre><h3 id="虚拟机-VirtualBox"><a href="#虚拟机-VirtualBox" class="headerlink" title="虚拟机-VirtualBox"></a>虚拟机-VirtualBox</h3><h4 id="VirtualBox虚拟机镜像安装工具"><a href="#VirtualBox虚拟机镜像安装工具" class="headerlink" title="VirtualBox虚拟机镜像安装工具"></a>VirtualBox虚拟机镜像安装工具</h4><pre><code class="textmate">   vargrant 软件(有对应的镜像仓库)   vargrant init center/7  ---&gt; 会生成类似dockerfile的文件,支持修改配置   vargrant up --&gt; 启动，相当于点虚拟机开机   vargrant ssh  ---&gt; ssh链接虚拟机   vargrant reload ---&gt; 重启虚拟机</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="K8S相关"><a href="#K8S相关" class="headerlink" title="K8S相关"></a>K8S相关</h3><ul><li><a href="https://k8s.imroc.io/troubleshooting/">k8s实践(转)</a></li><li><a href="https://www.processon.com/view/link/5e4662ade4b0d86ec4018e50#map">k8s问题定位手册(转)</a></li></ul><h3 id="Docker相关"><a href="#Docker相关" class="headerlink" title="Docker相关"></a>Docker相关</h3><ul><li><a href="https://dockerwebdev.com/tutorials/clean-up-docker/">清理Docker</a></li><li><a href="https://www.kubernetes.org.cn/kubernetes-pod">Kubernetes中文社区</a></li><li><a href="https://istio.io/latest/zh/docs/setup/getting-started/">Istio(ServiceMesh)</a></li><li><a href="https://kiali.io/documentation/latest/runtimes-monitoring/#_quarkus">Kiali</a></li></ul><h4 id="本地启动K8S"><a href="#本地启动K8S" class="headerlink" title="本地启动K8S"></a>本地启动K8S</h4><pre><code class="textmate">1.先下载安装docker desktop(建议3.2.2以上)    https://www.docker.com/products/docker-desktop2.安装好后启动docker desktop3.设置    3.1 Perferences ==&gt; Kubernetes ==&gt; 开启Enable Kubernetes，Show system containers    3.2 如果开启不了尝试手动下载k8s相关进行并重启docker desktop    3.3 下载与docker desktop中Kubernetes一致的版本        https://github.com/maguowei/k8s-docker-desktop-for-mac</code></pre><h4 id="docker设置"><a href="#docker设置" class="headerlink" title="docker设置"></a>docker设置</h4><pre><code class="textmate">1.设置开机自启    sudo systemctl enable xx2.配置docker容器自动重启    docker update xx --restart=always</code></pre><h4 id="清理Docker"><a href="#清理Docker" class="headerlink" title="清理Docker"></a>清理Docker</h4><pre><code class="textmate">https://dockerwebdev.com/tutorials/clean-up-docker</code></pre><h4 id="配置阿里云镜像加速"><a href="#配置阿里云镜像加速" class="headerlink" title="配置阿里云镜像加速"></a>配置阿里云镜像加速</h4><pre><code class="textmate">阿里云控制台-&gt;容器服务-&gt;镜像加速器-&gt;选择不同系统的命令并执行</code></pre><h4 id="Docker踩坑"><a href="#Docker踩坑" class="headerlink" title="Docker踩坑"></a>Docker踩坑</h4><pre><code class="textmate">1.目录挂载问题    如果要映射具体文件，需要先手工创建好，否则默认是作为文件夹创建的</code></pre><h3 id="虚拟机-VirtualBox"><a href="#虚拟机-VirtualBox" class="headerlink" title="虚拟机-VirtualBox"></a>虚拟机-VirtualBox</h3><h4 id="VirtualBox虚拟机镜像安装工具"><a href="#VirtualBox虚拟机镜像安装工具" class="headerlink" title="VirtualBox虚拟机镜像安装工具"></a>VirtualBox虚拟机镜像安装工具</h4><pre><code class="textmate">   vargrant 软件(有对应的镜像仓库)   vargrant init center/7  ---&gt; 会生成类似dockerfile的文件,支持修改配置   vargrant up --&gt; 启动，相当于点虚拟机开机   vargrant ssh  ---&gt; ssh链接虚拟机   vargrant reload ---&gt; 重启虚拟机</code></pre>]]></content>
       
       
       <categories>
@@ -144,10 +198,10 @@
     
     <entry>
       <title>SpringBoot</title>
-      <link href="2021/03/22/backend/spring/springboot/"/>
-      <url>2021/03/22/backend/spring/springboot/</url>
+      <link href="2021/03/22/backend/spring/spring-boot/"/>
+      <url>2021/03/22/backend/spring/spring-boot/</url>
       
-        <content type="html"><![CDATA[<ul><li><a href="https://www.jianshu.com/p/603d125f21b3">SpringBoot启动过程(转)</a></li><li><a href="https://www.processon.com/view/link/59812124e4b0de2518b32b6e">流程图(转)</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://www.jianshu.com/p/603d125f21b3">SpringBoot启动过程(转)</a></li><li><a href="https://www.processon.com/view/link/59812124e4b0de2518b32b6e">流程图(转)</a></li><li><a href="https://blog.csdn.net/youanyyou/article/details/103562907">@RefreshScope原理</a></li></ul><h3 id="集成PageHelper"><a href="#集成PageHelper" class="headerlink" title="集成PageHelper"></a>集成PageHelper</h3><ul><li><p>配置</p><pre><code class="pom">&lt;!--基础框架包--&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;  &lt;version&gt;2.3.4.RELEASE&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;  &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;  &lt;version&gt;Hoxton.SR8&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;!--page helper依赖--&gt;&lt;!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter --&gt;&lt;dependency&gt;  &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;  &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;  &lt;version&gt;1.3.0&lt;/version&gt;&lt;/dependency&gt;</code></pre></li><li><p>使用</p><pre><code class="java">class XXService&#123;  public Result list(QueryParam param)&#123;      PageMethod.startPage(param.getPageNumber(),param.getPageSize());      List result = mapper.list(param);      PageInfo pageInfo = new PageInfo(result);      return PageDTO.result(pageInfo.getTotal(),result);  &#125;&#125;</code></pre></li><li><p>注意事项<br>```textmate</p></li></ul><p>1.注意pom版本号<br>2.使用pagehelper-spring-boot-starter pom后，不需要在yml中配置pagehelper相关参数，否则分页会有问题(亲测)<br>  例如: 永远只在第一页</p><pre><code></code></pre>]]></content>
       
       
       <categories>
