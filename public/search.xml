@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>调用链监控-skywalking</title>
+      <link href="2021/05/19/devops/skywalking/"/>
+      <url>2021/05/19/devops/skywalking/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="http://skywalking.apache.org/">官网</a></li><li><a href="http://skywalking.apache.org/downloads/">下载地址</a></li><li><a href="https://www.jianshu.com/p/8b9aad4210c5">部署及使用文档(转)</a></li></ul><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ul><li>重启<pre><code class="textmate">原脚本中没有杀掉旧进程，使用jps找到对应服务，然后kill掉再执行bin/startup.sh</code></pre></li><li>支持SpringCloudGateway<pre><code class="textmate">默认情况agent是不支持对spring-cloud-gateway的监控的，需要插件的支持。我们要将optional-plugins下的插件apm-spring-cloud-gateway-2.x-plugin-6.5.0.jar拷贝到plugins下</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> devops </category>
+          
+          <category> 调用链监控 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> devops </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>istio</title>
       <link href="2021/05/18/devops/istio/"/>
       <url>2021/05/18/devops/istio/</url>
