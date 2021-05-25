@@ -888,12 +888,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-03-06 10:08:33'>2021-02-18 14:25</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-25 17:33:00'>2021-02-18 14:25</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:740</span>
+        <span>字数:752</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -912,7 +912,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%90%8D%E8%AF%8D"><span class="toc-text">常用名词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E9%83%A8%E7%BD%B2LDAP"><span class="toc-text">Docker部署LDAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">查询用户信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%90%8D%E8%AF%8D"><span class="toc-text">常用名词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E9%83%A8%E7%BD%B2LDAP"><span class="toc-text">Docker部署LDAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">查询用户信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-text">方式一</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C-ldapTemplate"><span class="toc-text">方式二(ldapTemplate)</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -943,16 +943,22 @@ dc - domainComponent（域名）
 sn – suer name（真实名称）
 cn - common name（常用名称)</code></pre>
 <h3 id="Docker部署LDAP"><a href="#Docker部署LDAP" class="headerlink" title="Docker部署LDAP"></a>Docker部署LDAP</h3><ul>
-<li>ldap<br>```shell<br>#用户名 cn=admin,dc=company,dc=com<br>#密码 123456<br>#注意，\后面不能有空格<br>docker run \</li>
-<li>p 389:389 \</li>
-<li>p 636:636 \</li>
-<li>-name my-ldap \</li>
-<li>-network bridge \</li>
-<li>-hostname openldap-host \</li>
-<li>-env LDAP_ORGANISATION=”company” \</li>
-<li>-env LDAP_DOMAIN=”company.com” \</li>
-<li>-env LDAP_ADMIN_PASSWORD=”123456” \</li>
-<li>-detach osixia/openldap<br>```</li>
+<li>ldap</li>
+</ul>
+<pre><code class="shell">#用户名 cn=admin,dc=company,dc=com
+#密码 123456
+#注意，\后面不能有空格
+docker run \
+-p 389:389 \
+-p 636:636 \
+--name my-ldap \
+--network bridge \
+--hostname openldap-host \
+--env LDAP_ORGANISATION=&quot;company&quot; \
+--env LDAP_DOMAIN=&quot;company.com&quot; \
+--env LDAP_ADMIN_PASSWORD=&quot;123456&quot; \
+--detach osixia/openldap</code></pre>
+<ul>
 <li>ldap-admin<br>```shell<br>#启动后浏览器访问<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a><br>docker run \</li>
 <li>d \</li>
 <li>-privileged \</li>
@@ -963,126 +969,130 @@ cn - common name（常用名称)</code></pre>
 <li>-detach osixia/phpldapadmin<pre><code></code></pre>
 </li>
 </ul>
-<h3 id="查询用户信息"><a href="#查询用户信息" class="headerlink" title="查询用户信息"></a>查询用户信息</h3><ul>
-<li><p>方式一</p>
-<pre><code class="java">@Slf4j
+<h3 id="查询用户信息"><a href="#查询用户信息" class="headerlink" title="查询用户信息"></a>查询用户信息</h3><h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><pre><code class="java">@Slf4j
 public class ldapService&#123;
-  public static void main(String[] args) &#123;
-      try &#123;
-          String bindUserDN = &quot;cn=admin,dc=company,dc=com&quot;;
-          //用户密码
-          String bindPassword = &quot;123456&quot;;
-          //ldap服务器IP
-          String url = &quot;ldap://127.0.0.1:389/dc=company,dc=com&quot;;
+    public static void main(String[] args) &#123;
+        try &#123;
+            String bindUserDN = &quot;cn=admin,dc=company,dc=com&quot;;
+            //用户密码
+            String bindPassword = &quot;123456&quot;;
+            //ldap服务器IP
+            String url = &quot;ldap://127.0.0.1:389/dc=company,dc=com&quot;;
 
-          Hashtable&lt;String, String&gt; env = new Hashtable&lt;&gt;();
-          env.put(javax.naming.Context.INITIAL_CONTEXT_FACTORY, &quot;com.sun.jndi.ldap.LdapCtxFactory&quot;);
-          env.put(javax.naming.Context.PROVIDER_URL, url);
-          env.put(javax.naming.Context.SECURITY_AUTHENTICATION, &quot;simple&quot;);
-          env.put(javax.naming.Context.SECURITY_PRINCIPAL, bindUserDN);
-          env.put(javax.naming.Context.SECURITY_CREDENTIALS, bindPassword);
-          env.put(&quot;java.naming.referral&quot;, &quot;follow&quot;);
+            Hashtable&lt;String, String&gt; env = new Hashtable&lt;&gt;();
+            env.put(javax.naming.Context.INITIAL_CONTEXT_FACTORY, &quot;com.sun.jndi.ldap.LdapCtxFactory&quot;);
+            env.put(javax.naming.Context.PROVIDER_URL, url);
+            env.put(javax.naming.Context.SECURITY_AUTHENTICATION, &quot;simple&quot;);
+            env.put(javax.naming.Context.SECURITY_PRINCIPAL, bindUserDN);
+            env.put(javax.naming.Context.SECURITY_CREDENTIALS, bindPassword);
+            env.put(&quot;java.naming.referral&quot;, &quot;follow&quot;);
 
-          DirContext ctx = new InitialDirContext(env);
-          log.info(&quot;ctx=&#123;&#125;&quot;, JSON.toJSONString(ctx));
-      &#125; catch (Exception e) &#123;
-          log.info(&quot;LDAP登录失败 userName=&#123;&#125;,passWord=&#123;&#125;,error=&#123;&#125;&quot;,username,password,e);
-      &#125;
+            DirContext ctx = new InitialDirContext(env);
+            log.info(&quot;ctx=&#123;&#125;&quot;, JSON.toJSONString(ctx));
+        &#125; catch (Exception e) &#123;
+            log.info(&quot;LDAP登录失败 userName=&#123;&#125;,passWord=&#123;&#125;,error=&#123;&#125;&quot;,username,password,e);
+        &#125;
 
-  &#125;
+    &#125;
 &#125;</code></pre>
-</li>
-<li><p>方式二(ldapTemplate)</p>
-</li>
-</ul>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code class="xml">&lt;!-- ldap --&gt;
+<h5 id="方式二-ldapTemplate"><a href="#方式二-ldapTemplate" class="headerlink" title="方式二(ldapTemplate)"></a>方式二(ldapTemplate)</h5><ul>
+<li><p>配置</p>
+<pre><code class="xml">&lt;!-- ldap --&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-data-ldap&lt;/artifactId&gt;
-    &lt;version&gt;2.3.2.RELEASE&lt;/version&gt;
+  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-boot-starter-data-ldap&lt;/artifactId&gt;
+  &lt;version&gt;2.3.2.RELEASE&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<pre><code class="yaml">  # LDAP连接配置,配置的base是不应该再加到节点的dn里面去的(dc=company,dc=com)
+<pre><code class="yaml"># LDAP连接配置,配置的base是不应该再加到节点的dn里面去的(dc=company,dc=com)
 spring:
-  ldap:
-    urls: ldap://127.0.0.1:389
-    base: dc=company,dc=com
-    username: cn=admin,dc=company,dc=com
-    password: 123456</code></pre>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code class="java">@Getter
+ldap:
+  urls: ldap://127.0.0.1:389
+  base: dc=company,dc=com
+  username: cn=admin,dc=company,dc=com
+  password: 123456</code></pre>
+</li>
+<li><p>代码(model)</p>
+<pre><code class="java">@Getter
 @Setter
 @ToString
 @Entry(objectClasses = &#123;&quot;simpleSecurityObject&quot;, &quot;organizationalRole&quot;,&quot;top&quot;&#125;, base = &quot;ou=cmdb,ou=People&quot;)
 public class LdapPerson &#123;
 
-    @Id
-    @JsonIgnore
-    private Name dn;
+  @Id
+  @JsonIgnore
+  private Name dn;
 
-    /** 用户名 **/
-    @Attribute(name=&quot;cn&quot;)
-    private String personName;
+  /** 用户名 **/
+  @Attribute(name=&quot;cn&quot;)
+  private String personName;
 
-    @Attribute(name=&quot;sn&quot;)
-    private String sn;
+  @Attribute(name=&quot;sn&quot;)
+  private String sn;
 
-    @Attribute(name=&quot;email&quot;)
-    private String email;
+  @Attribute(name=&quot;email&quot;)
+  private String email;
 
-    /** 昵称 **/
-    @Attribute(name=&quot;displayName&quot;)
-    private String displayName;
+  /** 昵称 **/
+  @Attribute(name=&quot;displayName&quot;)
+  private String displayName;
 
-    @Attribute(name=&quot;password&quot;)
-    private String password;
+  @Attribute(name=&quot;password&quot;)
+  private String password;
 &#125;</code></pre>
+</li>
+<li><p>代码(dao)</p>
 <pre><code class="java">@Slf4j
 public class PersonAttributesMapper implements AttributesMapper&lt;LdapPerson&gt; &#123;
-    @Override
-    public LdapPerson mapFromAttributes(Attributes attrs) throws NamingException &#123;
-        LdapPerson person = new LdapPerson();
-        person.setPersonName((String)attrs.get(&quot;cn&quot;).get());
+  @Override
+  public LdapPerson mapFromAttributes(Attributes attrs) throws NamingException &#123;
+      LdapPerson person = new LdapPerson();
+      person.setPersonName((String)attrs.get(&quot;cn&quot;).get());
 
-        //获取密码
-        byte[] bts = (byte[]) attrs.get(&quot;userpassword&quot;).get();
-        String password = &quot;&quot;;
-        for(byte bt : bts)&#123;
-            password = password + (char)bt;
-        &#125;
-        person.setPassword(password);
-        return person;
-    &#125;
+      //获取密码
+      byte[] bts = (byte[]) attrs.get(&quot;userpassword&quot;).get();
+      String password = &quot;&quot;;
+      for(byte bt : bts)&#123;
+          password = password + (char)bt;
+      &#125;
+      person.setPassword(password);
+      return person;
+  &#125;
 &#125;</code></pre>
+</li>
+<li><p>代码(service)</p>
 <pre><code class="java">public class LoginService&#123;
 
-    //lookup查询(精确定位查询)
-    public AjaxResult&lt;LdapPerson&gt; ldapCheck(String username, String password) &#123;
-        String dn = String.format(userDN,username);
-        LdapPerson person = ldapTemplate.lookup(dn, new PersonAttributesMapper());
-        log.info(&quot;LDAP登录 username:&#123;&#125;,person=&#123;&#125;&quot;,username,JSON.toJSONString(person));
-        if(person == null)&#123;
-            return AjaxResult.error(&quot;账号不存在&quot;);
-        &#125;
-        if(!password.equals(person.getPassword()))&#123;
-            log.error(&quot;LDAP账号对应密码错误,username=&#123;&#125;,password=&#123;&#125;,realPwd=&#123;&#125;&quot;,username,password,person.getPassword());
-            return AjaxResult.error(&quot;密码错误&quot;);
-        &#125;
-        return AjaxResult.success(person);
-    &#125;
+  //lookup查询(精确定位查询)
+  public AjaxResult&lt;LdapPerson&gt; ldapCheck(String username, String password) &#123;
+      String dn = String.format(userDN,username);
+      LdapPerson person = ldapTemplate.lookup(dn, new PersonAttributesMapper());
+      log.info(&quot;LDAP登录 username:&#123;&#125;,person=&#123;&#125;&quot;,username,JSON.toJSONString(person));
+      if(person == null)&#123;
+          return AjaxResult.error(&quot;账号不存在&quot;);
+      &#125;
+      if(!password.equals(person.getPassword()))&#123;
+          log.error(&quot;LDAP账号对应密码错误,username=&#123;&#125;,password=&#123;&#125;,realPwd=&#123;&#125;&quot;,username,password,person.getPassword());
+          return AjaxResult.error(&quot;密码错误&quot;);
+      &#125;
+      return AjaxResult.success(person);
+  &#125;
 
-    //search(遍历所有节点匹配)
-    public LdapPerson getLdapAccountByName(String name) &#123;
+  //search(遍历所有节点匹配)
+  public LdapPerson getLdapAccountByName(String name) &#123;
 
-        LdapQuery query = query()
-                .where(&quot;objectclass&quot;).is(objectclass)
-                .and(&quot;cn&quot;).is(name);
+      LdapQuery query = query()
+              .where(&quot;objectclass&quot;).is(objectclass)
+              .and(&quot;cn&quot;).is(name);
 
-        List&lt;LdapPerson&gt; persons = ldapTemplate.search(query,new PersonAttributesMapper());
-        if(CollectionUtils.isEmpty(persons))&#123;
-            return null;
-        &#125;
-        return persons.get(0);
-    &#125;
+      List&lt;LdapPerson&gt; persons = ldapTemplate.search(query,new PersonAttributesMapper());
+      if(CollectionUtils.isEmpty(persons))&#123;
+          return null;
+      &#125;
+      return persons.get(0);
+  &#125;
 &#125;</code></pre>
+</li>
+</ul>
 
       
     </div>
