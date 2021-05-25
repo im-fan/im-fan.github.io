@@ -28,6 +28,7 @@ cn - common name（常用名称)
 
 ### Docker部署LDAP
 - ldap
+
 ```shell
 #用户名 cn=admin,dc=company,dc=com
 #密码 123456
@@ -43,6 +44,7 @@ docker run \
 --env LDAP_ADMIN_PASSWORD="123456" \
 --detach osixia/openldap
 ```
+
 - ldap-admin
 ```shell
 #启动后浏览器访问http://localhost:8080
@@ -57,7 +59,7 @@ docker run \
 ```
 
 ### 查询用户信息
-- 方式一
+#### 方式一
 ```java
 @Slf4j
 public class ldapService{
@@ -86,9 +88,8 @@ public class ldapService{
     }
 }
 ```
-- 方式二(ldapTemplate)
-
-#### 配置
+##### 方式二(ldapTemplate)
+- 配置
 ```xml
 <!-- ldap -->
 <dependency>
@@ -107,7 +108,7 @@ spring:
     password: 123456
 ```
 
-#### 代码
+- 代码(model)
 ```java
 @Getter
 @Setter
@@ -137,6 +138,8 @@ public class LdapPerson {
     private String password;
 }
 ```
+
+- 代码(dao)
 ```java
 @Slf4j
 public class PersonAttributesMapper implements AttributesMapper<LdapPerson> {
@@ -157,6 +160,7 @@ public class PersonAttributesMapper implements AttributesMapper<LdapPerson> {
 }
 ```
 
+- 代码(service)
 ```java
 public class LoginService{
     
