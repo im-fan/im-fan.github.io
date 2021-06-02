@@ -45,20 +45,40 @@ Orika为开发者提供了如下功能：
 ```
 
 #### 方式二所需配置类(可选)
-```textmate
+```java
+/**
+ * 可自定义转换规则
+ * **/
 @Configuration
 public class MapperFactoryAware {
-    @Bean
-    public MapperFacade mapperFacade(){
-        MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
-        return mapperFactory.getMapperFacade();
+
+    @Autowired
+    private MapperFactory mapperFactory;
+
+    @PostConstruct
+    public void init(){
+        mapperFactory.getConverterFactory().registerConverter(new BooleanConvert());
+    }
+
+    /** Boolean <=> Integer 互转 **/
+    private class BooleanConvert extends BidirectionalConverter<Boolean,Integer>{
+
+        @Override
+        public Integer convertTo(Boolean source, Type<Integer> destinationType, MappingContext mappingContext) {
+            return source ? 1 : 0;
+        }
+
+        @Override
+        public Boolean convertFrom(Integer source, Type<Boolean> destinationType, MappingContext mappingContext) {
+            return source == 1;
+        }
     }
 }
 ```
 
 ### 案例
 #### 基础测试类
-```textmate
+```java
 // dto对象
 @Getter
 @Setter
@@ -68,15 +88,11 @@ public class MapperFactoryAware {
 public class UserInfoDTO {
 
     private String userId;
-
     private String userName;
-
     private String createTime;
-
     private List<String> ids;
-
     private String dtoName;
-
+    private Integer sex;
 }
 
 // po对象
@@ -88,22 +104,16 @@ public class UserInfoDTO {
 public class UserInfo {
 
     private Integer userId;
-
     private String userName;
-
     private Date createTime;
-
     private List<Integer> ids;
-
     private String poName;
-
+    private Boolean sex;
 }
-
-
 ```
+
 #### 简易demo(更多用法参考官方文档)
 ```java
-
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
@@ -187,10 +197,10 @@ public class ConvertTest{
 #### 执行结果
 ```textmate
 testSimple 执行结果:
-po 2 dto =====> {"createTime":"Sat Mar 20 14:29:14 CST 2021","ids":["1002","1003","1004","1005"],"userId":"10001","userName":"aaaa"}
-dto 2 po =====> {"createTime":1616272154000,"ids":[1002,1003,1004,1005],"userId":10001,"userName":"aaaa"}
-pos 2 dtos =====> [{"createTime":"Sat Mar 20 14:29:14 CST 2021","ids":["1002","1003","1004","1005"],"userId":"10001","userName":"aaaa"}]
-pos 2 dtos =====> [{"createTime":1616272154000,"ids":[1002,1003,1004,1005],"userId":10001,"userName":"aaaa"}]
+-po 2 dto =====> {"createTime":"Wed Jun 02 10:11:51 CST 2021","ids":["1002","1003","1004","1005"],"userId":"10001","userName":"aaaa"}
+-dto 2 po =====> {"createTime":1622650311000,"ids":[1002,1003,1004,1005],"userId":10001,"userName":"aaaa"}
+-pos 2 dtos =====> [{"createTime":"Wed Jun 02 10:11:51 CST 2021","ids":["1002","1003","1004","1005"],"userId":"10001","userName":"aaaa"}]
+-pos 2 dtos =====> [{"createTime":1622650311000,"ids":[1002,1003,1004,1005],"userId":10001,"userName":"aaaa"}]
 
 testDiff 执行结果:
 po 2 dto =====> {"createTime":"Sat Mar 20 14:30:46 CST 2021","dtoName":"this is po","ids":["1002","1003","1004","1005"],"userId":"10001","userName":"aaaa"}
