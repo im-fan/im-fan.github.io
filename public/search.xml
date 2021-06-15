@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>SpringClougGateway</title>
+      <link href="2021/06/15/backend/spring/springcloud-gateway/"/>
+      <url>2021/06/15/backend/spring/springcloud-gateway/</url>
+      
+        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RC3/multi/multi_spring-cloud-gateway.html">SpringCloudGateway-2.1.0.RC3</a></li><li><a href="https://spring.io/projects/spring-cloud-gateway">SpringCloudGateway官网</a></li><li><a href="https://www.haoyizebo.com/posts/876ed1e8/">SpringCloudGateway(读取、修改RequestBody)(转)</a></li></ul><h3 id="获取及改写RequestBody示例"><a href="#获取及改写RequestBody示例" class="headerlink" title="获取及改写RequestBody示例"></a>获取及改写RequestBody示例</h3><pre><code class="java">class DemoFilter implements GlobalFilter, Ordered&#123;    @Resource    private ServerCodecConfigurer configurer;    @Override    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) &#123;        ServerRequest serverRequest = ServerRequest.create(exchange, configurer.getReaders());        // read &amp; modify body        Mono&lt;String&gt; modifiedBody = serverRequest.bodyToMono(String.class)                .flatMap(body -&gt; &#123;                    //例子：验签                    boolean checkFlag = paramSignCheck(jsonParam);                    if(!checkFlag)&#123;                        return Mono.error(new Exception(&quot;验签失败&quot;));                    &#125;                    return Mono.just(body);                &#125;);        BodyInserter bodyInserter = BodyInserters.fromPublisher(modifiedBody,String.class);        HttpHeaders headers = new HttpHeaders();        headers.putAll(exchange.getRequest().getHeaders());        //重要 不处理会导致请求失败        headers.remove(HttpHeaders.CONTENT_LENGTH);        CachedBodyOutputMessage outputMessage = new CachedBodyOutputMessage(exchange, headers);        return bodyInserter.insert(outputMessage, new BodyInserterContext())                .then(Mono.defer(() -&gt; &#123;                    ServerHttpRequestDecorator decorator = new ServerHttpRequestDecorator(                            exchange.getRequest()) &#123;                        @Override                        public HttpHeaders getHeaders() &#123;                            long contentLength = headers.getContentLength();                            HttpHeaders httpHeaders = new HttpHeaders();                            httpHeaders.putAll(super.getHeaders());                            if (contentLength &gt; 0) &#123;                                httpHeaders.setContentLength(contentLength);                            &#125;                            return httpHeaders;                        &#125;                        @Override                        public Flux&lt;DataBuffer&gt; getBody() &#123;                            return outputMessage.getBody();                        &#125;                    &#125;;                    ServerHttpResponse decoratedResponse = decorate(exchange, trace);                    return chain.filter(exchange.mutate().request(decorator).response(decoratedResponse).build());                &#125;));    &#125;&#125;</code></pre><h3 id="请求非json格式转jsondemo"><a href="#请求非json格式转jsondemo" class="headerlink" title="请求非json格式转jsondemo"></a>请求非json格式转jsondemo</h3><pre><code class="java">class Demo&#123;    /** application/x-www-form-urlencoded 转json **/    private Map&lt;String, Object&gt; decodeBody(String body) &#123;        return Arrays.stream(body.split(&quot;&amp;&quot;))                .map(s -&gt; s.split(&quot;=&quot;))                .collect(Collectors.toMap(arr -&gt; arr[0], arr -&gt; arr[1]));    &#125;    /** fomrData(非文件)转 json 数据 **/    private String parseFormData2Json(String requestParam)&#123;        if(StringUtils.isBlank(requestParam)                 &amp;&amp; !requestParam.contains(&quot;filename&quot;))&#123;            return requestParam;        &#125;        try&#123;            requestParam = requestParam.replace(&quot;-&quot;,&quot;&quot;).split(&quot;-&quot;)[0];            String code = requestParam.split(&quot;\n&quot;)[0];            requestParam = requestParam.replaceAll(code,&quot;&quot;)                    .replaceAll(&quot;ContentDisposition: formdata;&quot;,&quot;&quot;)                    .replaceAll(&quot;\n&quot;,&quot;&quot;)                    .replaceAll(&quot;name=&quot;,&quot;,&quot;)                    .replaceAll(&quot;\&quot;\r\r&quot;,&quot;\&quot;:\&quot;&quot;)                    .replaceFirst(&quot;,&quot;,&quot;&quot;)                    .replaceAll(&quot;\r&quot;,&quot;\&quot;&quot;)            ;            requestParam = &quot;&#123;&quot; + requestParam + &quot;\&quot;&#125;&quot;;        &#125; catch (Exception e)&#123;            e.printStackTrace();        &#125;        return requestParam;    &#125;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+          <category> springcloud </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gateway </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>调用链监控-skywalking</title>
       <link href="2021/05/19/devops/skywalking/"/>
       <url>2021/05/19/devops/skywalking/</url>
