@@ -69,6 +69,29 @@ class DemoFilter implements GlobalFilter, Ordered{
 }
 ```
 
+### 新增headers
+```java
+@Configuration
+public class AuthGatewayFilter implements GlobalFilter, Ordered {
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        Consumer<HttpHeaders> httpHeaders = httpHeader -> {
+            // 存在相同的key,直接添加会报错
+            if(StringUtils.isBlank(httpHeader.getFirst("xxx"))){
+                httpHeader.add("xxx", "xxx");
+            }
+        };
+        ServerHttpRequest serverHttpRequest = exchange.getRequest().mutate().headers(httpHeaders).build();
+        exchange = exchange.mutate().request(serverHttpRequest).build();
+
+        return chain.filter(exchange);
+    }
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE - 1;
+    }
+}
+```
 
 ### 请求非json格式转jsondemo
 ```java
