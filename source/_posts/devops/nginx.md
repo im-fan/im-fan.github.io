@@ -16,7 +16,7 @@ categories:
 - [Nginx服务器SSL证书安装部署-腾讯云](https://cloud.tencent.com/document/product/400/35244)
 
 ### nginx命令
-```text
+```textmate
 1.检测配置是否正常
 nginx -t 
 
@@ -25,7 +25,7 @@ nginx -s reload
 ```
 
 ### ssl-nginx配置
-```text
+```textmate
 具体参考云厂商ssl证书安装步骤
 1.下载ssl相关文件,服务器开启443端口权限
 2.解压后将文件夹Nginx中文件放到nginx安装目录下(或其他地方)
@@ -34,7 +34,7 @@ nginx -s reload
 ```
 
 ### 同一域名不同服务配置
-```text
+```textmate
 server {
     listen       8888;
     server_name  localhost;

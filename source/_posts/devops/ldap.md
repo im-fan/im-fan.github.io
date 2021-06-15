@@ -28,7 +28,6 @@ cn - common name（常用名称)
 
 ### Docker部署LDAP
 - ldap
-
 ```shell
 #用户名 cn=admin,dc=company,dc=com
 #密码 123456
@@ -46,6 +45,7 @@ docker run \
 ```
 
 - ldap-admin
+
 ```shell
 #启动后浏览器访问http://localhost:8080
 docker run \
