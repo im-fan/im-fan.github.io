@@ -1,0 +1,26 @@
+---
+title: MySQL相关知识
+date: 2021-07-20 09:45:00
+tags:
+- MySQL
+  categories:
+- 存储
+- MySQL
+---
+
+### Innodb引擎的4大特性
+> [参考文档](https://www.cnblogs.com/zhs0/p/10528520.html)
+- 插入缓冲
+- 二次写
+- 自适应哈希
+- 预读
+
+#### 插入缓冲
+```textmate
+用于提升插入性能，分为Insert Buffer、Change Buffer
+change buffering是insert buffer的加强，insert buffer只针对insert有效，change buffering对insert、delete、update(delete+insert)、purge都有效
+
+使用插入缓冲的条件：
+* 非聚集索引
+* 非唯一索引
+```

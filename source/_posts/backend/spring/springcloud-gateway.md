@@ -13,6 +13,131 @@ categories:
 - [SpringCloudGateway官网](https://spring.io/projects/spring-cloud-gateway)
 - [SpringCloudGateway(读取、修改RequestBody)(转)](https://www.haoyizebo.com/posts/876ed1e8/)
 
+### 配置
+```yaml
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    httpclient:
+      connect-timeout: 20000
+      pool:
+        max-idle-time: 20000
+    #开启从注册中心动态创建路由的功能，利用微服务名进行路由
+#    discovery:
+#      locator:
+#        lower-case-service-id: true
+#        enabled: true
+
+    # 相关文档 https://www.cnblogs.com/crazymakercircle/p/11704077.html
+    # uri相同时，只有最后一个会生效
+    #一个请求满足多个路由的断言条件时，请求只会被首个成功匹配的路由转发；
+    #predicates断言，可根据datetime、Cookie、Header、Host、Method、Path、Queryparam、RemoteAddr匹配
+    #filter: 支持PrefixPath、RewritePath、SetPath、RedirectTo、RemoveRequestHeader、
+    #RemoveResponseHeader、SetStatus、StripPrefix、RequestSize、Default-filters
+    gateway:
+      routes:
+      #根据url拦截
+      - id: service1_v1
+        uri: https://www.so.com/?quanso.com.cn
+        predicates:
+          - Path=/360
+#      - id: service1_v2
+#        uri: http://localhost:8080/api/v2
+#        predicates:
+#          - Path=/v2
+
+      #拦截v1请求，并带上/api，转发到8080端口上
+#      - id: service1_v3
+#        uri: http://localhost:8080
+#        predicates:
+#          - Path=/v1
+#        filters:
+#          - PrefixPath=/api
+
+      #predicates断言，可根据datetime/Cookie/Header/Host/Method/Path/Queryparam/RemoteAddr匹配
+      - id: queryParam-baidu-route
+        uri: https://www.baidu.com
+        predicates:
+          - Query=baidu
+      - id: queryParam-bing-route
+        uri: https://bing.com/
+        predicates:
+          - Query=bing, tr. #参数中包含bing,且值为tr开头的三位参数 才能匹配到
+
+#      - id: queryParam-release2-route
+#        uri: http://localhost:8080/api/v2
+#        predicates:
+#          - Path=/api
+#          - Weight=service2, 90
+
+#      - id: queryParam-head-route
+#        uri: http://localhost:8080
+#        predicates:
+#          - Header=Jump, 1001 #请求头中包含信息才校验通过
+#        filters:
+#          - PrefixPath=/api
+
+#      - id: queryParam-host-route
+#        uri: http://localhost:8080
+#        predicates:
+#          - Host=*.apix #请求头中包含信息才校验通过
+#        filters:
+#          - PrefixPath=/api
+
+      #测试StripPrefix
+#      - id: full-route
+#        uri: http://localhost:8080
+#        predicates:
+#          - Query=full
+#        filters:
+#          - PrefixPath=/full
+#          - StripPrefix=0
+
+      # 熔断降级
+#      - id: queryParam-fallback-route
+#        uri: http://localhost:8080
+#        predicates:
+#          - Path=/test
+#        filters:
+#          - name: Hystrix
+#            args:
+#              name: default
+#              fallbackUri: forward:/fallback
+#      - id: fallback-route
+#        uri: http://localhost:8080/fallback
+#        predicates:
+#          - Path=/fallback
+
+        # 金丝雀发布
+      - id: release1-route
+        uri: http://localhost:8080
+        predicates:
+          - Path=/v1
+          - Weight=service1, 50
+        filters:
+          - PrefixPath=/api
+      - id: release2-route
+        uri: http://localhost:8081
+        predicates:
+          - Path=/v1
+          - Weight=service1, 50
+        filters:
+          - PrefixPath=/api
+
+
+#hystrix.command.fallbackA.execution.isolation.thread.timeoutInMilliseconds: 5000
+# hystrix 信号量隔离，1.5秒后自动超时
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 1500
+
+```
 
 ### 获取及改写RequestBody示例
 ```java

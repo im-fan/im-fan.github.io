@@ -22,15 +22,17 @@ endpoints.pathMapping("/oauth/token", "/my/login");
 ```
 - Controller
 ```java
-/**
- * 只有映射的接口，security框架才会将principal信息填充进去
- * parameters: 生成token所需的入参; 
- * principal: 安全框架所需用户信息
- */
-@ApiOperation(value = "获取token接口", notes = "用于获取token接口")
-@PostMapping(value = "/my/login")
-public Result<LoginReslut> login(@RequestParam Map<String, String> parameters,
-                            Principal principal){
-    return xxx;
+class UserController{
+    /**
+     * 只有映射的接口，security框架才会将principal信息填充进去
+     * parameters: 生成token所需的入参; 
+     * principal: 安全框架所需用户信息
+     */
+    @ApiOperation(value = "获取token接口", notes = "用于获取token接口")
+    @PostMapping(value = "/my/login")
+    public Result<LoginReslut> login(@RequestParam Map<String, String> parameters,
+                                Principal principal){
+        return xxx;
+    }
 }
 ```
