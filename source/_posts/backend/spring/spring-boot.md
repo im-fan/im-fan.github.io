@@ -13,6 +13,7 @@ categories:
 - [SpringBoot启动过程(转)](https://www.jianshu.com/p/603d125f21b3)
 - [流程图(转)](https://www.processon.com/view/link/59812124e4b0de2518b32b6e)
 - [@RefreshScope原理](https://blog.csdn.net/youanyyou/article/details/103562907)
+- [SpringBoot内置Tomcat启动源码分析](https://www.cnblogs.com/sword-successful/p/11383723.html)
 
 ### 集成PageHelper
 - 配置
