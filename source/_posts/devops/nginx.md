@@ -4,11 +4,10 @@ description: nginx
 #top: 1
 date: 2021-04-05 10:26:05
 tags:
-- devops
+- nginx
 
 categories:
-- devops
-- nginx
+- 运维
 ---
 
 - [官网](http://nginx.org/)

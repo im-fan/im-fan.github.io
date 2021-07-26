@@ -2,10 +2,9 @@
 title: LDAP学习笔记
 date: 2021-02-18 14:25:55
 tags:
-- devops
+- ldap
 categories:
-- devops
-- LDAP
+- 运维
 ---
 
 ### 相关链接

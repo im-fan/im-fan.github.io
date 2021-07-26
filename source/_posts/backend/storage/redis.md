@@ -5,8 +5,7 @@ date: 2021-02-02 19:59:00
 tags:
 - cache
 categories:
-- 后端
-- cache
+- 存储
 ---
 
 ### Redis相关

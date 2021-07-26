@@ -2,10 +2,9 @@
 title: istio
 date: 2021-05-18 16:30:00
 tags:
-- devops 
+- istio 
 categories:
-- devops
-- istio
+- 运维
 ---
 
 - [官网](https://istio.io/latest/zh/docs/examples/bookinfo/)

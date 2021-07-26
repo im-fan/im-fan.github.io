@@ -8,6 +8,7 @@ tags:
 - 动态配置
 - 注册中心
 categories:
+- 后端
 - 服务治理
 - nacos
 ---

@@ -2,10 +2,10 @@
 title: MySQL相关知识
 date: 2021-07-20 09:45:00
 tags:
-- MySQL
-  categories:
+- mysql
+
+categories:
 - 存储
-- MySQL
 ---
 
 ### Innodb引擎的4大特性

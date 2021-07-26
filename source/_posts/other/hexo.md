@@ -5,7 +5,6 @@ tags:
 - tool
 categories: 
 - 其他
-- 博客工具
 ---
 
 > 记录本博客搭建步骤，适用于Mac/Linux系统，详细介绍及其他系统请参照Hexo官网

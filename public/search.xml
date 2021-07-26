@@ -4,14 +4,99 @@
   
     
     <entry>
+      <title>SpringFramework流程</title>
+      <link href="2021/07/26/backend/spring/framework/springframework-2/"/>
+      <url>2021/07/26/backend/spring/framework/springframework-2/</url>
+      
+        <content type="html"><![CDATA[<h3 id="StartDemo"><a href="#StartDemo" class="headerlink" title="StartDemo"></a>StartDemo</h3><pre><code class="java">public class StartDemo &#123;   public static void main(String[] args) &#123;      ApplicationContext context =            new AnnotationConfigApplicationContext(&quot;com.my.config&quot;);      TestConfig testConfig = context.getBean(TestConfig.class);      System.out.println(&quot;==========&gt;main&quot;);      System.out.println(testConfig.getValue());   &#125;&#125;</code></pre><h3 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h3><ul><li>AnnotationConfigApplicationContext<pre><code class="text">根据包扫描对象</code></pre></li><li>RootBeanDefinition<pre><code class="text">记录扫描到的类的具体信息(描述类)</code></pre></li><li>BeanFactoryPostProcessor<pre><code class="text">接口，可自定义参与类初始化过程逻辑  工厂钩子，允许自定义修改应用程序上下文的 bean 定义，调整上下文底层 bean 工厂的 bean 属性值。</code></pre></li><li>BeanPostProcessor<pre><code class="text">后期处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中  例：AutowiredAnnotationBeanPostProcessor</code></pre><h3 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h3><pre><code class="text">scan -&gt; beanPorcessor(描述bean信息) -&gt; 放到 configMap 中 -&gt; refresh -&gt; 通过bean工厂实例化类 -&gt; 放到单例池中</code></pre><h3 id="AnnotationConfigApplicationContext详解"><a href="#AnnotationConfigApplicationContext详解" class="headerlink" title="AnnotationConfigApplicationContext详解"></a>AnnotationConfigApplicationContext详解</h3></li><li>类图<br><img src="https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="类图"></li><li>流程图<br><img src="https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="执行流程"></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 框架 </category>
+          
+          <category> springframework-2 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringFramework </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL相关知识</title>
+      <link href="2021/07/20/backend/storage/mysql/"/>
+      <url>2021/07/20/backend/storage/mysql/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Innodb引擎的4大特性"><a href="#Innodb引擎的4大特性" class="headerlink" title="Innodb引擎的4大特性"></a>Innodb引擎的4大特性</h3><blockquote><p><a href="https://www.cnblogs.com/zhs0/p/10528520.html">参考文档</a></p></blockquote><ul><li>插入缓冲</li><li>二次写</li><li>自适应哈希</li><li>预读</li></ul><h4 id="插入缓冲"><a href="#插入缓冲" class="headerlink" title="插入缓冲"></a>插入缓冲</h4><pre><code class="textmate">用于提升插入性能，分为Insert Buffer、Change Bufferchange buffering是insert buffer的加强，insert buffer只针对insert有效，change buffering对insert、delete、update(delete+insert)、purge都有效使用插入缓冲的条件：* 非聚集索引* 非唯一索引</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 存储 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SpringFramework源码学习(零)</title>
+      <link href="2021/06/26/backend/spring/framework/springframework-1/"/>
+      <url>2021/06/26/backend/spring/framework/springframework-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="SpringFramework5-2-x编译步骤-Mac下"><a href="#SpringFramework5-2-x编译步骤-Mac下" class="headerlink" title="SpringFramework5.2.x编译步骤(Mac下)"></a>SpringFramework5.2.x编译步骤(Mac下)</h2><h3 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h3><ul><li>jdk1.8</li><li>Spring-Framework5.2.x 源码</li><li>Gradle 5.6.4</li><li>Idea2021</li></ul><h3 id="Gradle安装配置-编译工具"><a href="#Gradle安装配置-编译工具" class="headerlink" title="Gradle安装配置(编译工具)"></a>Gradle安装配置(编译工具)</h3><ul><li><a href="https://gradle.org/">Gradle官网</a></li><li><a href="https://gradle.org/releases/">下载页面</a></li></ul><h4 id="方式一、压缩包-推荐"><a href="#方式一、压缩包-推荐" class="headerlink" title="方式一、压缩包(推荐)"></a>方式一、压缩包(推荐)</h4><blockquote><p>建议下载源码中标识的gradle版本(源码gradle/wrapper/gradle-wrapper.properties中)</p></blockquote><pre><code class="textmate">1.下载压缩包，解压至~/software/文件夹下2.设置环境变量   echo $SHELL 先查看当前shell   /bin/bash 则修改 ~/.bash_profile 文件   /bin/zsh 则修改 ~/.zshrc 文件   添加以下配置:        export GRADLE_HOME=/Users/mac/software/gradle        export PATH=$PATH:$GRADLE_HOME/bin    source ~/.zshrc 或 source ~/.bash_profile 刷新3.验证安装  gradle -v</code></pre><ul><li>添加Gradle配置<pre><code class="groovy">allprojects&#123; repositories &#123;     def REPOSITORY_URL = &#39;http://maven.aliyun.com/nexus/content/groups/public/&#39;     all &#123; ArtifactRepository repo -&gt;         if(repo instanceof MavenArtifactRepository)&#123;             def url = repo.url.toString()             if (url.startsWith(&#39;https://repo1.maven.org/maven2&#39;) || url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) &#123;                 project.logger.lifecycle &quot;Repository $&#123;repo.url&#125; replaced by $REPOSITORY_URL.&quot;                 remove repo             &#125;         &#125;     &#125;     maven &#123;         url REPOSITORY_URL     &#125; &#125;&#125;</code></pre></li></ul><h4 id="方式二、brew安装"><a href="#方式二、brew安装" class="headerlink" title="方式二、brew安装"></a>方式二、brew安装</h4><blockquote><p>可能不是你想要的版本，注意！！！</p></blockquote><pre><code class="shell">brew install gradle</code></pre><h4 id="方式三、旧版本升级命令-没试过"><a href="#方式三、旧版本升级命令-没试过" class="headerlink" title="方式三、旧版本升级命令(没试过)"></a>方式三、旧版本升级命令(没试过)</h4><pre><code class="shell">./gradlew wrapper --gradle-version=7.1 --distribution-type=bin</code></pre><h3 id="Idea安装配置Gradle"><a href="#Idea安装配置Gradle" class="headerlink" title="Idea安装配置Gradle"></a>Idea安装配置Gradle</h3><pre><code class="textmate">1.搜索并安装插件     菜单: Preferences -&gt; Plugins    插件名(2个): Gradle / Gradle Extension2.配置    菜单: Preferences -&gt; Build -&gt; Build Tools -&gt; Gradle    配置项: 设置Gradle user home(仓库目录)</code></pre><h3 id="Idea编译项目"><a href="#Idea编译项目" class="headerlink" title="Idea编译项目"></a>Idea编译项目</h3><pre><code class="textmate">1.导入   File -&gt; Open -&gt; 打开 Spring-Framework5.2x源码中 build.gradle2.等待编译完成   正常情况下一次编译通过，不熟悉gradle的话建议先不要改 settings.gradle 和 build.gradle 内容，否则会编译失败；3.其他   出现其他异常先参考源码中 import-into-XXX.md 文档</code></pre><h3 id="新建项目测试"><a href="#新建项目测试" class="headerlink" title="新建项目测试"></a>新建项目测试</h3><ul><li>1.新建模块my-demo，类型选Gradle</li><li>2.将新建的模块加到项目中(idea自动新增)<pre><code class="textmate">settings.gradle 中新增 include &#39;my-demo&#39;</code></pre></li><li>3.引入模块<pre><code class="groovy">// my-demo/build.gradle中引入模块dependencies 下新增 compile(project(&quot;:spring-context&quot;))</code></pre></li><li>4.新建配置类及测试代码<pre><code class="java">//配置类//如果注解引入失败，则在@Componentpublic class TestConfig &#123;&#125;</code></pre></li></ul><p>//测试类，打印成功则说明编译成功<br>public class StartDemo {<br>    public static void main(String[] args) {<br>        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(“com.my.config”);<br>        System.out.println(context.getBean(TestConfig.class));<br>    }<br>}</p><pre><code></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 框架 </category>
+          
+          <category> springframework-1 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringFramework </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringClougGateway</title>
       <link href="2021/06/15/backend/spring/springcloud-gateway/"/>
       <url>2021/06/15/backend/spring/springcloud-gateway/</url>
       
-        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RC3/multi/multi_spring-cloud-gateway.html">SpringCloudGateway-2.1.0.RC3</a></li><li><a href="https://spring.io/projects/spring-cloud-gateway">SpringCloudGateway官网</a></li><li><a href="https://www.haoyizebo.com/posts/876ed1e8/">SpringCloudGateway(读取、修改RequestBody)(转)</a></li></ul><h3 id="获取及改写RequestBody示例"><a href="#获取及改写RequestBody示例" class="headerlink" title="获取及改写RequestBody示例"></a>获取及改写RequestBody示例</h3><pre><code class="java">class DemoFilter implements GlobalFilter, Ordered&#123;    @Resource    private ServerCodecConfigurer configurer;    @Override    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) &#123;        ServerRequest serverRequest = ServerRequest.create(exchange, configurer.getReaders());        // read &amp; modify body        Mono&lt;String&gt; modifiedBody = serverRequest.bodyToMono(String.class)                .flatMap(body -&gt; &#123;                    //例子：验签                    boolean checkFlag = paramSignCheck(jsonParam);                    if(!checkFlag)&#123;                        return Mono.error(new Exception(&quot;验签失败&quot;));                    &#125;                    return Mono.just(body);                &#125;);        BodyInserter bodyInserter = BodyInserters.fromPublisher(modifiedBody,String.class);        HttpHeaders headers = new HttpHeaders();        headers.putAll(exchange.getRequest().getHeaders());        //重要 不处理会导致请求失败        headers.remove(HttpHeaders.CONTENT_LENGTH);        CachedBodyOutputMessage outputMessage = new CachedBodyOutputMessage(exchange, headers);        return bodyInserter.insert(outputMessage, new BodyInserterContext())                .then(Mono.defer(() -&gt; &#123;                    ServerHttpRequestDecorator decorator = new ServerHttpRequestDecorator(                            exchange.getRequest()) &#123;                        @Override                        public HttpHeaders getHeaders() &#123;                            long contentLength = headers.getContentLength();                            HttpHeaders httpHeaders = new HttpHeaders();                            httpHeaders.putAll(super.getHeaders());                            if (contentLength &gt; 0) &#123;                                httpHeaders.setContentLength(contentLength);                            &#125;                            return httpHeaders;                        &#125;                        @Override                        public Flux&lt;DataBuffer&gt; getBody() &#123;                            return outputMessage.getBody();                        &#125;                    &#125;;                    ServerHttpResponse decoratedResponse = decorate(exchange, trace);                    return chain.filter(exchange.mutate().request(decorator).response(decoratedResponse).build());                &#125;));    &#125;&#125;</code></pre><h3 id="新增headers"><a href="#新增headers" class="headerlink" title="新增headers"></a>新增headers</h3><pre><code class="java">@Configurationpublic class AuthGatewayFilter implements GlobalFilter, Ordered &#123;    @Override    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) &#123;        Consumer&lt;HttpHeaders&gt; httpHeaders = httpHeader -&gt; &#123;            // 存在相同的key,直接添加会报错            if(StringUtils.isBlank(httpHeader.getFirst(&quot;xxx&quot;)))&#123;                httpHeader.add(&quot;xxx&quot;, &quot;xxx&quot;);            &#125;        &#125;;        ServerHttpRequest serverHttpRequest = exchange.getRequest().mutate().headers(httpHeaders).build();        exchange = exchange.mutate().request(serverHttpRequest).build();        return chain.filter(exchange);    &#125;    @Override    public int getOrder() &#123;        return Ordered.HIGHEST_PRECEDENCE - 1;    &#125;&#125;</code></pre><h3 id="请求非json格式转jsondemo"><a href="#请求非json格式转jsondemo" class="headerlink" title="请求非json格式转jsondemo"></a>请求非json格式转jsondemo</h3><pre><code class="java">class Demo&#123;    /** application/x-www-form-urlencoded 转json **/    private Map&lt;String, Object&gt; decodeBody(String body) &#123;        return Arrays.stream(body.split(&quot;&amp;&quot;))                .map(s -&gt; s.split(&quot;=&quot;))                .collect(Collectors.toMap(arr -&gt; arr[0], arr -&gt; arr[1]));    &#125;    /** fomrData(非文件)转 json 数据 **/    private String parseFormData2Json(String requestParam)&#123;        if(StringUtils.isBlank(requestParam)                 &amp;&amp; !requestParam.contains(&quot;filename&quot;))&#123;            return requestParam;        &#125;        try&#123;            requestParam = requestParam.replace(&quot;-&quot;,&quot;&quot;).split(&quot;-&quot;)[0];            String code = requestParam.split(&quot;\n&quot;)[0];            requestParam = requestParam.replaceAll(code,&quot;&quot;)                    .replaceAll(&quot;ContentDisposition: formdata;&quot;,&quot;&quot;)                    .replaceAll(&quot;\n&quot;,&quot;&quot;)                    .replaceAll(&quot;name=&quot;,&quot;,&quot;)                    .replaceAll(&quot;\&quot;\r\r&quot;,&quot;\&quot;:\&quot;&quot;)                    .replaceFirst(&quot;,&quot;,&quot;&quot;)                    .replaceAll(&quot;\r&quot;,&quot;\&quot;&quot;)            ;            requestParam = &quot;&#123;&quot; + requestParam + &quot;\&quot;&#125;&quot;;        &#125; catch (Exception e)&#123;            e.printStackTrace();        &#125;        return requestParam;    &#125;&#125;</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.0.RC3/multi/multi_spring-cloud-gateway.html">SpringCloudGateway-2.1.0.RC3</a></li><li><a href="https://spring.io/projects/spring-cloud-gateway">SpringCloudGateway官网</a></li><li><a href="https://www.haoyizebo.com/posts/876ed1e8/">SpringCloudGateway(读取、修改RequestBody)(转)</a></li></ul><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><pre><code class="yaml">spring:  application:    name: cloud-gateway  cloud:    httpclient:      connect-timeout: 20000      pool:        max-idle-time: 20000    #开启从注册中心动态创建路由的功能，利用微服务名进行路由#    discovery:#      locator:#        lower-case-service-id: true#        enabled: true    # 相关文档 https://www.cnblogs.com/crazymakercircle/p/11704077.html    # uri相同时，只有最后一个会生效    #一个请求满足多个路由的断言条件时，请求只会被首个成功匹配的路由转发；    #predicates断言，可根据datetime、Cookie、Header、Host、Method、Path、Queryparam、RemoteAddr匹配    #filter: 支持PrefixPath、RewritePath、SetPath、RedirectTo、RemoveRequestHeader、    #RemoveResponseHeader、SetStatus、StripPrefix、RequestSize、Default-filters    gateway:      routes:      #根据url拦截      - id: service1_v1        uri: https://www.so.com/?quanso.com.cn        predicates:          - Path=/360#      - id: service1_v2#        uri: http://localhost:8080/api/v2#        predicates:#          - Path=/v2      #拦截v1请求，并带上/api，转发到8080端口上#      - id: service1_v3#        uri: http://localhost:8080#        predicates:#          - Path=/v1#        filters:#          - PrefixPath=/api      #predicates断言，可根据datetime/Cookie/Header/Host/Method/Path/Queryparam/RemoteAddr匹配      - id: queryParam-baidu-route        uri: https://www.baidu.com        predicates:          - Query=baidu      - id: queryParam-bing-route        uri: https://bing.com/        predicates:          - Query=bing, tr. #参数中包含bing,且值为tr开头的三位参数 才能匹配到#      - id: queryParam-release2-route#        uri: http://localhost:8080/api/v2#        predicates:#          - Path=/api#          - Weight=service2, 90#      - id: queryParam-head-route#        uri: http://localhost:8080#        predicates:#          - Header=Jump, 1001 #请求头中包含信息才校验通过#        filters:#          - PrefixPath=/api#      - id: queryParam-host-route#        uri: http://localhost:8080#        predicates:#          - Host=*.apix #请求头中包含信息才校验通过#        filters:#          - PrefixPath=/api      #测试StripPrefix#      - id: full-route#        uri: http://localhost:8080#        predicates:#          - Query=full#        filters:#          - PrefixPath=/full#          - StripPrefix=0      # 熔断降级#      - id: queryParam-fallback-route#        uri: http://localhost:8080#        predicates:#          - Path=/test#        filters:#          - name: Hystrix#            args:#              name: default#              fallbackUri: forward:/fallback#      - id: fallback-route#        uri: http://localhost:8080/fallback#        predicates:#          - Path=/fallback        # 金丝雀发布      - id: release1-route        uri: http://localhost:8080        predicates:          - Path=/v1          - Weight=service1, 50        filters:          - PrefixPath=/api      - id: release2-route        uri: http://localhost:8081        predicates:          - Path=/v1          - Weight=service1, 50        filters:          - PrefixPath=/api#hystrix.command.fallbackA.execution.isolation.thread.timeoutInMilliseconds: 5000# hystrix 信号量隔离，1.5秒后自动超时hystrix:  command:    default:      execution:        isolation:          strategy: SEMAPHORE          thread:            timeoutInMilliseconds: 1500</code></pre><h3 id="获取及改写RequestBody示例"><a href="#获取及改写RequestBody示例" class="headerlink" title="获取及改写RequestBody示例"></a>获取及改写RequestBody示例</h3><pre><code class="java">class DemoFilter implements GlobalFilter, Ordered&#123;    @Resource    private ServerCodecConfigurer configurer;    @Override    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) &#123;        ServerRequest serverRequest = ServerRequest.create(exchange, configurer.getReaders());        // read &amp; modify body        Mono&lt;String&gt; modifiedBody = serverRequest.bodyToMono(String.class)                .flatMap(body -&gt; &#123;                    //例子：验签                    boolean checkFlag = paramSignCheck(jsonParam);                    if(!checkFlag)&#123;                        return Mono.error(new Exception(&quot;验签失败&quot;));                    &#125;                    return Mono.just(body);                &#125;);        BodyInserter bodyInserter = BodyInserters.fromPublisher(modifiedBody,String.class);        HttpHeaders headers = new HttpHeaders();        headers.putAll(exchange.getRequest().getHeaders());        //重要 不处理会导致请求失败        headers.remove(HttpHeaders.CONTENT_LENGTH);        CachedBodyOutputMessage outputMessage = new CachedBodyOutputMessage(exchange, headers);        return bodyInserter.insert(outputMessage, new BodyInserterContext())                .then(Mono.defer(() -&gt; &#123;                    ServerHttpRequestDecorator decorator = new ServerHttpRequestDecorator(                            exchange.getRequest()) &#123;                        @Override                        public HttpHeaders getHeaders() &#123;                            long contentLength = headers.getContentLength();                            HttpHeaders httpHeaders = new HttpHeaders();                            httpHeaders.putAll(super.getHeaders());                            if (contentLength &gt; 0) &#123;                                httpHeaders.setContentLength(contentLength);                            &#125;                            return httpHeaders;                        &#125;                        @Override                        public Flux&lt;DataBuffer&gt; getBody() &#123;                            return outputMessage.getBody();                        &#125;                    &#125;;                    ServerHttpResponse decoratedResponse = decorate(exchange, trace);                    return chain.filter(exchange.mutate().request(decorator).response(decoratedResponse).build());                &#125;));    &#125;&#125;</code></pre><h3 id="新增headers"><a href="#新增headers" class="headerlink" title="新增headers"></a>新增headers</h3><pre><code class="java">@Configurationpublic class AuthGatewayFilter implements GlobalFilter, Ordered &#123;    @Override    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) &#123;        Consumer&lt;HttpHeaders&gt; httpHeaders = httpHeader -&gt; &#123;            // 存在相同的key,直接添加会报错            if(StringUtils.isBlank(httpHeader.getFirst(&quot;xxx&quot;)))&#123;                httpHeader.add(&quot;xxx&quot;, &quot;xxx&quot;);            &#125;        &#125;;        ServerHttpRequest serverHttpRequest = exchange.getRequest().mutate().headers(httpHeaders).build();        exchange = exchange.mutate().request(serverHttpRequest).build();        return chain.filter(exchange);    &#125;    @Override    public int getOrder() &#123;        return Ordered.HIGHEST_PRECEDENCE - 1;    &#125;&#125;</code></pre><h3 id="请求非json格式转jsondemo"><a href="#请求非json格式转jsondemo" class="headerlink" title="请求非json格式转jsondemo"></a>请求非json格式转jsondemo</h3><pre><code class="java">class Demo&#123;    /** application/x-www-form-urlencoded 转json **/    private Map&lt;String, Object&gt; decodeBody(String body) &#123;        return Arrays.stream(body.split(&quot;&amp;&quot;))                .map(s -&gt; s.split(&quot;=&quot;))                .collect(Collectors.toMap(arr -&gt; arr[0], arr -&gt; arr[1]));    &#125;    /** fomrData(非文件)转 json 数据 **/    private String parseFormData2Json(String requestParam)&#123;        if(StringUtils.isBlank(requestParam)                 &amp;&amp; !requestParam.contains(&quot;filename&quot;))&#123;            return requestParam;        &#125;        try&#123;            requestParam = requestParam.replace(&quot;-&quot;,&quot;&quot;).split(&quot;-&quot;)[0];            String code = requestParam.split(&quot;\n&quot;)[0];            requestParam = requestParam.replaceAll(code,&quot;&quot;)                    .replaceAll(&quot;ContentDisposition: formdata;&quot;,&quot;&quot;)                    .replaceAll(&quot;\n&quot;,&quot;&quot;)                    .replaceAll(&quot;name=&quot;,&quot;,&quot;)                    .replaceAll(&quot;\&quot;\r\r&quot;,&quot;\&quot;:\&quot;&quot;)                    .replaceFirst(&quot;,&quot;,&quot;&quot;)                    .replaceAll(&quot;\r&quot;,&quot;\&quot;&quot;)            ;            requestParam = &quot;&#123;&quot; + requestParam + &quot;\&quot;&#125;&quot;;        &#125; catch (Exception e)&#123;            e.printStackTrace();        &#125;        return requestParam;    &#125;&#125;</code></pre>]]></content>
       
       
       <categories>
+          
+          <category> 后端 </category>
           
           <category> 框架 </category>
           
@@ -40,16 +125,14 @@
       
       <categories>
           
-          <category> devops </category>
-          
-          <category> 调用链监控 </category>
+          <category> 运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devops </tag>
+            <tag> skywalking </tag>
             
         </tags>
       
@@ -67,16 +150,14 @@
       
       <categories>
           
-          <category> devops </category>
-          
-          <category> istio </category>
+          <category> 运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devops </tag>
+            <tag> istio </tag>
             
         </tags>
       
@@ -95,8 +176,6 @@
       <categories>
           
           <category> 前端 </category>
-          
-          <category> vue </category>
           
       </categories>
       
@@ -121,43 +200,14 @@
       
       <categories>
           
-          <category> devops </category>
-          
-          <category> 部署 </category>
+          <category> 运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devops </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>综合文档地址备份</title>
-      <link href="2021/04/13/doc/work/"/>
-      <url>2021/04/13/doc/work/</url>
-      
-        <content type="html"><![CDATA[<ul><li><a href="https://www.cnblogs.com/crazymakercircle/p/11704077.html">综合资料(转)</a></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 综合文档 </category>
-          
-          <category> doc </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> doc </tag>
+            <tag> docker </tag>
             
         </tags>
       
@@ -175,9 +225,7 @@
       
       <categories>
           
-          <category> test </category>
-          
-          <category> jmh </category>
+          <category> 测试 </category>
           
       </categories>
       
@@ -201,6 +249,8 @@
       
       
       <categories>
+          
+          <category> 后端 </category>
           
           <category> 服务治理 </category>
           
@@ -233,16 +283,14 @@
       
       <categories>
           
-          <category> devops </category>
-          
-          <category> nginx </category>
+          <category> 运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devops </tag>
+            <tag> nginx </tag>
             
         </tags>
       
@@ -259,6 +307,8 @@
       
       
       <categories>
+          
+          <category> 后端 </category>
           
           <category> 框架 </category>
           
@@ -314,16 +364,14 @@
       
       <categories>
           
-          <category> devops </category>
-          
-          <category> LDAP </category>
+          <category> 运维 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> devops </tag>
+            <tag> ldap </tag>
             
         </tags>
       
@@ -341,9 +389,7 @@
       
       <categories>
           
-          <category> devops </category>
-          
-          <category> 服务问题排查 </category>
+          <category> 运维 </category>
           
       </categories>
       
@@ -395,6 +441,8 @@
       
       <categories>
           
+          <category> 后端 </category>
+          
           <category> 消息队列 </category>
           
           <category> kafka </category>
@@ -424,9 +472,7 @@
       
       <categories>
           
-          <category> 后端 </category>
-          
-          <category> cache </category>
+          <category> 存储 </category>
           
       </categories>
       
@@ -478,7 +524,7 @@
       
       <categories>
           
-          <category> 设计图 </category>
+          <category> 架构 </category>
           
       </categories>
       
@@ -611,8 +657,6 @@
           
           <category> 思考 </category>
           
-          <category> 常用语 </category>
-          
       </categories>
       
       
@@ -635,6 +679,8 @@
       
       
       <categories>
+          
+          <category> 后端 </category>
           
           <category> 服务治理 </category>
           
@@ -719,7 +765,7 @@
       
       <categories>
           
-          <category> 数据库 </category>
+          <category> 存储 </category>
           
       </categories>
       
@@ -744,7 +790,7 @@
       
       <categories>
           
-          <category> 数据库 </category>
+          <category> 存储 </category>
           
       </categories>
       
@@ -823,8 +869,6 @@
           
           <category> 思考 </category>
           
-          <category> 阅读 </category>
-          
       </categories>
       
       
@@ -840,8 +884,8 @@
     
     <entry>
       <title>软件推荐</title>
-      <link href="2020/10/02/tools/software/"/>
-      <url>2020/10/02/tools/software/</url>
+      <link href="2020/10/02/other/software/"/>
+      <url>2020/10/02/other/software/</url>
       
         <content type="html"><![CDATA[<h3 id="Mac软件-amp-工具网站"><a href="#Mac软件-amp-工具网站" class="headerlink" title="Mac软件&amp;工具网站"></a>Mac软件&amp;工具网站</h3><table><thead><tr><th>主要功能</th><th>软件名</th><th>相关网址</th></tr></thead><tbody><tr><td>图片编辑器</td><td>PixelStyle</td><td></td></tr><tr><td>视频播放</td><td>IINA</td><td></td></tr><tr><td>录屏软件</td><td>LICEcap</td><td></td></tr><tr><td>文件比较</td><td>Beyond Compare</td><td></td></tr><tr><td>Markdown编辑工具</td><td>Haroopad</td><td></td></tr><tr><td>Mac包管理工具</td><td>Homebrew</td><td></td></tr><tr><td>Mac破解软件</td><td></td><td><a href="https://xclient.info/">https://xclient.info</a></td></tr><tr><td>相似网站查询</td><td></td><td><a href="https://www.similarsites.com/">https://www.similarsites.com</a></td></tr></tbody></table>]]></content>
       
@@ -849,8 +893,6 @@
       <categories>
           
           <category> 其他 </category>
-          
-          <category> 软件 </category>
           
       </categories>
       
@@ -867,8 +909,8 @@
     
     <entry>
       <title>Hexo搭建博客</title>
-      <link href="2020/09/30/tools/hexo/"/>
-      <url>2020/09/30/tools/hexo/</url>
+      <link href="2020/09/30/other/hexo/"/>
+      <url>2020/09/30/other/hexo/</url>
       
         <content type="html"><![CDATA[<blockquote><p>记录本博客搭建步骤，适用于Mac/Linux系统，详细介绍及其他系统请参照Hexo官网</p></blockquote><h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul><li><a href="https://hexo.io/zh-cn/">Hexo官网</a></li><li><a href="https://hexo.io/themes/">官网主题</a></li><li><a href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo主题</a></li><li><a href="https://yelog.org/2017/03/13/3-hexo-logs/">3-hexo主题相关文档</a></li></ul><h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><blockquote><p>mac用户推荐先安装Homebrew，通过Homebrew安装一下软件</p></blockquote><ul><li><a href="https://brew.sh/">Homebrew</a></li><li>安装Git</li><li>安装Node.js</li></ul><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><pre><code class="textmate">npm install -g hexo-cli</code></pre><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><pre><code class="shell">注：my-hexo - 项目名/项目文件夹名hexo init my-hexocd my-hexonpm install</code></pre><h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><ul><li><p>目录</p><pre><code class="textmate">.├── _config.yml├── package.json├── scaffolds├── source|   ├── _drafts|   └── _posts└── themes</code></pre></li><li><p>目录介绍</p></li></ul><pre><code class="textmate">1._config.yml网站的 配置 信息，您可以在此配置大部分的参数2.package.json应用程序的信息。3.scaffolds模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。4.source资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。5.themes主题 文件夹。Hexo 会根据主题来生成静态页面。</code></pre><h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><ul><li><a href="https://hexo.io/themes/">官网主题</a></li><li>本博客使用的主题 <a href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a></li></ul><pre><code class="textmate">1.项目根目录下执行(下载其他主题，修改为themes/xxx即可)git clone https://github.com/yelog/hexo-theme-3-hexo.git themes/3-hexo2.修改配置修改hexo根目录的_config.yml，theme: 3-hexo3.主题更新cd themes/3-hexogit pull在此感谢提供主题的作者</code></pre><h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><ul><li>常用文档命令</li></ul><pre><code class="textmate">1.新建文档hexo new [layout] &lt;title&gt;2.新建草稿文档hexo new [layout] &lt;title&gt;3.草稿&lt;-&gt;发布hexo publish [layout] &lt;title&gt;</code></pre><ul><li><p>参数介绍</p><table><thead><tr><th>参数</th><th>值</th><th>作用</th><th>生成文件的路径</th></tr></thead><tbody><tr><td>layout</td><td>post</td><td>正式发表的文章</td><td>source/_posts</td></tr><tr><td>layout</td><td>page</td><td>静态页面</td><td>source</td></tr><tr><td>layout</td><td>draft</td><td>草稿</td><td>source/_drafts</td></tr><tr><td>title</td><td>-</td><td>文章标题&amp;文件名</td><td>-</td></tr></tbody></table></li><li><p>文档头部信息格式</p></li></ul><pre><code class="textmate">---title: Javadate: 2020-09-30 14:51:20tags: - Javacategories: - Java- 笔记---</code></pre><ul><li>文档头部信息解释</li></ul><table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>title</td><td>网站标题</td></tr><tr><td>subtitle</td><td>网站副标题</td></tr><tr><td>description</td><td>网站描述</td></tr><tr><td>tags</td><td>标签，可多个</td></tr><tr><td>categories</td><td>分类菜单，可定义多级</td></tr><tr><td>keywords</td><td>网站的关键词。支援多个关键词。</td></tr><tr><td>author</td><td>您的名字</td></tr><tr><td>language</td><td>网站使用的语言。对于简体中文用户来说，使用不同的主题可能需要设置成不同的值，请参考你的主题的文档自行设置，常见的有 zh-Hans和 zh-CN。</td></tr><tr><td>timezone</td><td>网站时区。Hexo 默认使用您电脑的时区。请参考 时区列表 进行设置，如 America/New_York, Japan, 和 UTC 。一般的，对于中国大陆地区可以使用 Asia/Shanghai。</td></tr></tbody></table><h3 id="运行-amp-发布"><a href="#运行-amp-发布" class="headerlink" title="运行&amp;发布"></a>运行&amp;发布</h3><ul><li>本地运行<pre><code class="textmate">npm run server</code></pre></li><li>编译&amp;部署<pre><code class="textmate">hexo clean hexo generate编译后会生成public文件夹，部署gitpage可以直接指定public为资源文件夹即可</code></pre></li></ul>]]></content>
       
@@ -876,8 +918,6 @@
       <categories>
           
           <category> 其他 </category>
-          
-          <category> 博客工具 </category>
           
       </categories>
       

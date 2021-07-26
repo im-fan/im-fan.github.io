@@ -7,7 +7,7 @@ tags:
 - uml
 - 类图
 categories:
-- 设计图
+- 架构
 ---
 ### 常用元素
 ```textmate

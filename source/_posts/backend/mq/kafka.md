@@ -6,6 +6,7 @@ tags:
 - kafka
 
 categories:
+- 后端
 - 消息队列
 - kafka
 ---

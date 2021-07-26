@@ -2,10 +2,9 @@
 title: 调用链监控-skywalking
 date: 2021-05-19 16:52:25
 tags:
-- devops 
+- skywalking 
 categories:
-- devops
-- 调用链监控
+- 运维
 ---
 
 - [官网](http://skywalking.apache.org/)

@@ -2,10 +2,9 @@
 title: 运维相关
 date: 2021-04-16 14:19:25
 tags:
-- devops
+- docker
 categories:
-- devops
-- 部署
+- 运维
 ---
 ### K8S相关
 - [k8s实践(转)](https://k8s.imroc.io/troubleshooting/)

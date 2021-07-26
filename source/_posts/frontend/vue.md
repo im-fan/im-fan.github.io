@@ -7,7 +7,6 @@ tags:
 - vue
 categories:
 - 前端
-- vue
 ---
 
 ### vue+es6接入Echarts

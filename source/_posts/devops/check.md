@@ -4,8 +4,7 @@ date: 2021-02-09 17:08:25
 tags:
 - devops
 categories:
-- devops
-- 服务问题排查
+- 运维
 ---
 
 ### 死锁问题排查

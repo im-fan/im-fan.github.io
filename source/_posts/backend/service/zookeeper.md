@@ -6,6 +6,7 @@ tags:
 - 注册中心
 - 分布式锁
 categories: 
+- 后端
 - 服务治理
 - zookeeper
 ---

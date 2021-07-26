@@ -18,6 +18,8 @@
   }
   .nav-left ul {
     font-size: 15px;
+    overflow: scroll;
+    height: 800px;
   }
   .nav-right {
     width: 240px;
@@ -95,7 +97,6 @@
   }
   .nav-left {
     width: 100%;
-    height: auto;
   }
   .nav-left .avatar_target .avatar {
     height: 80px;
