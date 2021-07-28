@@ -41,7 +41,7 @@ public class StartDemo {
 	例：AutowiredAnnotationBeanPostProcessor
 ```
 ### 大体流程
-```text
+```textmate
 scan -> beanPorcessor(描述bean信息) -> 放到 configMap 中 -> refresh -> 通过bean工厂实例化类 -> 放到单例池中
 ```
 ### AnnotationConfigApplicationContext详解

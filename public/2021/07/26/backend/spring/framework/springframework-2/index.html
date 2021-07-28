@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2021-07-26T07:05:00.000Z">
-<meta property="article:modified_time" content="2021-07-28T01:53:35.415Z">
+<meta property="article:modified_time" content="2021-07-28T05:53:19.395Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="SpringFramework">
 <meta name="twitter:card" content="summary">
@@ -55,7 +55,7 @@
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
   <input id="theme_highlight_on" value="true" />
-  <input id="theme_code_copy" value="true" />
+  <input id="theme_code_copy" value="false" />
 </div>
 
 
@@ -799,7 +799,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-07-28 09:53:35'>2021-07-26 15:05</time>
+            发布时间 : <time class="date" title='最后更新: 2021-07-28 13:53:19'>2021-07-26 15:05</time>
         
     </div>
     <div class="article-meta">
@@ -858,7 +858,7 @@
 </li>
 <li>BeanPostProcessor<pre><code class="text">后期处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中
   例：AutowiredAnnotationBeanPostProcessor</code></pre>
-<h3 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h3><pre><code class="text">scan -&gt; beanPorcessor(描述bean信息) -&gt; 放到 configMap 中 -&gt; refresh -&gt; 通过bean工厂实例化类 -&gt; 放到单例池中</code></pre>
+<h3 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h3><pre><code class="textmate">scan -&gt; beanPorcessor(描述bean信息) -&gt; 放到 configMap 中 -&gt; refresh -&gt; 通过bean工厂实例化类 -&gt; 放到单例池中</code></pre>
 <h3 id="AnnotationConfigApplicationContext详解"><a href="#AnnotationConfigApplicationContext详解" class="headerlink" title="AnnotationConfigApplicationContext详解"></a>AnnotationConfigApplicationContext详解</h3></li>
 <li>类图<br><img src="https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="类图"></li>
 <li>流程图<br><img src="https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="执行流程"></li>
