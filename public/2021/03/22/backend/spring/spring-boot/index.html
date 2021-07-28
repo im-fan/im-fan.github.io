@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="StartDemopublic class StartDemo &amp;#123;    public static void main(String[] args) &amp;#123;       ApplicationContext context &#x3D;             new AnnotationConfigApplicationContext(&quot;com.my.config&quot;)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringFramework流程">
+<meta property="og:title" content="SpringFramework源码学习">
 <meta property="og:url" content="http://imfan.com/2021/07/26/backend/spring/framework/springframework-2/index.html">
 <meta property="og:site_name" content="Imfan笔记">
 <meta property="og:description" content="StartDemopublic class StartDemo &amp;#123;    public static void main(String[] args) &amp;#123;       ApplicationContext context &#x3D;             new AnnotationConfigApplicationContext(&quot;com.my.config&quot;)">
@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2021-07-26T07:05:00.000Z">
-<meta property="article:modified_time" content="2021-07-26T07:37:49.547Z">
+<meta property="article:modified_time" content="2021-07-28T01:53:35.415Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="SpringFramework">
 <meta name="twitter:card" content="summary">
@@ -137,10 +137,7 @@
                                     <li><div data-rel="后端<--->框架springcloud">springcloud<small>(1)</small></div>
                                     </li>
                                     
-                                    <li><div data-rel="后端<--->框架springframework-1">springframework-1<small>(1)</small></div>
-                                    </li>
-                                    
-                                    <li><div data-rel="后端<--->框架springframework-2">springframework-2<small>(1)</small></div>
+                                    <li><div data-rel="后端<--->框架springframework">springframework<small>(2)</small></div>
                                     </li>
                                     
                                 </ul>
@@ -193,10 +190,6 @@
             <li><div data-rel="其他">其他<small>(2)</small></div>
                 
             </li>
-            
-        
-    
-        
             
         
     
@@ -478,11 +471,11 @@
     
     <nav id="title-list-nav">
         
-        <a  class="全部文章 后端 框架 springframework-2 "
+        <a  class="全部文章 后端 框架 springframework "
            href="/2021/07/26/backend/spring/framework/springframework-2/"
            data-tag="SpringFramework"
            data-author="" >
-            <span class="post-title" title="SpringFramework流程">SpringFramework流程</span>
+            <span class="post-title" title="SpringFramework源码学习">SpringFramework源码学习</span>
             <span class="post-date" title="2021-07-26 15:05:00">2021/07/26</span>
         </a>
         
@@ -494,11 +487,11 @@
             <span class="post-date" title="2021-07-20 09:45:00">2021/07/20</span>
         </a>
         
-        <a  class="全部文章 后端 框架 springframework-1 "
+        <a  class="全部文章 后端 框架 springframework "
            href="/2021/06/26/backend/spring/framework/springframework-1/"
            data-tag="SpringFramework"
            data-author="" >
-            <span class="post-title" title="SpringFramework源码学习(零)">SpringFramework源码学习(零)</span>
+            <span class="post-title" title="SpringFramework源码编译">SpringFramework源码编译</span>
             <span class="post-date" title="2021-06-26 20:00:00">2021/06/26</span>
         </a>
         
@@ -806,12 +799,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-07-26 15:37:49'>2021-03-22 09:44</time>
+            发布时间 : <time class="date" title='最后更新: 2021-07-26 16:41:40'>2021-03-22 09:44</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:262</span>
+        <span>字数:271</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -850,6 +843,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/603d125f21b3">SpringBoot启动过程(转)</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.processon.com/view/link/59812124e4b0de2518b32b6e">流程图(转)</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/youanyyou/article/details/103562907">@RefreshScope原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sword-successful/p/11383723.html">SpringBoot内置Tomcat启动源码分析</a></li>
 </ul>
 <h3 id="集成PageHelper"><a href="#集成PageHelper" class="headerlink" title="集成PageHelper"></a>集成PageHelper</h3><ul>
 <li><p>配置</p>

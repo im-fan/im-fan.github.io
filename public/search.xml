@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>SpringFramework流程</title>
+      <title>SpringFramework源码学习</title>
       <link href="2021/07/26/backend/spring/framework/springframework-2/"/>
       <url>2021/07/26/backend/spring/framework/springframework-2/</url>
       
@@ -17,7 +17,7 @@
           
           <category> 框架 </category>
           
-          <category> springframework-2 </category>
+          <category> springframework </category>
           
       </categories>
       
@@ -58,7 +58,7 @@
     
     
     <entry>
-      <title>SpringFramework源码学习(零)</title>
+      <title>SpringFramework源码编译</title>
       <link href="2021/06/26/backend/spring/framework/springframework-1/"/>
       <url>2021/06/26/backend/spring/framework/springframework-1/</url>
       
@@ -71,7 +71,7 @@
           
           <category> 框架 </category>
           
-          <category> springframework-1 </category>
+          <category> springframework </category>
           
       </categories>
       
@@ -303,7 +303,7 @@
       <link href="2021/03/22/backend/spring/spring-boot/"/>
       <url>2021/03/22/backend/spring/spring-boot/</url>
       
-        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://www.jianshu.com/p/603d125f21b3">SpringBoot启动过程(转)</a></li><li><a href="https://www.processon.com/view/link/59812124e4b0de2518b32b6e">流程图(转)</a></li><li><a href="https://blog.csdn.net/youanyyou/article/details/103562907">@RefreshScope原理</a></li></ul><h3 id="集成PageHelper"><a href="#集成PageHelper" class="headerlink" title="集成PageHelper"></a>集成PageHelper</h3><ul><li><p>配置</p><pre><code class="pom">&lt;!--基础框架包--&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;  &lt;version&gt;2.3.4.RELEASE&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;  &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;  &lt;version&gt;Hoxton.SR8&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;!--page helper依赖--&gt;&lt;!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter --&gt;&lt;dependency&gt;  &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;  &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;  &lt;version&gt;1.3.0&lt;/version&gt;&lt;/dependency&gt;</code></pre></li><li><p>使用</p><pre><code class="java">class XXService&#123;  public Result list(QueryParam param)&#123;      PageMethod.startPage(param.getPageNumber(),param.getPageSize());      List result = mapper.list(param);      PageInfo pageInfo = new PageInfo(result);      return PageDTO.result(pageInfo.getTotal(),result);  &#125;&#125;</code></pre></li><li><p>注意事项</p></li></ul><pre><code class="textmate">1.注意pom版本号2.使用pagehelper-spring-boot-starter pom后，不需要在yml中配置pagehelper相关参数，否则分页会有问题(亲测)  例如: 永远只在第一页</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://www.jianshu.com/p/603d125f21b3">SpringBoot启动过程(转)</a></li><li><a href="https://www.processon.com/view/link/59812124e4b0de2518b32b6e">流程图(转)</a></li><li><a href="https://blog.csdn.net/youanyyou/article/details/103562907">@RefreshScope原理</a></li><li><a href="https://www.cnblogs.com/sword-successful/p/11383723.html">SpringBoot内置Tomcat启动源码分析</a></li></ul><h3 id="集成PageHelper"><a href="#集成PageHelper" class="headerlink" title="集成PageHelper"></a>集成PageHelper</h3><ul><li><p>配置</p><pre><code class="pom">&lt;!--基础框架包--&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;  &lt;version&gt;2.3.4.RELEASE&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;  &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;  &lt;version&gt;Hoxton.SR8&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;!--page helper依赖--&gt;&lt;!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter --&gt;&lt;dependency&gt;  &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;  &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;  &lt;version&gt;1.3.0&lt;/version&gt;&lt;/dependency&gt;</code></pre></li><li><p>使用</p><pre><code class="java">class XXService&#123;  public Result list(QueryParam param)&#123;      PageMethod.startPage(param.getPageNumber(),param.getPageSize());      List result = mapper.list(param);      PageInfo pageInfo = new PageInfo(result);      return PageDTO.result(pageInfo.getTotal(),result);  &#125;&#125;</code></pre></li><li><p>注意事项</p></li></ul><pre><code class="textmate">1.注意pom版本号2.使用pagehelper-spring-boot-starter pom后，不需要在yml中配置pagehelper相关参数，否则分页会有问题(亲测)  例如: 永远只在第一页</code></pre>]]></content>
       
       
       <categories>
