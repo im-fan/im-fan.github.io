@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>集成Jimu报表</title>
+      <link href="2021/08/04/backend/other/jimu-report/"/>
+      <url>2021/08/04/backend/other/jimu-report/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="http://www.jimureport.com/">官网</a></li><li><a href="http://report.jeecg.com/2078875">官方文档</a></li></ul><h3 id="集成步骤"><a href="#集成步骤" class="headerlink" title="集成步骤"></a>集成步骤</h3><blockquote><p>见官网文档</p></blockquote><h3 id="集成时遇到的问题"><a href="#集成时遇到的问题" class="headerlink" title="集成时遇到的问题"></a>集成时遇到的问题</h3><ul><li>集成后启动报错，Unable to load cache item<pre><code class="textmate">解决方法: 去掉devtools即可</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 三方集成 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 三方集成 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringFramework源码学习</title>
       <link href="2021/07/26/backend/spring/framework/springframework-2/"/>
       <url>2021/07/26/backend/spring/framework/springframework-2/</url>
