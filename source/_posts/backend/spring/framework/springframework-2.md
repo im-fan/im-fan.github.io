@@ -37,7 +37,7 @@ public class StartDemo {
 ```
 - BeanPostProcessor
 ```text
-后期处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中
+后置处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中
 	例：AutowiredAnnotationBeanPostProcessor
 ```
 ### 大体流程
@@ -49,3 +49,9 @@ scan -> beanPorcessor(描述bean信息) -> 放到 configMap 中 -> refresh -> �
   ![类图](https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center)
 - 流程图
   ![执行流程](https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center)
+
+
+### 解决循环依赖
+- [疯狂创客圈(转)](https://www.cnblogs.com/crazymakercircle/p/14465630.html)
+- 主要流程图
+  ![spring解决循环依赖流程(转)](https://gitee.com/im-fan/fan-pic/raw/master/images/spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png)
