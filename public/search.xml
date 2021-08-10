@@ -35,7 +35,7 @@
       <link href="2021/07/26/backend/spring/framework/springframework-2/"/>
       <url>2021/07/26/backend/spring/framework/springframework-2/</url>
       
-        <content type="html"><![CDATA[<h3 id="StartDemo"><a href="#StartDemo" class="headerlink" title="StartDemo"></a>StartDemo</h3><pre><code class="java">public class StartDemo &#123;   public static void main(String[] args) &#123;      ApplicationContext context =            new AnnotationConfigApplicationContext(&quot;com.my.config&quot;);      TestConfig testConfig = context.getBean(TestConfig.class);      System.out.println(&quot;==========&gt;main&quot;);      System.out.println(testConfig.getValue());   &#125;&#125;</code></pre><h3 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h3><ul><li>AnnotationConfigApplicationContext<pre><code class="text">根据包扫描对象</code></pre></li><li>RootBeanDefinition<pre><code class="text">记录扫描到的类的具体信息(描述类)</code></pre></li><li>BeanFactoryPostProcessor<pre><code class="text">接口，可自定义参与类初始化过程逻辑  工厂钩子，允许自定义修改应用程序上下文的 bean 定义，调整上下文底层 bean 工厂的 bean 属性值。</code></pre></li><li>BeanPostProcessor<pre><code class="text">后置处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中  例：AutowiredAnnotationBeanPostProcessor</code></pre><h3 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h3><pre><code class="textmate">scan -&gt; beanPorcessor(描述bean信息) -&gt; 放到 configMap 中 -&gt; refresh -&gt; 通过bean工厂实例化类 -&gt; 放到单例池中</code></pre><h3 id="AnnotationConfigApplicationContext详解"><a href="#AnnotationConfigApplicationContext详解" class="headerlink" title="AnnotationConfigApplicationContext详解"></a>AnnotationConfigApplicationContext详解</h3></li><li>类图<br><img src="https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="类图"></li><li>流程图<br><img src="https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="执行流程"></li></ul><h3 id="解决循环依赖"><a href="#解决循环依赖" class="headerlink" title="解决循环依赖"></a>解决循环依赖</h3><ul><li><a href="https://www.cnblogs.com/crazymakercircle/p/14465630.html">疯狂创客圈(转)</a></li><li>主要流程图<br><img src="https://gitee.com/im-fan/fan-pic/raw/master/images/spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png" alt="spring解决循环依赖流程(转)"></li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="StartDemo"><a href="#StartDemo" class="headerlink" title="StartDemo"></a>StartDemo</h3><pre><code class="java">public class StartDemo &#123;   public static void main(String[] args) &#123;      ApplicationContext context =            new AnnotationConfigApplicationContext(&quot;com.my.config&quot;);      TestConfig testConfig = context.getBean(TestConfig.class);      System.out.println(&quot;==========&gt;main&quot;);      System.out.println(testConfig.getValue());   &#125;&#125;</code></pre><h3 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h3><ul><li>AnnotationConfigApplicationContext<pre><code class="textmate">根据包扫描对象</code></pre></li><li>RootBeanDefinition<pre><code class="textmate">记录扫描到的类的具体信息(描述类)</code></pre></li><li>BeanFactoryPostProcessor<pre><code class="textmate">接口，可自定义参与类初始化过程逻辑  工厂钩子，允许自定义修改应用程序上下文的 bean 定义，调整上下文底层 bean 工厂的 bean 属性值。  BeanFactoryPostProcessor是在spring容器加载了bean的定义文件之后，在bean实例化之前执行的。接口方法的入参是ConfigurrableListableBeanFactory，使用该参数，可以获取到相关bean的定义信息</code></pre></li><li>BeanPostProcessor<pre><code class="textmate">后置处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中  例：AutowiredAnnotationBeanPostProcessor  可以在spring容器实例化bean之后，在执行bean的初始化方法前后，添加一些自己的处理逻辑。  BeanPostProcessor的执行顺序是在BeanFactoryPostProcessor之后。  内置实现:   org.springframework.context.annotation.CommonAnnotationBeanPostProcessor：支持@Resource注解的注入  org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor：支持@Required注解的注入  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor：支持@Autowired注解的注入</code></pre></li></ul><pre><code>### 简易流程```textmatescan -&gt; beanPorcessor(描述bean信息) -&gt; 放到 configMap 中 -&gt; refresh -&gt; 通过bean工厂实例化类 -&gt; 放到单例池中</code></pre><h3 id="AnnotationConfigApplicationContext详解"><a href="#AnnotationConfigApplicationContext详解" class="headerlink" title="AnnotationConfigApplicationContext详解"></a>AnnotationConfigApplicationContext详解</h3><ul><li>类图<br><img src="https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="类图"></li><li>流程图<br><img src="https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="执行流程"></li></ul><h3 id="解决循环依赖"><a href="#解决循环依赖" class="headerlink" title="解决循环依赖"></a>解决循环依赖</h3><ul><li><a href="https://www.cnblogs.com/crazymakercircle/p/14465630.html">疯狂创客圈(转)</a></li><li>主要流程图<br><img src="https://gitee.com/im-fan/fan-pic/raw/master/images/spring-cycle-refrence.png" alt="spring解决循环依赖流程(转)"></li></ul>]]></content>
       
       
       <categories>
@@ -64,7 +64,7 @@
       <link href="2021/07/20/backend/storage/mysql/"/>
       <url>2021/07/20/backend/storage/mysql/</url>
       
-        <content type="html"><![CDATA[<h3 id="Innodb引擎的4大特性"><a href="#Innodb引擎的4大特性" class="headerlink" title="Innodb引擎的4大特性"></a>Innodb引擎的4大特性</h3><blockquote><p><a href="https://www.cnblogs.com/zhs0/p/10528520.html">参考文档</a></p></blockquote><ul><li>插入缓冲</li><li>二次写</li><li>自适应哈希</li><li>预读</li></ul><h4 id="插入缓冲"><a href="#插入缓冲" class="headerlink" title="插入缓冲"></a>插入缓冲</h4><pre><code class="textmate">用于提升插入性能，分为Insert Buffer、Change Bufferchange buffering是insert buffer的加强，insert buffer只针对insert有效，change buffering对insert、delete、update(delete+insert)、purge都有效使用插入缓冲的条件：* 非聚集索引* 非唯一索引</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="Innodb引擎的4大特性"><a href="#Innodb引擎的4大特性" class="headerlink" title="Innodb引擎的4大特性"></a>Innodb引擎的4大特性</h3><blockquote><p><a href="https://www.cnblogs.com/zhs0/p/10528520.html">参考文档</a></p></blockquote><ul><li>插入缓冲</li><li>二次写</li><li>自适应哈希</li><li>预读</li></ul><h4 id="插入缓冲"><a href="#插入缓冲" class="headerlink" title="插入缓冲"></a>插入缓冲</h4><pre><code class="textmate">用于提升插入性能，分为Insert Buffer、Change Bufferchange buffering是insert buffer的加强，insert buffer只针对insert有效，change buffering对insert、delete、update(delete+insert)、purge都有效使用插入缓冲的条件：* 非聚集索引* 非唯一索引</code></pre><h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul><li><p>事务的特性ACID</p><pre><code class="textmate">原子性(atomicity)：一个事务被事务不可分割的最小工作单元，要么全部提交，要么全部失败回滚。一致性(consistency)：数据库总是从一致性状态到另一个一致性状态，它只包含成功事务提交的结果隔离型(isolation)：事务所做的修改在最终提交一起，对其他事务是不可见的持久性(durability)：一旦事务提交，则其所做的修改就会永久保存到数据库中。</code></pre></li><li><p>事务隔离级别 </p></li></ul><table><thead><tr><th></th><th>脏读</th><th>不可重复读</th><th>幻读</th><th>解决原理</th></tr></thead><tbody><tr><td>读未提交</td><td>x</td><td>x</td><td>x</td><td></td></tr><tr><td>读已提交</td><td>√</td><td>x</td><td>x</td><td></td></tr><tr><td>可重复读</td><td>√</td><td>√</td><td>x</td><td>gap锁 (mysql默认级别)</td></tr><tr><td>串行化</td><td>√</td><td>√</td><td>√</td><td>读锁</td></tr></tbody></table><h4 id="重要文件"><a href="#重要文件" class="headerlink" title="重要文件"></a>重要文件</h4><ul><li>undolog</li><li>redolog</li><li>binlog</li></ul><h4 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h4><ul><li>MyISAM</li><li>Heap</li><li>Merge</li><li>INNODB</li><li>ISAM</li></ul>]]></content>
       
       
       <categories>
@@ -288,11 +288,11 @@
       
         <tags>
             
-            <tag> 注册中心 </tag>
-            
             <tag> nacos </tag>
             
             <tag> 动态配置 </tag>
+            
+            <tag> 注册中心 </tag>
             
         </tags>
       
@@ -718,9 +718,9 @@
       
         <tags>
             
-            <tag> zookeeper </tag>
-            
             <tag> 注册中心 </tag>
+            
+            <tag> zookeeper </tag>
             
             <tag> 分布式锁 </tag>
             
