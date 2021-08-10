@@ -23,24 +23,32 @@ public class StartDemo {
 ```
 ### 关键类
 - AnnotationConfigApplicationContext
-```text
+```textmate
 根据包扫描对象
 ```
 - RootBeanDefinition
-```text
+```textmate
 记录扫描到的类的具体信息(描述类)
 ```
 - BeanFactoryPostProcessor
-```text
+```textmate
 接口，可自定义参与类初始化过程逻辑
 	工厂钩子，允许自定义修改应用程序上下文的 bean 定义，调整上下文底层 bean 工厂的 bean 属性值。
+	BeanFactoryPostProcessor是在spring容器加载了bean的定义文件之后，在bean实例化之前执行的。接口方法的入参是ConfigurrableListableBeanFactory，使用该参数，可以获取到相关bean的定义信息
 ```
 - BeanPostProcessor
-```text
+```textmate
 后置处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中
 	例：AutowiredAnnotationBeanPostProcessor
+	可以在spring容器实例化bean之后，在执行bean的初始化方法前后，添加一些自己的处理逻辑。
+	BeanPostProcessor的执行顺序是在BeanFactoryPostProcessor之后。
+	内置实现: 
+	org.springframework.context.annotation.CommonAnnotationBeanPostProcessor：支持@Resource注解的注入
+    org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor：支持@Required注解的注入
+    org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor：支持@Autowired注解的注入
+
 ```
-### 大体流程
+### 简易流程
 ```textmate
 scan -> beanPorcessor(描述bean信息) -> 放到 configMap 中 -> refresh -> 通过bean工厂实例化类 -> 放到单例池中
 ```
@@ -54,4 +62,4 @@ scan -> beanPorcessor(描述bean信息) -> 放到 configMap 中 -> refresh -> �
 ### 解决循环依赖
 - [疯狂创客圈(转)](https://www.cnblogs.com/crazymakercircle/p/14465630.html)
 - 主要流程图
-  ![spring解决循环依赖流程(转)](https://gitee.com/im-fan/fan-pic/raw/master/images/spring%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96.png)
+  ![spring解决循环依赖流程(转)](https://gitee.com/im-fan/fan-pic/raw/master/images/spring-cycle-refrence.png)
