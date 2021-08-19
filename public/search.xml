@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>SpringBoot多数据源</title>
+      <link href="2021/08/17/backend/spring/mybatis/"/>
+      <url>2021/08/17/backend/spring/mybatis/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="https://www.jianshu.com/p/b2f818b742a2">SpringBoot多数据源(转)</a></li></ul><h3 id="核心类"><a href="#核心类" class="headerlink" title="核心类"></a>核心类</h3><ul><li>DynamicDataSource</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 多数据源 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>IO</title>
       <link href="2021/08/11/backend/java/netty/io/"/>
       <url>2021/08/11/backend/java/netty/io/</url>
@@ -62,7 +89,7 @@
       <link href="2021/07/26/backend/spring/framework/springframework-2/"/>
       <url>2021/07/26/backend/spring/framework/springframework-2/</url>
       
-        <content type="html"><![CDATA[<h3 id="StartDemo"><a href="#StartDemo" class="headerlink" title="StartDemo"></a>StartDemo</h3><pre><code class="java">public class StartDemo &#123;   public static void main(String[] args) &#123;      ApplicationContext context =            new AnnotationConfigApplicationContext(&quot;com.my.config&quot;);      TestConfig testConfig = context.getBean(TestConfig.class);      System.out.println(&quot;==========&gt;main&quot;);      System.out.println(testConfig.getValue());   &#125;&#125;</code></pre><h3 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h3><ul><li>AnnotationConfigApplicationContext<pre><code class="textmate">根据包扫描对象</code></pre></li><li>RootBeanDefinition<pre><code class="textmate">记录扫描到的类的具体信息(描述类)</code></pre></li><li>BeanFactoryPostProcessor<pre><code class="textmate">接口，可自定义参与类初始化过程逻辑  工厂钩子，允许自定义修改应用程序上下文的 bean 定义，调整上下文底层 bean 工厂的 bean 属性值。  BeanFactoryPostProcessor是在spring容器加载了bean的定义文件之后，在bean实例化之前执行的。接口方法的入参是ConfigurrableListableBeanFactory，使用该参数，可以获取到相关bean的定义信息</code></pre></li><li>BeanPostProcessor<pre><code class="textmate">后置处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中  例：AutowiredAnnotationBeanPostProcessor  可以在spring容器实例化bean之后，在执行bean的初始化方法前后，添加一些自己的处理逻辑。  BeanPostProcessor的执行顺序是在BeanFactoryPostProcessor之后。  内置实现:   org.springframework.context.annotation.CommonAnnotationBeanPostProcessor：支持@Resource注解的注入  org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor：支持@Required注解的注入  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor：支持@Autowired注解的注入</code></pre></li></ul><pre><code>### 简易流程```textmatescan -&gt; beanPorcessor(描述bean信息) -&gt; 放到 configMap 中 -&gt; refresh -&gt; 通过bean工厂实例化类 -&gt; 放到单例池中</code></pre><h3 id="AnnotationConfigApplicationContext详解"><a href="#AnnotationConfigApplicationContext详解" class="headerlink" title="AnnotationConfigApplicationContext详解"></a>AnnotationConfigApplicationContext详解</h3><ul><li>类图<br><img src="https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="类图"></li><li>流程图<br><img src="https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center" alt="执行流程"></li></ul><h3 id="解决循环依赖"><a href="#解决循环依赖" class="headerlink" title="解决循环依赖"></a>解决循环依赖</h3><ul><li><a href="https://www.cnblogs.com/crazymakercircle/p/14465630.html">疯狂创客圈(转)</a></li><li>主要流程图<br><img src="https://gitee.com/im-fan/fan-pic/raw/master/images/spring-cycle-refrence.png" alt="spring解决循环依赖流程(转)"></li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="StartDemo"><a href="#StartDemo" class="headerlink" title="StartDemo"></a>StartDemo</h3><pre><code class="java">public class StartDemo &#123;   public static void main(String[] args) &#123;      ApplicationContext context =            new AnnotationConfigApplicationContext(&quot;com.my.config&quot;);      TestConfig testConfig = context.getBean(TestConfig.class);      System.out.println(&quot;==========&gt;main&quot;);      System.out.println(testConfig.getValue());   &#125;&#125;</code></pre><h3 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h3><ul><li>AnnotationConfigApplicationContext<pre><code class="textmate">根据包扫描对象</code></pre></li><li>RootBeanDefinition<pre><code class="textmate">记录扫描到的类的具体信息(描述类)</code></pre></li><li>BeanFactoryPostProcessor<pre><code class="textmate">接口，可自定义参与类初始化过程逻辑  工厂钩子，允许自定义修改应用程序上下文的 bean 定义，调整上下文底层 bean 工厂的 bean 属性值。  BeanFactoryPostProcessor是在spring容器加载了bean的定义文件之后，在bean实例化之前执行的。接口方法的入参是ConfigurrableListableBeanFactory，使用该参数，可以获取到相关bean的定义信息</code></pre></li><li>BeanPostProcessor<pre><code class="textmate">后置处理器父类，有很多子类；不同子类提供了不同的实现方法，参与到bean初始化过程中  例：AutowiredAnnotationBeanPostProcessor  可以在spring容器实例化bean之后，在执行bean的初始化方法前后，添加一些自己的处理逻辑。  BeanPostProcessor的执行顺序是在BeanFactoryPostProcessor之后。  内置实现:   org.springframework.context.annotation.CommonAnnotationBeanPostProcessor：支持@Resource注解的注入  org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor：支持@Required注解的注入  org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor：支持@Autowired注解的注入</code></pre></li></ul><pre><code>### 简易流程```textmate生命周期 加载 -&gt; 实例化 -&gt; 初始化 -&gt; 使用 -&gt; 销毁scan -&gt; beanPorcessor(描述bean信息) -&gt; 放到 configMap 中 -&gt; refresh -&gt; 通过bean工厂实例化类 -&gt; 放到单例池中</code></pre><h3 id="AnnotationConfigApplicationContext详解"><a href="#AnnotationConfigApplicationContext详解" class="headerlink" title="AnnotationConfigApplicationContext详解"></a>AnnotationConfigApplicationContext详解</h3><ul><li>类图<br><img src="https://gitee.com/im-fan/fan-pic/raw/master/images/springframework-bean-uml.png" alt="类图"></li><li>流程图<br><img src="https://gitee.com/im-fan/fan-pic/raw/master/images/spring-start-process.png" alt="执行流程"></li></ul><h3 id="解决循环依赖"><a href="#解决循环依赖" class="headerlink" title="解决循环依赖"></a>解决循环依赖</h3><ul><li><a href="https://www.cnblogs.com/crazymakercircle/p/14465630.html">疯狂创客圈(转)</a></li><li>主要流程图<br><img src="https://gitee.com/im-fan/fan-pic/raw/master/images/spring-cycle-refrence.png" alt="spring解决循环依赖流程(转)"></li></ul>]]></content>
       
       
       <categories>
@@ -70,8 +97,6 @@
           <category> 后端 </category>
           
           <category> 框架 </category>
-          
-          <category> springframework </category>
           
       </categories>
       
@@ -125,8 +150,6 @@
           
           <category> 框架 </category>
           
-          <category> springframework </category>
-          
       </categories>
       
       
@@ -153,8 +176,6 @@
           <category> 后端 </category>
           
           <category> 框架 </category>
-          
-          <category> springcloud </category>
           
       </categories>
       
@@ -308,8 +329,6 @@
           
           <category> 服务治理 </category>
           
-          <category> nacos </category>
-          
       </categories>
       
       
@@ -357,7 +376,7 @@
       <link href="2021/03/22/backend/spring/spring-boot/"/>
       <url>2021/03/22/backend/spring/spring-boot/</url>
       
-        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://www.jianshu.com/p/603d125f21b3">SpringBoot启动过程(转)</a></li><li><a href="https://www.processon.com/view/link/59812124e4b0de2518b32b6e">流程图(转)</a></li><li><a href="https://blog.csdn.net/youanyyou/article/details/103562907">@RefreshScope原理</a></li><li><a href="https://www.cnblogs.com/sword-successful/p/11383723.html">SpringBoot内置Tomcat启动源码分析</a></li></ul><h3 id="集成PageHelper"><a href="#集成PageHelper" class="headerlink" title="集成PageHelper"></a>集成PageHelper</h3><ul><li><p>配置</p><pre><code class="pom">&lt;!--基础框架包--&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;  &lt;version&gt;2.3.4.RELEASE&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;  &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;  &lt;version&gt;Hoxton.SR8&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;!--page helper依赖--&gt;&lt;!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter --&gt;&lt;dependency&gt;  &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;  &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;  &lt;version&gt;1.3.0&lt;/version&gt;&lt;/dependency&gt;</code></pre></li><li><p>使用</p><pre><code class="java">class XXService&#123;  public Result list(QueryParam param)&#123;      PageMethod.startPage(param.getPageNumber(),param.getPageSize());      List result = mapper.list(param);      PageInfo pageInfo = new PageInfo(result);      return PageDTO.result(pageInfo.getTotal(),result);  &#125;&#125;</code></pre></li><li><p>注意事项</p></li></ul><pre><code class="textmate">1.注意pom版本号2.使用pagehelper-spring-boot-starter pom后，不需要在yml中配置pagehelper相关参数，否则分页会有问题(亲测)  例如: 永远只在第一页</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="文章收集"><a href="#文章收集" class="headerlink" title="文章收集"></a>文章收集</h3><ul><li><a href="https://www.jianshu.com/p/603d125f21b3">SpringBoot启动过程(转)</a></li><li><a href="https://www.processon.com/view/link/59812124e4b0de2518b32b6e">流程图(转)</a></li><li><a href="https://blog.csdn.net/youanyyou/article/details/103562907">@RefreshScope原理</a></li><li><a href="https://www.cnblogs.com/sword-successful/p/11383723.html">SpringBoot内置Tomcat启动源码分析</a></li></ul><h3 id="集成PageHelper"><a href="#集成PageHelper" class="headerlink" title="集成PageHelper"></a>集成PageHelper</h3><ul><li><p>配置</p><pre><code class="pom">&lt;!--基础框架包--&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;  &lt;version&gt;2.3.4.RELEASE&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;dependency&gt;  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;  &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;  &lt;version&gt;Hoxton.SR8&lt;/version&gt;  &lt;type&gt;pom&lt;/type&gt;  &lt;scope&gt;import&lt;/scope&gt;&lt;/dependency&gt;&lt;!--page helper依赖--&gt;&lt;!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter --&gt;&lt;dependency&gt;  &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;  &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;  &lt;version&gt;1.3.0&lt;/version&gt;&lt;/dependency&gt;</code></pre></li><li><p>使用</p><pre><code class="java">class XXService&#123;  public Result list(QueryParam param)&#123;      PageMethod.startPage(param.getPageNumber(),param.getPageSize());      List result = mapper.list(param);      PageInfo pageInfo = new PageInfo(result);      return PageDTO.result(pageInfo.getTotal(),result);  &#125;&#125;</code></pre></li><li><p>注意事项</p></li></ul><pre><code class="textmate">1.注意pom版本号2.使用pagehelper-spring-boot-starter pom后，不需要在yml中配置pagehelper相关参数，否则分页会有问题(亲测)  例如: 永远只在第一页</code></pre><h3 id="自动装配原理"><a href="#自动装配原理" class="headerlink" title="自动装配原理"></a>自动装配原理</h3><pre><code class="textmate">@EnableAutoConfiguration条件注解 @ConditionalOnBean等@EnableAutoConfiguration注解(找META-INF/spring.factories配置文件中的所有自动配置类)</code></pre>]]></content>
       
       
       <categories>
@@ -365,8 +384,6 @@
           <category> 后端 </category>
           
           <category> 框架 </category>
-          
-          <category> springboot </category>
           
       </categories>
       
@@ -498,8 +515,6 @@
           <category> 后端 </category>
           
           <category> 消息队列 </category>
-          
-          <category> kafka </category>
           
       </categories>
       
@@ -738,8 +753,6 @@
           
           <category> 服务治理 </category>
           
-          <category> zookeeper </category>
-          
       </categories>
       
       
@@ -810,31 +823,6 @@
     
     
     <entry>
-      <title>MySQL相关</title>
-      <link href="2020/10/02/backend/storage/mysql-other/"/>
-      <url>2020/10/02/backend/storage/mysql-other/</url>
-      
-        <content type="html"><![CDATA[<h3 id="存储引擎区别"><a href="#存储引擎区别" class="headerlink" title="存储引擎区别"></a>存储引擎区别</h3><ul><li>查看数据库支持的存储引擎<pre><code class="sql">show engines;</code></pre></li></ul><table><thead><tr><th>类型</th><th>磁盘文件</th><th>特性</th><th>适用场景</th></tr></thead><tbody><tr><td>FEDERATED</td><td></td><td>用来访问远程表存储引擎</td><td>访问远程表</td></tr><tr><td>MRG_MYISAM</td><td></td><td>把多个MyISAM表合并为一个逻辑单元；查询一个表时，相当与查询其所有成员表</td><td>可以用分区表替换merge表</td></tr><tr><td>MyISAM</td><td>.MDY数据)<br/> .MYI(索引)</td><td>主要的非实物处理存储引擎</td><td></td></tr><tr><td>BLACKHOLE</td><td></td><td>丢弃写操作，读操作返回空内容</td><td></td></tr><tr><td>CSV</td><td>.CSV(数据)<br/>.CSM(元数据)</td><td>存储数据时，会以逗号作为数据项之间的分割符号</td><td>不支持索引，数据存在为普通文本文件</td></tr><tr><td>MEMORY</td><td></td><td>置于内存的表</td><td></td></tr><tr><td>ARCHIVE</td><td></td><td>用于数据存档(行插入后不能再修改)</td><td>数据归档，大批量存储后不修改</td></tr><tr><td>InnoDB</td><td>.ibd(数据&amp;索引)</td><td>具备外键支持功能的事务处理引擎</td><td></td></tr><tr><td>PERFORMANCE_SCHEMA</td><td></td><td>用于监视MySQL服务器</td><td></td></tr><tr><td>NDB</td><td></td><td>集群存储引擎</td><td></td></tr><tr><td></td><td>TokuDB</td><td></td><td>存储速度快，查询速度略慢与InnoDB,支持事务等，未来替代InnoDB</td></tr></tbody></table><h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><pre><code class="sql">1.表结构完全复制create table user_bak LIKE user;2.使用某些字段建表create table user_bak select now() as time ;3.建表时字段值强制转换create table user_bak select CAST(&#39;2019-8-01&#39; as UNSIGNED) as time;4.临时表解释：只对当前会话有效，有同名表则原表隐藏不可见，会话结束自动清除create temporary table user_bak  like user;drop temporary table user_bak;</code></pre><h3 id="Cast类型强制转换"><a href="#Cast类型强制转换" class="headerlink" title="Cast类型强制转换"></a>Cast类型强制转换</h3><pre><code class="sql">语法:     Cast(字段名 as 转换的类型 )支持的类型:    CHAR[(N)] 字符型     DATE 日期型    DATETIME 日期和时间型    DECIMAL float型    SIGNED int    TIME 时间型场景:    1.解决utf8字符查询时传入表情符，导致报错；</code></pre><h3 id="新建分区表"><a href="#新建分区表" class="headerlink" title="新建分区表"></a>新建分区表</h3><ul><li><p>示例</p><pre><code class="sql">create table user_bak (id int(11) UNSIGNED AUTO_INCREMENT ,`name` varchar(200) DEFAULT null COMMENT &#39;名称&#39;,rand_num int(11) DEFAULT NULL COMMENT &#39;随机数&#39;,birthday datetime default null comment &#39;生日&#39;,PRIMARY KEY (`id`,rand_num)) ENGINE = INNODB partition by RANGE (rand_num)(  PARTITION p0 VALUES less THAN (20),  PARTITION p1 VALUES less THAN (40),  PARTITION p2 VALUES less THAN (60),  PARTITION p3 VALUES less THAN (80),  PARTITION p4 VALUES less THAN MAXVALUE);</code></pre></li><li><p>注意点</p></li></ul><pre><code class="textmate">1.PRIMARY必须包含分区的字段2.不能单独创建分区，建表时就要创建</code></pre><ul><li>常见异常</li></ul><pre><code class="textmate">1.ERROR 1064  不能单独创建分区解决：建表时就要把分区创建好2.ERROR 1503 主键必须包含分区函数中所有列解决：创建分区的字段必须放在主键索引中</code></pre><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><pre><code class="sql">-- 1.ALL - 查询返回单个结果,类似in操作select * from user_bak where (id) &gt;= ALL(select id from user_bak where id = 10)-- 2.ANY &amp; SUM -效果一样,类似or操作select * from user_bak where (name,id) = SOME(select name,id from user_bak where id = 1 or name = &#39;eee&#39;)</code></pre><h3 id="FullText全文搜索"><a href="#FullText全文搜索" class="headerlink" title="FullText全文搜索"></a>FullText全文搜索</h3><ul><li>全文搜索类型</li></ul><pre><code class="textmate">1.自然语言搜索-搜索包含匹配词的信息2.布尔模式搜索-3.查询扩展搜索</code></pre><ul><li>创建索引需要满足的条件</li></ul><pre><code class="textmate">1.表类型为MyISAM,version5.6以后引入了对InnoDB支持2.字段类型只能是char/varchar/text类型3.全文搜索会自动忽略掉常用词(在记录中出现几率为50%以上)-验证可以查出来4.停用词会被过滤掉(the/after/other等)5.少于4个字符会被忽略，查不出来(默认4-84个字符范围，可更改)</code></pre><ul><li>语法</li></ul><pre><code class="sql">-- 自然语言select *,match(`name`) against(&#39;good boy&#39;) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;);-- 布尔模式select *,match(`name`) against(&#39;good boy&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39; in boolean MODE);-- 内容顺序完全匹配select *,match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE);-- 扩展查询select *,match(`name`) against(&#39;good boy&#39; with query expansion) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;  with query expansion);</code></pre><ul><li>修改查询字符长度</li></ul><pre><code class="textmate">1.my.cnf文件中ft_min_word_len2.重建FullText索引或者快速修复repair table table_name quick;</code></pre><h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><h3 id="有字符集有关的系统设置"><a href="#有字符集有关的系统设置" class="headerlink" title="有字符集有关的系统设置"></a>有字符集有关的系统设置</h3><pre><code class="yaml">character_set_system 用于存储的字符集character_set_server 服务器默认字符集collation_server  系统排序规则character_set_database 数据库字符集collation_database  数据库排序规则character_set_client 客户端向服务器发送SQL时使用的字符集character_set_result 表示服务器返回结果时使用的字符集character_set_connection 连接时使用的字符串character_set_filesystem 文件系统字符集</code></pre><h3 id="空间值"><a href="#空间值" class="headerlink" title="空间值"></a>空间值</h3><pre><code class="textmate">OpenGIS规范point 类型值,只支持InnoDB/MyISAM/NDB/ARCHIVE引擎point(xxxx,xxxx)</code></pre><h3 id="模糊匹配查询"><a href="#模糊匹配查询" class="headerlink" title="模糊匹配查询"></a>模糊匹配查询</h3><pre><code class="textmate">1.like    % 匹配任意数量的字符序列    _ 只能匹配单个字符    \%  \_  转义2.REGEXP-正则查询</code></pre><h3 id="新建用户后授权"><a href="#新建用户后授权" class="headerlink" title="新建用户后授权"></a>新建用户后授权</h3><pre><code class="sql">-- %表示所有IP可连接CREATE USER `用户名`@`%` IDENTIFIED BY &#39;密码&#39;;grant all privileges on jwgateway.* to &#39;用户名&#39;@&#39;%&#39; identified by &#39;密码&#39;;select * from mysql.user;</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 存储 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> mysql </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Canal服务搭建</title>
       <link href="2020/10/02/backend/storage/canal/"/>
       <url>2020/10/02/backend/storage/canal/</url>
@@ -852,6 +840,31 @@
         <tags>
             
             <tag> canal </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL相关</title>
+      <link href="2020/10/02/backend/storage/mysql-other/"/>
+      <url>2020/10/02/backend/storage/mysql-other/</url>
+      
+        <content type="html"><![CDATA[<h3 id="存储引擎区别"><a href="#存储引擎区别" class="headerlink" title="存储引擎区别"></a>存储引擎区别</h3><ul><li>查看数据库支持的存储引擎<pre><code class="sql">show engines;</code></pre></li></ul><table><thead><tr><th>类型</th><th>磁盘文件</th><th>特性</th><th>适用场景</th></tr></thead><tbody><tr><td>FEDERATED</td><td></td><td>用来访问远程表存储引擎</td><td>访问远程表</td></tr><tr><td>MRG_MYISAM</td><td></td><td>把多个MyISAM表合并为一个逻辑单元；查询一个表时，相当与查询其所有成员表</td><td>可以用分区表替换merge表</td></tr><tr><td>MyISAM</td><td>.MDY数据)<br/> .MYI(索引)</td><td>主要的非实物处理存储引擎</td><td></td></tr><tr><td>BLACKHOLE</td><td></td><td>丢弃写操作，读操作返回空内容</td><td></td></tr><tr><td>CSV</td><td>.CSV(数据)<br/>.CSM(元数据)</td><td>存储数据时，会以逗号作为数据项之间的分割符号</td><td>不支持索引，数据存在为普通文本文件</td></tr><tr><td>MEMORY</td><td></td><td>置于内存的表</td><td></td></tr><tr><td>ARCHIVE</td><td></td><td>用于数据存档(行插入后不能再修改)</td><td>数据归档，大批量存储后不修改</td></tr><tr><td>InnoDB</td><td>.ibd(数据&amp;索引)</td><td>具备外键支持功能的事务处理引擎</td><td></td></tr><tr><td>PERFORMANCE_SCHEMA</td><td></td><td>用于监视MySQL服务器</td><td></td></tr><tr><td>NDB</td><td></td><td>集群存储引擎</td><td></td></tr><tr><td></td><td>TokuDB</td><td></td><td>存储速度快，查询速度略慢与InnoDB,支持事务等，未来替代InnoDB</td></tr></tbody></table><h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><pre><code class="sql">1.表结构完全复制create table user_bak LIKE user;2.使用某些字段建表create table user_bak select now() as time ;3.建表时字段值强制转换create table user_bak select CAST(&#39;2019-8-01&#39; as UNSIGNED) as time;4.临时表解释：只对当前会话有效，有同名表则原表隐藏不可见，会话结束自动清除create temporary table user_bak  like user;drop temporary table user_bak;</code></pre><h3 id="Cast类型强制转换"><a href="#Cast类型强制转换" class="headerlink" title="Cast类型强制转换"></a>Cast类型强制转换</h3><pre><code class="sql">语法:     Cast(字段名 as 转换的类型 )支持的类型:    CHAR[(N)] 字符型     DATE 日期型    DATETIME 日期和时间型    DECIMAL float型    SIGNED int    TIME 时间型场景:    1.解决utf8字符查询时传入表情符，导致报错；</code></pre><h3 id="新建分区表"><a href="#新建分区表" class="headerlink" title="新建分区表"></a>新建分区表</h3><ul><li><p>示例</p><pre><code class="sql">create table user_bak (id int(11) UNSIGNED AUTO_INCREMENT ,`name` varchar(200) DEFAULT null COMMENT &#39;名称&#39;,rand_num int(11) DEFAULT NULL COMMENT &#39;随机数&#39;,birthday datetime default null comment &#39;生日&#39;,PRIMARY KEY (`id`,rand_num)) ENGINE = INNODB partition by RANGE (rand_num)(  PARTITION p0 VALUES less THAN (20),  PARTITION p1 VALUES less THAN (40),  PARTITION p2 VALUES less THAN (60),  PARTITION p3 VALUES less THAN (80),  PARTITION p4 VALUES less THAN MAXVALUE);</code></pre></li><li><p>注意点</p></li></ul><pre><code class="textmate">1.PRIMARY必须包含分区的字段2.不能单独创建分区，建表时就要创建</code></pre><ul><li>常见异常</li></ul><pre><code class="textmate">1.ERROR 1064  不能单独创建分区解决：建表时就要把分区创建好2.ERROR 1503 主键必须包含分区函数中所有列解决：创建分区的字段必须放在主键索引中</code></pre><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><pre><code class="sql">-- 1.ALL - 查询返回单个结果,类似in操作select * from user_bak where (id) &gt;= ALL(select id from user_bak where id = 10)-- 2.ANY &amp; SUM -效果一样,类似or操作select * from user_bak where (name,id) = SOME(select name,id from user_bak where id = 1 or name = &#39;eee&#39;)</code></pre><h3 id="FullText全文搜索"><a href="#FullText全文搜索" class="headerlink" title="FullText全文搜索"></a>FullText全文搜索</h3><ul><li>全文搜索类型</li></ul><pre><code class="textmate">1.自然语言搜索-搜索包含匹配词的信息2.布尔模式搜索-3.查询扩展搜索</code></pre><ul><li>创建索引需要满足的条件</li></ul><pre><code class="textmate">1.表类型为MyISAM,version5.6以后引入了对InnoDB支持2.字段类型只能是char/varchar/text类型3.全文搜索会自动忽略掉常用词(在记录中出现几率为50%以上)-验证可以查出来4.停用词会被过滤掉(the/after/other等)5.少于4个字符会被忽略，查不出来(默认4-84个字符范围，可更改)</code></pre><ul><li>语法</li></ul><pre><code class="sql">-- 自然语言select *,match(`name`) against(&#39;good boy&#39;) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;);-- 布尔模式select *,match(`name`) against(&#39;good boy&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39; in boolean MODE);-- 内容顺序完全匹配select *,match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;&quot;good boy&quot;&#39; in boolean MODE);-- 扩展查询select *,match(`name`) against(&#39;good boy&#39; with query expansion) as &#39;percentage&#39; from `user` where match(`name`) against(&#39;good boy&#39;  with query expansion);</code></pre><ul><li>修改查询字符长度</li></ul><pre><code class="textmate">1.my.cnf文件中ft_min_word_len2.重建FullText索引或者快速修复repair table table_name quick;</code></pre><h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><h3 id="有字符集有关的系统设置"><a href="#有字符集有关的系统设置" class="headerlink" title="有字符集有关的系统设置"></a>有字符集有关的系统设置</h3><pre><code class="yaml">character_set_system 用于存储的字符集character_set_server 服务器默认字符集collation_server  系统排序规则character_set_database 数据库字符集collation_database  数据库排序规则character_set_client 客户端向服务器发送SQL时使用的字符集character_set_result 表示服务器返回结果时使用的字符集character_set_connection 连接时使用的字符串character_set_filesystem 文件系统字符集</code></pre><h3 id="空间值"><a href="#空间值" class="headerlink" title="空间值"></a>空间值</h3><pre><code class="textmate">OpenGIS规范point 类型值,只支持InnoDB/MyISAM/NDB/ARCHIVE引擎point(xxxx,xxxx)</code></pre><h3 id="模糊匹配查询"><a href="#模糊匹配查询" class="headerlink" title="模糊匹配查询"></a>模糊匹配查询</h3><pre><code class="textmate">1.like    % 匹配任意数量的字符序列    _ 只能匹配单个字符    \%  \_  转义2.REGEXP-正则查询</code></pre><h3 id="新建用户后授权"><a href="#新建用户后授权" class="headerlink" title="新建用户后授权"></a>新建用户后授权</h3><pre><code class="sql">-- %表示所有IP可连接CREATE USER `用户名`@`%` IDENTIFIED BY &#39;密码&#39;;grant all privileges on jwgateway.* to &#39;用户名&#39;@&#39;%&#39; identified by &#39;密码&#39;;select * from mysql.user;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 存储 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
             
         </tags>
       
