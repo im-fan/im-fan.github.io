@@ -8,7 +8,6 @@ tags:
 categories:
 - 后端
 - 消息队列
-- kafka
 ---
 
 ### 简单案例

@@ -8,7 +8,6 @@ tags:
 categories: 
 - 后端
 - 服务治理
-- zookeeper
 ---
 
 

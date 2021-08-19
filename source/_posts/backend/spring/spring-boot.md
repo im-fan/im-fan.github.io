@@ -6,7 +6,6 @@ tags:
 categories:
 - 后端
 - 框架
-- springboot
 ---
 
 ### 文章收集
@@ -60,4 +59,11 @@ class XXService{
 1.注意pom版本号
 2.使用pagehelper-spring-boot-starter pom后，不需要在yml中配置pagehelper相关参数，否则分页会有问题(亲测)
   例如: 永远只在第一页
+```
+
+### 自动装配原理
+```textmate
+@EnableAutoConfiguration
+条件注解 @ConditionalOnBean等
+@EnableAutoConfiguration注解(找META-INF/spring.factories配置文件中的所有自动配置类)
 ```

@@ -10,7 +10,6 @@ tags:
 categories:
 - 后端
 - 服务治理
-- nacos
 ---
 
 - [官方文档](https://nacos.io/zh-cn/docs/what-is-nacos.html)

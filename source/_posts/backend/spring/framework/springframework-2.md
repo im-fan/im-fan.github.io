@@ -6,7 +6,6 @@ tags:
 categories:
 - 后端
 - 框架
-- springframework
 ---
 
 ### StartDemo
@@ -50,13 +49,14 @@ public class StartDemo {
 ```
 ### 简易流程
 ```textmate
+生命周期 加载 -> 实例化 -> 初始化 -> 使用 -> 销毁
 scan -> beanPorcessor(描述bean信息) -> 放到 configMap 中 -> refresh -> 通过bean工厂实例化类 -> 放到单例池中
 ```
 ### AnnotationConfigApplicationContext详解
 - 类图
-  ![类图](https://img-blog.csdnimg.cn/20210706100541307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center)
+  ![类图](https://gitee.com/im-fan/fan-pic/raw/master/images/springframework-bean-uml.png)
 - 流程图
-  ![执行流程](https://img-blog.csdnimg.cn/20210706100708794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Rlc3Ryb3llcl9EcmVhbQ==,size_16,color_FFFFFF,t_70#pic_center)
+  ![执行流程](https://gitee.com/im-fan/fan-pic/raw/master/images/spring-start-process.png)
 
 
 ### 解决循环依赖
