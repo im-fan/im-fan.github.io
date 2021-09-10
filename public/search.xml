@@ -823,31 +823,6 @@
     
     
     <entry>
-      <title>Canal服务搭建</title>
-      <link href="2020/10/02/backend/storage/canal/"/>
-      <url>2020/10/02/backend/storage/canal/</url>
-      
-        <content type="html"><![CDATA[<h3 id="相关网址"><a href="#相关网址" class="headerlink" title="相关网址"></a>相关网址</h3><ul><li><a href="https://github.com/alibaba/canal/wiki/Home">官网</a></li><li><a href="https://github.com/alibaba/canal/wiki/QuickStart">快速开始</a></li><li><a href="https://github.com/alibaba/canal/releases">Release下载</a></li><li><a href="https://hub.docker.com/r/canal/canal-server/tags/">Docker镜像地址</a></li><li><a href="https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart">Canal Admin QuickStart</a></li><li><a href="https://github.com/alibaba/canal/wiki/ClientExample">Canal Client Example</a></li></ul><h3 id="直接部署"><a href="#直接部署" class="headerlink" title="直接部署"></a>直接部署</h3><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><pre><code class="textmate">1.下载安装包(点击上面Release)    这里用1.1.4版本,下载 canal.deployer-1.1.4.tar.gz(主要程序) 和 canal.admin-1.1.4.tar.gz(管理程序)2.解压&amp;配置    mkdir canal-deployer    mkdir canal-admin    tar -zxvf canal.deployer-1.1.4.tar.gz -C canal-deployer    tar -zxvg canal.admin-1.1.4.tar.gz -C canal-admin    修改 canal-deployer/conf 中 canal.properties(参考 快速开始，或参考底部配置)3.修改Instance配置    cd cd canal-deployer/conf/example/instance.properties    参考官网或底部instance.peroperties配置4.多Instance - 可选    cd canal-deployer/conf    cp -R example example2    修改example2中配置5.配置canal-admin    初始化数据脚本，脚本所在位置 canal-admin/conf/canal_manager.sql    修改配置，配置所在位置 canal-admin/conf/application.yml    修改其中的数据库配置、端口号、用户名密码等-可选6.启动    6-1.canal-admin启动( 访问链接 localhost:80 )        sh ./canal-admin/bin/startup.sh    6-2.canal-server启动        sh ./canal-deployer/bin/startup.sh    6-3.日志所在文件夹        cd canal-deployer/logs</code></pre><h3 id="Docker搭建步骤"><a href="#Docker搭建步骤" class="headerlink" title="Docker搭建步骤"></a>Docker搭建步骤</h3><blockquote><p>docker方式部署,注意配置时mysql的IP地址</p></blockquote><h4 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h4><pre><code class="textmate">1.mysql  需要确认mysql已开启binlog设置2.拉取canal-server镜像  docker pull canal/canal-server:v1.1.43.下载docker启动脚本   wget https://github.com/alibaba/canal/blob/master/docker/run.sh4.修改启动脚本中数据库配置5.下载canal-admin包,修改配置(或者复制run.sh并修改启动命令，启动canal-admin)-可选   wget https://github.com/alibaba/canal/releases/download/canal-1.1.4/canal.admin-1.1.4.tar.gz   mkdir canal-admin   tar -zxvf canal.admin-1.1.4.tar.gz -C canal-admin   修改conf/application.yml中数据库配置   初始化mysql脚本，conf/canal_manager.sql6.canal-client   参考 Canal Client Example</code></pre><h4 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h4><pre><code class="textmate">1.canal-server   运行 sh run.sh 会出现提示，复制提示后运行2.canal-admin   sh bin/startup.sh3.启动程序(canal-client)    成功后会打印出empty count : xx</code></pre><h4 id="CanalAdmin配置"><a href="#CanalAdmin配置" class="headerlink" title="CanalAdmin配置"></a>CanalAdmin配置</h4><ul><li><p>1.集群配置</p><pre><code class="yaml">#集群名-local#zk地址-127.0.0.1:2181 (可以不搭建zk)#以下为配置项# register ipcanal.register.ip =# canal admin configcanal.admin.manager = 127.0.0.1:8089canal.admin.port = 11110canal.admin.user = admincanal.admin.passwd = 4ACFE3202A5FF5CF467898FC58AAB1D615029441</code></pre></li><li><p>2.Server管理</p><pre><code class="textmate">ServerIP-127.0.0.1 (同一集群下server ip不能重复)admin端口号-11110</code></pre></li><li><p>3.Instance管理</p><pre><code class="textmate">注意：Instance名称要与cancal-server容器中文件夹一致，默认有exampleInstance配置项参考官网或底部配置</code></pre></li></ul><h4 id="一个Canal服务读取多个MySQL实例-docker中操作"><a href="#一个Canal服务读取多个MySQL实例-docker中操作" class="headerlink" title="一个Canal服务读取多个MySQL实例(docker中操作)"></a>一个Canal服务读取多个MySQL实例(docker中操作)</h4><pre><code class="textmate">1.进入canal容器内部关闭服务(不关闭复制会导致写入db2失败)    docker exec -it canal-server bash    ./stop.sh2.复制一份Instatnce配置(注意确认example2中文件权限与example中是否一样)    cd canal-server/conf    cp -R example example23.Canal Admin中添加新配置    Instance名称-example24.集成zookeeper    修改canal-server/conf/下配置canal.properties    canal.register.ip = zk服务器IP    canal.zkServers = zk服务器IP:2181</code></pre><h3 id="参考配置-基础版，其他配置参考官网"><a href="#参考配置-基础版，其他配置参考官网" class="headerlink" title="参考配置(基础版，其他配置参考官网)"></a>参考配置(基础版，其他配置参考官网)</h3><ul><li><p>canal.properties</p><pre><code class="yaml"># 用以下配置项是需要修改的，其他默认配置项保留原来设置# canal地址canal.register.ip = zk所在地址# zk配置，如果有用到则配置，没用到则保留默认设置canal.admin.register.auto = truecanal.admin.register.cluster = 192.168.154.231:2181canal.zkServers = 192.168.154.231:2181</code></pre></li><li><p>instance.properties</p><pre><code class="yaml"># 用以下配置项是需要修改的，其他默认配置项保留原来设置(example2配置同下)# 数据库配置canal.instance.master.address= 数据库IP:端口号canal.instance.dbUsername = 用户名 canal.instance.dbPassword = 密码canal.instance.defaultDatabaseName = 要监控的库名，不设置则监听当前实例下所有库canal.instance.connectionCharset = UTF-8canal.instance.tsdb.enable=false</code></pre></li></ul><h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ul><li><p>服务都启动成功，客户端拉不到变更日志</p><pre><code class="textmate">注意客户端中 canalConnector.subscribe() 中设置项，设置了值则服务中配置的过滤条件不生效参考配置 canalConnector.subscribe(&quot;sap_system\\..*,user_center\\..*&quot;)</code></pre></li><li><p>一个Canal-Service,多个client，运行时报错</p><pre><code class="textmate">改为一个canal一个client，原因是多个client同时提交ack时，可能会存在重复提交的问题</code></pre></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 存储 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> canal </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>MySQL相关</title>
       <link href="2020/10/02/backend/storage/mysql-other/"/>
       <url>2020/10/02/backend/storage/mysql-other/</url>
@@ -865,6 +840,31 @@
         <tags>
             
             <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Canal服务搭建</title>
+      <link href="2020/10/02/backend/storage/canal/"/>
+      <url>2020/10/02/backend/storage/canal/</url>
+      
+        <content type="html"><![CDATA[<h3 id="相关网址"><a href="#相关网址" class="headerlink" title="相关网址"></a>相关网址</h3><ul><li><a href="https://github.com/alibaba/canal/wiki/Home">官网</a></li><li><a href="https://github.com/alibaba/canal/wiki/QuickStart">快速开始</a></li><li><a href="https://github.com/alibaba/canal/releases">Release下载</a></li><li><a href="https://hub.docker.com/r/canal/canal-server/tags/">Docker镜像地址</a></li><li><a href="https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart">Canal Admin QuickStart</a></li><li><a href="https://github.com/alibaba/canal/wiki/ClientExample">Canal Client Example</a></li></ul><h3 id="直接部署"><a href="#直接部署" class="headerlink" title="直接部署"></a>直接部署</h3><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><pre><code class="textmate">1.下载安装包(点击上面Release)    这里用1.1.4版本,下载 canal.deployer-1.1.4.tar.gz(主要程序) 和 canal.admin-1.1.4.tar.gz(管理程序)2.解压&amp;配置    mkdir canal-deployer    mkdir canal-admin    tar -zxvf canal.deployer-1.1.4.tar.gz -C canal-deployer    tar -zxvg canal.admin-1.1.4.tar.gz -C canal-admin    修改 canal-deployer/conf 中 canal.properties(参考 快速开始，或参考底部配置)3.修改Instance配置    cd cd canal-deployer/conf/example/instance.properties    参考官网或底部instance.peroperties配置4.多Instance - 可选    cd canal-deployer/conf    cp -R example example2    修改example2中配置5.配置canal-admin    初始化数据脚本，脚本所在位置 canal-admin/conf/canal_manager.sql    修改配置，配置所在位置 canal-admin/conf/application.yml    修改其中的数据库配置、端口号、用户名密码等-可选6.启动    6-1.canal-admin启动( 访问链接 localhost:80 )        sh ./canal-admin/bin/startup.sh    6-2.canal-server启动        sh ./canal-deployer/bin/startup.sh    6-3.日志所在文件夹        cd canal-deployer/logs</code></pre><h3 id="Docker搭建步骤"><a href="#Docker搭建步骤" class="headerlink" title="Docker搭建步骤"></a>Docker搭建步骤</h3><blockquote><p>docker方式部署,注意配置时mysql的IP地址</p></blockquote><h4 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h4><pre><code class="textmate">1.mysql  需要确认mysql已开启binlog设置2.拉取canal-server镜像  docker pull canal/canal-server:v1.1.43.下载docker启动脚本   wget https://github.com/alibaba/canal/blob/master/docker/run.sh4.修改启动脚本中数据库配置5.下载canal-admin包,修改配置(或者复制run.sh并修改启动命令，启动canal-admin)-可选   wget https://github.com/alibaba/canal/releases/download/canal-1.1.4/canal.admin-1.1.4.tar.gz   mkdir canal-admin   tar -zxvf canal.admin-1.1.4.tar.gz -C canal-admin   修改conf/application.yml中数据库配置   初始化mysql脚本，conf/canal_manager.sql6.canal-client   参考 Canal Client Example</code></pre><h4 id="启动命令"><a href="#启动命令" class="headerlink" title="启动命令"></a>启动命令</h4><pre><code class="textmate">1.canal-server   运行 sh run.sh 会出现提示，复制提示后运行2.canal-admin   sh bin/startup.sh3.启动程序(canal-client)    成功后会打印出empty count : xx</code></pre><h4 id="CanalAdmin配置"><a href="#CanalAdmin配置" class="headerlink" title="CanalAdmin配置"></a>CanalAdmin配置</h4><ul><li><p>1.集群配置</p><pre><code class="yaml">#集群名-local#zk地址-127.0.0.1:2181 (可以不搭建zk)#以下为配置项# register ipcanal.register.ip =# canal admin configcanal.admin.manager = 127.0.0.1:8089canal.admin.port = 11110canal.admin.user = admincanal.admin.passwd = 4ACFE3202A5FF5CF467898FC58AAB1D615029441</code></pre></li><li><p>2.Server管理</p><pre><code class="textmate">ServerIP-127.0.0.1 (同一集群下server ip不能重复)admin端口号-11110</code></pre></li><li><p>3.Instance管理</p><pre><code class="textmate">注意：Instance名称要与cancal-server容器中文件夹一致，默认有exampleInstance配置项参考官网或底部配置</code></pre></li></ul><h4 id="一个Canal服务读取多个MySQL实例-docker中操作"><a href="#一个Canal服务读取多个MySQL实例-docker中操作" class="headerlink" title="一个Canal服务读取多个MySQL实例(docker中操作)"></a>一个Canal服务读取多个MySQL实例(docker中操作)</h4><pre><code class="textmate">1.进入canal容器内部关闭服务(不关闭复制会导致写入db2失败)    docker exec -it canal-server bash    ./stop.sh2.复制一份Instatnce配置(注意确认example2中文件权限与example中是否一样)    cd canal-server/conf    cp -R example example23.Canal Admin中添加新配置    Instance名称-example24.集成zookeeper    修改canal-server/conf/下配置canal.properties    canal.register.ip = zk服务器IP    canal.zkServers = zk服务器IP:2181</code></pre><h3 id="参考配置-基础版，其他配置参考官网"><a href="#参考配置-基础版，其他配置参考官网" class="headerlink" title="参考配置(基础版，其他配置参考官网)"></a>参考配置(基础版，其他配置参考官网)</h3><ul><li><p>canal.properties</p><pre><code class="yaml"># 用以下配置项是需要修改的，其他默认配置项保留原来设置# canal地址canal.register.ip = zk所在地址# zk配置，如果有用到则配置，没用到则保留默认设置canal.admin.register.auto = truecanal.admin.register.cluster = 192.168.154.231:2181canal.zkServers = 192.168.154.231:2181</code></pre></li><li><p>instance.properties</p><pre><code class="yaml"># 用以下配置项是需要修改的，其他默认配置项保留原来设置(example2配置同下)# 数据库配置canal.instance.master.address= 数据库IP:端口号canal.instance.dbUsername = 用户名 canal.instance.dbPassword = 密码canal.instance.defaultDatabaseName = 要监控的库名，不设置则监听当前实例下所有库canal.instance.connectionCharset = UTF-8canal.instance.tsdb.enable=false</code></pre></li></ul><h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ul><li><p>服务都启动成功，客户端拉不到变更日志</p><pre><code class="textmate">注意客户端中 canalConnector.subscribe() 中设置项，设置了值则服务中配置的过滤条件不生效参考配置 canalConnector.subscribe(&quot;sap_system\\..*,user_center\\..*&quot;)</code></pre></li><li><p>一个Canal-Service,多个client，运行时报错</p><pre><code class="textmate">改为一个canal一个client，原因是多个client同时提交ack时，可能会存在重复提交的问题</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 存储 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> canal </tag>
             
         </tags>
       
@@ -929,7 +929,7 @@
       <link href="2020/10/02/thinking/book/"/>
       <url>2020/10/02/thinking/book/</url>
       
-        <content type="html"><![CDATA[<h3 id="技术书"><a href="#技术书" class="headerlink" title="技术书"></a>技术书</h3><ul><li>《Netty、Zookeeper、Redis高并发实战》</li></ul><h3 id="思考方式"><a href="#思考方式" class="headerlink" title="思考方式"></a>思考方式</h3><ul><li><a href="https://www.toutiao.com/i6619057728725729800/">结构化思维</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="技术书"><a href="#技术书" class="headerlink" title="技术书"></a>技术书</h3><ul><li>计算机基础</li></ul><table><thead><tr><th>分类</th><th>书名</th><th>作者</th></tr></thead><tbody><tr><td>操作系统</td><td>《现代操作系统》</td><td></td></tr><tr><td></td><td>《程序员的自我修养：链接、装载与库》</td><td></td></tr><tr><td></td><td>《操作系统真象还原》</td><td></td></tr><tr><td></td><td>《Linux 内核设计与实现》</td><td></td></tr><tr><td></td><td>《Windows 程序设计》第五版</td><td></td></tr><tr><td>计算机网络</td><td>《计算机网络：自顶向下方法》</td><td></td></tr><tr><td></td><td>《TCP/IP 网络编程》</td><td></td></tr><tr><td></td><td>《网络是怎样连接的》</td><td></td></tr><tr><td></td><td>《图解HTTP》</td><td>上野宣</td></tr><tr><td></td><td>《HTTP权威指南》</td><td></td></tr><tr><td>编译原理</td><td>《编译系统透视：图解编译原理》</td><td></td></tr><tr><td>计算机组成</td><td>《计算机组成与设计：硬件软件接口》</td><td></td></tr></tbody></table><ul><li><p>综合<br>《Netty、Zookeeper、Redis高并发实战》</p></li><li><p>语言</p></li></ul><table><thead><tr><th>分类</th><th>书名</th></tr></thead><tbody><tr><td>Java</td><td>《Java 核心技术》</td></tr><tr><td></td><td>《Effective Java》</td></tr><tr><td></td><td>《Java 编程思想》</td></tr><tr><td></td><td>《深入理解 Java 虚拟机》</td></tr><tr><td></td><td>《Java 并发编程实战》</td></tr></tbody></table><h3 id="思考方式"><a href="#思考方式" class="headerlink" title="思考方式"></a>思考方式</h3><ul><li><a href="https://www.toutiao.com/i6619057728725729800/">结构化思维</a></li></ul>]]></content>
       
       
       <categories>
