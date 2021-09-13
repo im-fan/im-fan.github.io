@@ -1,5 +1,5 @@
 ---
-title: MySQL相关
+title: MySQL相关-常用命令
 date: 2020-10-02 15:51:46
 tags: 
 - mysql
