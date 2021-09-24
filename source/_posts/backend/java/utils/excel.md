@@ -154,3 +154,58 @@ try {
 解决方法
     修改Controller中方法，改为 void 即可
 ```
+
+#### poi流转对象问题(用easy-poi时遇到的问题)
+```textmate
+错误日志
+    Your stream was neither an OLE2 stream, nor an OOXML stream.
+原因
+    多次操作流导致文件类型异常
+解决方法
+    读取远程流后，直接用当前流转换成对象
+例:
+    //读取远程文件工具类
+    public static InputStream readUrlExcelFile(String urlPath) {
+        try{
+            URL url = new URL(urlPath);
+            URLConnection conn = url.openConnection();
+            int size = conn.getContentLength();
+            if(size < 0){
+                return null;
+            }
+            return conn.getInputStream();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    //具体业务逻辑 流转对象用的是easy-poi
+    public static XXService{
+        public void saveExcel(String url){
+            InputStream inputStream;
+            try{
+                inputStream = FileUtils.readUrlExcelFile(request.getFilePath());
+                if(inputStream == null){
+                    System.out.println("文件读取失败");
+                    return;
+                }
+    
+                ImportParams importParams = new ImportParams();
+                //标识开始行
+                importParams.setStartRows(0);
+                List<XXX> list = ExcelImportUtil.importExcel(inputStream,
+                        XXX.class,
+                        importParams);
+                        
+            } catch(Exception e){
+                e.printStackTrace();
+            } finally{
+                if(inputStream != null){
+                    inputStream.close();
+                }
+            }
+        }
+    }
+```
