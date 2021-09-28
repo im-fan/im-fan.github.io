@@ -1,14 +1,31 @@
 ---
-title: UML类图
-description: UML类图
-#top: 1
+title: 技术文档
+description: 技术文档
 date: 2020-12-25 18:57
 tags:
-- uml
-- 类图
+- 技术文档
 categories:
 - 架构
 ---
+
+## 技术文档设计
+### 文档格式
+- 文档版本
+- 参考资源
+  - 相关文档地址
+  - 关键名词解释
+- 背景及目标
+- 系统设计
+  - 系统架构图(可选)
+  - 组件关系图(可选)
+  - 用例图
+  - 流程图
+  - 时序图
+  - 状态图(可选)
+  - 领域建模
+  - ER图
+
+## UML图相关
 ### 常用元素
 ```textmate
 1.类
@@ -39,3 +56,15 @@ categories:
 
 ### 示例-标识了所有关系
 <img src="https://im-fan.gitee.io/img/uml/uml.png"/>
+
+
+## 设计工具
+### 在线版
+- [Processon-推荐](https://www.processon.com/)
+- [Draw.io](https://app.diagrams.net/)
+- [Visual-Paradigm](https://online.visual-paradigm.com/cn/drive/#diagramlist:proj=0&new)
+
+### 软件
+- VisualParadigm(功能强大，相比其他软件样式可能有点丑)
+- draw.io(简单易用，样式美观)
+
