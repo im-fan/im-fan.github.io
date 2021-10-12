@@ -162,3 +162,10 @@ canal.instance.tsdb.enable=false
 ```textmate
 改为一个canal一个client，原因是多个client同时提交ack时，可能会存在重复提交的问题
 ```
+- zk中记录的点位异常
+```textmate
+进入zookeeper安装目录 
+cd /bin
+./zkClient.sh  或  ./zkCli.sh
+deleteall /otter/canal/destinations/instanceName(canal-admin中配置的instance名称)
+```
