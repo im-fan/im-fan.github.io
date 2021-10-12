@@ -47,3 +47,6 @@ server {
     }
 }
 ```
+
+### 关于请求头经过nginx会被转为小写的原因
+- [关于请求头经过nginx会被转为小写的原因-转](https://blog.csdn.net/qq_32771571/article/details/95903909)
