@@ -192,3 +192,15 @@ CREATE USER `用户名`@`%` IDENTIFIED BY '密码';
 grant all privileges on jwgateway.* to '用户名'@'%' identified by '密码';
 select * from mysql.user;
 ```
+
+### 判断时间与已有记录是否重叠
+```sql
+-- 1.方法一
+SELECT * FROM test_table
+WHERE (start_time >= startT AND start_time < endT)
+   OR (start_time <= startT AND end_time > endT)
+   OR (end_time >= startT AND end_time < endT)
+
+-- 2.方法二
+SELECT * FROM test_table WHERE NOT ( (end_time < startT OR (start_time > endT) )
+```
