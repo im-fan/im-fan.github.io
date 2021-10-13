@@ -127,5 +127,6 @@ public class OOMTest extends TestCore {
         jhat <heap-dump-file>  heap-dump-file 是文件的路径和文件名
         执行后访问浏览器访问 http://localhost:7000/ 查看 
     2.Eclipse Memory Analyzer(MAT)
+        https://www.eclipse.org/mat/downloads.php
     3.IBM Heap Analyzer
 ```
