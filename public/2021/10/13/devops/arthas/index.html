@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Gradle学习笔记 | Imfan笔记</title>
-  <meta name="keywords" content=" 项目编译 ">
-  <meta name="description" content="Gradle学习笔记 | Imfan笔记">
+  <title>Arthas-问题排查工具 | Imfan笔记</title>
+  <meta name="keywords" content=" devops ">
+  <meta name="description" content="Arthas-问题排查工具 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍线上问题排查工具，无侵入；支持查看服务jvm信息、方法出入参数信息、接口耗时等 相关链接 官网  安装启动1.arthas-boot方式安装 curl -O https:&#x2F;&#x2F;arthas.aliyun.com&#x2F;arthas-boot.jar java -jar arthas-boot.jar -h  -h: 打印帮助信息 常用命令   命令名称 描述 示例    thread 查看当前线程信息">
 <meta property="og:type" content="article">
@@ -755,9 +755,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-backend/java/build/gradle" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-devops/arthas" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Gradle学习笔记</h1>
+        <h1 class="article-title">Arthas-问题排查工具</h1>
     
     <div class="article-meta">
         
@@ -767,9 +767,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="后端">后端</a> > 
-            
-            <a  data-rel="后端&lt;---&gt;项目编译">项目编译</a>
+            <a  data-rel="运维">运维</a>
             
         </span>
         
@@ -777,19 +775,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">项目编译</a>
+            <a class="color2">devops</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-01-21 13:44:07'>2021-01-21 13:24</time>
+            发布时间 : <time class="date" title='最后更新: 2021-10-13 09:57:18'>2021-10-13 09:17</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:285</span>
+        <span>字数:701</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -808,7 +806,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E9%87%8A"><span class="toc-text">关键字解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dependencies%E4%BE%9D%E8%B5%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">dependencies依赖关键字</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%90%AF%E5%8A%A8"><span class="toc-text">安装启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="toc-text">完整命令介绍</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -824,139 +822,274 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/gdeer/article/details/104815986">Gradle理解：configuration、dependency</a></li>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><pre><code class="textmate">线上问题排查工具，无侵入；支持查看服务jvm信息、方法出入参数信息、接口耗时等</code></pre>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://arthas.aliyun.com/doc/quick-start.html">官网</a></li>
 </ul>
-<h3 id="关键字解释"><a href="#关键字解释" class="headerlink" title="关键字解释"></a>关键字解释</h3><table>
+<h2 id="安装启动"><a href="#安装启动" class="headerlink" title="安装启动"></a>安装启动</h2><pre><code class="textmate">1.arthas-boot方式安装
+curl -O https://arthas.aliyun.com/arthas-boot.jar
+java -jar arthas-boot.jar -h
+
+-h: 打印帮助信息</code></pre>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
 <thead>
 <tr>
-<th>关键字</th>
-<th align="center">关键字解释</th>
-<th>值</th>
-<th align="center">值解释</th>
+<th>命令名称</th>
+<th>描述</th>
+<th>示例</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>plugins</td>
-<td align="center"></td>
-<td>id</td>
-<td align="center"></td>
+<td>thread</td>
+<td>查看当前线程信息，查看线程的堆栈</td>
+<td>thread -n 3 指定最忙的前N个线程并打印堆栈<br/>thread -b 查找阻塞的线程</td>
 </tr>
 <tr>
-<td>group</td>
-<td align="center">定义模块</td>
+<td>jvm</td>
+<td>显示jvm信息</td>
 <td></td>
-<td align="center"></td>
+</tr>
+<tr>
+<td>watch</td>
+<td>方法执行数据观测</td>
+<td>watch com.xxx.xxService 方法名 -x 3 (参数遍历深度3，默认1)</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>方法内部调用路径，并输出方法路径上的每个节点上耗时</td>
+<td>trace com.xxx.xxService 方法名</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>输出当前方法被调用的调用路径</td>
+<td>stack com.xxx.xxService 方法名</td>
+</tr>
+</tbody></table>
+<h2 id="完整命令介绍"><a href="#完整命令介绍" class="headerlink" title="完整命令介绍"></a>完整命令介绍</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://arthas.aliyun.com/doc/commands.html">完整命令详细文档</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>help</td>
+<td>显示arthas帮助</td>
+<td></td>
+</tr>
+<tr>
+<td>auth</td>
+<td>验证当前会话</td>
+<td></td>
+</tr>
+<tr>
+<td>keymap</td>
+<td>显示指定连接的所有可用键图。</td>
+<td></td>
+</tr>
+<tr>
+<td>sc</td>
+<td>搜索JVM加载的所有类</td>
+<td></td>
+</tr>
+<tr>
+<td>sm</td>
+<td>搜索JVM加载的类的方法</td>
+<td></td>
+</tr>
+<tr>
+<td>classloader</td>
+<td>显示类加载器信息</td>
+<td></td>
+</tr>
+<tr>
+<td>jad</td>
+<td>反编译类</td>
+<td></td>
+</tr>
+<tr>
+<td>getstatic</td>
+<td>显示类的静态字段</td>
+<td></td>
+</tr>
+<tr>
+<td>monitor</td>
+<td>监控方法执行统计数据，例如总/成功/失败计数，平均rt，失败率等。</td>
+<td></td>
+</tr>
+<tr>
+<td>stack</td>
+<td>显示指定类和方法的堆栈跟踪</td>
+<td></td>
+</tr>
+<tr>
+<td>thread</td>
+<td>显示线程信息，线程堆栈</td>
+<td></td>
+</tr>
+<tr>
+<td>trace</td>
+<td>跟踪指定方法调用的执行时间。</td>
+<td></td>
+</tr>
+<tr>
+<td>watch</td>
+<td>显示指定方法调用的输入/输出参数、返回对象和抛出异常</td>
+<td></td>
+</tr>
+<tr>
+<td>tt</td>
+<td>时间隧道</td>
+<td></td>
+</tr>
+<tr>
+<td>jvm</td>
+<td>显示目标JVM信息</td>
+<td></td>
+</tr>
+<tr>
+<td>perfcounter</td>
+<td>显示性能计数器信息。</td>
+<td></td>
+</tr>
+<tr>
+<td>ognl</td>
+<td>执行ognl表达式。</td>
+<td></td>
+</tr>
+<tr>
+<td>mc</td>
+<td>内存编译器，在内存中将java文件编译成字节码和类文件。</td>
+<td></td>
+</tr>
+<tr>
+<td>redefine</td>
+<td>重新定义类。@see仪表# redefineClasses (ClassDefinition…)</td>
+<td></td>
+</tr>
+<tr>
+<td>retransform</td>
+<td>使变回原形类。@see仪表# retransformClasses(类…)</td>
+<td></td>
+</tr>
+<tr>
+<td>dashboard</td>
+<td>目标jvm的线程，内存，gc, vm, tomcat信息的概述。</td>
+<td></td>
+</tr>
+<tr>
+<td>dump</td>
+<td>从JVM中转储类字节数组</td>
+<td></td>
+</tr>
+<tr>
+<td>heapdump</td>
+<td>堆转储</td>
+<td></td>
+</tr>
+<tr>
+<td>options</td>
+<td>查看和改变各种阿尔萨斯选项</td>
+<td></td>
+</tr>
+<tr>
+<td>cls</td>
+<td>清理屏幕信息</td>
+<td></td>
+</tr>
+<tr>
+<td>reset</td>
+<td>重置所有增强类</td>
+<td></td>
 </tr>
 <tr>
 <td>version</td>
-<td align="center">模块版本号</td>
+<td>显示arthas版本</td>
 <td></td>
-<td align="center"></td>
 </tr>
 <tr>
-<td>sourceCompatibility</td>
-<td align="center"></td>
+<td>session</td>
+<td>显示当前会话信息</td>
 <td></td>
-<td align="center"></td>
 </tr>
 <tr>
-<td>configurations</td>
-<td align="center">不同的 configuration 用来引用不同领域</br>（或不同用途）的 dependencies</td>
+<td>sysprop</td>
+<td>显示和更改系统属性。</td>
 <td></td>
-<td align="center"></td>
 </tr>
 <tr>
-<td>buildscript</td>
-<td align="center">用于声明gradle自身依赖的插件，优先执行</td>
-<td>ext</td>
-<td align="center"></td>
-</tr>
-<tr>
+<td>sysenv</td>
+<td>显示系统env。</td>
 <td></td>
-<td align="center"></td>
-<td>repositories</td>
-<td align="center"></td>
 </tr>
 <tr>
+<td>vmoption</td>
+<td>显示和更新虚拟机诊断选项。</td>
 <td></td>
-<td align="center"></td>
-<td>dependencies</td>
-<td align="center"></td>
 </tr>
 <tr>
-<td>allprojects</td>
-<td align="center">对所有project的配置,包括root project</td>
-<td>repositories</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>subprojects</td>
-<td align="center">对所有Child Project的配置</td>
+<td>logger</td>
+<td>打印记录器信息，并更新记录器级别</td>
 <td></td>
-<td align="center"></td>
 </tr>
 <tr>
-<td>repositories</td>
-<td align="center">查找jar包顺序</td>
+<td>history</td>
+<td>显示命令历史</td>
 <td></td>
-<td align="center"></td>
 </tr>
 <tr>
-<td>dependencies</td>
-<td align="center">定义依赖</td>
+<td>cat</td>
+<td>连接和打印文件</td>
 <td></td>
-<td align="center"></td>
 </tr>
 <tr>
-<td>test</td>
-<td align="center">定义测试依赖信息</td>
+<td>base64</td>
+<td>使用Base64表示进行编码和解码</td>
 <td></td>
-<td align="center"></td>
 </tr>
-</tbody></table>
-<h3 id="dependencies依赖关键字"><a href="#dependencies依赖关键字" class="headerlink" title="dependencies依赖关键字"></a>dependencies依赖关键字</h3><table>
-<thead>
 <tr>
-<th>3+</th>
-<th>2.+</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>implementation</td>
+<td>echo</td>
+<td>将参数写入标准输出</td>
 <td></td>
-<td align="center">所依赖的库仅可在当前module使用，编译速度快</td>
 </tr>
 <tr>
-<td>api</td>
-<td>compile</td>
-<td align="center">所依赖的库可在整工程使用，编译速度较implementation慢</td>
+<td>pwd</td>
+<td>返回工作目录名</td>
+<td></td>
 </tr>
 <tr>
-<td>provided</td>
-<td>compileOnly</td>
-<td align="center">仅在编译时有效，不参与打包，一般在发布no jar的库时候会用到，很少用</td>
+<td>mbean</td>
+<td>显示mbean信息</td>
+<td></td>
 </tr>
 <tr>
-<td>apk</td>
-<td>runtimeOnly</td>
-<td align="center">仅在生成apk的时候参与打包，编译时不参与</td>
+<td>grep</td>
+<td>用于管道的Grep命令。</td>
+<td></td>
 </tr>
 <tr>
-<td>testImplementation</td>
-<td>testCompile</td>
-<td align="center">仅在单元测试代码的编译以及最终打包测试apk时有效</td>
+<td>tee</td>
+<td>tee命令用于管道。</td>
+<td></td>
 </tr>
 <tr>
-<td>debugImplementation</td>
-<td>debugCompile</td>
-<td align="center">仅在debug模式的编译和最终的debug apk打包时有效</td>
+<td>profiler</td>
+<td>异步分析器。<a target="_blank" rel="noopener" href="https://github.com/jvm-profiling-tools/async-profiler">https://github.com/jvm-profiling-tools/async-profiler</a></td>
+<td></td>
 </tr>
 <tr>
-<td>releaseImplementation</td>
-<td>releaseCompile</td>
-<td align="center">仅在Release模式的编译和最终的Release apk打包时有效</td>
+<td>vmtool</td>
+<td>jvm的工具</td>
+<td></td>
+</tr>
+<tr>
+<td>stop</td>
+<td>停止/关闭Arthas服务器并退出控制台。</td>
+<td></td>
 </tr>
 </tbody></table>
 

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Arthas-问题排查工具</title>
+      <link href="2021/10/13/devops/arthas/"/>
+      <url>2021/10/13/devops/arthas/</url>
+      
+        <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><pre><code class="textmate">线上问题排查工具，无侵入；支持查看服务jvm信息、方法出入参数信息、接口耗时等</code></pre><h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><ul><li><a href="https://arthas.aliyun.com/doc/quick-start.html">官网</a></li></ul><h2 id="安装启动"><a href="#安装启动" class="headerlink" title="安装启动"></a>安装启动</h2><pre><code class="textmate">1.arthas-boot方式安装curl -O https://arthas.aliyun.com/arthas-boot.jarjava -jar arthas-boot.jar -h-h: 打印帮助信息</code></pre><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table><thead><tr><th>命令名称</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td>thread</td><td>查看当前线程信息，查看线程的堆栈</td><td>thread -n 3 指定最忙的前N个线程并打印堆栈<br/>thread -b 查找阻塞的线程</td></tr><tr><td>jvm</td><td>显示jvm信息</td><td></td></tr><tr><td>watch</td><td>方法执行数据观测</td><td>watch com.xxx.xxService 方法名 -x 3 (参数遍历深度3，默认1)</td></tr><tr><td>trace</td><td>方法内部调用路径，并输出方法路径上的每个节点上耗时</td><td>trace com.xxx.xxService 方法名</td></tr><tr><td>stack</td><td>输出当前方法被调用的调用路径</td><td>stack com.xxx.xxService 方法名</td></tr></tbody></table><h2 id="完整命令介绍"><a href="#完整命令介绍" class="headerlink" title="完整命令介绍"></a>完整命令介绍</h2><blockquote><p><a href="https://arthas.aliyun.com/doc/commands.html">完整命令详细文档</a></p></blockquote><table><thead><tr><th>命令名称</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td>help</td><td>显示arthas帮助</td><td></td></tr><tr><td>auth</td><td>验证当前会话</td><td></td></tr><tr><td>keymap</td><td>显示指定连接的所有可用键图。</td><td></td></tr><tr><td>sc</td><td>搜索JVM加载的所有类</td><td></td></tr><tr><td>sm</td><td>搜索JVM加载的类的方法</td><td></td></tr><tr><td>classloader</td><td>显示类加载器信息</td><td></td></tr><tr><td>jad</td><td>反编译类</td><td></td></tr><tr><td>getstatic</td><td>显示类的静态字段</td><td></td></tr><tr><td>monitor</td><td>监控方法执行统计数据，例如总/成功/失败计数，平均rt，失败率等。</td><td></td></tr><tr><td>stack</td><td>显示指定类和方法的堆栈跟踪</td><td></td></tr><tr><td>thread</td><td>显示线程信息，线程堆栈</td><td></td></tr><tr><td>trace</td><td>跟踪指定方法调用的执行时间。</td><td></td></tr><tr><td>watch</td><td>显示指定方法调用的输入/输出参数、返回对象和抛出异常</td><td></td></tr><tr><td>tt</td><td>时间隧道</td><td></td></tr><tr><td>jvm</td><td>显示目标JVM信息</td><td></td></tr><tr><td>perfcounter</td><td>显示性能计数器信息。</td><td></td></tr><tr><td>ognl</td><td>执行ognl表达式。</td><td></td></tr><tr><td>mc</td><td>内存编译器，在内存中将java文件编译成字节码和类文件。</td><td></td></tr><tr><td>redefine</td><td>重新定义类。@see仪表# redefineClasses (ClassDefinition…)</td><td></td></tr><tr><td>retransform</td><td>使变回原形类。@see仪表# retransformClasses(类…)</td><td></td></tr><tr><td>dashboard</td><td>目标jvm的线程，内存，gc, vm, tomcat信息的概述。</td><td></td></tr><tr><td>dump</td><td>从JVM中转储类字节数组</td><td></td></tr><tr><td>heapdump</td><td>堆转储</td><td></td></tr><tr><td>options</td><td>查看和改变各种阿尔萨斯选项</td><td></td></tr><tr><td>cls</td><td>清理屏幕信息</td><td></td></tr><tr><td>reset</td><td>重置所有增强类</td><td></td></tr><tr><td>version</td><td>显示arthas版本</td><td></td></tr><tr><td>session</td><td>显示当前会话信息</td><td></td></tr><tr><td>sysprop</td><td>显示和更改系统属性。</td><td></td></tr><tr><td>sysenv</td><td>显示系统env。</td><td></td></tr><tr><td>vmoption</td><td>显示和更新虚拟机诊断选项。</td><td></td></tr><tr><td>logger</td><td>打印记录器信息，并更新记录器级别</td><td></td></tr><tr><td>history</td><td>显示命令历史</td><td></td></tr><tr><td>cat</td><td>连接和打印文件</td><td></td></tr><tr><td>base64</td><td>使用Base64表示进行编码和解码</td><td></td></tr><tr><td>echo</td><td>将参数写入标准输出</td><td></td></tr><tr><td>pwd</td><td>返回工作目录名</td><td></td></tr><tr><td>mbean</td><td>显示mbean信息</td><td></td></tr><tr><td>grep</td><td>用于管道的Grep命令。</td><td></td></tr><tr><td>tee</td><td>tee命令用于管道。</td><td></td></tr><tr><td>profiler</td><td>异步分析器。<a href="https://github.com/jvm-profiling-tools/async-profiler">https://github.com/jvm-profiling-tools/async-profiler</a></td><td></td></tr><tr><td>vmtool</td><td>jvm的工具</td><td></td></tr><tr><td>stop</td><td>停止/关闭Arthas服务器并退出控制台。</td><td></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> devops </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>IO</title>
       <link href="2021/08/11/backend/java/netty/io/"/>
       <url>2021/08/11/backend/java/netty/io/</url>
@@ -324,7 +349,7 @@
       <link href="2021/04/05/devops/nginx/"/>
       <url>2021/04/05/devops/nginx/</url>
       
-        <content type="html"><![CDATA[<ul><li><a href="http://nginx.org/">官网</a></li><li><a href="https://www.runoob.com/linux/nginx-install-setup.html">菜鸟教程-Nginx 安装配置</a></li><li><a href="https://cloud.tencent.com/document/product/400/35244">Nginx服务器SSL证书安装部署-腾讯云</a></li></ul><h3 id="nginx命令"><a href="#nginx命令" class="headerlink" title="nginx命令"></a>nginx命令</h3><pre><code class="textmate">1.检测配置是否正常nginx -t 2.热部署配置nginx -s reload</code></pre><h3 id="ssl-nginx配置"><a href="#ssl-nginx配置" class="headerlink" title="ssl-nginx配置"></a>ssl-nginx配置</h3><pre><code class="textmate">具体参考云厂商ssl证书安装步骤1.下载ssl相关文件,服务器开启443端口权限2.解压后将文件夹Nginx中文件放到nginx安装目录下(或其他地方)3.添加nginx配置文件4.重启生效</code></pre><h3 id="同一域名不同服务配置"><a href="#同一域名不同服务配置" class="headerlink" title="同一域名不同服务配置"></a>同一域名不同服务配置</h3><pre><code class="textmate">server &#123;    listen       8888;    server_name  localhost;    location /service1/ &#123;         proxy_pass http://localhost:7001/;    &#125;    location /service2/ &#123;         proxy_pass http://localhost:7002/;    &#125;&#125;</code></pre>]]></content>
+        <content type="html"><![CDATA[<ul><li><a href="http://nginx.org/">官网</a></li><li><a href="https://www.runoob.com/linux/nginx-install-setup.html">菜鸟教程-Nginx 安装配置</a></li><li><a href="https://cloud.tencent.com/document/product/400/35244">Nginx服务器SSL证书安装部署-腾讯云</a></li></ul><h3 id="nginx命令"><a href="#nginx命令" class="headerlink" title="nginx命令"></a>nginx命令</h3><pre><code class="textmate">1.检测配置是否正常nginx -t 2.热部署配置nginx -s reload</code></pre><h3 id="ssl-nginx配置"><a href="#ssl-nginx配置" class="headerlink" title="ssl-nginx配置"></a>ssl-nginx配置</h3><pre><code class="textmate">具体参考云厂商ssl证书安装步骤1.下载ssl相关文件,服务器开启443端口权限2.解压后将文件夹Nginx中文件放到nginx安装目录下(或其他地方)3.添加nginx配置文件4.重启生效</code></pre><h3 id="同一域名不同服务配置"><a href="#同一域名不同服务配置" class="headerlink" title="同一域名不同服务配置"></a>同一域名不同服务配置</h3><pre><code class="textmate">server &#123;    listen       8888;    server_name  localhost;    location /service1/ &#123;         proxy_pass http://localhost:7001/;    &#125;    location /service2/ &#123;         proxy_pass http://localhost:7002/;    &#125;&#125;</code></pre><h3 id="关于请求头经过nginx会被转为小写的原因"><a href="#关于请求头经过nginx会被转为小写的原因" class="headerlink" title="关于请求头经过nginx会被转为小写的原因"></a>关于请求头经过nginx会被转为小写的原因</h3><ul><li><a href="https://blog.csdn.net/qq_32771571/article/details/95903909">关于请求头经过nginx会被转为小写的原因-转</a></li></ul>]]></content>
       
       
       <categories>
