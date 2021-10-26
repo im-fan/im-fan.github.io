@@ -7,7 +7,7 @@ categories:
 - 存储
 ---
 
-### 相关网址
+## 相关网址
 - [官网](https://github.com/alibaba/canal/wiki/Home)
 - [快速开始](https://github.com/alibaba/canal/wiki/QuickStart)
 - [Release下载](https://github.com/alibaba/canal/releases)
@@ -15,8 +15,29 @@ categories:
 - [Canal Admin QuickStart](https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart)
 - [Canal Client Example](https://github.com/alibaba/canal/wiki/ClientExample)
 
-### 直接部署
-#### 准备
+## 介绍
+### 主要用途
+```textmate
+基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费。
+```
+### 适用场景
+- 数据库镜像
+- 数据库实时备份
+- 索引构建和实时维护(拆分异构索引、倒排索引等)
+- 业务 cache 刷新
+- 带业务逻辑的增量数据处理
+
+### 工作原理
+```textmate
+基于MySQL主备复制原理,伪装成MySQL slave,模拟MySQL slave的交互协议,
+向MySQL mater发送dump协议,MySQL mater收到canal发送过来的dump请求，开始推送binary log给canal，
+canal解析binary log，再发送到其他存储服务中，如: MySQL，RocketMQ，ES等等。
+```
+
+## 用途
+
+## 搭建
+### 1.直接部署
 ```textmate
 1.下载安装包(点击上面Release)
     这里用1.1.4版本,下载 canal.deployer-1.1.4.tar.gz(主要程序) 和 canal.admin-1.1.4.tar.gz(管理程序)
@@ -51,9 +72,9 @@ categories:
         cd canal-deployer/logs
 ```
 
-### Docker搭建步骤
+### 2、Docker搭建步骤
 > docker方式部署,注意配置时mysql的IP地址
-#### 准备
+#### 2.1、准备
 ```textmate
 1.mysql
   需要确认mysql已开启binlog设置
@@ -72,7 +93,7 @@ categories:
    参考 Canal Client Example
 ```
 
-#### 启动命令
+#### 2.2、启动命令
 ```textmate
 1.canal-server
    运行 sh run.sh 会出现提示，复制提示后运行
@@ -82,8 +103,7 @@ categories:
     成功后会打印出empty count : xx
 ```
 
-#### CanalAdmin配置
-
+### CanalAdmin部署
 - 1.集群配置
 ```yaml
 #集群名-local
@@ -168,4 +188,12 @@ canal.instance.tsdb.enable=false
 cd /bin
 ./zkClient.sh  或  ./zkCli.sh
 deleteall /otter/canal/destinations/instanceName(canal-admin中配置的instance名称)
+```
+
+## 总结
+```textmate
+1.对业务代码无侵入、实时性接近准实时
+2.支持集群，集群基于zk做集群管理
+3.提供多种接入方式、适配器等
+3.不适合做复杂的业务逻辑判断及计算；直接对表数据进行修改，出问题后影响较大
 ```
