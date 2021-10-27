@@ -11,9 +11,12 @@ categories:
 ---
 
 
-### 相关链接
+## 相关链接
 > [官网](https://zookeeper.apache.org/releases.html)
 
+
+
+## 部署
 ### 注意事项
 ```textmate
 1.下载 xxx-bin.tar.gz包(这种是编译好的)，否则启动时会提示找不到Class
