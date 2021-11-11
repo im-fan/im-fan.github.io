@@ -14,7 +14,8 @@ categories:
 
 ## 相关链接
 - [官网](https://arthas.aliyun.com/doc/quick-start.html)
-
+- [用户案例](https://github.com/alibaba/arthas/issues?q=label%3Auser-case)
+- [常见问题回答](https://github.com/alibaba/arthas/issues?utf8=%E2%9C%93&q=label%3Aquestion-answered+)
 ## 安装启动
 ```textmate
 1.arthas-boot方式安装
