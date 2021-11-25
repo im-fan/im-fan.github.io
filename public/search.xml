@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>集成SwaggerUI</title>
+      <link href="2021/11/25/backend/other/swagger/"/>
+      <url>2021/11/25/backend/other/swagger/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="https://doc.xiaominfo.com/knife4j/documentation/">knife4j官网</a></li></ul><h3 id="集成步骤"><a href="#集成步骤" class="headerlink" title="集成步骤"></a>集成步骤</h3><ul><li><p>引入jar包</p><pre><code class="xml">&lt;dependency&gt;  &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;  &lt;artifactId&gt;knife4j-spring-boot-starter&lt;/artifactId&gt;  &lt;version&gt;2.0.9&lt;/version&gt;&lt;/dependency&gt;</code></pre></li><li><p>添加配置类</p><pre><code class="java">/** * 注意knife版本号，如果是2.0.x* * **/@Configuration//@EnableSwagger2WebMvc //2.x版本用这个//@EnableOpenApi  //3.x版本用这个public class MySwagger &#123;  @Bean  public Docket createRestApi(Environment env) &#123;      //开发测试环境开启      Profiles profile = Profiles.of(&quot;local&quot;, &quot;dev&quot;, &quot;test&quot;);      boolean flag = env.acceptsProfiles(profile);      //2.x版本用 DocumentationType.SWAGGER_2      //3.x版本用 DocumentationType.OAS_30      return new Docket(DocumentationType.SWAGGER_2)              //分组名称              .groupName(&quot;2.X版本&quot;)              .apiInfo(apiInfo())              .enable(flag)              .pathMapping(&quot;/&quot;)              .select()              //这里指定Controller扫描包路径              .apis(RequestHandlerSelectors.basePackage(&quot;com.my.demo.web.controller&quot;))              .paths(PathSelectors.any())              .build();  &#125;  private ApiInfo apiInfo() &#123;      return new ApiInfoBuilder()              .title(&quot;服务名&quot;)              .version(&quot;2.0.0&quot;)              .description(&quot;描述&quot;)              .build();  &#125;&#125;</code></pre></li><li><p>常用注解<br>```textmate</p></li></ul><p>1.Controller类注解<br>    @Api(tags = “Controller名”)<br>    @RestController<br>    @RequestMapping(“/请求路径”)</p><p>2.Controller中方法注解<br>    @ApiOperation(value = “方法名”,notes = “方法描述”)<br>    @GetMapping(“/请求路径”)<br>    @PostMapping(“/请求路径”)</p><p>3.Controller中方法入参注解<br>    @RequestParam(value = “入参”,name = “入参名称”)<br>    @RequestBody</p><p>4.出参入参注解<br>    @ApiModel(“对象名称”)<br>    @ApiModelProperty(name = “属性名”)</p><pre><code>### 常见问题- 版本不兼容```textmate&lt;!--swagger-ui 兼容性好的版本--&gt;&lt;dependency&gt;    &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;    &lt;artifactId&gt;knife4j-spring-boot-starter&lt;/artifactId&gt;    &lt;version&gt;2.0.9&lt;/version&gt;    &lt;!-- 去掉不兼容的版本 --&gt;    &lt;exclusions&gt;        &lt;exclusion&gt;            &lt;artifactId&gt;spring-plugin-core&lt;/artifactId&gt;            &lt;groupId&gt;org.springframework.plugin&lt;/groupId&gt;        &lt;/exclusion&gt;    &lt;/exclusions&gt;&lt;/dependency&gt;&lt;dependency&gt;    &lt;groupId&gt;org.springframework.plugin&lt;/groupId&gt;    &lt;artifactId&gt;spring-plugin-core&lt;/artifactId&gt;    &lt;version&gt;2.0.0.RELEASE&lt;/version&gt;&lt;/dependency&gt;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 接口文档 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 接口文档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>高并发相关</title>
       <link href="2021/11/22/backend/java/thread/concurrent/"/>
       <url>2021/11/22/backend/java/thread/concurrent/</url>
