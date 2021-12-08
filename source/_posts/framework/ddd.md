@@ -13,6 +13,16 @@ categories:
 - [DDD设计](https://www.processon.com/view/5e55d17ee4b069f82a120d06#map)
 - [阿里技术专家详解 DDD 系列- Domain Primitive](https://segmentfault.com/a/1190000020270851?utm_source=tag-newest)
 
+### Domain Primitive 
+```textmate
+Domain Primitive :Domain Primitive 是一个在特定领域里，拥 有精准定义的、可自我验证的、拥有行为的 Value Object 。
+1.DP 是一个传统意义上的 Value Object，拥有 Immutable 的特性
+2.DP 是一个完整的概念整体，拥有精准定义
+3.DP 使用业务域中的原生语言
+4.DP 可以是业务域的最小组成部分、也可以构建复杂组合
+```
+
+
 ### 方法论
 ```textmate
 六边形架构、洋葱架构、整洁架构、四色原型
