@@ -11,6 +11,7 @@ categories:
 
 - [有赞DDD实践](https://mp.weixin.qq.com/s/9eGZZ2wsZoaCVRy0oKt0iw)
 - [DDD设计](https://www.processon.com/view/5e55d17ee4b069f82a120d06#map)
+- [阿里技术专家详解 DDD 系列- Domain Primitive](https://segmentfault.com/a/1190000020270851?utm_source=tag-newest)
 
 ### 方法论
 ```textmate
