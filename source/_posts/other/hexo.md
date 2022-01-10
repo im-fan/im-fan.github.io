@@ -29,7 +29,7 @@ npm install -g hexo-cli
 
 ### 创建项目
 ```shell
-注：my-hexo - 项目名/项目文件夹名
+注: my-hexo - 项目名/项目文件夹名
 hexo init my-hexo
 cd my-hexo
 npm install
