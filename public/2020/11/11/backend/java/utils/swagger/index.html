@@ -6,15 +6,15 @@
   <meta name="keywords" content=" utils ">
   <meta name="description" content="Java解析Swagger文档接口及参数 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="一些东西的摘要资本的故事 第一季1.股份的力量股份制可以融到更多的钱，扩大生产规模；同时也分摊了风险 2.泡沫的诱惑郁金香引入后，由于作为身份和地位的象征，价格飙升，导致大量资金涌入郁金香市场；最终由于一个没有买家的传言，导致价格崩盘； 郁金香泡沫后，郁金香价格趋势图频繁出现，常见于金融危机、A股危机中 3.南海骗局曾经的商业巨头由于战争原因，后续无法盈利；用股票换国债，加上用股票贿赂主要决策人的">
+<meta name="description" content="总结2022目标[ ] 找到一份稳定收入的副业[ ] 坚持写文章[ ] 出去旅游一次[ ] 持续阅读[ ] 买车 2021目标[√] 考PMP[x] 找到一份稳定收入的副业[x] 开始写文章[x] 出去旅游一次[√] 养成读书的习惯(技术、职业规划、思考、理财)[√] 换一份工作 完成情况    1.关于考证: 考PMP证一方面是为了看看自己是否有自制力，另一方面也是为了持续提升自己；通过学习掌握">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Imfan笔记">
-<meta property="og:url" content="http://imfan.com/2022/01/10/thinking/tv/index.html">
+<meta property="og:url" content="http://imfan.com/2022/01/12/thinking/year-end/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="一些东西的摘要资本的故事 第一季1.股份的力量股份制可以融到更多的钱，扩大生产规模；同时也分摊了风险 2.泡沫的诱惑郁金香引入后，由于作为身份和地位的象征，价格飙升，导致大量资金涌入郁金香市场；最终由于一个没有买家的传言，导致价格崩盘； 郁金香泡沫后，郁金香价格趋势图频繁出现，常见于金融危机、A股危机中 3.南海骗局曾经的商业巨头由于战争原因，后续无法盈利；用股票换国债，加上用股票贿赂主要决策人的">
+<meta property="og:description" content="总结2022目标[ ] 找到一份稳定收入的副业[ ] 坚持写文章[ ] 出去旅游一次[ ] 持续阅读[ ] 买车 2021目标[√] 考PMP[x] 找到一份稳定收入的副业[x] 开始写文章[x] 出去旅游一次[√] 养成读书的习惯(技术、职业规划、思考、理财)[√] 换一份工作 完成情况    1.关于考证: 考PMP证一方面是为了看看自己是否有自制力，另一方面也是为了持续提升自己；通过学习掌握">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-10T04:01:02.050Z">
-<meta property="article:modified_time" content="2022-01-10T06:15:52.894Z">
+<meta property="article:published_time" content="2022-01-12T06:07:54.716Z">
+<meta property="article:modified_time" content="2022-01-13T01:49:44.431Z">
 <meta property="article:author" content="imfan">
 <meta property="article:tag" content="技术 后端 java mysql spring">
 <meta name="twitter:card" content="summary">
@@ -98,7 +98,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(41)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(42)</small></div></li>
     
         
             
@@ -259,8 +259,8 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 -->
-<input type="hidden" id="yelog_site_posts_number" value="41">
-<input type="hidden" id="yelog_site_word_count" value="40.1k">
+<input type="hidden" id="yelog_site_posts_number" value="42">
+<input type="hidden" id="yelog_site_word_count" value="41.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -461,6 +461,14 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 "
+           href="/2022/01/12/thinking/year-end/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2022-01-12 14:07:54">2022/01/12</span>
+        </a>
         
         <a  class="全部文章 "
            href="/2022/01/10/thinking/tv/"
@@ -836,7 +844,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-26 16:25:31'>2020-11-11 19:30</time>
+            发布时间 : <time class="date" title='最后更新: 2022-01-12 14:06:38'>2020-11-11 19:30</time>
         
     </div>
     <div class="article-meta">
@@ -876,196 +884,199 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="相关依赖包"><a href="#相关依赖包" class="headerlink" title="相关依赖包"></a>相关依赖包</h3><pre><code class="xml">&lt;!--swagger依赖--&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
-    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
-    &lt;version&gt;2.9.2&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
-    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
-    &lt;version&gt;2.9.2&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;
-    &lt;artifactId&gt;swagger-bootstrap-ui&lt;/artifactId&gt;
-    &lt;version&gt;1.9.6&lt;/version&gt;
-&lt;/dependency&gt;
+        <h3 id="相关依赖包"><a href="#相关依赖包" class="headerlink" title="相关依赖包"></a>相关依赖包</h3><pre><code class="xml">&lt;dependencies&gt;
+    &lt;!--swagger依赖--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+        &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+        &lt;version&gt;2.9.2&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+        &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+        &lt;version&gt;2.9.2&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;
+        &lt;artifactId&gt;swagger-bootstrap-ui&lt;/artifactId&gt;
+        &lt;version&gt;1.9.6&lt;/version&gt;
+    &lt;/dependency&gt;
 
-&lt;dependency&gt;
-    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-    &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
-    &lt;version&gt;1.2.73&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+        &lt;version&gt;1.2.73&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
 <h3 id="Swagger文档相关接口"><a href="#Swagger文档相关接口" class="headerlink" title="Swagger文档相关接口"></a>Swagger文档相关接口</h3><pre><code class="textmate">1.接口文档地址
     https://localhost:8080/swagger-ui.html
     https://localhost:8080/doc.html
 2.JSON格式接口数据(group参数由项目中swagger配置决定)
     http://localhost:8080/v2/api-docs?group=V1版本</code></pre>
-<h3 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h3><pre><code class="java">/**
- * 加载swagger文档中的接口信息
- * @Date 2020/11/6 11:31
- * @Author fan
-**/
-public boolean loadSwaggerAPI(Integer lesseeId,String url)&#123;
-    try &#123;
-        log.info(&quot;开始加载Swagger文档,url=&#123;&#125;&quot;,url);
-        String result = OkhttpClientUtil.get(url);
-        JSONObject jsonObject = JSON.parseObject(result);
-        if(jsonObject == null)&#123;
-            return false;
-        &#125;
-        //移除对象描述信息
-        String platform = (String) JSON.parseObject(JSON.toJSONString(jsonObject.get(&quot;info&quot;))).get(&quot;title&quot;);
-        JSONObject paths = (JSONObject) jsonObject.get(&quot;paths&quot;);
-        JSONObject definitions = (JSONObject) jsonObject.get(&quot;definitions&quot;);
-        Map&lt;String,JSONObject&gt; paramMap = JSONObject.toJavaObject(definitions,Map.class);
+<h3 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h3><pre><code class="java">    class Test&#123;
+    /**
+     * 加载swagger文档中的接口信息
+     * @Date 2020/11/6 11:31
+     * @Author fan
+    **/
+    public boolean loadSwaggerAPI(Integer lesseeId,String url)&#123;
+        try &#123;
+            log.info(&quot;开始加载Swagger文档,url=&#123;&#125;&quot;,url);
+            String result = OkhttpClientUtil.get(url);
+            JSONObject jsonObject = JSON.parseObject(result);
+            if(jsonObject == null)&#123;
+                return false;
+            &#125;
+            //移除对象描述信息
+            String platform = (String) JSON.parseObject(JSON.toJSONString(jsonObject.get(&quot;info&quot;))).get(&quot;title&quot;);
+            JSONObject paths = (JSONObject) jsonObject.get(&quot;paths&quot;);
+            JSONObject definitions = (JSONObject) jsonObject.get(&quot;definitions&quot;);
+            Map&lt;String,JSONObject&gt; paramMap = JSONObject.toJavaObject(definitions,Map.class);
 
-        List&lt;PublicResourceInfo&gt; resourceInfos = new ArrayList&lt;&gt;();
-        for(Map.Entry&lt;String,Object&gt; entry :  paths.entrySet())&#123;
-            String apiUrl = entry.getKey();
-            String perms = resourceInfoService.buildPermByApiPath(null,apiUrl);
-            JSONObject methodInfo = (JSONObject) entry.getValue();
+            List&lt;PublicResourceInfo&gt; resourceInfos = new ArrayList&lt;&gt;();
+            for(Map.Entry&lt;String,Object&gt; entry :  paths.entrySet())&#123;
+                String apiUrl = entry.getKey();
+                String perms = resourceInfoService.buildPermByApiPath(null,apiUrl);
+                JSONObject methodInfo = (JSONObject) entry.getValue();
 
-            for(Map.Entry&lt;String,Object&gt; methodEntry : methodInfo.entrySet())&#123;
-                String requestType = methodEntry.getKey().toUpperCase();
+                for(Map.Entry&lt;String,Object&gt; methodEntry : methodInfo.entrySet())&#123;
+                    String requestType = methodEntry.getKey().toUpperCase();
 
-                JSONObject requestTypeInfo = (JSONObject) methodEntry.getValue();
-                String apiName = String.valueOf(requestTypeInfo.get(&quot;summary&quot;));
-                String moduleName = StringUtils.join((List&lt;String&gt;)requestTypeInfo.get(&quot;tags&quot;),&quot;,&quot;);
+                    JSONObject requestTypeInfo = (JSONObject) methodEntry.getValue();
+                    String apiName = String.valueOf(requestTypeInfo.get(&quot;summary&quot;));
+                    String moduleName = StringUtils.join((List&lt;String&gt;)requestTypeInfo.get(&quot;tags&quot;),&quot;,&quot;);
 
-                PublicResourceInfo resourceInfo = new PublicResourceInfo();
-                resourceInfo.setPlatformNameCn(platform);
-                resourceInfo.setApiPath(apiUrl);
-                resourceInfo.setPerms(perms);
-                resourceInfo.setApiName(apiName);
-                resourceInfo.setRequestType(requestType);
-                resourceInfo.setModuleNameCn(moduleName);
+                    PublicResourceInfo resourceInfo = new PublicResourceInfo();
+                    resourceInfo.setPlatformNameCn(platform);
+                    resourceInfo.setApiPath(apiUrl);
+                    resourceInfo.setPerms(perms);
+                    resourceInfo.setApiName(apiName);
+                    resourceInfo.setRequestType(requestType);
+                    resourceInfo.setModuleNameCn(moduleName);
 
-                //解析swagger-ui中的出参入参
-                JSONArray parameterJson = (JSONArray) requestTypeInfo.get(&quot;parameters&quot;);
-                Object requestParam = null;
-                Map&lt;String,Object&gt; requestParamMap = new HashMap&lt;&gt;();
-                if(parameterJson != null)&#123;
-                    for(Object object : parameterJson)&#123;
-                        JSONObject schema = (JSONObject) ((JSONObject) object).get(&quot;schema&quot;);
-                        if (schema != null)&#123;
-                            String ref = (String) schema.get(&quot;$ref&quot;);
-                            requestParam = parseRequestToJson(null,paramMap,ref);
-                        &#125; else &#123;
-                            String mapKey = (String) ((JSONObject) object).get(&quot;name&quot;);
-                            String type = ((JSONObject) object).getString(&quot;type&quot;);
-                            Object value = setValueByType(type,null);
-                            requestParamMap.put(mapKey,value);
+                    //解析swagger-ui中的出参入参
+                    JSONArray parameterJson = (JSONArray) requestTypeInfo.get(&quot;parameters&quot;);
+                    Object requestParam = null;
+                    Map&lt;String,Object&gt; requestParamMap = new HashMap&lt;&gt;();
+                    if(parameterJson != null)&#123;
+                        for(Object object : parameterJson)&#123;
+                            JSONObject schema = (JSONObject) ((JSONObject) object).get(&quot;schema&quot;);
+                            if (schema != null)&#123;
+                                String ref = (String) schema.get(&quot;$ref&quot;);
+                                requestParam = parseRequestToJson(null,paramMap,ref);
+                            &#125; else &#123;
+                                String mapKey = (String) ((JSONObject) object).get(&quot;name&quot;);
+                                String type = ((JSONObject) object).getString(&quot;type&quot;);
+                                Object value = setValueByType(type,null);
+                                requestParamMap.put(mapKey,value);
+                            &#125;
                         &#125;
                     &#125;
-                &#125;
 
-                if(requestParam != null)&#123;
-                    resourceInfo.setRequestParam(JSONObject.toJSONString(requestParam));
-                &#125; else &#123;
-                    resourceInfo.setRequestParam(JSONObject.toJSONString(requestParamMap));
-                &#125;
-
-                //返回值类型都用标准类型，不解析其他格式
-                JSONObject response = (JSONObject) requestTypeInfo.get(&quot;responses&quot;);
-                Object responseResult = null;
-                if(response != null)&#123;
-                    JSONObject schema = (JSONObject) ((JSONObject)response.get(&quot;200&quot;)).get(&quot;schema&quot;);
-                    if(schema != null)&#123;
-                        String ref = (String) schema.get(&quot;$ref&quot;);
-                        responseResult = parseRequestToJson(null,paramMap,ref);
+                    if(requestParam != null)&#123;
+                        resourceInfo.setRequestParam(JSONObject.toJSONString(requestParam));
+                    &#125; else &#123;
+                        resourceInfo.setRequestParam(JSONObject.toJSONString(requestParamMap));
                     &#125;
+
+                    //返回值类型都用标准类型，不解析其他格式
+                    JSONObject response = (JSONObject) requestTypeInfo.get(&quot;responses&quot;);
+                    Object responseResult = null;
+                    if(response != null)&#123;
+                        JSONObject schema = (JSONObject) ((JSONObject)response.get(&quot;200&quot;)).get(&quot;schema&quot;);
+                        if(schema != null)&#123;
+                            String ref = (String) schema.get(&quot;$ref&quot;);
+                            responseResult = parseRequestToJson(null,paramMap,ref);
+                        &#125;
+                    &#125;
+                    if(responseResult != null)&#123;
+                        resourceInfo.setResponseParam(JSONObject.toJSONString(responseResult));
+                    &#125;
+
+                    resourceInfos.add(resourceInfo);
                 &#125;
-                if(responseResult != null)&#123;
-                    resourceInfo.setResponseParam(JSONObject.toJSONString(responseResult));
-                &#125;
-
-                resourceInfos.add(resourceInfo);
             &#125;
+            log.info(&quot;解析完成=====&gt;&#123;&#125;&quot;,JSONObject.toJSONString(resourceInfos));
+        &#125; catch (IOException e) &#123;
+            log.error(&quot;加载Swagger文档中接口失败，url=&#123;&#125;&quot;,url);
+            return false;
         &#125;
-        log.info(&quot;解析完成=====&gt;&#123;&#125;&quot;,JSONObject.toJSONString(resourceInfos));
-    &#125; catch (IOException e) &#123;
-        log.error(&quot;加载Swagger文档中接口失败，url=&#123;&#125;&quot;,url);
-        return false;
-    &#125;
-    return true;
-&#125;
-
-/**
- * 解析swagger-ui中出参和入参为json
- * @param paramMap 入参和出参对象map,key-对象标识，value-对象属性及类型json
- * @param paramRef 入参和出参对应的对象信息， 格式: #/definitions/R«PageResultDTO«PublicResourceInfoDTO»»
- * @Date 2020/11/11 16:01
- * @Author fan
-**/
-private Object parseRequestToJson(Map&lt;String,Integer&gt; forEachCache,Map&lt;String,JSONObject&gt; paramMap, String paramRef)&#123;
-    if(StringUtils.isBlank(paramRef))&#123;
-        return &quot;&quot;;
-    &#125;
-
-    //对象标识
-    String paramKey = paramRef.substring(paramRef.lastIndexOf(&quot;/&quot;)+1);
-
-    //控制递归次数，同一个对象循环超过1次就返回空
-    if(forEachCache == null)&#123;
-        forEachCache = new HashMap&lt;&gt;();
-    &#125;
-    Integer forEachCount = forEachCache.get(paramKey);
-    if(forEachCount != null &amp;&amp; forEachCount &gt;= 1)&#123;
-        return null;
-    &#125; else &#123;
-        forEachCache.put(paramKey,1);
-    &#125;
-
-    //对象值
-    JSONObject paramJson = paramMap.get(paramKey);
-    JSONObject propertiesJson = JSONObject.parseObject(String.valueOf(paramJson.get(&quot;properties&quot;)));
-
-    Map&lt;String,Object&gt; columnMap = new HashMap&lt;&gt;();
-    for(Map.Entry&lt;String,Object&gt; entry : propertiesJson.entrySet())&#123;
-        String key = entry.getKey();
-        Object value = new JSONObject();
-        JSONObject valueJson = JSONObject.parseObject(String.valueOf(entry.getValue()));
-        String type = valueJson.getString(&quot;type&quot;);
-        Object obj = valueJson.get(&quot;items&quot;);
-
-        if(obj != null)&#123;
-            JSONObject property = JSONObject.parseObject(String.valueOf(obj));
-            String ref = (String) property.get(&quot;$ref&quot;);
-            //有下一级，则递归
-            if(StringUtils.isNotBlank(ref))&#123;
-                value = parseRequestToJson(forEachCache,paramMap,ref);
-            &#125;
-        &#125;
-        value = setValueByType(type,value);
-        columnMap.put(key,value);
-    &#125;
-    return columnMap;
-&#125;
-
-/**  根据参数类型设置value **/
-private Object setValueByType(String type,Object value)&#123;
-    if(&quot;array&quot;.equals(type))&#123;
-        JSONArray jsonArray = new JSONArray();
-        if(value == null)&#123;
-            value = new JSONObject();
-        &#125;
-        jsonArray.add(value);
-        return JSONArray.toJSONString(jsonArray);
-    &#125;
-    if(&quot;integer&quot;.equals(type))&#123;
-        return 0;
-    &#125;
-    if(&quot;boolean&quot;.equals(type))&#123;
         return true;
     &#125;
-    if(&quot;object&quot;.equals(type))&#123;
-        return value;
+
+    /**
+     * 解析swagger-ui中出参和入参为json
+     * @param paramMap 入参和出参对象map,key-对象标识，value-对象属性及类型json
+     * @param paramRef 入参和出参对应的对象信息， 格式: #/definitions/R«PageResultDTO«PublicResourceInfoDTO»»
+     * @Date 2020/11/11 16:01
+     * @Author fan
+    **/
+    private Object parseRequestToJson(Map&lt;String,Integer&gt; forEachCache,Map&lt;String,JSONObject&gt; paramMap, String paramRef)&#123;
+        if(StringUtils.isBlank(paramRef))&#123;
+            return &quot;&quot;;
+        &#125;
+
+        //对象标识
+        String paramKey = paramRef.substring(paramRef.lastIndexOf(&quot;/&quot;)+1);
+
+        //控制递归次数，同一个对象循环超过1次就返回空
+        if(forEachCache == null)&#123;
+            forEachCache = new HashMap&lt;&gt;();
+        &#125;
+        Integer forEachCount = forEachCache.get(paramKey);
+        if(forEachCount != null &amp;&amp; forEachCount &gt;= 1)&#123;
+            return null;
+        &#125; else &#123;
+            forEachCache.put(paramKey,1);
+        &#125;
+
+        //对象值
+        JSONObject paramJson = paramMap.get(paramKey);
+        JSONObject propertiesJson = JSONObject.parseObject(String.valueOf(paramJson.get(&quot;properties&quot;)));
+
+        Map&lt;String,Object&gt; columnMap = new HashMap&lt;&gt;();
+        for(Map.Entry&lt;String,Object&gt; entry : propertiesJson.entrySet())&#123;
+            String key = entry.getKey();
+            Object value = new JSONObject();
+            JSONObject valueJson = JSONObject.parseObject(String.valueOf(entry.getValue()));
+            String type = valueJson.getString(&quot;type&quot;);
+            Object obj = valueJson.get(&quot;items&quot;);
+
+            if(obj != null)&#123;
+                JSONObject property = JSONObject.parseObject(String.valueOf(obj));
+                String ref = (String) property.get(&quot;$ref&quot;);
+                //有下一级，则递归
+                if(StringUtils.isNotBlank(ref))&#123;
+                    value = parseRequestToJson(forEachCache,paramMap,ref);
+                &#125;
+            &#125;
+            value = setValueByType(type,value);
+            columnMap.put(key,value);
+        &#125;
+        return columnMap;
     &#125;
-    return &quot;&quot;;
+
+    /**  根据参数类型设置value **/
+    private Object setValueByType(String type,Object value)&#123;
+        if(&quot;array&quot;.equals(type))&#123;
+            JSONArray jsonArray = new JSONArray();
+            if(value == null)&#123;
+                value = new JSONObject();
+            &#125;
+            jsonArray.add(value);
+            return JSONArray.toJSONString(jsonArray);
+        &#125;
+        if(&quot;integer&quot;.equals(type))&#123;
+            return 0;
+        &#125;
+        if(&quot;boolean&quot;.equals(type))&#123;
+            return true;
+        &#125;
+        if(&quot;object&quot;.equals(type))&#123;
+            return value;
+        &#125;
+        return &quot;&quot;;
+    &#125;
 &#125;</code></pre>
 
       
@@ -1079,7 +1090,7 @@ private Object setValueByType(String type,Object value)&#123;
     <p><span class="copy-title">字数:</span><span class="post-count">1k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
     <p><span class="copy-title">发布时间:</span>2020-11-11, 19:30:00</p>
-    <p><span class="copy-title">最后更新:</span>2020-12-26, 16:25:31</p>
+    <p><span class="copy-title">最后更新:</span>2022-01-12, 14:06:38</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/11/11/backend/java/utils/swagger/" title="Java解析Swagger文档接口及参数">http://imfan.com/2020/11/11/backend/java/utils/swagger/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
