@@ -6,18 +6,24 @@
   <meta name="keywords" content="">
   <meta name="description" content="Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="总结2022目标[ ] 找到一份稳定收入的副业[ ] 坚持写文章[ ] 出去旅游一次[ ] 持续阅读[ ] 买车 2021目标[√] 考PMP[x] 找到一份稳定收入的副业[x] 开始写文章[x] 出去旅游一次[√] 养成读书的习惯(技术、职业规划、思考、理财)[√] 换一份工作 完成情况    1.关于考证: 考PMP证一方面是为了看看自己是否有自制力，另一方面也是为了持续提升自己；通过学习掌握">
+<meta name="description" content="大话数据结构-摘要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Imfan笔记">
-<meta property="og:url" content="http://imfan.com/2022/01/12/thinking/year-end/index.html">
+<meta property="og:title" content="大话数据结构-摘要">
+<meta property="og:url" content="http://imfan.com/2022/01/13/backend/java/algorithm/book1/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="总结2022目标[ ] 找到一份稳定收入的副业[ ] 坚持写文章[ ] 出去旅游一次[ ] 持续阅读[ ] 买车 2021目标[√] 考PMP[x] 找到一份稳定收入的副业[x] 开始写文章[x] 出去旅游一次[√] 养成读书的习惯(技术、职业规划、思考、理财)[√] 换一份工作 完成情况    1.关于考证: 考PMP证一方面是为了看看自己是否有自制力，另一方面也是为了持续提升自己；通过学习掌握">
+<meta property="og:description" content="大话数据结构-摘要">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-12T06:07:54.716Z">
-<meta property="article:modified_time" content="2022-01-13T01:49:44.431Z">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-first.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-middle.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-last.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-level.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/sort-rank.png">
+<meta property="article:published_time" content="2022-01-13T08:54:00.000Z">
+<meta property="article:modified_time" content="2022-01-13T08:55:02.157Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="技术 后端 java mysql spring">
+<meta property="article:tag" content="数据结构与算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-first.png">
 
 
 <link rel="icon" href="/img/road.png">
@@ -58,7 +64,7 @@
 
 
 <body>
-<aside class="nav">
+<aside class="nav mobile">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/road.png" />
@@ -98,11 +104,11 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(42)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(43)</small></div></li>
     
         
             
-            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(18)</small></div>
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(19)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -127,6 +133,10 @@
                         </li>
                         
                         <li><div data-rel="后端<--->三方集成">三方集成<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->数据结构与算法">数据结构与算法<small>(1)</small></div>
                             
                         </li>
                         
@@ -162,7 +172,7 @@
     
         
             
-            <li><div data-rel="思考">思考<small>(2)</small></div>
+            <li><div data-rel="思考">思考<small>(3)</small></div>
                 
             </li>
             
@@ -238,7 +248,19 @@
     
         
             
+        
+    
+        
+            
             <li><div data-rel="运维">运维<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="摘要">摘要<small>(1)</small></div>
                 
             </li>
             
@@ -259,8 +281,8 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 -->
-<input type="hidden" id="yelog_site_posts_number" value="42">
-<input type="hidden" id="yelog_site_word_count" value="41.1k">
+<input type="hidden" id="yelog_site_posts_number" value="43">
+<input type="hidden" id="yelog_site_word_count" value="42.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -336,6 +358,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>思维</a>
             </li>
         
@@ -349,6 +375,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>注册中心</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>总结</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -462,20 +492,28 @@
     
     <nav id="title-list-nav">
         
-        <a  class="全部文章 "
-           href="/2022/01/12/thinking/year-end/"
-           data-tag=""
+        <a  class="全部文章 后端 数据结构与算法 "
+           href="/2022/01/13/backend/java/algorithm/book1/"
+           data-tag="数据结构与算法"
            data-author="" >
-            <span class="post-title" title=""></span>
-            <span class="post-date" title="2022-01-12 14:07:54">2022/01/12</span>
+            <span class="post-title" title="大话数据结构-摘要">大话数据结构-摘要</span>
+            <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
         </a>
         
-        <a  class="全部文章 "
-           href="/2022/01/10/thinking/tv/"
-           data-tag=""
+        <a  class="全部文章 思考 "
+           href="/2022/01/13/thinking/year-end/"
+           data-tag="总结"
            data-author="" >
-            <span class="post-title" title=""></span>
-            <span class="post-date" title="2022-01-10 12:01:02">2022/01/10</span>
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2022-01-13 14:44:10">2022/01/13</span>
+        </a>
+        
+        <a  class="全部文章 摘要 "
+           href="/2022/01/10/thinking/tv/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
         </a>
         
         <a  class="全部文章 后端 接口文档 "
@@ -813,43 +851,12 @@
         </div>
     </div> -->
 </aside>
-<div id="post">
+<div id="post" class="index">
     <div class="pjax">
-        <article id="post-thinking/year-end" class="article article-type-post" itemscope itemprop="blogPost">
+        <article class="index">
+            <div class="toc-ref">
     
-    <div class="article-meta">
-        
-        
-        
-        
-    </div>
-    <div class="article-meta">
-        
-            发布时间 : <time class="date" title='最后更新: 2022-01-13 09:49:44'>2022-01-12 14:07</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:982</span>
-        
-        
-        <!-- <span id="busuanzi_container_page_pv">
-            阅读 :<span id="busuanzi_value_page_pv">
-                <span class="count-comment">
-                    <span class="spinner">
-                      <div class="cube1"></div>
-                      <div class="cube2"></div>
-                    </span>
-                </span>
-            </span>
-        </span> -->
-        
-        
-    </div>
-    
-    <div class="toc-ref">
-    
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2022"><span class="toc-text">2022</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-text">目标</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2021"><span class="toc-text">2021</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87-1"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E6%83%85%E5%86%B5"><span class="toc-text">完成情况</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Imfan"><span class="toc-text">Imfan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%A6%96%E9%A1%B5"><span class="toc-text">个人博客首页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E"><span class="toc-text">关于</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -862,66 +869,18 @@
     }
 </style>
 </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>[ ] 找到一份稳定收入的副业<br>[ ] 坚持写文章<br>[ ] 出去旅游一次<br>[ ] 持续阅读<br>[ ] 买车</p>
-<h3 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h3><h4 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h4><p>[√] 考PMP<br>[x] 找到一份稳定收入的副业<br>[x] 开始写文章<br>[x] 出去旅游一次<br>[√] 养成读书的习惯(技术、职业规划、思考、理财)<br>[√] 换一份工作</p>
-<h4 id="完成情况"><a href="#完成情况" class="headerlink" title="完成情况"></a>完成情况</h4><pre><code class="textmate">    1.关于考证: 考PMP证一方面是为了看看自己是否有自制力，另一方面也是为了持续提升自己；通过学习掌握相关方法论，并
-    能提高自己在日常工作中的效率，提升整体项目组的主动性，促进项目成功；试试证明学习与实践中间还有比较大的差距，
-    还需不断学习、思考，将方法应用到具体项目中。
+            <h1 id="Imfan"><a href="#Imfan" class="headerlink" title="Imfan"></a>Imfan</h1><hr>
+<blockquote>
+<p>思考、记录、回顾</p>
+</blockquote>
+<h2 id="个人博客首页"><a href="#个人博客首页" class="headerlink" title="个人博客首页"></a>个人博客首页</h2><p>少年易学老难成，一寸光阴不可轻。 ——朱熹</p>
+<p>Stay hungry,Stay foolish     ——Steve Jobs</p>
+<h3 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h3><p>本博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4136#article-header0">Gitee Pages</a><p><br>引用主题 <a target="_blank" rel="noopener" href="https://yelog.org/2017/03/23/3-hexo-instruction/">3-hexo</a></p>
+<p>总文章:<code class="article_number"></code>篇，所有文章总字数：<code class="site_word_count"></code>字<p><br>历史访问人数：<code class="site_uv"></code>人，历史访问量：<code class="site_pv"></code>次</p>
 
-    2.关于副业: 找一份副业的念头一直有，更近一步是让副业收入能支撑自己日常开销和房贷。疫情持续太久，未来方向不明，
-    行业危机四伏，为了给自己一份保障；虽然接了一个月的私活少赚了点，但是过程真的是心累；复盘过自身的资源，基本没啥资源。。。。 
-    现在看貌似只有在知名网站上持续更新文章，看看有没有恰饭机会这样；过程中也学习了一些技能(PPT、简单视频剪辑)，
-    总体还是收获不小，虽然目标没达到，过程也是很好的
-
-    3.关于写文章: 更偏向记录,写文章是为了整理并记录自己学过的东西，好记性不如烂笔头，况且我的记忆力不是那么多好；除了经常用的东
-    西，其他知识点看完过一段时间就记忆就模糊了。为了不遗忘学过的东西，在学习过程中记录、摘要、总结一些东西沉淀下来，空闲了翻翻看看，强化记忆。
-    日积月累，感觉自己也要成为一个大牛了呢(终极目标)
-
-    4.工作到现在，真正算的上旅游的次数一只手就能数得过来；有时间就想去其他地方看看，看看沿途的风景、看看
-    当地的景色，给人生中留下一点不一样的记忆；原本打算一年至少出去一次吧，结果疫情反反复复，再加上各种事情，一拖再拖，结果一年过去了。。。 
-    明年一定要完成这个目标！！！
-
-    5.关于读书: 约长大约觉得读书的重要性，相当于高手们把他们的大招和毕生绝学都告诉你了，你却视而不见，还
-    抱怨说这一路打怪升级咋这么难(个人观点)；我不限制自己读书的方向，觉得有兴趣就读，兴趣不大的慢慢读，没兴趣但是有用硬着头皮读；
-    读书为了提升技能、提高思考高度和深度、为了让能更加看清人生、生活、资本的本质
-
-    6.关于换工作: 如果干的开心、工资还不错的话，一般没有人想频繁的换工作吧？我很想在一个公司能长时间待下去，但总是因为各种原因不得不换工作；
-    虽然这份工作也不是那么的忙，还能每天和媳妇一起上下班(开心);无奈公司业务没啥起色，为了生计不想坐以待毙。从直属领导离职后就开始准备，
-    陆陆续续3-4个月面试了估计有十几家吧，公司有大有小，最心意的是某物，结果二面后没信了；后来同事介绍了个公司，综合看还不错就入职了，现在总体感受还不错
-
-    总之大目标就是健康、快乐的活着，顺便挣点钱养家
-</code></pre>
-
-      
-    </div>
-</article>
-
-
-
-<div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span></p>
-    <p><span class="copy-title">字数:</span><span class="post-count">982</span></p>
-    <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
-    <p><span class="copy-title">发布时间:</span>2022-01-12, 14:07:54</p>
-    <p><span class="copy-title">最后更新:</span>2022-01-13, 09:49:44</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/01/12/thinking/year-end/" title="">http://imfan.com/2022/01/12/thinking/year-end/</a>
-    <p>
-        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
-    </p>
-</div>
-
-
-
-
-
-    
-
-
-
-
+        </article>
+        
+        
     </div>
     <div class="copyright">
         <!--
@@ -932,11 +891,11 @@
  -->
 
     </div>
-    <div class="full-toc">
-        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+</div>
+<div class="full-toc">
+    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
-    </div>
 </div>
 
 </body>
