@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ES官方文档笔记 | Imfan笔记</title>
+  <meta name="keywords" content=" es ">
+  <meta name="description" content="ES官方文档笔记 | Imfan笔记">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="ElasticSearch官方教程(非最新版)  集群原理空集群一个运行中的Elasticsearch实例称为一个节点，而集群是由一个或者多个拥有相同cluster.name配置的节点组成，它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。  负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。而主节点并不需要涉及到文档级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES官方文档笔记">
+<meta property="og:url" content="http://imfan.com/2022/02/15/backend/storage/es/index.html">
+<meta property="og:site_name" content="Imfan笔记">
+<meta property="og:description" content="ElasticSearch官方教程(非最新版)  集群原理空集群一个运行中的Elasticsearch实例称为一个节点，而集群是由一个或者多个拥有相同cluster.name配置的节点组成，它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。  负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。而主节点并不需要涉及到文档级">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-15T05:38:00.000Z">
+<meta property="article:modified_time" content="2022-02-15T05:45:21.059Z">
+<meta property="article:author" content="imfan">
+<meta property="article:tag" content="es">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/road.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css" rel="stylesheet">
+<link href="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="false" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/road.png" />
+</a>
+<div class="author">
+    <span>imfan</span>
+</div>
+
+<!--个人联系方式icon-->
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/im-fan" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:wyf3634@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(44)</small></div></li>
+    
+        
+            
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(19)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="后端<--->服务治理">服务治理<small>(2)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->高并发">高并发<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->工具">工具<small>(5)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->接口文档">接口文档<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->框架">框架<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->三方集成">三方集成<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->数据结构与算法">数据结构与算法<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->线程池">线程池<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->项目编译">项目编译<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->消息队列">消息队列<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->io">io<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="架构">架构<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="思考">思考<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他">其他<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="测试">测试<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="存储">存储<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="运维">运维<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="摘要">摘要<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+
+<!-- 左边导航栏 关于&友链
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+-->
+<input type="hidden" id="yelog_site_posts_number" value="44">
+<input type="hidden" id="yelog_site_word_count" value="50.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用语</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态配置</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>分布式锁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>高并发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>技术文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>接口文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>三方集成</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>思维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线程池</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目编译</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>注册中心</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>总结</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arthas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>canal</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>COLA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DDD</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>devops</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>es</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gateway</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>io</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>istio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>kafka</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ldap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>message</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>oauth2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>skywalking</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringFramework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>test</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utils</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 存储 "
+           href="/2022/02/15/backend/storage/es/"
+           data-tag="es"
+           data-author="" >
+            <span class="post-title" title="ES官方文档笔记">ES官方文档笔记</span>
+            <span class="post-date" title="2022-02-15 13:38:00">2022/02/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 数据结构与算法 "
+           href="/2022/01/13/backend/java/algorithm/book1/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="大话数据结构-摘要">大话数据结构-摘要</span>
+            <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2022/01/13/thinking/year-end/"
+           data-tag="总结"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2022-01-13 14:44:10">2022/01/13</span>
+        </a>
+        
+        <a  class="全部文章 摘要 "
+           href="/2022/01/10/thinking/tv/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 接口文档 "
+           href="/2021/11/25/backend/other/swagger/"
+           data-tag="接口文档"
+           data-author="" >
+            <span class="post-title" title="集成SwaggerUI">集成SwaggerUI</span>
+            <span class="post-date" title="2021-11-25 10:00:00">2021/11/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 高并发 "
+           href="/2021/11/22/backend/java/thread/concurrent/"
+           data-tag="高并发"
+           data-author="" >
+            <span class="post-title" title="高并发相关">高并发相关</span>
+            <span class="post-date" title="2021-11-22 20:06:00">2021/11/22</span>
+        </a>
+        
+        <a  class="全部文章 测试 "
+           href="/2021/11/15/test/test/"
+           data-tag="test"
+           data-author="" >
+            <span class="post-title" title="测试相关">测试相关</span>
+            <span class="post-date" title="2021-11-15 17:51:54">2021/11/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/10/13/devops/arthas/"
+           data-tag="arthas"
+           data-author="" >
+            <span class="post-title" title="Arthas-问题排查工具">Arthas-问题排查工具</span>
+            <span class="post-date" title="2021-10-13 09:17:00">2021/10/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 io "
+           href="/2021/08/11/backend/java/netty/io/"
+           data-tag="io"
+           data-author="" >
+            <span class="post-title" title="IO">IO</span>
+            <span class="post-date" title="2021-08-11 09:31:00">2021/08/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 三方集成 "
+           href="/2021/08/04/backend/other/jimu-report/"
+           data-tag="三方集成"
+           data-author="" >
+            <span class="post-title" title="集成Jimu报表">集成Jimu报表</span>
+            <span class="post-date" title="2021-08-04 18:28:22">2021/08/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/07/26/backend/spring/framework/springframework-2/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码学习">SpringFramework源码学习</span>
+            <span class="post-date" title="2021-07-26 15:05:00">2021/07/26</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/07/20/backend/storage/mysql/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-知识点">MySQL相关-知识点</span>
+            <span class="post-date" title="2021-07-20 09:45:00">2021/07/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/26/backend/spring/framework/springframework-1/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码编译">SpringFramework源码编译</span>
+            <span class="post-date" title="2021-06-26 20:00:00">2021/06/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/15/backend/spring/springcloud-gateway/"
+           data-tag="gateway"
+           data-author="" >
+            <span class="post-title" title="SpringClougGateway">SpringClougGateway</span>
+            <span class="post-date" title="2021-06-15 14:16:00">2021/06/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/19/devops/skywalking/"
+           data-tag="skywalking"
+           data-author="" >
+            <span class="post-title" title="调用链监控-skywalking">调用链监控-skywalking</span>
+            <span class="post-date" title="2021-05-19 16:52:25">2021/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/18/devops/istio/"
+           data-tag="istio"
+           data-author="" >
+            <span class="post-title" title="istio">istio</span>
+            <span class="post-date" title="2021-05-18 16:30:00">2021/05/18</span>
+        </a>
+        
+        <a  class="全部文章 前端 "
+           href="/2021/04/28/frontend/vue/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue">vue</span>
+            <span class="post-date" title="2021-04-28 11:44:02">2021/04/28</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/16/devops/docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="运维相关">运维相关</span>
+            <span class="post-date" title="2021-04-16 14:19:25">2021/04/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2021/04/13/backend/service/nacos/"
+           data-tag="注册中心,nacos,动态配置"
+           data-author="" >
+            <span class="post-title" title="nacos">nacos</span>
+            <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/05/devops/nginx/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx">nginx</span>
+            <span class="post-date" title="2021-04-05 10:26:05">2021/04/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/03/22/backend/spring/spring-boot/"
+           data-tag="springboot"
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2021-03-22 09:44:01">2021/03/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2021/03/20/backend/java/utils/convert/orika/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-Orika">对象转换工具-Orika</span>
+            <span class="post-date" title="2021-03-20 14:15:00">2021/03/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/18/devops/ldap/"
+           data-tag="ldap"
+           data-author="" >
+            <span class="post-title" title="LDAP学习笔记">LDAP学习笔记</span>
+            <span class="post-date" title="2021-02-18 14:25:55">2021/02/18</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/09/devops/check/"
+           data-tag="devops"
+           data-author="" >
+            <span class="post-title" title="服务常见问题排查">服务常见问题排查</span>
+            <span class="post-date" title="2021-02-09 17:08:25">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 线程池 "
+           href="/2021/02/09/backend/java/thread/threadPool/"
+           data-tag="线程池"
+           data-author="" >
+            <span class="post-title" title="ThreadPool详解">ThreadPool详解</span>
+            <span class="post-date" title="2021-02-09 14:12:45">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/kafka/"
+           data-tag="message,kafka"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/02/02/backend/storage/redis/"
+           data-tag="cache"
+           data-author="" >
+            <span class="post-title" title="Redis学习笔记">Redis学习笔记</span>
+            <span class="post-date" title="2021-02-02 19:59:00">2021/02/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 项目编译 "
+           href="/2021/01/21/backend/java/build/gradle/"
+           data-tag="项目编译"
+           data-author="" >
+            <span class="post-title" title="Gradle学习笔记">Gradle学习笔记</span>
+            <span class="post-date" title="2021-01-21 13:24:22">2021/01/21</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/25/framework/design/uml/"
+           data-tag="技术文档"
+           data-author="" >
+            <span class="post-title" title="技术文档">技术文档</span>
+            <span class="post-date" title="2020-12-25 18:57:00">2020/12/25</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/15/framework/cola/"
+           data-tag="COLA"
+           data-author="" >
+            <span class="post-title" title="COLA">COLA</span>
+            <span class="post-date" title="2020-12-15 16:24:00">2020/12/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/12/10/backend/java/utils/mybatis-plus/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="MybatisPlus使用笔记">MybatisPlus使用笔记</span>
+            <span class="post-date" title="2020-12-10 12:00:00">2020/12/10</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/11/17/framework/oauth2/"
+           data-tag="oauth2"
+           data-author="" >
+            <span class="post-title" title="OAuth2学习笔记">OAuth2学习笔记</span>
+            <span class="post-date" title="2020-11-17 09:58:26">2020/11/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/11/11/backend/java/utils/swagger/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="Java解析Swagger文档接口及参数">Java解析Swagger文档接口及参数</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/11/04/thinking/ali-words/"
+           data-tag="常用语"
+           data-author="" >
+            <span class="post-title" title="互联网常用语记录">互联网常用语记录</span>
+            <span class="post-date" title="2020-11-04 22:31:24">2020/11/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2020/10/29/backend/service/zookeeper/"
+           data-tag="zookeeper,注册中心,分布式锁"
+           data-author="" >
+            <span class="post-title" title="Zookeeper搭建">Zookeeper搭建</span>
+            <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/20/backend/java/utils/excel/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="EasyExcel使用遇到的问题">EasyExcel使用遇到的问题</span>
+            <span class="post-date" title="2020-10-20 17:22:53">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/09/framework/ddd/"
+           data-tag="DDD"
+           data-author="" >
+            <span class="post-title" title="DDD-领域驱动设计">DDD-领域驱动设计</span>
+            <span class="post-date" title="2020-10-09 16:51:54">2020/10/09</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/02/framework/design-model/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="14种常用设计模式">14种常用设计模式</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/canal/"
+           data-tag="canal"
+           data-author="" >
+            <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/mysql-other/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-常用命令">MySQL相关-常用命令</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/02/backend/java/utils/convert/map-struct/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-MapStruct">对象转换工具-MapStruct</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/10/02/thinking/book/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/10/02/other/software/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="软件推荐">软件推荐</span>
+            <span class="post-date" title="2020-10-02 14:34:06">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/09/30/other/hexo/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Hexo搭建博客">Hexo搭建博客</span>
+            <span class="post-date" title="2020-09-30 14:51:20">2020/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <!-- <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div> -->
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-backend/storage/es" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">ES官方文档笔记</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="存储">存储</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">es</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-02-15 13:45:21'>2022-02-15 13:38</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:7.5k</span>
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%8E%9F%E7%90%86"><span class="toc-text">集群原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%9B%86%E7%BE%A4"><span class="toc-text">空集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%81%A5%E5%BA%B7"><span class="toc-text">集群健康</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB"><span class="toc-text">故障转移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E6%89%A9%E5%AE%B9"><span class="toc-text">水平扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB-1"><span class="toc-text">故障转移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">数据输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%87%E6%A1%A3"><span class="toc-text">什么是文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">文档元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%96%87%E6%A1%A3"><span class="toc-text">索引文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81"><span class="toc-text">处理冲突</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E6%A1%A3%E5%AD%98%E5%82%A8"><span class="toc-text">分布式文档存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E4%B8%80%E4%B8%AA%E6%96%87%E6%A1%A3%E5%88%B0%E4%B8%80%E4%B8%AA%E5%88%86%E7%89%87%E4%B8%AD"><span class="toc-text">路由一个文档到一个分片中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%89%AF%E5%88%86%E7%89%87%E4%BA%A4%E4%BA%92"><span class="toc-text">主副分片交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E3%80%81%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3%E6%97%B6%E6%AD%A5%E9%AA%A4"><span class="toc-text">新建、索引和删除文档时步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3%E6%AD%A5%E9%AA%A4"><span class="toc-text">查询文档步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%B1%80%E9%83%A8%E6%96%87%E6%A1%A3%E6%AD%A5%E9%AA%A4"><span class="toc-text">更新局部文档步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%89%87%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86"><span class="toc-text">分片内部原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="toc-text">倒排索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%B8%8E%E5%88%86%E7%89%87%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">索引与分片的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%92%8C%E6%9B%B4%E6%96%B0"><span class="toc-text">删除和更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E5%8F%98%E6%9B%B4"><span class="toc-text">持久化变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Translog%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-text">Translog安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E6%96%B0"><span class="toc-text">刷新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E5%90%88%E5%B9%B6"><span class="toc-text">段合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%9F%A5%E6%89%BE%E8%AF%AD%E6%B3%95"><span class="toc-text">常用查找语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E7%A1%AE%E6%9F%A5%E6%89%BE-%E5%8C%85%E5%90%AB%EF%BC%8C%E4%B8%8D%E6%98%AF%E7%AD%89%E4%BA%8E"><span class="toc-text">精确查找(包含，不是等于)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">组合过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4"><span class="toc-text">范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Null%E5%80%BC%E6%9F%A5%E8%AF%A2"><span class="toc-text">Null值查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-text">缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%BA%A6"><span class="toc-text">相关度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%BA%A6%E8%AF%84%E5%88%86%E9%80%BB%E8%BE%91"><span class="toc-text">相关度评分逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%A8%A1%E5%9E%8B"><span class="toc-text">布尔模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%8D%E9%A2%91-%E9%80%86%E5%90%91%E6%96%87%E6%A1%A3%E9%A2%91%E7%8E%87-TF-IDF"><span class="toc-text">词频&#x2F;逆向文档频率(TF&#x2F;IDF)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6%E5%BD%92%E4%B8%80"><span class="toc-text">字段长度归一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">组合使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%84%E5%88%86"><span class="toc-text">脚本评分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86"><span class="toc-text">人类语言处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88"><span class="toc-text">聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="toc-text">主要概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%B6"><span class="toc-text">桶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%A0%87"><span class="toc-text">指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-text">条形图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1"><span class="toc-text">按时间统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Doc-Values"><span class="toc-text">Doc Values</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE"><span class="toc-text">地理位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1"><span class="toc-text">数据建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%BB%B4"><span class="toc-text">运维</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/getting-started.html">ElasticSearch官方教程(非最新版)</a></li>
+</ul>
+<h2 id="集群原理"><a href="#集群原理" class="headerlink" title="集群原理"></a>集群原理</h2><h3 id="空集群"><a href="#空集群" class="headerlink" title="空集群"></a>空集群</h3><pre><code class="textmate">一个运行中的Elasticsearch实例称为一个节点，而集群是由一个或者多个拥有相同cluster.name配置的节点组成，它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。
+
+负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点。
+
+作为用户，我们可以将请求发送到集群中的任何节点，包括主节点。每个节点都知道任意文档所处的位置，并且能够将我们的请求直接转发到存储我们所需文档的节点。无论我们将请求发送到哪个节点，它都能负责从各个包含我们所需文档的节点收集回数据，并将最终结果返回給客户端。</code></pre>
+<h3 id="集群健康"><a href="#集群健康" class="headerlink" title="集群健康"></a>集群健康</h3><pre><code class="textmate">Elasticsearch的集群监控信息中包含了许多的统计数据，其中最为重要的一项就是集群健康，它在status字段中展示为green、yellow或者red。
+GET/_cluster/health
+1.green
+    所有的主分片和副本分片都正常运行。
+2.yellow
+    所有的主分片都正常运行，但不是所有的副本分片都正常运行。
+3.red
+    有主分片没能正常运行。</code></pre>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><pre><code class="textmate">索引实际上是指向一个或者多个物理分片的逻辑命名空间。
+一个 分片 是一个底层的工作单元 ，它仅保存了全部数据中的一部分,一个分片是一个 Lucene 的实例，它本身就是一个完整的搜索引擎。
+索引在默认情况下会被分配5个主分片，我们的文档被存储和索引到分片内，但是应用程序是直接与索引而不是与分片进行交互。
+
+Elasticsearch 是利用分片将数据分发到集群内各处的。分片是数据的容器，文档保存在分片内，分片又被分配到集群内的各个节点里。 当你的集群规模扩大或者缩小时， Elasticsearch 会自动的在各节点中迁移分片，使得数据仍然均匀分布在集群里。
+
+一个分片可以是 主分片或者 副本 分片。 索引内任意一个文档都归属于一个主分片，所以主分片的数目决定着索引能够保存的最大数据量。
+</code></pre>
+<ul>
+<li>添加索引语法</li>
+</ul>
+<pre><code class="textmate">PUT /blogs
+&#123;
+   &quot;settings&quot; : &#123;
+      &quot;number_of_shards&quot; : 3,  //分片数量
+      &quot;number_of_replicas&quot; : 1 //副本数量
+   &#125;
+&#125;</code></pre>
+<h3 id="故障转移"><a href="#故障转移" class="headerlink" title="故障转移"></a>故障转移</h3><pre><code class="textmate">当你在同一台机器上启动了第二个节点时，只要它和第一个节点有同样的 cluster.name 配置，它就会自动发现集群并加入到其中。 但是在不同机器上启动节点的时候，为了加入到同一集群，你需要配置一个可连接到的单播主机列表。</code></pre>
+<h3 id="水平扩容"><a href="#水平扩容" class="headerlink" title="水平扩容"></a>水平扩容</h3><pre><code class="textmate">拥有三个节点的集群——为了分散负载而对分片进行重新分配
+分片是一个功能完整的搜索引擎，它拥有使用一个节点上的所有资源的能力。 有6个分片（3个主分片和3个副本分片）的索引可以最大扩容到6个节点，每个节点上存在一个分片，并且每个分片拥有所在节点的全部资源。
+
+
+主分片的数目在索引创建时就已经确定了下来。实际上，这个数目定义了这个索引能够 存储 的最大数据量。（实际大小取决于你的数据、硬件和使用场景。） 但是，读操作——搜索和返回数据——可以同时被主分片 或 副本分片所处理，所以当你拥有越多的副本分片时，也将拥有越高的吞吐量。
+
+在运行中的集群上是可以动态调整副本分片数目的，我们可以按需伸缩集群</code></pre>
+<ul>
+<li>调整副本数量</li>
+</ul>
+<pre><code class="textmate">PUT /blogs/_settings
+&#123;
+   &quot;number_of_replicas&quot; : 2
+&#125;</code></pre>
+<h3 id="故障转移-1"><a href="#故障转移-1" class="headerlink" title="故障转移"></a>故障转移</h3><pre><code class="textmate">| Node1 | Node2 | Node3 |
+|1* 2 3 |1 2*  3|1 2 3* |
+*代表主分片
+
+如果关闭Node1,则会失去1主分片，索引不能正常工作，此时集群状态是red;
+其他节点会立即将Node2或Node3上的副本分片提升为主分片，此时集群状态是yellow,该动作是瞬时发生的；
+如果重启Node1,集群可以将缺失的副本分片再次进行分配，如果Node1依然拥有之前的分片，则会尝试重用，仅从主分片复制改动过的数据文件</code></pre>
+<h2 id="数据输入输出"><a href="#数据输入输出" class="headerlink" title="数据输入输出"></a>数据输入输出</h2><blockquote>
+<p>在 Elasticsearch 中， 每个字段的所有数据 都是 默认被索引的 。 即每个字段都有为了快速检索设置的专用倒排索引</p>
+</blockquote>
+<h3 id="什么是文档"><a href="#什么是文档" class="headerlink" title="什么是文档"></a>什么是文档</h3><pre><code class="textmate">在 Elasticsearch 中，术语 文档 有着特定的含义。它是指最顶层或者根对象, 这个根对象被序列化成 JSON 并存储到 Elasticsearch 中，指定了唯一 ID;
+
+字段的名字可以是任何合法的字符串，但 不可以 包含英文句号(.)。</code></pre>
+<h3 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h3><pre><code class="textmate">三个必须的元数据元素：
+  _index: 文档在哪存放
+  _type: 文档表示的对象类别
+  _id: 文档唯一标识</code></pre>
+<h3 id="索引文档"><a href="#索引文档" class="headerlink" title="索引文档"></a>索引文档</h3><pre><code class="textmate">// 创建文档时使用自定义ID
+PUT /website/blog/123
+&#123;
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;:  &quot;Just trying this out...&quot;,
+  &quot;date&quot;:  &quot;2014/01/01&quot;
+&#125;
+
+//创建文档时使用ES自动生成的ID
+POST /website/blog/
+&#123;
+  &quot;title&quot;: &quot;My second blog entry&quot;,
+  &quot;text&quot;:  &quot;Still trying this out...&quot;,
+  &quot;date&quot;:  &quot;2014/01/01&quot;
+&#125;
+
+/**
+tips: 自动生成的 ID 是 URL-safe、 基于 Base64 编码且长度为20个字符的 GUID 字符串。 这些 GUID 字符串由可修改的 FlakeID 模式生成，这种模式允许多个节点并行生成唯一 ID ，且互相之间的冲突概率几乎为零。
+**/</code></pre>
+<h3 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h3><pre><code class="textmate">乐观并发控制
+每个文档都有一个 _version （版本）号，当文档被修改时版本号递增。 Elasticsearch 使用这个 _version 号来确保变更以正确顺序得到执行。如果旧版本的文档在新版本之后到达，它可以被简单的忽略。</code></pre>
+<h2 id="分布式文档存储"><a href="#分布式文档存储" class="headerlink" title="分布式文档存储"></a>分布式文档存储</h2><h3 id="路由一个文档到一个分片中"><a href="#路由一个文档到一个分片中" class="headerlink" title="路由一个文档到一个分片中"></a>路由一个文档到一个分片中</h3><pre><code class="textmate">计算公式：
+shard = hash(routing) % number_of_primary_shards(主分片的数量)
+routing是可变值，默认是文档的_id,也可以设置成一个自定义的值。
+这就解释了为什么我们要在创建索引的时候就确定好主分片的数量 并且永远不会改变这个数量：因为如果数量变化了，那么所有之前路由的值都会无效，文档也再也找不到了。</code></pre>
+<h3 id="主副分片交互"><a href="#主副分片交互" class="headerlink" title="主副分片交互"></a>主副分片交互</h3><pre><code class="textmate">我们可以发送请求到集群中的任一节点。 每个节点都有能力处理任意请求。 每个节点都知道集群中任一文档位置，所以可以直接将请求转发到需要的节点上。
+将所有的请求发送到 Node 1 ，我们将其称为 协调节点(coordinating node) 。
+
+
+tips:当发送请求的时候， 为了扩展负载，更好的做法是轮询集群中所有的节点。</code></pre>
+<h3 id="新建、索引和删除文档时步骤"><a href="#新建、索引和删除文档时步骤" class="headerlink" title="新建、索引和删除文档时步骤"></a>新建、索引和删除文档时步骤</h3><pre><code class="textmate">以下是在主副分片和任何副本分片上面 成功新建，索引和删除文档所需要的步骤顺序：
+
+1.客户端向 Node 1 发送新建、索引或者删除请求。
+2.节点使用文档的 _id 确定文档属于分片 0 。请求会被转发到 Node 3，因为分片 0 的主分片目前被分配在 Node 3 上。
+3.Node 3 在主分片上面执行请求。如果成功了，它将请求并行转发到 Node 1 和 Node 2 的副本分片上。一旦所有的副本分片都报告成功, Node 3 将向协调节点报告成功，协调节点向客户端报告成功。</code></pre>
+<h3 id="查询文档步骤"><a href="#查询文档步骤" class="headerlink" title="查询文档步骤"></a>查询文档步骤</h3><pre><code class="textmate">以下是从主分片或者副本分片检索文档的步骤顺序：
+
+1、客户端向 Node 1 发送获取请求。
+2、节点使用文档的 _id 来确定文档属于分片 0 。分片 0 的副本分片存在于所有的三个节点上。 在这种情况下，它将请求转发到 Node2。
+3、Node2将文档返回给 Node 1 ，然后将文档返回给客户端。
+
+在处理读取请求时，协调结点在每次请求的时候都会通过轮询所有的副本分片来达到负载均衡。
+
+在文档被检索时，已经被索引的文档可能已经存在于主分片上但是还没有复制到副本分片。 在这种情况下，副本分片可能会报告文档不存在，但是主分片可能成功返回文档。 一旦索引请求成功返回给用户，文档在主分片和副本分片都是可用的。
+
+考虑到分页过深以及一次请求太多结果的情况，结果集在返回之前先进行排序。 但请记住一个请求经常跨越多个分片，每个分片都产生自己的排序结果，这些结果需要进行集中排序以保证整体顺序是正确的。
+
+深度分页问题: 在分布式系统中，对结果排序的成本随分页的深度成指数上升。这就是 web 搜索引擎对任何查询都不要返回超过 1000 个结果的原因。</code></pre>
+<h3 id="更新局部文档步骤"><a href="#更新局部文档步骤" class="headerlink" title="更新局部文档步骤"></a>更新局部文档步骤</h3><pre><code class="textmate">以下是部分更新一个文档的步骤：
+
+1.客户端向 Node 1 发送更新请求。
+2.它将请求转发到主分片所在的 Node 3 。
+3.Node 3 从主分片检索文档，修改 _source 字段中的 JSON ，并且尝试重新索引主分片的文档。 如果文档已经被另一个进程修改，它会重试步骤 3 ，超过 retry_on_conflict 次后放弃。
+4.如果 Node 3 成功地更新文档，它将新版本的文档并行转发到 Node 1 和 Node 2 上的副本分片，重新建立索引。 一旦所有副本分片都返回成功， Node 3 向协调节点也返回成功，协调节点向客户端返回成功。
+
+ps: 当主分片把更改转发到副本分片时， 它不会转发更新请求。 相反，它转发完整文档的新版本。请记住，这些更改将会异步转发到副本分片，并且不能保证它们以发送它们相同的顺序到达。 如果Elasticsearch仅转发更改请求，则可能以错误的顺序应用更改，导致得到损坏的文档。</code></pre>
+<h2 id="分片内部原理"><a href="#分片内部原理" class="headerlink" title="分片内部原理"></a>分片内部原理</h2><h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><pre><code class="textmate">倒排索引被写入磁盘后是 不可改变 的:它永远不会修改。 不变性有重要的价值：
+
+1.不需要锁。如果你从来不更新索引，你就不需要担心多进程同时修改数据的问题。
+2.一旦索引被读入内核的文件系统缓存，便会留在哪里，由于其不变性。只要文件系统缓存中还有足够的空间，那么大部分读请求会直接请求内存，而不会命中磁盘。这提供了很大的性能提升。
+3.其它缓存(像filter缓存)，在索引的生命周期内始终有效。它们不需要在每次数据改变时被重建，因为数据不会变化。
+4.写入单个大的倒排索引允许数据被压缩，减少磁盘 I/O 和 需要被缓存到内存的索引的使用量。
+
+当然，一个不变的索引也有不好的地方。主要事实是它是不可变的! 你不能修改它。如果你需要让一个新的文档 可被搜索，你需要重建整个索引。这要么对一个索引所能包含的数据量造成了很大的限制，要么对索引可被更新的频率造成了很大的限制。</code></pre>
+<h3 id="索引与分片的比较"><a href="#索引与分片的比较" class="headerlink" title="索引与分片的比较"></a>索引与分片的比较</h3><pre><code class="textmate">一个 Lucene 索引 我们在 Elasticsearch 称作 分片 。 一个 Elasticsearch 索引 是分片的集合。 当 Elasticsearch 在索引中搜索的时候， 他发送查询到每一个属于索引的分片(Lucene 索引)，然后像 执行分布式检索 提到的那样，合并每个分片的结果到一个全局的结果集。</code></pre>
+<h3 id="删除和更新"><a href="#删除和更新" class="headerlink" title="删除和更新"></a>删除和更新</h3><pre><code class="textmate">当一个文档被 “删除” 时，它实际上只是在 .del 文件中被 标记 删除。一个被标记删除的文档仍然可以被查询匹配到， 但它会在最终结果被返回前从结果集中移除。
+
+文档更新也是类似的操作方式：当一个文档被更新时，旧版本文档被标记删除，文档的新版本被索引到一个新的段中。 可能两个版本的文档都会被一个查询匹配到，但被删除的那个旧版本文档在结果集返回前就已经被移除。</code></pre>
+<h3 id="持久化变更"><a href="#持久化变更" class="headerlink" title="持久化变更"></a>持久化变更</h3><pre><code class="textmate">Elasticsearch 增加了一个 translog(事务日志)，在每一次对 Elasticsearch 进行操作时均进行了日志记录
+1.一个文档被索引之后，就会被添加到内存缓冲区，并且 追加到了 translog 
+2.刷新（refresh）, 缓存被清空但是事务日志不会
+3.事务日志持续积累文档
+4.每隔一段时间—例如 translog 变得越来越大，索引被刷新（flush）；一个新的 translog 被创建，并且一个全量提交被执行
+    4.1所有在内存缓冲区的文档都被写入一个新的段。
+  4.2缓冲区被清空。
+  4.3一个提交点被写入硬盘。
+  4.4文件系统缓存通过 fsync 被刷新（flush）。
+  4.5老的 translog 被删除。</code></pre>
+<h3 id="Translog安全性"><a href="#Translog安全性" class="headerlink" title="Translog安全性"></a>Translog安全性</h3><pre><code class="textmate">在文件被 fsync 到磁盘前，被写入的文件在重启之后就会丢失。默认 translog 是每 5 秒被 fsync 刷新到硬盘， 或者在每次写请求完成之后执行(e.g. index, delete, update, bulk)。这个过程在主分片和复制分片都会发生。最终， 基本上，这意味着在整个请求被 fsync 到主分片和复制分片的translog之前，你的客户端不会得到一个 200 OK 响应。
+
+在每次请求后都执行一个 fsync 会带来一些性能损失，尽管实践表明这种损失相对较小（特别是bulk导入，它在一次请求中平摊了大量文档的开销）。
+
+但是对于一些大容量的偶尔丢失几秒数据问题也并不严重的集群，使用异步的 fsync 还是比较有益的。比如，写入的数据被缓存到内存中，再每5秒执行一次 fsync 。
+
+这个行为可以通过设置 durability 参数为 async 来启用：
+PUT /my_index/_settings
+&#123;
+    &quot;index.translog.durability&quot;: &quot;async&quot;,
+    &quot;index.translog.sync_interval&quot;: &quot;5s&quot;
+&#125;
+这个选项可以针对索引单独设置，并且可以动态进行修改。如果你决定使用异步 translog 的话，你需要 保证 在发生crash时，丢失掉 sync_interval 时间段的数据也无所谓。</code></pre>
+<h3 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h3><pre><code class="textmate">在 Elasticsearch 中，写入和打开一个新段的轻量的过程叫做 refresh 。 默认情况下每个分片会每秒自动刷新一次。这就是为什么我们说 Elasticsearch 是 近 实时搜索: 文档的变化并不是立即对搜索可见，但会在一秒之内变为可见。
+// 手动刷新数据 
+POST /_refresh  //刷新所有索引
+POST /blogs/_refresh  //只刷新blogs索引</code></pre>
+<h3 id="段合并"><a href="#段合并" class="headerlink" title="段合并"></a>段合并</h3><pre><code class="textmate">目的：
+    由于自动刷新流程每秒会创建一个新的段 ，这样会导致短时间内的段数量暴增。而段数目太多会带来较大的麻烦。 每一个段都会消耗文件句柄、内存和cpu运行周期。更重要的是，每个搜索请求都必须轮流检查每个段；所以段越多，搜索也就越慢。
+    Elasticsearch通过在后台进行段合并来解决这个问题。小的段被合并到大的段，然后这些大的段再被合并到更大的段。
+
+流程：
+  1.当索引的时候，刷新（refresh）操作会创建新的段并将段打开以供搜索使用。
+  2.合并进程选择一小部分大小相似的段，并且在后台将它们合并到更大的段中。这并不会中断索引和搜索。
+  3.合并结束，老的段被删除
+
+tips:合并大的段需要消耗大量的I/O和CPU资源，默认下会对合并流程进行资源限制
+
+optimeze API(强制合并)
+介绍: optimize API大可看做是 强制合并 API。它会将一个分片强制合并到 max_num_segments 参数指定大小的段数目。 这样做的意图是减少段的数量（通常减少到一个），来提升搜索性能。
+tips: 
+    1.optimize API 不应该 被用在一个活跃的索引————一个正积极更新的索引。后台合并流程已经可以很好地完成工作。
+    2.使用 optimize API 触发段合并的操作不会受到任何资源上的限制。这可能会消耗掉你节点上全部的I/O资源</code></pre>
+<h2 id="常用查找语法"><a href="#常用查找语法" class="headerlink" title="常用查找语法"></a>常用查找语法</h2><h3 id="精确查找-包含，不是等于"><a href="#精确查找-包含，不是等于" class="headerlink" title="精确查找(包含，不是等于)"></a>精确查找(包含，不是等于)</h3><pre><code class="textmate">//term查数字
+GET /my_store/products/_search
+&#123;
+    &quot;query&quot; : &#123;
+        &quot;constant_score&quot; : &#123; 
+            &quot;filter&quot; : &#123;
+                &quot;term&quot; : &#123; 
+                    &quot;price&quot; : 20
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+//term查文本
+原词可能会被分词,构建索引时，需要指定不分析值
+&quot;index&quot; : &quot;not_analyzed&quot; 
+
+//terms匹配多个内容    
+
+//运行非评分查询(精确查询)时的步骤
+1.查找匹配文档
+2.创建bitset(一个包含 0 和 1 的数组），它描述了哪个文档会包含该 term 
+3.迭代bitsets
+4.增量计数</code></pre>
+<h3 id="组合过滤器"><a href="#组合过滤器" class="headerlink" title="组合过滤器"></a>组合过滤器</h3><ul>
+<li>布尔过滤器</li>
+</ul>
+<pre><code class="textmate">&#123;
+   &quot;bool&quot; : &#123;
+      &quot;must&quot; :     [],  //相当于and
+      &quot;should&quot; :   [],  //相当于or
+      &quot;must_not&quot; : [],  //相当于not
+   &#125;
+&#125;</code></pre>
+<h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><pre><code class="textmate">&quot;range&quot; : &#123;
+    &quot;price&quot; : &#123;
+        &quot;gte&quot; : 20,
+        &quot;lte&quot; : 40
+    &#125;
+&#125;
+/**
+  gt: &gt; 大于（greater than）
+  lt: &lt; 小于（less than）
+  gte: &gt;= 大于或等于（greater than or equal to）
+  lte: &lt;= 小于或等于（less than or equal to）
+**/
+
+// 特殊用法
+//1.时间计算： 查找时间戳在过去一小时内的所有文档
+&quot;range&quot; : &#123;
+    &quot;timestamp&quot; : &#123;
+        &quot;gt&quot; : &quot;now-1h&quot;
+    &#125;
+&#125;
+&quot;range&quot; : &#123;
+    &quot;timestamp&quot; : &#123;
+        &quot;gt&quot; : &quot;2014-01-01 00:00:00&quot;,
+        &quot;lt&quot; : &quot;2014-01-01 00:00:00||+1M&quot;  //早于2014年1月1日加1月（2014年2月1日零时）
+    &#125;
+&#125;
+
+//2.字符串范围(效率较低)
+&quot;range&quot; : &#123;
+    &quot;title&quot; : &#123;
+        &quot;gte&quot; : &quot;a&quot;,
+        &quot;lt&quot; :  &quot;b&quot;
+    &#125;
+&#125;</code></pre>
+<h3 id="Null值查询"><a href="#Null值查询" class="headerlink" title="Null值查询"></a>Null值查询</h3><pre><code class="textmate">// 存在查询 exist
+GET /my_index/posts/_search
+&#123;
+    &quot;query&quot; : &#123;
+        &quot;constant_score&quot; : &#123;
+            &quot;filter&quot; : &#123;
+                &quot;exists&quot; : &#123; &quot;field&quot; : &quot;tags&quot; &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+//不存在查询
+GET /my_index/posts/_search
+&#123;
+    &quot;query&quot; : &#123;
+        &quot;constant_score&quot; : &#123;
+            &quot;filter&quot;: &#123;
+                &quot;missing&quot; : &#123; &quot;field&quot; : &quot;tags&quot; &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+//对象的存在与不存在 
+//如果 first 和 last 都是空，那么 name 这个命名空间才会被认为不存在。
+&#123;  //对象数据
+   &quot;name&quot; : &#123;
+      &quot;first&quot; : &quot;John&quot;,
+      &quot;last&quot; :  &quot;Smith&quot;
+   &#125;
+&#125;
+
+&#123; //查询语句
+    &quot;exists&quot; : &#123; &quot;field&quot; : &quot;name&quot; &#125;
+&#125;
+
+&#123; //实际执行的语句
+    &quot;bool&quot;: &#123;
+        &quot;should&quot;: [
+            &#123; &quot;exists&quot;: &#123; &quot;field&quot;: &quot;name.first&quot; &#125;&#125;,
+            &#123; &quot;exists&quot;: &#123; &quot;field&quot;: &quot;name.last&quot; &#125;&#125;
+        ]
+    &#125;
+&#125;</code></pre>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><pre><code class="textmate">自动缓存
+Elasticsearch 会基于使用频次自动缓存查询。如果一个非评分查询在最近的 256 次查询中被使用过（次数取决于查询类型），那么这个查询就会作为缓存的候选。但是，并不是所有的片段都能保证缓存 bitset 。只有那些文档数量超过 10,000 （或超过总文档数量的 3% )才会缓存 bitset 。因为小的片段可以很快的进行搜索和合并，这里缓存的意义不大。
+
+一旦缓存了，非评分计算的 bitset 会一直驻留在缓存中直到它被剔除。剔除规则是基于 LRU 的：一旦缓存满了，最近最少使用的过滤器会被剔除。</code></pre>
+<h2 id="相关度"><a href="#相关度" class="headerlink" title="相关度"></a>相关度</h2><h3 id="相关度评分逻辑"><a href="#相关度评分逻辑" class="headerlink" title="相关度评分逻辑"></a>相关度评分逻辑</h3><pre><code class="textmate">Lucene（或 Elasticsearch）使用 布尔模型（Boolean model） 查找匹配文档，并用一个名为 实用评分函数（practical scoring function） 的公式来计算相关度。这个公式借鉴了 词频/逆向文档频率（term frequency/inverse document frequency） 和 向量空间模型（vector space model），同时也加入了一些现代的新特性，如协调因子（coordination factor），字段长度归一化（field length normalization），以及词或查询语句权重提升。</code></pre>
+<h4 id="布尔模型"><a href="#布尔模型" class="headerlink" title="布尔模型"></a>布尔模型</h4><pre><code class="textmate">布尔模型（Boolean Model）只是在查询中使用 AND、OR 和 NOT（与、或和非）这样的条件来查找匹配的文档，以下查询：
+
+full AND text AND search AND (elasticsearch OR lucene)
+会将所有包括词 full 、 text 和 search ，以及 elasticsearch 或 lucene 的文档作为结果集。</code></pre>
+<h4 id="词频-逆向文档频率-TF-IDF"><a href="#词频-逆向文档频率-TF-IDF" class="headerlink" title="词频/逆向文档频率(TF/IDF)"></a>词频/逆向文档频率(TF/IDF)</h4><pre><code class="textmate">当匹配到一组文档后，需要根据相关度排序这些文档，不是所有的文档都包含所有词，有些词比其他的词更重要。一个文档的相关度评分部分取决于每个查询词在文档中的 权重 。
+
+词频
+词在文档中出现的频度越高，权重越高 。
+
+逆向文档频率
+词在集合所有文档里出现的频次越高，权重越低 </code></pre>
+<h4 id="字段长度归一"><a href="#字段长度归一" class="headerlink" title="字段长度归一"></a>字段长度归一</h4><pre><code class="textmate">字段的长度越短，字段的权重越高。
+字段长度归一值(norm)</code></pre>
+<h4 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h4><pre><code class="textmate">词频（term frequency）、逆向文档频率（inverse document frequency）和字段长度归一值（field-length norm）——是在索引时计算并存储的。最后将它们结合在一起计算单个词在特定文档中的权重 。</code></pre>
+<h3 id="脚本评分"><a href="#脚本评分" class="headerlink" title="脚本评分"></a>脚本评分</h3><pre><code class="textmate">如果所有 function_score 内置的函数都无法满足应用场景，可以使用 script_score 函数自行实现逻辑
+Elasticsearch 里使用 Groovy 作为默认的脚本语言
+例子:
+入参: 
+    price和margin变量可以分别从文档中提取
+    threshold、discount、target是作为参数params传入的
+
+GET /_search
+&#123;
+  &quot;function_score&quot;: &#123;
+    &quot;functions&quot;: [
+      &#123; ...location clause... &#125;, 
+      &#123; ...price clause... &#125;, 
+      &#123;
+        &quot;script_score&quot;: &#123;
+          &quot;params&quot;: &#123; 
+            &quot;threshold&quot;: 80,
+            &quot;discount&quot;: 0.1,
+            &quot;target&quot;: 10
+          &#125;,
+          &quot;script&quot;: &quot;price  = doc[&#39;price&#39;].value; margin = doc[&#39;margin&#39;].value;
+          if (price &lt; threshold) &#123; return price * margin / target &#125;;
+          return price * (1 - discount) * margin / target;&quot; 
+        &#125;
+      &#125;
+    ]
+  &#125;
+&#125;
+
+tips: 
+  1.将这些变量作为参数 params 传递，我们可以查询时动态改变脚本无须重新编译。
+  2.JSON 不能接受内嵌的换行符，脚本中的换行符可以用 \n 或 ; 符号替代</code></pre>
+<h2 id="人类语言处理"><a href="#人类语言处理" class="headerlink" title="人类语言处理"></a>人类语言处理</h2><pre><code class="textmate">分词器
+  standard(标准分词器)、english(英文分词器)、icu(亚洲语言分词器)
+
+错误拼写匹配-语音匹配
+    搜索发音相似的词，即使他们的拼写不同。 Soundex算法</code></pre>
+<h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><h3 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h3><pre><code class="textmate">桶（Buckets）
+    满足特定条件的文档的集合
+指标（Metrics）
+    对桶内的文档进行统计计算
+每个聚合都是一个或者多个桶和零个或者多个指标的组合
+
+桶在概念上类似于 SQL 的分组（GROUP BY），而指标则类似于 COUNT() 、 SUM() 、 MAX() 等统计方法。
+
+例：
+SELECT COUNT(color)  FROM table GROUP BY color;
+1.COUNT(color) 相当于指标。
+2.GROUP BY color 相当于桶。</code></pre>
+<h3 id="桶"><a href="#桶" class="headerlink" title="桶"></a>桶</h3><pre><code class="textmate">桶 简单来说就是满足特定条件的文档的集合
+1.当聚合开始被执行，每个文档里面的值通过计算来决定符合哪个桶的条件。如果匹配到，文档将放入相应的桶并接着进行聚合操作。
+2.桶也可以被嵌套在其他桶里面，提供层次化的或者有条件的划分方案。
+3.Elasticsearch 有很多种类型的桶，能让你通过很多种方式来划分文档（时间、最受欢迎的词、年龄区间、地理位置等等）。其实根本上都是通过同样的原理进行操作：基于条件来划分文档。</code></pre>
+<h3 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h3><pre><code class="textmate">桶能让我们划分文档到有意义的集合，但是最终我们需要的是对这些桶内的文档进行一些指标的计算。分桶是一种达到目的的手段：它提供了一种给文档分组的方法来让我们可以计算感兴趣的指标。
+
+大多数 指标 是简单的数学运算（例如最小值、平均值、最大值，还有汇总），这些是通过文档的值来计算。在实践中，指标能让你计算像平均薪资、最高出售价格、95%的查询延迟这样的数据。
+
+聚合 
+    由桶和指标组成的。 聚合可能只有一个桶，可能只有一个指标，或者可能两个都有。也有可能有一些桶嵌套在其他桶里面。</code></pre>
+<h3 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h3><pre><code class="textmate">聚合还有一个令人激动的特性就是能够十分容易地将它们转换成图表和图形。
+例:
+GET /cars/transactions/_search
+&#123;
+   &quot;size&quot; : 0,
+   &quot;aggs&quot;:&#123;
+      &quot;price&quot;:&#123;
+         &quot;histogram&quot;:&#123;
+            &quot;field&quot;: &quot;price&quot;,
+            &quot;interval&quot;: 20000
+         &#125;,
+         &quot;aggs&quot;:&#123;
+            &quot;revenue&quot;: &#123;
+               &quot;sum&quot;: &#123; 
+                 &quot;field&quot; : &quot;price&quot;
+               &#125;
+             &#125;
+         &#125;
+      &#125;
+   &#125;
+&#125;
+
+//响应结果-直方图
+&#123;
+...
+   &quot;aggregations&quot;: &#123;
+      &quot;price&quot;: &#123;
+         &quot;buckets&quot;: [
+            &#123;
+               &quot;key&quot;: 0,
+               &quot;doc_count&quot;: 3,
+               &quot;revenue&quot;: &#123;
+                  &quot;value&quot;: 37000
+               &#125;
+            &#125;,
+            &#123;
+               &quot;key&quot;: 20000,
+               &quot;doc_count&quot;: 4,
+               &quot;revenue&quot;: &#123;
+                  &quot;value&quot;: 95000
+               &#125;
+            &#125;
+         ]
+      &#125;
+   &#125;
+&#125;</code></pre>
+<h3 id="按时间统计"><a href="#按时间统计" class="headerlink" title="按时间统计"></a>按时间统计</h3><pre><code class="textmate">//查询脚本
+GET /cars/transactions/_search
+&#123;
+   &quot;size&quot; : 0,
+   &quot;aggs&quot;: &#123;
+      &quot;sales&quot;: &#123;
+         &quot;date_histogram&quot;: &#123;
+            &quot;field&quot;: &quot;sold&quot;,
+            &quot;interval&quot;: &quot;month&quot;, 
+            &quot;format&quot;: &quot;yyyy-MM-dd&quot;,
+               &quot;min_doc_count&quot; : 0,    //强制返回空 buckets。
+            &quot;extended_bounds&quot; : &#123;   //强制返回整年。
+                &quot;min&quot; : &quot;2014-01-01&quot;,
+                &quot;max&quot; : &quot;2014-12-31&quot;
+            &#125;
+         &#125;
+      &#125;
+   &#125;
+&#125;
+
+//返回结果
+&#123;
+   ...
+   &quot;aggregations&quot;: &#123;
+      &quot;sales&quot;: &#123;
+         &quot;buckets&quot;: [
+            &#123;
+               &quot;key_as_string&quot;: &quot;2014-01-01&quot;,
+               &quot;key&quot;: 1388534400000,
+               &quot;doc_count&quot;: 1
+            &#125;,
+            &#123;
+               &quot;key_as_string&quot;: &quot;2014-02-01&quot;,
+               &quot;key&quot;: 1391212800000,
+               &quot;doc_count&quot;: 1
+            &#125;
+         ]
+...
+&#125;</code></pre>
+<h3 id="Doc-Values"><a href="#Doc-Values" class="headerlink" title="Doc Values"></a>Doc Values</h3><pre><code class="textmate">1.聚合使用一个叫 doc values 的数据结构。Doc values 可以使聚合更快、更高效并且内存友好
+2.Doc values 的存在是因为倒排索引只对某些操作是高效的。 倒排索引的优势 在于查找包含某个项的文档，而对于从另外一个方向的相反操作并不高效，即：确定哪些项是否存在单个文档里，聚合需要这种次级的访问模式。
+3.Doc Values 是在索引时与 倒排索引 同时生成。也就是说 Doc Values 和 倒排索引 一样，基于 Segement 生成并且是不可变的。同时 Doc Values 和 倒排索引 一样序列化到磁盘，这样对性能和扩展性有很大帮助。
+
+Doc Values 通过序列化把数据结构持久化到磁盘，我们可以充分利用操作系统的内存，而不是 JVM 的 Heap 。 当 working set 远小于系统的可用内存，系统会自动将 Doc Values 驻留在内存中，使得其读写十分快速；不过，当其远大于可用内存时，系统会根据需要从磁盘读取 Doc Values，然后选择性放到分页缓存中。
+
+原理:
+    Doc values 通过转置两者间的关系来解决这个问题。倒排索引将词项映射到包含它们的文档，doc values 将文档映射到它们包含的词项
+
+用途:
+Doc values 不仅可以用于聚合。 任何需要查找某个文档包含的值的操作都必须使用它。 除了聚合，还包括排序，访问字段值的脚本，父子关系处理</code></pre>
+<h2 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h2><pre><code class="textmate">Elasticsearch 提供了 两种表示地理位置的方式：
+1.用纬度－经度表示的坐标点使用 geo_point 字段类型
+2.用GeoJSON 格式定义的复杂地理形状，使用 geo_shape 字段类型。
+
+Geo-points 允许你找到距离另一个坐标点一定范围内的坐标点、计算出两点之间的距离来排序或进行相关性打分、或者聚合到显示在地图上的一个网格。另一方面，Geo-shapes 纯粹是用来过滤的。它们可以用来判断两个地理形状是否有重合或者某个地理形状是否完全包含了其他地理形状。
+
+Geohashes 是一种将经纬度坐标（ lat/lon ）编码成字符串的方式。这么做的初衷只是为了让地理位置在 url 上呈现的形式更加友好，但现在 geohashes 已经变成一种在数据库中有效索引地理坐标点和地理形状的方式。
+Geohashes 把整个世界分为 32 个单元的格子 —— 4 行 8 列 —— 每一个格子都用一个字母或者数字标识。</code></pre>
+<h2 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h2><pre><code class="textmate">Elasticsearch建模
+    关联关系处理 、 嵌套对象 和 父-子关系文档 
+另外ES支持多种扩容方式</code></pre>
+<h2 id="运维"><a href="#运维" class="headerlink" title="运维"></a>运维</h2><pre><code class="textmate">支持动态更新的参数
+https://www.elastic.co/guide/en/elasticsearch/reference/5.6/cluster-update-settings.html
+集群备份、快照恢复</code></pre>
+
+      
+    </div>
+</article>
+
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>ES官方文档笔记</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">7.5k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
+    <p><span class="copy-title">发布时间:</span>2022-02-15, 13:38:00</p>
+    <p><span class="copy-title">最后更新:</span>2022-02-15, 13:45:21</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/02/15/backend/storage/es/" title="ES官方文档笔记">http://imfan.com/2022/02/15/backend/storage/es/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <!--
+<p class="footer-entry">
+    ©2015-2020 Imfan
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+ -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'photoSwipe';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #c0bfbf;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #2b2929;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/moon.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+</html>
