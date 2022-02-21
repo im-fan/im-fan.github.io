@@ -57,31 +57,6 @@
     
     <entry>
       <title>阅读</title>
-      <link href="2022/01/13/thinking/year-end/"/>
-      <url>2022/01/13/thinking/year-end/</url>
-      
-        <content type="html"><![CDATA[<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="2022"><a href="#2022" class="headerlink" title="2022"></a>2022</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>[ ] 找到一份稳定收入的副业<br>[ ] 坚持写文章<br>[ ] 出去旅游一次<br>[ ] 持续阅读<br>[ ] 买车</p><h3 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h3><h4 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h4><p>[√] 考PMP<br>[x] 找到一份稳定收入的副业<br>[x] 开始写文章<br>[x] 出去旅游一次<br>[√] 养成读书的习惯(技术、职业规划、思考、理财)<br>[√] 换一份工作</p><h4 id="完成情况"><a href="#完成情况" class="headerlink" title="完成情况"></a>完成情况</h4><pre><code class="textmate">    1.关于考证: 考PMP证一方面是为了看看自己是否有自制力，另一方面也是为了持续提升自己；通过学习掌握相关方法论，并    能提高自己在日常工作中的效率，提升整体项目组的主动性，促进项目成功；试试证明学习与实践中间还有比较大的差距，    还需不断学习、思考，将方法应用到具体项目中。    2.关于副业: 找一份副业的念头一直有，更近一步是让副业收入能支撑自己日常开销和房贷。疫情持续太久，未来方向不明，    行业危机四伏，为了给自己一份保障；虽然接了一个月的私活少赚了点，但是过程真的是心累；复盘过自身的资源，基本没啥资源。。。。     现在看貌似只有在知名网站上持续更新文章，看看有没有恰饭机会这样；过程中也学习了一些技能(PPT、简单视频剪辑)，    总体还是收获不小，虽然目标没达到，过程也是很好的    3.关于写文章: 更偏向记录,写文章是为了整理并记录自己学过的东西，好记性不如烂笔头，况且我的记忆力不是那么多好；除了经常用的东    西，其他知识点看完过一段时间就记忆就模糊了。为了不遗忘学过的东西，在学习过程中记录、摘要、总结一些东西沉淀下来，空闲了翻翻看看，强化记忆。    日积月累，感觉自己也要成为一个大牛了呢(终极目标)    4.工作到现在，真正算的上旅游的次数一只手就能数得过来；有时间就想去其他地方看看，看看沿途的风景、看看    当地的景色，给人生中留下一点不一样的记忆；原本打算一年至少出去一次吧，结果疫情反反复复，再加上各种事情，一拖再拖，结果一年过去了。。。     明年一定要完成这个目标！！！    5.关于读书: 约长大约觉得读书的重要性，相当于高手们把他们的大招和毕生绝学都告诉你了，你却视而不见，还    抱怨说这一路打怪升级咋这么难(个人观点)；我不限制自己读书的方向，觉得有兴趣就读，兴趣不大的慢慢读，没兴趣但是有用硬着头皮读；    读书为了提升技能、提高思考高度和深度、为了让能更加看清人生、生活、资本的本质    6.关于换工作: 如果干的开心、工资还不错的话，一般没有人想频繁的换工作吧？我很想在一个公司能长时间待下去，但总是因为各种原因不得不换工作；    虽然这份工作也不是那么的忙，还能每天和媳妇一起上下班(开心);无奈公司业务没啥起色，为了生计不想坐以待毙。从直属领导离职后就开始准备，    陆陆续续3-4个月面试了估计有十几家吧，公司有大有小，最心意的是某物，结果二面后没信了；后来同事介绍了个公司，综合看还不错就入职了，现在总体感受还不错    总之大目标就是健康、快乐的活着，顺便挣点钱养家</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 思考 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 总结 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>阅读</title>
       <link href="2022/01/10/thinking/tv/"/>
       <url>2022/01/10/thinking/tv/</url>
       
@@ -488,11 +463,11 @@
       
         <tags>
             
-            <tag> 注册中心 </tag>
-            
             <tag> nacos </tag>
             
             <tag> 动态配置 </tag>
+            
+            <tag> 注册中心 </tag>
             
         </tags>
       
@@ -910,9 +885,9 @@
       
         <tags>
             
-            <tag> zookeeper </tag>
-            
             <tag> 注册中心 </tag>
+            
+            <tag> zookeeper </tag>
             
             <tag> 分布式锁 </tag>
             
@@ -1106,7 +1081,7 @@
       <link href="2020/10/02/other/software/"/>
       <url>2020/10/02/other/software/</url>
       
-        <content type="html"><![CDATA[<h3 id="Mac软件-amp-工具网站"><a href="#Mac软件-amp-工具网站" class="headerlink" title="Mac软件&amp;工具网站"></a>Mac软件&amp;工具网站</h3><table><thead><tr><th>主要功能</th><th>软件名</th><th>相关网址</th></tr></thead><tbody><tr><td>图片编辑器</td><td>PixelStyle</td><td></td></tr><tr><td>视频播放</td><td>IINA</td><td></td></tr><tr><td>录屏软件</td><td>LICEcap</td><td></td></tr><tr><td>文件比较</td><td>Beyond Compare</td><td></td></tr><tr><td>Markdown编辑工具</td><td>Haroopad</td><td></td></tr><tr><td>Mac包管理工具</td><td>Homebrew</td><td></td></tr><tr><td>Mac破解软件</td><td></td><td><a href="https://xclient.info/">https://xclient.info</a></td></tr><tr><td>相似网站查询</td><td></td><td><a href="https://www.similarsites.com/">https://www.similarsites.com</a></td></tr></tbody></table><h3 id="常用软件激活方法"><a href="#常用软件激活方法" class="headerlink" title="常用软件激活方法"></a>常用软件激活方法</h3><h4 id="JRebl激活"><a href="#JRebl激活" class="headerlink" title="JRebl激活"></a>JRebl激活</h4><ul><li><a href="http://www.yq1012.com/things/5019.html">Idea JRebl插件激活方法</a></li></ul><pre><code class="textmate">1.生成guid    http://jrebel.cicoding.cn/guid2.配置    设置 JRebel &amp; XRebel 点击Chanage license3.填入    http://jrebel.cicoding.cn/新生成的guid    邮箱</code></pre><ul><li>方式二<br>```textmate</li></ul><p>1.Team Url<br>    <a href="http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355">http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355</a><br>    <a href="mailto:&#x78;&#x78;&#120;&#64;&#120;&#120;&#x78;&#46;&#x63;&#111;&#109;">&#x78;&#x78;&#120;&#64;&#120;&#120;&#x78;&#46;&#x63;&#111;&#109;</a><br>2.然后设置为离线使用</p><pre><code>#### MacOS sourceTree跳过登录```textmate1.显示包内容2.搜索Atlassian3.删除搜出来的文件(没有说明安装包可能有问题)</code></pre><h4 id="MacOS软件已损坏修复"><a href="#MacOS软件已损坏修复" class="headerlink" title="MacOS软件已损坏修复"></a>MacOS软件已损坏修复</h4><pre><code class="textmate">## 软件已损坏sudo xattr -d com.apple.quarantine /Applications/xxxxxx.app</code></pre><h4 id="ssh密钥生成"><a href="#ssh密钥生成" class="headerlink" title="ssh密钥生成"></a>ssh密钥生成</h4><pre><code class="shell">## 配置git config --global user.name &quot;名称&quot;git config --global user.email &quot;邮箱地址&quot;## -t重新生成ssh-keygen [-t] rsa -C &quot;your_email@example.com&quot; -f gitee_id_rsa## 如果生成的密钥不生效，则将密钥重新加下！！！ssh-add ~/.ssh/qts_id_rsa##测试是否成生效ssh -T gitee@gitee.com</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="Mac软件-amp-工具网站"><a href="#Mac软件-amp-工具网站" class="headerlink" title="Mac软件&amp;工具网站"></a>Mac软件&amp;工具网站</h3><table><thead><tr><th>主要功能</th><th>软件名</th><th>相关网址</th></tr></thead><tbody><tr><td>图片编辑器</td><td>PixelStyle</td><td></td></tr><tr><td>视频播放</td><td>IINA</td><td></td></tr><tr><td>录屏软件</td><td>LICEcap</td><td></td></tr><tr><td>文件比较</td><td>Beyond Compare</td><td></td></tr><tr><td>Markdown编辑工具</td><td>Haroopad</td><td></td></tr><tr><td>Mac包管理工具</td><td>Homebrew</td><td></td></tr><tr><td>Mac破解软件</td><td></td><td><a href="https://xclient.info/">https://xclient.info</a></td></tr><tr><td>相似网站查询</td><td></td><td><a href="https://www.similarsites.com/">https://www.similarsites.com</a></td></tr></tbody></table><h3 id="常用软件激活方法"><a href="#常用软件激活方法" class="headerlink" title="常用软件激活方法"></a>常用软件激活方法</h3><h4 id="JRebl激活"><a href="#JRebl激活" class="headerlink" title="JRebl激活"></a>JRebl激活</h4><ul><li><a href="http://www.yq1012.com/things/5019.html">Idea JRebl插件激活方法</a></li></ul><pre><code class="textmate">1.生成guid    http://jrebel.cicoding.cn/guid2.配置    设置 JRebel &amp; XRebel 点击Chanage license3.填入    http://jrebel.cicoding.cn/新生成的guid    邮箱</code></pre><ul><li>方式二<br>```textmate</li></ul><p>1.Team Url<br>    <a href="http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355">http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355</a><br>    <a href="mailto:&#x78;&#120;&#120;&#64;&#x78;&#120;&#120;&#46;&#99;&#111;&#109;">&#x78;&#120;&#120;&#64;&#x78;&#120;&#120;&#46;&#99;&#111;&#109;</a><br>2.然后设置为离线使用</p><pre><code>#### MacOS sourceTree跳过登录```textmate1.显示包内容2.搜索Atlassian3.删除搜出来的文件(没有说明安装包可能有问题)</code></pre><h4 id="MacOS软件已损坏修复"><a href="#MacOS软件已损坏修复" class="headerlink" title="MacOS软件已损坏修复"></a>MacOS软件已损坏修复</h4><pre><code class="textmate">## 软件已损坏sudo xattr -d com.apple.quarantine /Applications/xxxxxx.app</code></pre><h4 id="ssh密钥生成"><a href="#ssh密钥生成" class="headerlink" title="ssh密钥生成"></a>ssh密钥生成</h4><pre><code class="shell">## 配置git config --global user.name &quot;名称&quot;git config --global user.email &quot;邮箱地址&quot;## -t重新生成ssh-keygen [-t] rsa -C &quot;your_email@example.com&quot; -f gitee_id_rsa## 如果生成的密钥不生效，则将密钥重新加下！！！ssh-add ~/.ssh/qts_id_rsa##测试是否成生效ssh -T gitee@gitee.com</code></pre>]]></content>
       
       
       <categories>
