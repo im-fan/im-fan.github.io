@@ -718,5 +718,16 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.6/cluster-update-setti
 集群备份、快照恢复
 ```
 
+## ES使用时该注意什么
+- 一定要配置密码,推荐[SearchGuard](https://search-guard.com/)
+- [危害-在线赌场泄漏 1.08 亿投注信息，ElasticSearch 再成祸首](https://www.infoq.cn/article/ZzAZ0wZ0JmzfxSj-v1lU)
+- [一个月 6 次泄露，为啥大家用 Elasticsearch 总不设密码](https://www.infoq.cn/article/Pmc0PXdFdXHB*T5CygVJ)
 
-
+## 扩展阅读
+- [搜索之路：Elasticsearch的诞生](https://mp.weixin.qq.com/s/mnhtYvR_5N7gtIOgjSUJmA)
+- [es 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？](https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-optimizing-query-performance.md)
+- [滴滴基于 ElasticSearch 的一站式搜索中台实践](https://www.infoq.cn/article/ug*cbrk9303MiNZPrSEO)
+- [让Elasticsearch飞起来！百亿级实时查询优化实战](https://mp.weixin.qq.com/s/Fvf9JcOc5oSRlLdHB4tYxA)
+- [Elasticsearch读写中间件的设计](https://mp.weixin.qq.com/s/g9_eXCouaaBobU9Emjp9bA)
+- [如何使用 Elasticsearch 构建企业级搜索方案？](https://www.infoq.cn/article/build-enterprise-search-scenarios-using-elasticsearch)
+- [Elasticsearch学习，请先看这一篇！](https://cloud.tencent.com/developer/article/1066239)
