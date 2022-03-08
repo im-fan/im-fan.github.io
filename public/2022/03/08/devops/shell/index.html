@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>对象转换工具-MapStruct | Imfan笔记</title>
-  <meta name="keywords" content=" utils ">
-  <meta name="description" content="对象转换工具-MapStruct | Imfan笔记">
+  <title>Shell命令记录 | Imfan笔记</title>
+  <meta name="keywords" content=" shell命令 ">
+  <meta name="description" content="Shell命令记录 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ElasticSearch官方教程(非最新版)  集群原理空集群一个运行中的Elasticsearch实例称为一个节点，而集群是由一个或者多个拥有相同cluster.name配置的节点组成，它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。  负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。而主节点并不需要涉及到文档级">
 <meta property="og:type" content="article">
@@ -871,9 +871,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-backend/java/utils/convert/map-struct" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-devops/shell" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">对象转换工具-MapStruct</h1>
+        <h1 class="article-title">Shell命令记录</h1>
     
     <div class="article-meta">
         
@@ -883,9 +883,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="后端">后端</a> > 
-            
-            <a  data-rel="后端&lt;---&gt;工具">工具</a>
+            <a  data-rel="运维">运维</a>
             
         </span>
         
@@ -893,19 +891,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">utils</a>
+            <a class="color3">shell命令</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-03-20 14:38:04'>2020-10-02 15:51</time>
+            发布时间 : <time class="date" title='最后更新: 2022-03-08 11:13:57'>2022-03-08 11:13</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:992</span>
+        <span>字数:209</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -924,7 +922,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MapStruct"><span class="toc-text">MapStruct</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%A5%E5%85%A5MapStruct"><span class="toc-text">如何接入MapStruct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-Bean%E5%B1%9E%E6%80%A7%E6%8B%B7%E8%B4%9D%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-text">Java Bean属性拷贝性能对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo"><span class="toc-text">demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">实现原理</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#macos%E4%B8%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BF%AB%E6%8D%B7%E5%91%BD%E4%BB%A4"><span class="toc-text">macos下自定义快捷命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF%E9%82%A3%E4%B8%AAshell"><span class="toc-text">判断使用的是那个shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89alias"><span class="toc-text">自定义alias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84alias%E5%91%BD%E4%BB%A4"><span class="toc-text">输入自定义的alias命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AAgitee-github%E5%85%AC%E9%92%A5"><span class="toc-text">一台电脑配置多个gitee&#x2F;github公钥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-text">相关命令</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -940,137 +938,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="MapStruct"><a href="#MapStruct" class="headerlink" title="MapStruct"></a>MapStruct</h2><p><a target="_blank" rel="noopener" href="http://mapstruct.org/">MapStruct</a>是一个代码生成器，它基于约定优于配置方法极大地简化了Java bean类型之间映射的实现。<br>生成的映射代码使用普通方法调用，因此快速，类型安全且易于理解。</p>
-<h3 id="如何接入MapStruct"><a href="#如何接入MapStruct" class="headerlink" title="如何接入MapStruct"></a>如何接入MapStruct</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://mapstruct.org/documentation/installation/">官网文档</a></li>
-</ul>
-<p>IDEA Support: <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/10036-mapstruct-support/versions">https://plugins.jetbrains.com/plugin/10036-mapstruct-support/versions</a></p>
-<h3 id="Java-Bean属性拷贝性能对比"><a href="#Java-Bean属性拷贝性能对比" class="headerlink" title="Java Bean属性拷贝性能对比"></a>Java Bean属性拷贝性能对比</h3><p>get/set &gt;= <a target="_blank" rel="noopener" href="http://mapstruct.org/">MapStruct</a> &gt; <a target="_blank" rel="noopener" href="https://jmapper-framework.github.io/jmapper-core/">JMapper</a>  &gt;  <a target="_blank" rel="noopener" href="https://github.com/cglib/cglib/blob/master/cglib/src/main/java/net/sf/cglib/beans/BeanCopier.java">“beanCopier(cglib)”</a> &gt; Orika &gt; ModelMapper &gt; Spring BeanUtils &gt; Dozer &gt; Apache BeanUtils</p>
-<p>性能对比数据来源：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-performance-mapping-frameworks">https://www.baeldung.com/java-performance-mapping-frameworks</a></li>
-<li><a target="_blank" rel="noopener" href="https://java.libhunt.com/categories/337-bean-mapping">https://java.libhunt.com/categories/337-bean-mapping</a></li>
-</ul>
-<p>说明：</p>
-<ul>
-<li>get/set 需要手动编写大量转换代码，代码简洁性差、重复性高和工作量大。</li>
-<li>beanCopier 性能较高，属性名和类型有较高的匹配要求。</li>
-<li>MapStruct 性能较高，在编译阶段，生成Get/Set代码,支持不同属性之间自定义转换。</li>
-<li>Orika 性能较高,支持自定义属性拷贝，性能略差与前两种，当比后面几种高很多。</li>
-<li>Spring BeanUtils 性能一般，只能支持相关名称的拷贝。</li>
-<li>Dozer 性能差，使用简单，编写xml不方便。</li>
-<li>Apache BeanUtils 性能差。</li>
-</ul>
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p>实例代码:</p>
-<pre><code class="java">/**
-* 定义对象之间转换Mapper
- * @Mapper 只有在接口加上这个注解， MapStruct 才会去实现该接口
- *     @Mapper
- *     componentModel ：主要是指定实现类的类型，
- *         - default：默认，可以通过 Mappers.getMapper(Class) 方式获取实例对象
- *         -  spring：在接口的实现类上自动添加注解 @Component，可通过 @Autowired 方式注入
- *     uses 使用用户自定义转换器
- *
- *     http://mapstruct.org/documentation/stable/reference/html/
- */
-//@Mapper(componentModel = &quot;spring&quot;,uses = &#123;DateHandWritten.class&#125;)
-@Mapper(
-        uses = &#123;DateHandWritten.class, UserNameHandWritten.class&#125;,
-        imports = &#123;LocalDateUtil.class&#125;
-        )
-public interface PersonMapper &#123;
+        <h2 id="macos下自定义快捷命令"><a href="#macos下自定义快捷命令" class="headerlink" title="macos下自定义快捷命令"></a>macos下自定义快捷命令</h2><h3 id="判断使用的是那个shell"><a href="#判断使用的是那个shell" class="headerlink" title="判断使用的是那个shell"></a>判断使用的是那个shell</h3><pre><code class="shell">echo $0
 
-    PersonMapper  INSTANCE  = Mappers.getMapper(PersonMapper.class);
+# -zsh 表示使用的是zsh,对应配置文件 ~/.zshrc
+# bash 标识使用的是bash,对应配置文件 ~/.bashrc</code></pre>
+<h3 id="自定义alias"><a href="#自定义alias" class="headerlink" title="自定义alias"></a>自定义alias</h3><pre><code class="shell">#在对应shell的配置文件中新增
+alias key=value
 
-    @Mappings(&#123;
-            //@Mapping(source = &quot;name&quot;,target = &quot;name&quot;,ignore = true),
-            @Mapping(target = &quot;birthExpressionFormat&quot;, expression = &quot;java(LocalDateUtil.getDateNow().toString())&quot;),
-            @Mapping(source = &quot;name&quot;,target = &quot;address.name&quot;),
-            @Mapping(source = &quot;price&quot;,target = &quot;price&quot;,numberFormat = &quot;#.00&quot;),
-            @Mapping(source = &quot;birthDate&quot;,target = &quot;birthDateFormat&quot;,dateFormat = &quot;yyyy-MM-dd HH:mm:ss&quot;)
-    &#125;)
-    /***
-     * @Mapping：属性映射，若源对象属性与目标对象名字一致，会自动映射对应属性
-     *     source：源属性
-     *     target：目标属性
-     *     dateFormat：String 到 Date 日期之间相互转换，通过 SimpleDateFormat，该值为 SimpleDateFormat              的日期格式
-     *     ignore: 忽略这个字段
-     * @Mappings：配置多个@Mapping
-     */
-    PersonDto toDto(Person person);
+#例如 alias gogogo=&quot;echo gogogo&quot;</code></pre>
+<h3 id="输入自定义的alias命令"><a href="#输入自定义的alias命令" class="headerlink" title="输入自定义的alias命令"></a>输入自定义的alias命令</h3><pre><code class="shell">#此命令放在自定义alias命令之前; 
+# +117 行号 输入文件117行之后的内容
+# 注意对应shell配置文件名名
+alias my-alias=&quot;tail -n +117 ~/.zshrc&quot;</code></pre>
+<h2 id="一台电脑配置多个gitee-github公钥"><a href="#一台电脑配置多个gitee-github公钥" class="headerlink" title="一台电脑配置多个gitee/github公钥"></a>一台电脑配置多个gitee/github公钥</h2><h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><pre><code class="shell"># 查看ssh-agent缓存
+ssh-add -l
 
-    @InheritConfiguration(name = &quot;toDto&quot;)
-    List&lt;PersonDto&gt; toDtos(List&lt;Person&gt; person);
+# 删除所有缓存
+ssh-add -D
 
+# 添加密钥缓存
+ssh-add work_id_rsa
 
-    /*@InheritInverseConfiguration()
-    PersonDto fromDto(Person person);*/
-
-    /**
-     * @InheritConfiguration 用于继承配置
-     * */
-  /*  @InheritConfiguration(name = &quot;toDto&quot;)
-    void update(Person person, @MappingTarget PersonDto personDto);*/
-&#125;
-
-/**定义自定义转换规则*/
-public class DateHandWritten &#123;
-
-    public String asString(Date date) &#123;
-        return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )
-            .format( date ) : null;
-    &#125;
-
-    public Date asDate(String date) &#123;
-        try &#123;
-            return date != null ? new SimpleDateFormat( &quot;yyyy-MM-dd&quot; )
-                .parse( date ) : null;
-        &#125;
-        catch ( ParseException e ) &#123;
-            throw new RuntimeException( e );
-        &#125;
-    &#125;
-&#125;
-
-/**定义自定义转换规则*/
-public class UserNameHandWritten &#123;
-
-    public String asUsername(String username) &#123;
-        return  &quot;被修改后的name&quot;;
-    &#125; 
-&#125;
-
-/***使用实例*/
-public class MapStructTest &#123;
-
-    @Test
-    public void personTest()&#123;
-        Person person = buildPerson();
-        PersonDto personDto = PersonMapper.INSTANCE.toDto(person);
-        System.out.println(JSON.toJSONString(personDto));
-        /**
-        * &#123;&quot;address&quot;:&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;,&quot;addresses&quot;:[&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;],&quot;age&quot;:0,&quot;birthDate&quot;:1555573411245,&quot;birthDateFormat&quot;:&quot;2019-04-18&quot;,&quot;birthExpressionFormat&quot;:&quot;Thu Apr 18 15:43:31 CST 2019&quot;,&quot;name&quot;:&quot;被修改后的name&quot;,&quot;price&quot;:&quot;2.35&quot;&#125;
-        * */
-    &#125;
-
-    @Test
-    public void personListTest()&#123;
-        Person person = buildPerson();
-        List&lt;PersonDto&gt; personDtos = PersonMapper.INSTANCE.toDtos(Lists.newArrayList(person));
-        System.out.println(JSON.toJSONString(personDtos));
-        /**
-        * [&#123;&quot;address&quot;:&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;,&quot;addresses&quot;:[&#123;&quot;name&quot;:&quot;被修改后的name&quot;&#125;],&quot;age&quot;:0,&quot;birthDate&quot;:1555573439123,&quot;birthDateFormat&quot;:&quot;2019-04-18&quot;,&quot;birthExpressionFormat&quot;:&quot;Thu Apr 18 15:43:59 CST 2019&quot;,&quot;name&quot;:&quot;被修改后的name&quot;,&quot;price&quot;:&quot;2.35&quot;&#125;]
-        * */
-    &#125;
-
-    private Person buildPerson()&#123;
-        Address a = new Address();
-        a.setName(&quot;demo&quot;);
-        return Person.builder().birthDate(new Date()).price(BigDecimal.valueOf(2.347)).name(&quot;中国人&quot;).addresses(Lists.newArrayList(a)).build();
-    &#125;
-&#125;
-</code></pre>
-<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>在Maven 编译阶段将自动实现PersonMapper的对象属性转换接口,生成PersonMapperImpl文件。</p>
+#将以上命令写入shell文件，然后自定义alias命令，使用的时候切换即可
+alias gitee-work=&quot;sh work.sh&quot;</code></pre>
 
       
     </div>
@@ -1079,12 +969,12 @@ public class MapStructTest &#123;
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>对象转换工具-MapStruct</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">992</span></p>
+    <p><span class="copy-title">文章标题:</span>Shell命令记录</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">209</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-10-02, 15:51:46</p>
-    <p><span class="copy-title">最后更新:</span>2021-03-20, 14:38:04</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/10/02/backend/java/utils/convert/map-struct/" title="对象转换工具-MapStruct">http://imfan.com/2020/10/02/backend/java/utils/convert/map-struct/</a>
+    <p><span class="copy-title">发布时间:</span>2022-03-08, 11:13:00</p>
+    <p><span class="copy-title">最后更新:</span>2022-03-08, 11:13:57</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/03/08/devops/shell/" title="Shell命令记录">http://imfan.com/2022/03/08/devops/shell/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>

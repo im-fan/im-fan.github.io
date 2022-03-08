@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Shell命令记录</title>
+      <link href="2022/03/08/devops/shell/"/>
+      <url>2022/03/08/devops/shell/</url>
+      
+        <content type="html"><![CDATA[<h2 id="macos下自定义快捷命令"><a href="#macos下自定义快捷命令" class="headerlink" title="macos下自定义快捷命令"></a>macos下自定义快捷命令</h2><h3 id="判断使用的是那个shell"><a href="#判断使用的是那个shell" class="headerlink" title="判断使用的是那个shell"></a>判断使用的是那个shell</h3><pre><code class="shell">echo $0# -zsh 表示使用的是zsh,对应配置文件 ~/.zshrc# bash 标识使用的是bash,对应配置文件 ~/.bashrc</code></pre><h3 id="自定义alias"><a href="#自定义alias" class="headerlink" title="自定义alias"></a>自定义alias</h3><pre><code class="shell">#在对应shell的配置文件中新增alias key=value#例如 alias gogogo=&quot;echo gogogo&quot;</code></pre><h3 id="输入自定义的alias命令"><a href="#输入自定义的alias命令" class="headerlink" title="输入自定义的alias命令"></a>输入自定义的alias命令</h3><pre><code class="shell">#此命令放在自定义alias命令之前; # +117 行号 输入文件117行之后的内容# 注意对应shell配置文件名名alias my-alias=&quot;tail -n +117 ~/.zshrc&quot;</code></pre><h2 id="一台电脑配置多个gitee-github公钥"><a href="#一台电脑配置多个gitee-github公钥" class="headerlink" title="一台电脑配置多个gitee/github公钥"></a>一台电脑配置多个gitee/github公钥</h2><h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><pre><code class="shell"># 查看ssh-agent缓存ssh-add -l# 删除所有缓存ssh-add -D# 添加密钥缓存ssh-add work_id_rsa#将以上命令写入shell文件，然后自定义alias命令，使用的时候切换即可alias gitee-work=&quot;sh work.sh&quot;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> shell命令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ES官方文档笔记</title>
       <link href="2022/02/15/backend/storage/es/"/>
       <url>2022/02/15/backend/storage/es/</url>
@@ -463,11 +488,11 @@
       
         <tags>
             
-            <tag> 注册中心 </tag>
-            
             <tag> nacos </tag>
             
             <tag> 动态配置 </tag>
+            
+            <tag> 注册中心 </tag>
             
         </tags>
       
@@ -914,9 +939,9 @@
       
         <tags>
             
-            <tag> zookeeper </tag>
-            
             <tag> 注册中心 </tag>
+            
+            <tag> zookeeper </tag>
             
             <tag> 分布式锁 </tag>
             
@@ -1110,7 +1135,7 @@
       <link href="2020/10/02/other/software/"/>
       <url>2020/10/02/other/software/</url>
       
-        <content type="html"><![CDATA[<h3 id="Mac软件-amp-工具网站"><a href="#Mac软件-amp-工具网站" class="headerlink" title="Mac软件&amp;工具网站"></a>Mac软件&amp;工具网站</h3><table><thead><tr><th>主要功能</th><th>软件名</th><th>相关网址</th></tr></thead><tbody><tr><td>图片编辑器</td><td>PixelStyle</td><td></td></tr><tr><td>视频播放</td><td>IINA</td><td></td></tr><tr><td>录屏软件</td><td>LICEcap</td><td></td></tr><tr><td>文件比较</td><td>Beyond Compare</td><td></td></tr><tr><td>Markdown编辑工具</td><td>Haroopad</td><td></td></tr><tr><td>Mac包管理工具</td><td>Homebrew</td><td></td></tr><tr><td>Mac破解软件</td><td></td><td><a href="https://xclient.info/">https://xclient.info</a></td></tr><tr><td>相似网站查询</td><td></td><td><a href="https://www.similarsites.com/">https://www.similarsites.com</a></td></tr></tbody></table><h3 id="常用软件激活方法"><a href="#常用软件激活方法" class="headerlink" title="常用软件激活方法"></a>常用软件激活方法</h3><h4 id="JRebl激活"><a href="#JRebl激活" class="headerlink" title="JRebl激活"></a>JRebl激活</h4><ul><li><a href="http://www.yq1012.com/things/5019.html">Idea JRebl插件激活方法</a></li></ul><pre><code class="textmate">1.生成guid    http://jrebel.cicoding.cn/guid2.配置    设置 JRebel &amp; XRebel 点击Chanage license3.填入    http://jrebel.cicoding.cn/新生成的guid    邮箱</code></pre><ul><li>方式二<br>```textmate</li></ul><p>1.Team Url<br>    <a href="http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355">http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355</a><br>    <a href="mailto:&#x78;&#x78;&#120;&#x40;&#x78;&#x78;&#x78;&#x2e;&#99;&#x6f;&#x6d;">&#x78;&#x78;&#120;&#x40;&#x78;&#x78;&#x78;&#x2e;&#99;&#x6f;&#x6d;</a><br>2.然后设置为离线使用</p><pre><code>#### MacOS sourceTree跳过登录```textmate1.显示包内容2.搜索Atlassian3.删除搜出来的文件(没有说明安装包可能有问题)</code></pre><h4 id="MacOS软件已损坏修复"><a href="#MacOS软件已损坏修复" class="headerlink" title="MacOS软件已损坏修复"></a>MacOS软件已损坏修复</h4><pre><code class="textmate">## 软件已损坏sudo xattr -d com.apple.quarantine /Applications/xxxxxx.app</code></pre><h4 id="ssh密钥生成"><a href="#ssh密钥生成" class="headerlink" title="ssh密钥生成"></a>ssh密钥生成</h4><pre><code class="shell">## 配置git config --global user.name &quot;名称&quot;git config --global user.email &quot;邮箱地址&quot;## -t重新生成ssh-keygen [-t] rsa -C &quot;your_email@example.com&quot; -f gitee_id_rsa## 如果生成的密钥不生效，则将密钥重新加下！！！ssh-add ~/.ssh/qts_id_rsa##测试是否成生效ssh -T gitee@gitee.com</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="Mac软件-amp-工具网站"><a href="#Mac软件-amp-工具网站" class="headerlink" title="Mac软件&amp;工具网站"></a>Mac软件&amp;工具网站</h3><table><thead><tr><th>主要功能</th><th>软件名</th><th>相关网址</th></tr></thead><tbody><tr><td>图片编辑器</td><td>PixelStyle</td><td></td></tr><tr><td>视频播放</td><td>IINA</td><td></td></tr><tr><td>录屏软件</td><td>LICEcap</td><td></td></tr><tr><td>文件比较</td><td>Beyond Compare</td><td></td></tr><tr><td>Markdown编辑工具</td><td>Haroopad</td><td></td></tr><tr><td>Mac包管理工具</td><td>Homebrew</td><td></td></tr><tr><td>Mac破解软件</td><td></td><td><a href="https://xclient.info/">https://xclient.info</a></td></tr><tr><td>相似网站查询</td><td></td><td><a href="https://www.similarsites.com/">https://www.similarsites.com</a></td></tr></tbody></table><h3 id="常用软件激活方法"><a href="#常用软件激活方法" class="headerlink" title="常用软件激活方法"></a>常用软件激活方法</h3><h4 id="JRebl激活"><a href="#JRebl激活" class="headerlink" title="JRebl激活"></a>JRebl激活</h4><ul><li><a href="http://www.yq1012.com/things/5019.html">Idea JRebl插件激活方法</a></li></ul><pre><code class="textmate">1.生成guid    http://jrebel.cicoding.cn/guid2.配置    设置 JRebel &amp; XRebel 点击Chanage license3.填入    http://jrebel.cicoding.cn/新生成的guid    邮箱</code></pre><ul><li>方式二<br>```textmate</li></ul><p>1.Team Url<br>    <a href="http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355">http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355</a><br>    <a href="mailto:&#x78;&#x78;&#120;&#64;&#x78;&#120;&#120;&#x2e;&#99;&#111;&#109;">&#x78;&#x78;&#120;&#64;&#x78;&#120;&#120;&#x2e;&#99;&#111;&#109;</a><br>2.然后设置为离线使用</p><pre><code>#### MacOS sourceTree跳过登录```textmate1.显示包内容2.搜索Atlassian3.删除搜出来的文件(没有说明安装包可能有问题)</code></pre><h4 id="MacOS软件已损坏修复"><a href="#MacOS软件已损坏修复" class="headerlink" title="MacOS软件已损坏修复"></a>MacOS软件已损坏修复</h4><pre><code class="textmate">## 软件已损坏sudo xattr -d com.apple.quarantine /Applications/xxxxxx.app</code></pre><h4 id="ssh密钥生成"><a href="#ssh密钥生成" class="headerlink" title="ssh密钥生成"></a>ssh密钥生成</h4><pre><code class="shell">## 配置git config --global user.name &quot;名称&quot;git config --global user.email &quot;邮箱地址&quot;## -t重新生成ssh-keygen [-t] rsa -C &quot;your_email@example.com&quot; -f gitee_id_rsa## 如果生成的密钥不生效，则将密钥重新加下！！！ssh-add ~/.ssh/qts_id_rsa##测试是否成生效ssh -T gitee@gitee.com</code></pre>]]></content>
       
       
       <categories>
