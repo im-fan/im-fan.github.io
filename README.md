@@ -43,3 +43,11 @@ hexo generate
         不选则Gitee会自动编译并生一个文件夹(部署速度慢)；
 ```
 
+## 发布部署命令
+```shell
+#本地启动
+./restart.sh
+
+#重新编译提交，并打开gitee页面
+./rebuild.sh
+```
