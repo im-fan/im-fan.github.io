@@ -731,3 +731,101 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.6/cluster-update-setti
 - [Elasticsearch读写中间件的设计](https://mp.weixin.qq.com/s/g9_eXCouaaBobU9Emjp9bA)
 - [如何使用 Elasticsearch 构建企业级搜索方案？](https://www.infoq.cn/article/build-enterprise-search-scenarios-using-elasticsearch)
 - [Elasticsearch学习，请先看这一篇！](https://cloud.tencent.com/developer/article/1066239)
+
+
+
+## 案例
+
+### 重建索引步骤
+> 总体思路: 创建备份索引，复制数据，删除旧索引，新建索引，复制数据，删除备份索引
+```textmate
+例如： user_index  user_index_alias
+# 新建备份索引
+PUT user_index_bak
+{   
+    "settings":{
+        "number_of_replicas": 1,
+        "number_of_shards": 1
+        -- 分词器设置
+    },
+    "mappings":{
+        "user_index_bak":{
+            "properties":{
+                "id":{
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+}
+
+#复制数据
+POST _reindex
+{
+  "source": {
+    "index": "user_index"
+  },
+  "dest": {
+    "index": "user_index_bak"
+  }
+}
+
+#查询复制的数据
+GET user_index_bak/_search
+{"query":{"match_all":{}}}
+
+# 查询配置
+GET user_index_bak/_mapping
+GET user_index_bak/_settings
+
+# 删除索引
+DELETE  user_index
+
+#重建
+PUT user_index
+{   
+    "settings":{
+        "number_of_replicas": 1,
+        "number_of_shards": 1
+        -- 分词器设置
+    },
+    "mappings":{
+        "user_index_bak":{
+            "properties":{
+                "id":{
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+}
+
+# 创建索引别名
+PUT _alias
+{
+  "actions" : [{"add" : {"index" : "user_index" , "alias" : "user_index_alias"}}]
+}
+
+
+# 复制数据
+POST _reindex
+{
+  "source": {
+    "index": "user_index_bak"
+  },
+  "dest": {
+    "index": "user_index_alias"
+  }
+}
+
+# 查询数据
+POST user_index_alias/_search
+{"query":{"match_all":{}}}
+
+# 查询配置
+GET user_index_alias/_mapping
+GET user_index_alias/_settings
+
+#删除备份索引
+DELETE  user_index_bak
+```
