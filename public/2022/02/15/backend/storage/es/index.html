@@ -6,17 +6,17 @@
   <meta name="keywords" content=" es ">
   <meta name="description" content="ES官方文档笔记 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ElasticSearch官方教程(非最新版)  集群原理空集群一个运行中的Elasticsearch实例称为一个节点，而集群是由一个或者多个拥有相同cluster.name配置的节点组成，它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。  负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。而主节点并不需要涉及到文档级">
+<meta name="description" content="macos下自定义快捷命令判断使用的是那个shellecho $0  # -zsh 表示使用的是zsh,对应配置文件 ~&#x2F;.zshrc # bash 标识使用的是bash,对应配置文件 ~&#x2F;.bashrc 自定义alias#在对应shell的配置文件中新增 alias key&#x3D;value  #例如 alias gogogo&#x3D;&quot;echo gogogo&quot; 输入自定义的alias命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES官方文档笔记">
-<meta property="og:url" content="http://imfan.com/2022/02/15/backend/storage/es/index.html">
+<meta property="og:title" content="Shell命令记录">
+<meta property="og:url" content="http://imfan.com/2022/03/08/devops/shell/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="ElasticSearch官方教程(非最新版)  集群原理空集群一个运行中的Elasticsearch实例称为一个节点，而集群是由一个或者多个拥有相同cluster.name配置的节点组成，它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。  负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。而主节点并不需要涉及到文档级">
+<meta property="og:description" content="macos下自定义快捷命令判断使用的是那个shellecho $0  # -zsh 表示使用的是zsh,对应配置文件 ~&#x2F;.zshrc # bash 标识使用的是bash,对应配置文件 ~&#x2F;.bashrc 自定义alias#在对应shell的配置文件中新增 alias key&#x3D;value  #例如 alias gogogo&#x3D;&quot;echo gogogo&quot; 输入自定义的alias命令">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-15T05:38:00.000Z">
-<meta property="article:modified_time" content="2022-02-22T03:51:16.980Z">
+<meta property="article:published_time" content="2022-03-08T03:13:00.000Z">
+<meta property="article:modified_time" content="2022-03-08T03:13:57.742Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="es">
+<meta property="article:tag" content="shell命令">
 <meta name="twitter:card" content="summary">
 
 
@@ -276,7 +276,7 @@
 </div>
 -->
 <input type="hidden" id="yelog_site_posts_number" value="45">
-<input type="hidden" id="yelog_site_word_count" value="51.4k">
+<input type="hidden" id="yelog_site_word_count" value="51.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -898,12 +898,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-02-22 11:51:16'>2022-02-15 13:38</time>
+            发布时间 : <time class="date" title='最后更新: 2022-04-11 20:04:33'>2022-02-15 13:38</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:7.7k</span>
+        <span>字数:8k</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -922,7 +922,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%8E%9F%E7%90%86"><span class="toc-text">集群原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%9B%86%E7%BE%A4"><span class="toc-text">空集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%81%A5%E5%BA%B7"><span class="toc-text">集群健康</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB"><span class="toc-text">故障转移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E6%89%A9%E5%AE%B9"><span class="toc-text">水平扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB-1"><span class="toc-text">故障转移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">数据输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%87%E6%A1%A3"><span class="toc-text">什么是文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">文档元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%96%87%E6%A1%A3"><span class="toc-text">索引文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81"><span class="toc-text">处理冲突</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E6%A1%A3%E5%AD%98%E5%82%A8"><span class="toc-text">分布式文档存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E4%B8%80%E4%B8%AA%E6%96%87%E6%A1%A3%E5%88%B0%E4%B8%80%E4%B8%AA%E5%88%86%E7%89%87%E4%B8%AD"><span class="toc-text">路由一个文档到一个分片中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%89%AF%E5%88%86%E7%89%87%E4%BA%A4%E4%BA%92"><span class="toc-text">主副分片交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E3%80%81%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3%E6%97%B6%E6%AD%A5%E9%AA%A4"><span class="toc-text">新建、索引和删除文档时步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3%E6%AD%A5%E9%AA%A4"><span class="toc-text">查询文档步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%B1%80%E9%83%A8%E6%96%87%E6%A1%A3%E6%AD%A5%E9%AA%A4"><span class="toc-text">更新局部文档步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%89%87%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86"><span class="toc-text">分片内部原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="toc-text">倒排索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%B8%8E%E5%88%86%E7%89%87%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">索引与分片的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%92%8C%E6%9B%B4%E6%96%B0"><span class="toc-text">删除和更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E5%8F%98%E6%9B%B4"><span class="toc-text">持久化变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Translog%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-text">Translog安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E6%96%B0"><span class="toc-text">刷新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E5%90%88%E5%B9%B6"><span class="toc-text">段合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%9F%A5%E6%89%BE%E8%AF%AD%E6%B3%95"><span class="toc-text">常用查找语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E7%A1%AE%E6%9F%A5%E6%89%BE-%E5%8C%85%E5%90%AB%EF%BC%8C%E4%B8%8D%E6%98%AF%E7%AD%89%E4%BA%8E"><span class="toc-text">精确查找(包含，不是等于)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">组合过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4"><span class="toc-text">范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Null%E5%80%BC%E6%9F%A5%E8%AF%A2"><span class="toc-text">Null值查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-text">缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%BA%A6"><span class="toc-text">相关度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%BA%A6%E8%AF%84%E5%88%86%E9%80%BB%E8%BE%91"><span class="toc-text">相关度评分逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%A8%A1%E5%9E%8B"><span class="toc-text">布尔模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%8D%E9%A2%91-%E9%80%86%E5%90%91%E6%96%87%E6%A1%A3%E9%A2%91%E7%8E%87-TF-IDF"><span class="toc-text">词频&#x2F;逆向文档频率(TF&#x2F;IDF)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6%E5%BD%92%E4%B8%80"><span class="toc-text">字段长度归一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">组合使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%84%E5%88%86"><span class="toc-text">脚本评分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86"><span class="toc-text">人类语言处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88"><span class="toc-text">聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="toc-text">主要概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%B6"><span class="toc-text">桶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%A0%87"><span class="toc-text">指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-text">条形图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1"><span class="toc-text">按时间统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Doc-Values"><span class="toc-text">Doc Values</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE"><span class="toc-text">地理位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1"><span class="toc-text">数据建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%BB%B4"><span class="toc-text">运维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES%E4%BD%BF%E7%94%A8%E6%97%B6%E8%AF%A5%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88"><span class="toc-text">ES使用时该注意什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="toc-text">扩展阅读</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%8E%9F%E7%90%86"><span class="toc-text">集群原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%9B%86%E7%BE%A4"><span class="toc-text">空集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%81%A5%E5%BA%B7"><span class="toc-text">集群健康</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB"><span class="toc-text">故障转移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E6%89%A9%E5%AE%B9"><span class="toc-text">水平扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB-1"><span class="toc-text">故障转移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">数据输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%87%E6%A1%A3"><span class="toc-text">什么是文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">文档元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%96%87%E6%A1%A3"><span class="toc-text">索引文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81"><span class="toc-text">处理冲突</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E6%A1%A3%E5%AD%98%E5%82%A8"><span class="toc-text">分布式文档存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E4%B8%80%E4%B8%AA%E6%96%87%E6%A1%A3%E5%88%B0%E4%B8%80%E4%B8%AA%E5%88%86%E7%89%87%E4%B8%AD"><span class="toc-text">路由一个文档到一个分片中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%89%AF%E5%88%86%E7%89%87%E4%BA%A4%E4%BA%92"><span class="toc-text">主副分片交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E3%80%81%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3%E6%97%B6%E6%AD%A5%E9%AA%A4"><span class="toc-text">新建、索引和删除文档时步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3%E6%AD%A5%E9%AA%A4"><span class="toc-text">查询文档步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%B1%80%E9%83%A8%E6%96%87%E6%A1%A3%E6%AD%A5%E9%AA%A4"><span class="toc-text">更新局部文档步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%89%87%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86"><span class="toc-text">分片内部原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="toc-text">倒排索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%B8%8E%E5%88%86%E7%89%87%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">索引与分片的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%92%8C%E6%9B%B4%E6%96%B0"><span class="toc-text">删除和更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E5%8F%98%E6%9B%B4"><span class="toc-text">持久化变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Translog%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-text">Translog安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E6%96%B0"><span class="toc-text">刷新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E5%90%88%E5%B9%B6"><span class="toc-text">段合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%9F%A5%E6%89%BE%E8%AF%AD%E6%B3%95"><span class="toc-text">常用查找语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E7%A1%AE%E6%9F%A5%E6%89%BE-%E5%8C%85%E5%90%AB%EF%BC%8C%E4%B8%8D%E6%98%AF%E7%AD%89%E4%BA%8E"><span class="toc-text">精确查找(包含，不是等于)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">组合过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4"><span class="toc-text">范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Null%E5%80%BC%E6%9F%A5%E8%AF%A2"><span class="toc-text">Null值查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-text">缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%BA%A6"><span class="toc-text">相关度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%BA%A6%E8%AF%84%E5%88%86%E9%80%BB%E8%BE%91"><span class="toc-text">相关度评分逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%A8%A1%E5%9E%8B"><span class="toc-text">布尔模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%8D%E9%A2%91-%E9%80%86%E5%90%91%E6%96%87%E6%A1%A3%E9%A2%91%E7%8E%87-TF-IDF"><span class="toc-text">词频&#x2F;逆向文档频率(TF&#x2F;IDF)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6%E5%BD%92%E4%B8%80"><span class="toc-text">字段长度归一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">组合使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%AF%84%E5%88%86"><span class="toc-text">脚本评分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86"><span class="toc-text">人类语言处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88"><span class="toc-text">聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="toc-text">主要概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%B6"><span class="toc-text">桶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%A0%87"><span class="toc-text">指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-text">条形图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1"><span class="toc-text">按时间统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Doc-Values"><span class="toc-text">Doc Values</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE"><span class="toc-text">地理位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1"><span class="toc-text">数据建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%BB%B4"><span class="toc-text">运维</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES%E4%BD%BF%E7%94%A8%E6%97%B6%E8%AF%A5%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88"><span class="toc-text">ES使用时该注意什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="toc-text">扩展阅读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%BB%BA%E7%B4%A2%E5%BC%95%E6%AD%A5%E9%AA%A4"><span class="toc-text">重建索引步骤</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1431,6 +1431,98 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.6/cluster-update-setti
 <li><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/build-enterprise-search-scenarios-using-elasticsearch">如何使用 Elasticsearch 构建企业级搜索方案？</a></li>
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1066239">Elasticsearch学习，请先看这一篇！</a></li>
 </ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="重建索引步骤"><a href="#重建索引步骤" class="headerlink" title="重建索引步骤"></a>重建索引步骤</h3><blockquote>
+<p>总体思路: 创建备份索引，复制数据，删除旧索引，新建索引，复制数据，删除备份索引</p>
+</blockquote>
+<pre><code class="textmate">例如： user_index  user_index_alias
+# 新建备份索引
+PUT user_index_bak
+&#123;   
+    &quot;settings&quot;:&#123;
+        &quot;number_of_replicas&quot;: 1,
+        &quot;number_of_shards&quot;: 1
+        -- 分词器设置
+    &#125;,
+    &quot;mappings&quot;:&#123;
+        &quot;user_index_bak&quot;:&#123;
+            &quot;properties&quot;:&#123;
+                &quot;id&quot;:&#123;
+                    &quot;type&quot;: &quot;keyword&quot;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+#复制数据
+POST _reindex
+&#123;
+  &quot;source&quot;: &#123;
+    &quot;index&quot;: &quot;user_index&quot;
+  &#125;,
+  &quot;dest&quot;: &#123;
+    &quot;index&quot;: &quot;user_index_bak&quot;
+  &#125;
+&#125;
+
+#查询复制的数据
+GET user_index_bak/_search
+&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;&#125;
+
+# 查询配置
+GET user_index_bak/_mapping
+GET user_index_bak/_settings
+
+# 删除索引
+DELETE  user_index
+
+#重建
+PUT user_index
+&#123;   
+    &quot;settings&quot;:&#123;
+        &quot;number_of_replicas&quot;: 1,
+        &quot;number_of_shards&quot;: 1
+        -- 分词器设置
+    &#125;,
+    &quot;mappings&quot;:&#123;
+        &quot;user_index_bak&quot;:&#123;
+            &quot;properties&quot;:&#123;
+                &quot;id&quot;:&#123;
+                    &quot;type&quot;: &quot;keyword&quot;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+# 创建索引别名
+PUT _alias
+&#123;
+  &quot;actions&quot; : [&#123;&quot;add&quot; : &#123;&quot;index&quot; : &quot;user_index&quot; , &quot;alias&quot; : &quot;user_index_alias&quot;&#125;&#125;]
+&#125;
+
+
+# 复制数据
+POST _reindex
+&#123;
+  &quot;source&quot;: &#123;
+    &quot;index&quot;: &quot;user_index_bak&quot;
+  &#125;,
+  &quot;dest&quot;: &#123;
+    &quot;index&quot;: &quot;user_index_alias&quot;
+  &#125;
+&#125;
+
+# 查询数据
+POST user_index_alias/_search
+&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;&#125;
+
+# 查询配置
+GET user_index_alias/_mapping
+GET user_index_alias/_settings
+
+#删除备份索引
+DELETE  user_index_bak</code></pre>
 
       
     </div>
@@ -1440,10 +1532,10 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.6/cluster-update-setti
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>ES官方文档笔记</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">7.7k</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">8k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
     <p><span class="copy-title">发布时间:</span>2022-02-15, 13:38:00</p>
-    <p><span class="copy-title">最后更新:</span>2022-02-22, 11:51:16</p>
+    <p><span class="copy-title">最后更新:</span>2022-04-11, 20:04:33</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/02/15/backend/storage/es/" title="ES官方文档笔记">http://imfan.com/2022/02/15/backend/storage/es/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
