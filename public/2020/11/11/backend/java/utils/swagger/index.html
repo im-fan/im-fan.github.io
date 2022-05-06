@@ -6,18 +6,24 @@
   <meta name="keywords" content=" utils ">
   <meta name="description" content="Java解析Swagger文档接口及参数 | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="macos下自定义快捷命令判断使用的是那个shellecho $0  # -zsh 表示使用的是zsh,对应配置文件 ~&#x2F;.zshrc # bash 标识使用的是bash,对应配置文件 ~&#x2F;.bashrc 自定义alias#在对应shell的配置文件中新增 alias key&#x3D;value  #例如 alias gogogo&#x3D;&quot;echo gogogo&quot; 输入自定义的alias命令">
+<meta name="description" content="大话数据结构-摘要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shell命令记录">
-<meta property="og:url" content="http://imfan.com/2022/03/08/devops/shell/index.html">
+<meta property="og:title" content="大话数据结构-摘要">
+<meta property="og:url" content="http://imfan.com/2022/01/13/backend/java/algorithm/book1/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="macos下自定义快捷命令判断使用的是那个shellecho $0  # -zsh 表示使用的是zsh,对应配置文件 ~&#x2F;.zshrc # bash 标识使用的是bash,对应配置文件 ~&#x2F;.bashrc 自定义alias#在对应shell的配置文件中新增 alias key&#x3D;value  #例如 alias gogogo&#x3D;&quot;echo gogogo&quot; 输入自定义的alias命令">
+<meta property="og:description" content="大话数据结构-摘要">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-08T03:13:00.000Z">
-<meta property="article:modified_time" content="2022-03-08T03:13:57.742Z">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-first.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-middle.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-last.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-level.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/sort-rank.png">
+<meta property="article:published_time" content="2022-01-13T08:54:00.000Z">
+<meta property="article:modified_time" content="2022-01-13T08:55:02.157Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="shell命令">
+<meta property="article:tag" content="数据结构与算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-first.png">
 
 
 <link rel="icon" href="/img/road.png">
@@ -45,7 +51,7 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -640,7 +646,7 @@
         
         <a  class="全部文章 后端 服务治理 "
            href="/2021/04/13/backend/service/nacos/"
-           data-tag="nacos,动态配置,注册中心"
+           data-tag="注册中心,nacos,动态配置"
            data-author="" >
             <span class="post-title" title="nacos">nacos</span>
             <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
@@ -776,7 +782,7 @@
         
         <a  class="全部文章 后端 服务治理 "
            href="/2020/10/29/backend/service/zookeeper/"
-           data-tag="注册中心,zookeeper,分布式锁"
+           data-tag="zookeeper,注册中心,分布式锁"
            data-author="" >
             <span class="post-title" title="Zookeeper搭建">Zookeeper搭建</span>
             <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
@@ -957,18 +963,20 @@
         &lt;artifactId&gt;swagger-bootstrap-ui&lt;/artifactId&gt;
         &lt;version&gt;1.9.6&lt;/version&gt;
     &lt;/dependency&gt;
-
+    
     &lt;dependency&gt;
         &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
         &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
         &lt;version&gt;1.2.73&lt;/version&gt;
     &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+&lt;/dependencies&gt;
+</code></pre>
 <h3 id="Swagger文档相关接口"><a href="#Swagger文档相关接口" class="headerlink" title="Swagger文档相关接口"></a>Swagger文档相关接口</h3><pre><code class="textmate">1.接口文档地址
     https://localhost:8080/swagger-ui.html
     https://localhost:8080/doc.html
 2.JSON格式接口数据(group参数由项目中swagger配置决定)
-    http://localhost:8080/v2/api-docs?group=V1版本</code></pre>
+    http://localhost:8080/v2/api-docs?group=V1版本
+</code></pre>
 <h3 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h3><pre><code class="java">    class Test&#123;
     /**
      * 加载swagger文档中的接口信息
@@ -988,20 +996,20 @@
             JSONObject paths = (JSONObject) jsonObject.get(&quot;paths&quot;);
             JSONObject definitions = (JSONObject) jsonObject.get(&quot;definitions&quot;);
             Map&lt;String,JSONObject&gt; paramMap = JSONObject.toJavaObject(definitions,Map.class);
-
+    
             List&lt;PublicResourceInfo&gt; resourceInfos = new ArrayList&lt;&gt;();
             for(Map.Entry&lt;String,Object&gt; entry :  paths.entrySet())&#123;
                 String apiUrl = entry.getKey();
                 String perms = resourceInfoService.buildPermByApiPath(null,apiUrl);
                 JSONObject methodInfo = (JSONObject) entry.getValue();
-
+    
                 for(Map.Entry&lt;String,Object&gt; methodEntry : methodInfo.entrySet())&#123;
                     String requestType = methodEntry.getKey().toUpperCase();
-
+    
                     JSONObject requestTypeInfo = (JSONObject) methodEntry.getValue();
                     String apiName = String.valueOf(requestTypeInfo.get(&quot;summary&quot;));
                     String moduleName = StringUtils.join((List&lt;String&gt;)requestTypeInfo.get(&quot;tags&quot;),&quot;,&quot;);
-
+    
                     PublicResourceInfo resourceInfo = new PublicResourceInfo();
                     resourceInfo.setPlatformNameCn(platform);
                     resourceInfo.setApiPath(apiUrl);
@@ -1009,7 +1017,7 @@
                     resourceInfo.setApiName(apiName);
                     resourceInfo.setRequestType(requestType);
                     resourceInfo.setModuleNameCn(moduleName);
-
+    
                     //解析swagger-ui中的出参入参
                     JSONArray parameterJson = (JSONArray) requestTypeInfo.get(&quot;parameters&quot;);
                     Object requestParam = null;
@@ -1028,13 +1036,13 @@
                             &#125;
                         &#125;
                     &#125;
-
+    
                     if(requestParam != null)&#123;
                         resourceInfo.setRequestParam(JSONObject.toJSONString(requestParam));
                     &#125; else &#123;
                         resourceInfo.setRequestParam(JSONObject.toJSONString(requestParamMap));
                     &#125;
-
+    
                     //返回值类型都用标准类型，不解析其他格式
                     JSONObject response = (JSONObject) requestTypeInfo.get(&quot;responses&quot;);
                     Object responseResult = null;
@@ -1048,7 +1056,7 @@
                     if(responseResult != null)&#123;
                         resourceInfo.setResponseParam(JSONObject.toJSONString(responseResult));
                     &#125;
-
+    
                     resourceInfos.add(resourceInfo);
                 &#125;
             &#125;
@@ -1059,7 +1067,7 @@
         &#125;
         return true;
     &#125;
-
+    
     /**
      * 解析swagger-ui中出参和入参为json
      * @param paramMap 入参和出参对象map,key-对象标识，value-对象属性及类型json
@@ -1071,10 +1079,10 @@
         if(StringUtils.isBlank(paramRef))&#123;
             return &quot;&quot;;
         &#125;
-
+    
         //对象标识
         String paramKey = paramRef.substring(paramRef.lastIndexOf(&quot;/&quot;)+1);
-
+    
         //控制递归次数，同一个对象循环超过1次就返回空
         if(forEachCache == null)&#123;
             forEachCache = new HashMap&lt;&gt;();
@@ -1085,11 +1093,11 @@
         &#125; else &#123;
             forEachCache.put(paramKey,1);
         &#125;
-
+    
         //对象值
         JSONObject paramJson = paramMap.get(paramKey);
         JSONObject propertiesJson = JSONObject.parseObject(String.valueOf(paramJson.get(&quot;properties&quot;)));
-
+    
         Map&lt;String,Object&gt; columnMap = new HashMap&lt;&gt;();
         for(Map.Entry&lt;String,Object&gt; entry : propertiesJson.entrySet())&#123;
             String key = entry.getKey();
@@ -1097,7 +1105,7 @@
             JSONObject valueJson = JSONObject.parseObject(String.valueOf(entry.getValue()));
             String type = valueJson.getString(&quot;type&quot;);
             Object obj = valueJson.get(&quot;items&quot;);
-
+    
             if(obj != null)&#123;
                 JSONObject property = JSONObject.parseObject(String.valueOf(obj));
                 String ref = (String) property.get(&quot;$ref&quot;);
@@ -1111,7 +1119,7 @@
         &#125;
         return columnMap;
     &#125;
-
+    
     /**  根据参数类型设置value **/
     private Object setValueByType(String type,Object value)&#123;
         if(&quot;array&quot;.equals(type))&#123;
@@ -1133,7 +1141,8 @@
         &#125;
         return &quot;&quot;;
     &#125;
-&#125;</code></pre>
+&#125;
+</code></pre>
 
       
     </div>

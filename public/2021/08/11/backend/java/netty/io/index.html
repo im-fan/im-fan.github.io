@@ -6,18 +6,24 @@
   <meta name="keywords" content=" io ">
   <meta name="description" content="IO | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="macos下自定义快捷命令判断使用的是那个shellecho $0  # -zsh 表示使用的是zsh,对应配置文件 ~&#x2F;.zshrc # bash 标识使用的是bash,对应配置文件 ~&#x2F;.bashrc 自定义alias#在对应shell的配置文件中新增 alias key&#x3D;value  #例如 alias gogogo&#x3D;&quot;echo gogogo&quot; 输入自定义的alias命令">
+<meta name="description" content="大话数据结构-摘要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shell命令记录">
-<meta property="og:url" content="http://imfan.com/2022/03/08/devops/shell/index.html">
+<meta property="og:title" content="大话数据结构-摘要">
+<meta property="og:url" content="http://imfan.com/2022/01/13/backend/java/algorithm/book1/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="macos下自定义快捷命令判断使用的是那个shellecho $0  # -zsh 表示使用的是zsh,对应配置文件 ~&#x2F;.zshrc # bash 标识使用的是bash,对应配置文件 ~&#x2F;.bashrc 自定义alias#在对应shell的配置文件中新增 alias key&#x3D;value  #例如 alias gogogo&#x3D;&quot;echo gogogo&quot; 输入自定义的alias命令">
+<meta property="og:description" content="大话数据结构-摘要">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-08T03:13:00.000Z">
-<meta property="article:modified_time" content="2022-03-08T03:13:57.742Z">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-first.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-middle.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-last.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-level.png">
+<meta property="og:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/sort-rank.png">
+<meta property="article:published_time" content="2022-01-13T08:54:00.000Z">
+<meta property="article:modified_time" content="2022-01-13T08:55:02.157Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="shell命令">
+<meta property="article:tag" content="数据结构与算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-first.png">
 
 
 <link rel="icon" href="/img/road.png">
@@ -45,7 +51,7 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -640,7 +646,7 @@
         
         <a  class="全部文章 后端 服务治理 "
            href="/2021/04/13/backend/service/nacos/"
-           data-tag="nacos,动态配置,注册中心"
+           data-tag="注册中心,nacos,动态配置"
            data-author="" >
             <span class="post-title" title="nacos">nacos</span>
             <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
@@ -776,7 +782,7 @@
         
         <a  class="全部文章 后端 服务治理 "
            href="/2020/10/29/backend/service/zookeeper/"
-           data-tag="注册中心,zookeeper,分布式锁"
+           data-tag="zookeeper,注册中心,分布式锁"
            data-author="" >
             <span class="post-title" title="Zookeeper搭建">Zookeeper搭建</span>
             <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
@@ -974,7 +980,8 @@
 <pre><code class="textmate">IO多路复用模型的IO涉及两种系统调用，一种是IO操作的系
 统调用，另一种是select/epoll就绪查询系统调用。IO多路复用模型建立在操作系统的基础 设施之上，即操作系统的内核必须能够提供多路分离的系统调用select/epoll。
 优点:一个选择器查询线程，可以同时处理成千上万的网络连接， 所以，用户程序不必创建大量的线程，也不必维护这些线程，从而大大减小了系统的开 销。这是一个线程维护一个连接的阻塞IO模式相比，使用多路IO复用模型的最大优势。
-缺点:本质上，select/epoll系统调用是阻塞式的，属于同步IO。需要在读写事件就绪后，由系统调用本身负责进行读写，也就是说这个读写过程是阻塞 的</code></pre>
+缺点:本质上，select/epoll系统调用是阻塞式的，属于同步IO。需要在读写事件就绪后，由系统调用本身负责进行读写，也就是说这个读写过程是阻塞 的
+</code></pre>
 <h3 id="IO包"><a href="#IO包" class="headerlink" title="IO包"></a>IO包</h3><table>
 <thead>
 <tr>
@@ -1033,7 +1040,8 @@
 <li><p>解释</p>
 <pre><code class="textmate">文件句柄，也叫文件描述符。在Linux系统中，文件可分为:普通文件、目录文件、链 接文件和设备文件。
 文件描述符(File Descriptor)是内核为了高效管理已被打开的文件所 创建的索引，它是一个非负整数(通常是小整数)，用于指代被打开的文件。
-所有的IO系 统调用，包括socket的读写调用，都是通过文件描述符完成的。</code></pre>
+所有的IO系 统调用，包括socket的读写调用，都是通过文件描述符完成的。
+</code></pre>
 </li>
 <li><p>Linux的系统默认值为1024，需要解除文件句柄数的限制</p>
 </li>
@@ -1056,7 +1064,8 @@
     添加 
         soft nofile 1000000
         hard nofile 1000000
-    解释: soft nofile表示软性极限，hard nofile表示硬性极限。</code></pre>
+    解释: soft nofile表示软性极限，hard nofile表示硬性极限。
+</code></pre>
 <h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><h4 id="Java-NIO类库包含以下三个核心组件"><a href="#Java-NIO类库包含以下三个核心组件" class="headerlink" title="Java NIO类库包含以下三个核心组件"></a>Java NIO类库包含以下三个核心组件</h4><ul>
 <li>Channel(通道)</li>
 <li>Buffer(缓冲区)</li>
@@ -1074,11 +1083,15 @@
     而在NIO的非阻塞模式中，当我们调用read方法时，如果此时有数据，则read读取数据并返回;如果此时没有数据，则read也会直接返回，而不会阻塞当前线程。
     NIO的非阻塞: NIO使用了通道和 通道的多路复用技术。
 (3)OIO没有选择器(Selector)概念，而NIO有选择器的概念。
-NIO的实现是基于底层的选择器的系统调用，所以NIO的需要底层操作系统提供支持。</code></pre>
+NIO的实现是基于底层的选择器的系统调用，所以NIO的需要底层操作系统提供支持。
+</code></pre>
 <h4 id="通道-Channel"><a href="#通道-Channel" class="headerlink" title="通道(Channel)"></a>通道(Channel)</h4><pre><code class="textmate">OIO: InputStream、OutputStream
-NIO: 向通道中写入数据，也可以从通道中读取数据</code></pre>
-<h4 id="缓冲区-Buffer"><a href="#缓冲区-Buffer" class="headerlink" title="缓冲区(Buffer)"></a>缓冲区(Buffer)</h4><pre><code class="textmate">所谓通道的读取，就是将数据从通道读取到缓冲区中;所谓通道的写入，就是将 数据从缓冲区中写入到通道中。</code></pre>
-<h3 id="选择器-Selector"><a href="#选择器-Selector" class="headerlink" title="选择器(Selector)"></a>选择器(Selector)</h3><pre><code class="textmate">Selector 选择器可以理解为一个IO事件的监听与查询 器。通过选择器，一个线程可以查询多个通道的IO事件的就绪状态</code></pre>
+NIO: 向通道中写入数据，也可以从通道中读取数据
+</code></pre>
+<h4 id="缓冲区-Buffer"><a href="#缓冲区-Buffer" class="headerlink" title="缓冲区(Buffer)"></a>缓冲区(Buffer)</h4><pre><code class="textmate">所谓通道的读取，就是将数据从通道读取到缓冲区中;所谓通道的写入，就是将 数据从缓冲区中写入到通道中。
+</code></pre>
+<h3 id="选择器-Selector"><a href="#选择器-Selector" class="headerlink" title="选择器(Selector)"></a>选择器(Selector)</h3><pre><code class="textmate">Selector 选择器可以理解为一个IO事件的监听与查询 器。通过选择器，一个线程可以查询多个通道的IO事件的就绪状态
+</code></pre>
 <h2 id="Buffer类"><a href="#Buffer类" class="headerlink" title="Buffer类"></a>Buffer类</h2><table>
 <thead>
 <tr>
