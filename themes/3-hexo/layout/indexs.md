@@ -5,9 +5,31 @@
  
 ## 个人博客首页
 
-少年易学老难成，一寸光阴不可轻。 ——朱熹
+<!--今日诗词-->
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<h3>今日诗词</h3>
+<div id="today-poem">正在加载今日诗词....</div>
+<div>来源: <a href="https://www.jinrishici.com">今日诗词</a></div>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    console.log(result.data);
+    var goodWords = result.data.content;
+    var content = result.data.origin;
+    var htmlTxt = '<div>'+content.title+'</div>'+
+                  '<div>--'+content.author+'</div>';
+    for(var i=0; i<content.content.length; i++){
+        var words = content.content[i];
+        if(words.includes(goodWords)){
+            var wordSplit = words.split(goodWords);
+            htmlTxt = htmlTxt + '<div>'+wordSplit[0]+'<font class="goodWords_class">'+goodWords+'</font>'+wordSplit[1]+'</div>';
+        } else {
+            htmlTxt = htmlTxt + '<div>'+words+'</div>';
+        }
+    }
+    document.getElementById("today-poem").innerHTML = htmlTxt;
+  });
+</script>
 
-Stay hungry,Stay foolish     ——Steve Jobs
 
 ### 关于
 本博客通过 [Hexo](https://hexo.io/) 生成，部署在 [Gitee Pages](https://gitee.com/help/articles/4136#article-header0)<p>

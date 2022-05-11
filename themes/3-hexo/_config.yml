@@ -152,7 +152,7 @@ table: green_title
 # green_title 头部为青色的table样式
 
 # 首页背景图
-index_bg_img:
+index_bg_img: /img/background/index-1920x1200.jpg
 # 其他页面背景图
 other_bg_img:
 
@@ -214,7 +214,10 @@ mermaid:
 
 # 友情链接
 friends:
-  #叶落阁: http://yelog.org/
+  叶落阁: http://yelog.org/
+  InfoQ: https://www.infoq.cn/
+  CSDN: https://www.csdn.net/
+  廖雪峰的官方网站: https://www.liaoxuefeng.com/
 
 ##########评论设置#############
 comment:
