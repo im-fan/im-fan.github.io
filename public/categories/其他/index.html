@@ -292,6 +292,14 @@
     <div class="friends-content">
         <ul>
             
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://www.infoq.cn/">InfoQ</a></li>
+            
+            <li><a target="_blank" href="https://www.csdn.net/">CSDN</a></li>
+            
+            <li><a target="_blank" href="https://www.liaoxuefeng.com/">廖雪峰的官方网站</a></li>
+            
         </ul>
     </div>
 </div>
@@ -695,18 +703,18 @@
         </a>
         
         <a  class="全部文章 后端 消息队列 "
-           href="/2021/02/03/backend/mq/rocketmq/"
-           data-tag="message,rocketmq"
-           data-author="" >
-            <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
-            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
-        </a>
-        
-        <a  class="全部文章 后端 消息队列 "
            href="/2021/02/03/backend/mq/kafka/"
            data-tag="message,kafka"
            data-author="" >
             <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/rocketmq/"
+           data-tag="message,rocketmq"
+           data-author="" >
+            <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
             <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
         </a>
         
@@ -874,7 +882,7 @@
         <article class="index">
             <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Imfan"><span class="toc-text">Imfan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%A6%96%E9%A1%B5"><span class="toc-text">个人博客首页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E"><span class="toc-text">关于</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Imfan"><span class="toc-text">Imfan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%A6%96%E9%A1%B5"><span class="toc-text">个人博客首页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">今日诗词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E"><span class="toc-text">关于</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -891,8 +899,32 @@
 <blockquote>
 <p>思考、记录、回顾</p>
 </blockquote>
-<h2 id="个人博客首页"><a href="#个人博客首页" class="headerlink" title="个人博客首页"></a>个人博客首页</h2><p>少年易学老难成，一寸光阴不可轻。 ——朱熹</p>
-<p>Stay hungry,Stay foolish     ——Steve Jobs</p>
+<h2 id="个人博客首页"><a href="#个人博客首页" class="headerlink" title="个人博客首页"></a>个人博客首页</h2><!--今日诗词-->
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<h3>今日诗词</h3>
+<div id="today-poem">正在加载今日诗词....</div>
+<div>来源: <a target="_blank" rel="noopener" href="https://www.jinrishici.com">今日诗词</a></div>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    console.log(result.data);
+    var goodWords = result.data.content;
+    var content = result.data.origin;
+    var htmlTxt = '<div>'+content.title+'</div>'+
+                  '<div>--'+content.author+'</div>';
+    for(var i=0; i<content.content.length; i++){
+        var words = content.content[i];
+        if(words.includes(goodWords)){
+            var wordSplit = words.split(goodWords);
+            htmlTxt = htmlTxt + '<div>'+wordSplit[0]+'<font class="goodWords_class">'+goodWords+'</font>'+wordSplit[1]+'</div>';
+        } else {
+            htmlTxt = htmlTxt + '<div>'+words+'</div>';
+        }
+    }
+    document.getElementById("today-poem").innerHTML = htmlTxt;
+  });
+</script>
+
+
 <h3 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h3><p>本博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4136#article-header0">Gitee Pages</a><p><br>引用主题 <a target="_blank" rel="noopener" href="https://yelog.org/2017/03/23/3-hexo-instruction/">3-hexo</a></p>
 <p>总文章:<code class="article_number"></code>篇，所有文章总字数：<code class="site_word_count"></code>字<p><br>历史访问人数：<code class="site_uv"></code>人，历史访问量：<code class="site_pv"></code>次</p>
 
@@ -1291,6 +1323,10 @@
     
 
     /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background/index-1920x1200.jpg);
+    }
     
     
 
