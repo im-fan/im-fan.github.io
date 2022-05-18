@@ -43,6 +43,9 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
+<!--gitee-talk-->
+<script src="https://giteement.oss-cn-beijing.aliyuncs.com/oauthcallback.browser.js"></script>
+
 <meta name="generator" content="Hexo 5.2.0"></head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
@@ -288,7 +291,6 @@
 
         $("#post .pjax table").addClass("green_title");
 
-
         /*渲染打赏样式*/
 
 
@@ -302,13 +304,13 @@
 
         /*代码高亮，行号对齐*/
         $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
-
-
     }
 
     /*打赏页面隐藏与展示*/
 
+    /* 评论 */
+    <!-- 回传giteement评论页网址 -->
+    Oauthcallback();
 
 </script>
 
