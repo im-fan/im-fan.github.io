@@ -73,7 +73,6 @@ categories:
 - 较少依赖
 
 ### 1.物理部署结构
-
 <img src="https://gitee.com/im-fan/fan-pic/raw/master/images/rocketmq-deploy.jpg" alt="物理部署结构图"/>
 
 ```textmate
@@ -89,7 +88,7 @@ categories:
 ```
 
 ### 2.逻辑部署结构
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/image-20220221170214844.png" alt="逻辑部署结构图"/>
+<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/rocketmq-logic-deploy.png" alt="逻辑部署结构图"/>
 
 ## 三、存储特点
 
