@@ -12,7 +12,6 @@
 <div>来源: <a href="https://www.jinrishici.com">今日诗词</a></div>
 <script type="text/javascript">
   jinrishici.load(function(result) {
-    console.log(result.data);
     var goodWords = result.data.content;
     var content = result.data.origin;
     var htmlTxt = '<div>'+content.title+'</div>'+
@@ -21,7 +20,7 @@
         var words = content.content[i];
         if(words.includes(goodWords)){
             var wordSplit = words.split(goodWords);
-            htmlTxt = htmlTxt + '<div>'+wordSplit[0]+'<font class="goodWords_class">'+goodWords+'</font>'+wordSplit[1]+'</div>';
+            htmlTxt = htmlTxt + '<div>「'+wordSplit[0]+'<font class="goodWords_class">'+goodWords+'</font>'+wordSplit[1]+'」</div>';
         } else {
             htmlTxt = htmlTxt + '<div>'+words+'</div>';
         }
