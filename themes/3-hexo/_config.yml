@@ -221,7 +221,7 @@ friends:
 
 ##########评论设置#############
 comment:
-  on: false
+  on: true
   type: giteement  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
   comment_count: false  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
   ## 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/
@@ -294,15 +294,15 @@ utteranc:
 
 ##########CND设置#############
 CDN:
-  jquery: //cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js
-  jquery_cookie: //cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js
-  highlight: //cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js
-  pjax: //cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js
-  animate: //cdn.bootcss.com/animate.css/3.7.2/animate.min.css//cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js
-  nprogres_js: //cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js
-  mathjax: //cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML
-  photoswipe_js: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js
-  photoswipe_ui_js: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js
-  photoswipe_css: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css
-  photoswipe_skin_css: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css
+  jquery: https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js
+  jquery_cookie: https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js
+  highlight: https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js
+  pjax: https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js
+  animate: https://cdn.bootcss.com/animate.css/4.1.0/animate.min.css
+  nprogres_js: https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js
+  mathjax: https://cdn.bootcdn.net/ajax/libs/mathjax/2.7.7/MathJax.js
+  photoswipe_js: https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe.min.js
+  photoswipe_ui_js: https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js
+  photoswipe_css: https://cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css
+  photoswipe_skin_css: https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css
 ##############################
