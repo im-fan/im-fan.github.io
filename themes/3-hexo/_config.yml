@@ -221,7 +221,7 @@ friends:
 
 ##########评论设置#############
 comment:
-  on: true
+  on: false
   type: giteement  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
   comment_count: false  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
   ## 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/
@@ -236,7 +236,7 @@ disqus:
 ## 码云评论
 ## https://github.com/JoeyBling/hexo-theme-yilia-plus
 giteement:
-  enable: true  # 是否启用码云评论系统
+  enable: false  # 是否启用码云评论系统
   # 是否使用官方js(false可以提升访问速度)
   remote: false
   redirect_uri: http://im-fan.gitee.io   # 应用回调地址(请和配置的第三方应用保持一致)
