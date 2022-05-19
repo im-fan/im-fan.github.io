@@ -104,26 +104,28 @@ public class ExcelUtils {
 ```
 - 使用
 ```java
-/** 导出excel模板**/
-public void exportTemplate(List<Integer> ids,HttpServletResponse response){
-    try {
-        List<XXX> result = getByIds(ids);
+class ExcelUtil{
+    /** 导出excel模板**/
+    public void exportTemplate(List<Integer> ids,HttpServletResponse response){
+        try {
+            List<XXX> result = getByIds(ids);
 
-        // 指定标红色的列
-        List<Integer> columns = Arrays.asList(0,1,2,3);
+            // 指定标红色的列
+            List<Integer> columns = Arrays.asList(0,1,2,3);
 
-        TitleHandler titleHandler = new TitleHandler(columns, IndexedColors.RED.index);
-        ExcelUtils.exportExcel("文件名","sheet名称",
-                XXX.class,result,response,titleHandler);
-    } catch (IOException e) {
-        log.warn("导出失败,error={}",e);
+            TitleHandler titleHandler = new TitleHandler(columns, IndexedColors.RED.index);
+            ExcelUtils.exportExcel("文件名","sheet名称",
+                    XXX.class,result,response,titleHandler);
+        } catch (IOException e) {
+            log.warn("导出失败,error={}",e);
+        }
     }
 }
 ```
 
 ### 设置中文文件名
 
-```java
+```textmate
 // 代码中添加
 response.setContentType("application/vnd.ms-excel;charset=UTF-8");
 response.setCharacterEncoding("utf-8");
@@ -131,7 +133,7 @@ response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileN
 ```
 
 ### 导出失败返回错误信息
-```java
+```textmate
 // 重写响应信息数据类型
 response.reset();
 response.setContentType("application/json");

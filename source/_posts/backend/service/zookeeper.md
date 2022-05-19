@@ -10,10 +10,6 @@ categories:
 - 服务治理
 ---
 
-
-## 相关链接
-> [官网](https://zookeeper.apache.org/releases.html)
-
 ## 原理相关
 ### 角色
 |角色| |描述|
@@ -127,3 +123,6 @@ categories:
     kill进程
 3.删除 dataDir 和 dataLogDir 路径下 version-2 文件夹后重启
 ```
+
+## 相关链接
+> [官网](https://zookeeper.apache.org/releases.html)

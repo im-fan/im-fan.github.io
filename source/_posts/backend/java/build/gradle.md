@@ -9,8 +9,6 @@ categories:
 - 项目编译
 ---
 
-- [Gradle理解：configuration、dependency](https://blog.csdn.net/gdeer/article/details/104815986)
-
 ### 关键字解释
 
 |关键字|关键字解释|值|值解释|
@@ -43,3 +41,5 @@ categories:
 |releaseImplementation|releaseCompile|仅在Release模式的编译和最终的Release apk打包时有效|
 
 
+### 相关链接
+- [Gradle理解：configuration、dependency](https://blog.csdn.net/gdeer/article/details/104815986)

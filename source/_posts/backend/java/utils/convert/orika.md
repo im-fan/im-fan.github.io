@@ -9,9 +9,6 @@ categories:
 - 工具
 ---
 
-## Orika
-- [官方文档](http://orika-mapper.github.io/orika-docs/)
-
 ### 提供的能力
 ```textmate
 Orika为开发者提供了如下功能：
@@ -208,3 +205,7 @@ dto 2 po =====> {"createTime":1616272246000,"ids":[1002,1003,1004,1005],"poName"
 pos 2 dtos =====> [{"createTime":"Sat Mar 20 14:30:46 CST 2021","dtoName":"this is po","ids":["1002","1003","1004","1005"],"userId":"10001","userName":"aaaa"}]
 pos 2 dtos =====> [{"createTime":1616272246000,"ids":[1002,1003,1004,1005],"poName":"this is po","userId":10001,"userName":"aaaa"}]
 ```
+
+
+#### Orika相关文档
+- [官方文档](http://orika-mapper.github.io/orika-docs/)

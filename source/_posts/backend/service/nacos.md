@@ -12,12 +12,6 @@ categories:
 - 服务治理
 ---
 
-## 相关资料
-- [官方文档](https://nacos.io/zh-cn/docs/what-is-nacos.html)
-- [小白也能懂的 Nacos 服务模型介绍(转)](https://mp.weixin.qq.com/s/S8HI7DG5v9C2IfjXtkVjuQ) 
-- [动态刷新原理(转)](https://blog.csdn.net/wangwei19871103/article/details/105775039/)
-- [相关-Raft算法(转)](https://www.baidu.com/s?ie=UTF-8&wd=Raft%E7%AE%97%E6%B3%95)
-
 ## 介绍
 ### 主要作用
 ```textmate
@@ -45,13 +39,24 @@ categories:
     有可视化操作界面
     nacos基于长连接，配置变动后立即通知Proivder
 ```
-### 扩展
+
+### 核心
+- Nacos服务模型
+
+    <img alt="Nacos服务模型" width="600px" height="400px" src="https://raw.githubusercontent.com/im-fan/fan-pic/release/imagesnacos-server-module.jpg"/>
+
 - raft协议
 ```textmate
 Raft 协议强依赖 Leader 节点来确保集群数据一致性。
 步骤:
-client 发送过来的数据均先到达 Leader 节点，Leader 接收到数据后，先将数据标记为 uncommitted 状态，
-随后 Leader 开始向所有 Follower 复制数据并等待响应，集群中超过半数的 Follower 成功接收数据并响应后，
-Leader 将数据的状态标记为 committed，随后向 client 发送数据已接收确认，在向 client 发送出已数据接收后，
-再向所有 Follower 节点发送通知表明该数据状态为committed。
+    1.client 发送过来的数据均先到达 Leader 节点，Leader 接收到数据后，先将数据标记为 uncommitted 状态，
+    2.Leader 开始向所有 Follower 复制数据并等待响应，集群中超过半数的 Follower 成功接收数据并响应后，Leader 将数据的状态标记为 committed，
+    3.Leader 随后向 client 发送数据已接收确认，client 发送出已数据接收后，再向所有 Follower 节点发送通知表明该数据状态为committed。
 ```
+
+## 相关资料
+- [Nacos官方文档](https://nacos.io/zh-cn/docs/what-is-nacos.html)
+- [小白也能懂的 Nacos 服务模型介绍(转)](https://mp.weixin.qq.com/s/S8HI7DG5v9C2IfjXtkVjuQ)
+- [动态刷新原理(转)](https://blog.csdn.net/wangwei19871103/article/details/105775039/)
+- [相关-Raft算法(转)](https://www.baidu.com/s?ie=UTF-8&wd=Raft%E7%AE%97%E6%B3%95)
+- [Spring-Cloud-Alibaba](https://github.com/alibaba/spring-cloud-alibaba/wiki)

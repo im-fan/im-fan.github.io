@@ -214,3 +214,15 @@ categories:
     }
 }
 ```
+
+### 扩展使用
+
+- 导入其他接口管理软件
+```textmate
+    1.接口管理软件找到导入swagger文档的入口
+    2.输入 https://xxxxx/v2/api-docs (swagger文档json结构数据地址)
+```
+
+### 相关链接
+- [Swagger官网](https://swagger.io/)
+- 
