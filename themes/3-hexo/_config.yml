@@ -201,8 +201,7 @@ mathjax:
 # Mermaid 支持
 mermaid:
   on: true
-  cdn: //cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js
-  #cdn: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js
+  cdn: https://cdn.bootcdn.net/ajax/libs/mermaid/8.4.2/mermaid.min.js
   options: # 更多配置信息可以参考 https://mermaidjs.github.io/#/mermaidAPI
     theme: 'default'
     startOnLoad: true
