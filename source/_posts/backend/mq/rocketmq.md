@@ -73,7 +73,7 @@ categories:
 - 较少依赖
 
 ### 1.物理部署结构
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/rocketmq-deploy.jpg" alt="物理部署结构图"/>
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-deploy.jpg" alt="物理部署结构图"/>
 
 ```textmate
 1.NameServer 
@@ -88,7 +88,7 @@ categories:
 ```
 
 ### 2.逻辑部署结构
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/rocketmq-logic-deploy.png" alt="逻辑部署结构图"/>
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-logic-deploy.png" alt="逻辑部署结构图"/>
 
 ## 三、存储特点
 
@@ -122,9 +122,9 @@ RocketMQ 选择 Linux Ext4 文件系统
 
 ### 3.数据存储结构&存储目录结构
 
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/rocketmq-data.jpg" alt="数据存储结构" width="600px" height="400px"/>
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-data.jpg" alt="数据存储结构" width="600px" height="400px"/>
 
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/rocketmq-file.png" alt="存储目录结构" width="600px" height="400px" />
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-file.png" alt="存储目录结构" width="600px" height="400px" />
 
 ## 四、关键特性
 

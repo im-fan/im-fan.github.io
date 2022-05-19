@@ -54,12 +54,12 @@ scan -> beanPorcessor(描述bean信息) -> 放到 configMap 中 -> refresh -> �
 ```
 ### AnnotationConfigApplicationContext详解
 - 类图
-  ![类图](https://gitee.com/im-fan/fan-pic/raw/master/images/springframework-bean-uml.png)
+  ![类图](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/springframework-bean-uml.png)
 - 流程图
-  ![执行流程](https://gitee.com/im-fan/fan-pic/raw/master/images/spring-start-process.png)
+  ![执行流程](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/spring-start-process.png)
 
 
 ### 解决循环依赖
 - [疯狂创客圈(转)](https://www.cnblogs.com/crazymakercircle/p/14465630.html)
 - 主要流程图
-  ![spring解决循环依赖流程(转)](https://gitee.com/im-fan/fan-pic/raw/master/images/spring-cycle-refrence.png)
+  ![spring解决循环依赖流程(转)](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/spring-cycle-refrence.png)

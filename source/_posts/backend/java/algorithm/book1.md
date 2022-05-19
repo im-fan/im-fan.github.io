@@ -147,13 +147,13 @@ O(1)
 4.层序遍历
 	从根节点开始，逐层从左到右遍历
 ```
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-first.png" alt="tree-first" style="zoom:30%;" />
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/tree-first.png" alt="tree-first" style="zoom:30%;" />
 
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-middle.png" alt="tree-middle" style="zoom:33%;" />
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/tree-middle.png" alt="tree-middle" style="zoom:33%;" />
 
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-last.png" alt="image-20220113103906997" style="zoom:31%;" />
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/tree-last.png" alt="image-20220113103906997" style="zoom:31%;" />
 
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/tree-level.png" alt="image-20220113103925951" style="zoom:33%;" />
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/tree-level.png" alt="image-20220113103925951" style="zoom:33%;" />
 
 - 树的应用
 
@@ -276,7 +276,7 @@ O(1)
 
 #### 排序方法效率比较
 
-<img src="https://gitee.com/im-fan/fan-pic/raw/master/images/sort-rank.png" alt="sort-rank" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/sort-rank.png" alt="sort-rank" style="zoom:50%;" />
 
 ### 结尾语
 

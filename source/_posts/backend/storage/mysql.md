@@ -74,7 +74,7 @@ InnoDB 采取的方式是:将数据划分为若干个页，以页作为磁盘和
 ```
 
 - 行格式
-<br/>[Compact行](https://gitee.com/im-fan/fan-pic/raw/master/images/mysql-compact%E8%A1%8C%E6%A0%BC%E5%BC%8F.png)
+<br/>[Compact行](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/mysql-compact%E8%A1%8C%E6%A0%BC%E5%BC%8F.png)
 ```textmate
   Compact 、 Redundant 、Dynamic 和 Compressed
   变长字段(varchar(n)、text等)占用内存：1. 真正的数据内容 2. 占用的字节数
@@ -99,7 +99,7 @@ MySQL 中规定一个页中至少存放两行记录
 ```
 
 - 总结
-<br/>[InnoDB数据页结构](https://gitee.com/im-fan/fan-pic/raw/master/images/InnoDB_data_page.png)
+<br/>[InnoDB数据页结构](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/InnoDB_data_page.png)
 
 ```textmate
 1. InnoDB为了不同的目的而设计了不同类型的页，我们把用于存放记录的页叫做 数据页 。
@@ -122,8 +122,8 @@ MySQL 中规定一个页中至少存放两行记录
 ```
 
 - Innodb通用页结构
-<br/>[Innodb通用页结构](https://gitee.com/im-fan/fan-pic/raw/master/images/InnoDB%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
-<br/>[Innodb通用页结构-解释](https://gitee.com/im-fan/fan-pic/raw/master/images/Innodb%E9%80%9A%E7%94%A8%E9%A1%B5%E7%BB%93%E6%9E%84-%E8%A7%A3%E9%87%8A.png)
+<br/>[Innodb通用页结构](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/InnoDB%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+<br/>[Innodb通用页结构-解释](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/Innodb%E9%80%9A%E7%94%A8%E9%A1%B5%E7%BB%93%E6%9E%84-%E8%A7%A3%E9%87%8A.png)
 
 ```textmate
 表空间结构(系统表空间/独立表空间)
@@ -140,7 +140,7 @@ MySQL 中规定一个页中至少存放两行记录
 2.IBUF_BITMAP
 ```
 
-- [InnonDB文件结构总结](https://gitee.com/im-fan/fan-pic/raw/master/images/mysql-innondb%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
+- [InnonDB文件结构总结](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/mysql-innondb%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
 
 
 ### 索引
@@ -266,7 +266,7 @@ SHOW VARIABLES LIKE 'optimizer_trace';
 
 ### 事务
 #### ReadView
-- [版本链](https://gitee.com/im-fan/fan-pic/raw/master/images/mysql-innodb-%E7%89%88%E6%9C%AC%E9%93%BE.png)
+- [版本链](https://raw.githubusercontent.com/im-fan/fan-pic/release/images/mysql-innodb-%E7%89%88%E6%9C%AC%E9%93%BE.png)
 
 ```textmate
 READ COMMITTED 和 REPEATABLE READ 隔离级别的事务来说，

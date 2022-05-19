@@ -16,7 +16,9 @@ categories:
 - [官网](https://arthas.aliyun.com/doc/quick-start.html)
 - [用户案例](https://github.com/alibaba/arthas/issues?q=label%3Auser-case)
 - [常见问题回答](https://github.com/alibaba/arthas/issues?utf8=%E2%9C%93&q=label%3Aquestion-answered+)
+
 ## 安装启动
+
 ```textmate
 1.arthas-boot方式安装
 curl -O https://arthas.aliyun.com/arthas-boot.jar
@@ -26,6 +28,7 @@ java -jar arthas-boot.jar -h
 ```
 
 ## 常用命令
+
 |命令名称|描述|示例|
 |---|---|---|
 |thread|查看当前线程信息，查看线程的堆栈|thread -n 3 指定最忙的前N个线程并打印堆栈<br/>thread -b 查找阻塞的线程|
