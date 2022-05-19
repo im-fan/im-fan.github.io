@@ -37,6 +37,7 @@ categories:
 ```
 
 - 方式二
+
 ```textmate
 1.Team Url
 	http://jrebel.cicoding.cn/016AAD2C-DD8E-6D92-58EB-B6C79E874355
@@ -60,16 +61,22 @@ sudo xattr -d com.apple.quarantine /Applications/xxxxxx.app
 #### ssh密钥生成
 ```shell
 
-## 配置
+# 配置
 git config --global user.name "名称"
 git config --global user.email "邮箱地址"
 
-## -t重新生成
+# -t重新生成
 ssh-keygen [-t] rsa -C "your_email@example.com" -f gitee_id_rsa
 
-## 如果生成的密钥不生效，则将密钥重新加下！！！
+# 如果生成的密钥不生效，将密钥重新加下！
 ssh-add ~/.ssh/qts_id_rsa
 
-##测试是否成生效
+# 测试是否成生效
 ssh -T gitee@gitee.com
+
+# 查看已加入的密钥
+ssh-add -l
+
+# 删除所有已加入的密钥
+ssh-add -D
 ```

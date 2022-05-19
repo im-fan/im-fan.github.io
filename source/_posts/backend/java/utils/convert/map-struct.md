@@ -21,23 +21,27 @@ categories:
 IDEA Support: https://plugins.jetbrains.com/plugin/10036-mapstruct-support/versions
 
 
-### Java Bean属性拷贝性能对比
+### Java Bean属性拷贝对比
 
+- 性能
+
+```textmate
 get/set >= [MapStruct](http://mapstruct.org/) > [JMapper](https://jmapper-framework.github.io/jmapper-core/)  >  ["beanCopier(cglib)"](https://github.com/cglib/cglib/blob/master/cglib/src/main/java/net/sf/cglib/beans/BeanCopier.java) > Orika > ModelMapper > Spring BeanUtils > Dozer > Apache BeanUtils
+```
   
-性能对比数据来源：
- - https://www.baeldung.com/java-performance-mapping-frameworks
- - https://java.libhunt.com/categories/337-bean-mapping
+- 性能对比数据来源：
+  - https://www.baeldung.com/java-performance-mapping-frameworks
+  - https://java.libhunt.com/categories/337-bean-mapping
  
-说明：
-- get/set 需要手动编写大量转换代码，代码简洁性差、重复性高和工作量大。
-- beanCopier 性能较高，属性名和类型有较高的匹配要求。
-- MapStruct 性能较高，在编译阶段，生成Get/Set代码,支持不同属性之间自定义转换。
-- Orika 性能较高,支持自定义属性拷贝，性能略差与前两种，当比后面几种高很多。
-- Spring BeanUtils 性能一般，只能支持相关名称的拷贝。
-- Dozer 性能差，使用简单，编写xml不方便。
-- Apache BeanUtils 性能差。
-    
+- 对比结果：
+  - get/set 需要手动编写大量转换代码，代码简洁性差、重复性高和工作量大。
+  - beanCopier 性能较高，属性名和类型有较高的匹配要求。
+  - MapStruct 性能较高，在编译阶段，生成Get/Set代码,支持不同属性之间自定义转换。
+  - Orika 性能较高,支持自定义属性拷贝，性能略差与前两种，但比后面几种高很多。属性名相同单类型不同事需编写转换规则，否则会报错
+  - Spring BeanUtils 性能一般，只能支持相关名称的拷贝。
+  - Dozer 性能差，使用简单，编写xml不方便。
+  - Apache BeanUtils 性能差。
+
 ### demo
 
 实例代码:
@@ -151,5 +155,11 @@ public class MapStructTest {
 }
 
 ```
+
 ### 实现原理
+
+```textmate
+MapStruct是基于JSR 269的Java注解处理器，因此可以在命令行构建中使用（javac、Ant、Maven等等），也可以在IDE内使用。
+JSR269规范: 允许在编译期处理注解，读取、修改、添加抽象语法树中的内容。
 在Maven 编译阶段将自动实现PersonMapper的对象属性转换接口,生成PersonMapperImpl文件。
+```
