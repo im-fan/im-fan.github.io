@@ -707,18 +707,18 @@
         </a>
         
         <a  class="全部文章 后端 消息队列 "
-           href="/2021/02/03/backend/mq/kafka/"
-           data-tag="message,kafka"
-           data-author="" >
-            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
-            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
-        </a>
-        
-        <a  class="全部文章 后端 消息队列 "
            href="/2021/02/03/backend/mq/rocketmq/"
            data-tag="message,rocketmq"
            data-author="" >
             <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/kafka/"
+           data-tag="message,kafka"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
             <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
         </a>
         
@@ -1105,8 +1105,8 @@ Zab协议有两种模式，它们分别是 **恢复模式** 和 **广播模式**
 
 
     <div id="comments"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/gitalk@1.7.2/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@1.7.2/dist/gitalk.min.js"></script>
 
 
 <script type="text/javascript">
@@ -1467,7 +1467,7 @@ Zab协议有两种模式，它们分别是 **恢复模式** 和 **广播模式**
         if (window.mermaid){
             window.mermaid = null
         }
-        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+        $.getScript("https://cdn.bootcdn.net/ajax/libs/mermaid/8.4.2/mermaid.min.js", function () {
             var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
             if (window.mermaid) {
                 mermaid.initialize(mermaidOptions)
