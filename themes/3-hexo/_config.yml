@@ -250,6 +250,7 @@ giteement:
     client_secret: '7b1ec5be89ee1d014fdc1ce7597524c1991c59f2e126701c91a5cc5d01164980'
 
 gitalk:
+  id: location.pathname
   githubID: im-fan
   repo: im-fan.gitee.io
   ClientID: cd9c7d8003d54ab55feb
