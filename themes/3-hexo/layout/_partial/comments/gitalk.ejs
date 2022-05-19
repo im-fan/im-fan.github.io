@@ -1,5 +1,7 @@
 <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
 
 <script type="text/javascript">
     $.getScript('<%=theme.blog_path?theme.blog_path.lastIndexOf("/") === theme.blog_path.length-1?theme.blog_path.slice(0, theme.blog_path.length-1):theme.blog_path:'' %>/js/gitalk.js', function () {
@@ -9,7 +11,7 @@
             repo: '<%=theme.gitalk.repo %>',
             owner: '<%=theme.gitalk.githubID %>',
             admin: ['<%=theme.gitalk.adminUser %>'],
-            id: decodeURI(location.pathname),
+            id: decodeURI('<%=theme.gitalk.id %>'),
             distractionFreeMode: '<%=theme.gitalk.distractionFreeMode %>',
             language: '<%=theme.gitalk.language %>',
             perPage: parseInt('<%=theme.gitalk.perPage %>',10)
