@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Pulsar消息队列</title>
+      <link href="/2022/05/23/backend/mq/pulsar/"/>
+      <url>/2022/05/23/backend/mq/pulsar/</url>
+      
+        <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><blockquote><p>Apache Pulsar 是 Apache 软件基金会顶级项目，是下一代云原生分布式消息流平台，集消息、存储、轻量化函数式计算为一体，<br>采用计算与存储分离架构设计，支持多租户、持久化存储、多机房跨区域数据复制，具有强一致性、高吞吐、低延时及高可扩展性等流数据存储特性，<br>被看作是云原生时代实时消息流传输、存储和计算最佳解决方案。</p></blockquote><h3 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h3><ul><li><p><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/imagespulsar-module.jpg" alt="pulsar组件"></p></li><li><p>消息结构</p><pre><code>graph TD;  A--&gt;B;  A--&gt;C;  B--&gt;D;  C--&gt;D;</code></pre></li></ul><pre><code>|组件|描述||---|---||Value / data payload|消息携带的数据。所有 Pulsar 消息都包含原始字节，尽管消息数据也可以符合数据模式。|| Key| 消息可以有选择地使用键标记，这对于诸如主题压缩之类的事情很有用。|| Properties | 用户定义属性的可选键/值映射。|| Topic name | 消息要发布到的主题的名称。|| Schema version|使用该模式生成消息的版本号。 || Sequence ID| 每条pulsar信息都属于其主题的有序序列。消息的序列ID最初是由它的生产者分配的，表示它在序列中的顺序，也可以定制。“序列ID”可用于重复数据删除。如果brokerDeduplicationEnabled设置为true，每个消息的序列ID在一个主题(未分区)或分区的生产者中是唯一的。|| Message ID| 消息的消息ID在消息被持久化存储后立即由经纪人分配。消息ID表示消息在分类账中的特定位置，在Pulsar集群中是唯一的。 || Publish time| 消息发布的时间戳。时间戳由生产者自动应用。|| Event time| 由应用程序附加到消息上的可选时间戳。例如，应用程序在处理消息时附加时间戳。如果没有设置事件时间，则该值为0。 |```textmate    Producer：数据生产者，发送消息的一方。生产者负责创建消息，将其投递到 Pulsar 中。    Consumer：数据消费者，接收消息的一方。消费者连接到 Pulsar 并接收消息，进行相应的业务处理。    Broker：无状态的服务层，负责接收消息、传递消息、集群负载均衡等操作。Broker 不会持久化保存元数据。    BookKeeper：有状态的持久层，负责持久化地存储消息。    ZooKeeper：存储 Pulsar、BookKeeper 的元数据，集群配置等信息，负责集群间的协调(例如：Topic 与 Broker 的关系)、服务发现等。</code></pre><h4 id="可扩展"><a href="#可扩展" class="headerlink" title="可扩展"></a>可扩展</h4><ul><li><p>Broker 扩展</p><pre><code class="textmate">  Broker 是无状态的，当需要支持更多的消费者或生产者时，可以简单地添加更多的 Broker 节点来满足业务需求。  Pulsar 支持自动的分区负载均衡，在 Broker 节点的资源使用率达到阈值时，会将负载迁移到负载较低的 Broker 节点，  这个过程中分区也将在多个 Broker 节点中做平衡迁移，一些分区的所有权会转移到新的 Broker 节点。</code></pre></li><li><p>Bookie 扩展</p><pre><code class="textmate">  存储层的扩容，通过增加 Bookie 节点来实现。在 BooKie 扩容的阶段，由于分片机制，整个过程不会涉及到不必要的数据搬迁，  即不需要将旧数据从现有存储节点重新复制到新存储节点。</code></pre></li></ul><h3 id="部署文档-docker单机部署"><a href="#部署文档-docker单机部署" class="headerlink" title="部署文档(docker单机部署)"></a>部署文档(docker单机部署)</h3><pre><code class="textmate">- 启动apachePulsar(单机)docker run --name apachePulsar -dit -p 8080:8080 -p 6650:6650 apachepulsar/pulsar-standalone- 启动管理平台docker run --name apachePulsar-dashboard -dit -p 8081:80 -e SERVICE_URL=http://pulsar:8080 --link apachePulsar apachepulsar/pulsar-dashboard- 测试消息发送docker exec -it apachePulsar bash /pulsar/bin/pulsar-client produce my-topic --messages &quot;hello-pulsar&quot;- 访问管理平台http://localhost:8081/</code></pre><h3 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h3><ul><li><a href="https://pulsar.apache.org/">Apache Pulsar官网</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 消息队列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> message </tag>
+            
+            <tag> pulsar </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Shell命令记录</title>
       <link href="/2022/03/08/devops/shell/"/>
       <url>/2022/03/08/devops/shell/</url>
@@ -488,11 +517,11 @@
       
         <tags>
             
+            <tag> 注册中心 </tag>
+            
             <tag> nacos </tag>
             
             <tag> 动态配置 </tag>
-            
-            <tag> 注册中心 </tag>
             
         </tags>
       
@@ -657,35 +686,6 @@
     
     
     <entry>
-      <title>RocketMQ相关文档</title>
-      <link href="/2021/02/03/backend/mq/rocketmq/"/>
-      <url>/2021/02/03/backend/mq/rocketmq/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、专业术语"><a href="#一、专业术语" class="headerlink" title="一、专业术语"></a>一、专业术语</h2><h3 id="1-角色名称"><a href="#1-角色名称" class="headerlink" title="1. 角色名称"></a>1. 角色名称</h3><pre><code class="textmate">- Product    消息生产者- Consumer    消息消费者- Push Consumer    消息消费-推模式，应用通常向 Consumer 对象注册一个Listener接口，一旦收到消息，Consumer对象立刻回调Listener接口方法。- Pull Consumer    消息消费-拉模式，应用通常主动调用 Consumer 的拉消息方法从 Broker 拉消息，主动权由应用控制。- ProducerGroup    一类 Producer 的集合名称，这类 Producer 通常发送一类消息，且发送逻辑一致。- ConsumerGroup    一类 Consumer 的集合名称，这类 Consumer 通常消费一类消息，且消费逻辑一致。- Broker    消息中转角色，负责存储消息，转发消息，一般也称为 Server。在 JMS 规范中称为 Provider。- Message Queue    消息存储队列，长度无线(offset作为数据下标，long类型64位，理论上在 100 年内不会溢出，所以认为是长度无限)</code></pre><h3 id="2-消费模式"><a href="#2-消费模式" class="headerlink" title="2. 消费模式"></a>2. 消费模式</h3><pre><code class="textmate">- 广播消费    一条消息被多个 Consumer 消费，每个Consumer都会至少消费一次消息，广播消费中的 Consumer Group 概念可以认为在消息划分方面无意义。    在 CORBA Notification 规范中，消费方式都属于广播消费。在 JMS 规范中，相当于JMS publish/subscribe model- 集群消费    一个 Consumer Group 中的 Consumer 实例平均分摊消费消息。- 顺序消费    消费消息的顺序要同发送消息的顺序一致(局部顺序)，一类消息为满足顺序性，必须Producer单线程顺序发送到同一个队列，    这样 Consumer 就可以按照 Producer 发送 的顺序去消费消息。- 普通顺序消息    顺序消息的一种，正常情况下可以保证完全的顺序消息，但是一旦发生通信异常，Broker 重启，由于队列 总数发生发化，哈希取模后定位的队列会发化，产生短暂的消息顺序不一致。- 严格顺序消息    顺序消息的一种，无论正常异常情况都能保证顺序，但是牺牲了分布式 Failover(故障转移) 特性，即 Broker 集群中只 要有一台机器不可用，则整个集群都不可用，服务可用性大大降低。 如果服务器部署为同步双写模式，此缺陷可通过备机自动切换为主避免，不过仍然会存在几分钟的服务不可用。    目前已知的应用只有数据库 binlog 同步强依赖严格顺序消息，其他应用绝大部分都可以容忍短暂乱序，推    荐使用普通的顺序消息。</code></pre><h2 id="二、部署"><a href="#二、部署" class="headerlink" title="二、部署"></a>二、部署</h2><ul><li>队列模型的消息中间件，高性能、高可用、高实时、分布式特点</li><li>Producer、Consumer、队列都可以分布式</li><li>能够保证严格的消息顺序</li><li>提供消息推拉消息模式</li><li>亿级消息堆积能力</li><li>较少依赖</li></ul><h3 id="1-物理部署结构"><a href="#1-物理部署结构" class="headerlink" title="1.物理部署结构"></a>1.物理部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-deploy.jpg" alt="物理部署结构图"/><pre><code class="textmate">1.NameServer     无状态节点，可集群部署，节点之间无通信2.Broker    分为Master和Slave,一个master可以对应多个slave，但是一个slave只能对应一个master; master和slave的对应关系通过指定相同的BrokerName不同的BrokerId来定义，BorkerId为0标识master,非0标识slave。master可以部署多个。    每个Broker和NameServer集群中的所有节点建立长连接，定时注册Topic信息到所有的NameServer中3.Producer    Producer与NameServer集群中其中一个节点(随机选择)建立长连接，定期拉取Topic路由信息，并向提供Topic服务的Master建立长连接，并定时发送心跳。Producer完全无状态，可集群部署4.Consumer    Consumer与NameServer集群中的其中一个节点建立长连接，定期获取Topic路由，并向提供Topic服务的Master、Slave建立长连接，并定时发送心跳。Consumer订阅规则由Broker配置决定，既可以从Master订阅消息，也可以从Salve消息</code></pre><h3 id="2-逻辑部署结构"><a href="#2-逻辑部署结构" class="headerlink" title="2.逻辑部署结构"></a>2.逻辑部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-logic-deploy.png" alt="逻辑部署结构图"/><h2 id="三、存储特点"><a href="#三、存储特点" class="headerlink" title="三、存储特点"></a>三、存储特点</h2><h3 id="1-零拷贝原理"><a href="#1-零拷贝原理" class="headerlink" title="1.零拷贝原理"></a>1.零拷贝原理</h3><blockquote><p>Consumer消费消息过程中使用了零拷贝</p></blockquote><ul><li><a href="https://www.linuxjournal.com/article/6345">零拷贝相关链接</a></li><li>零拷贝方式</li></ul><pre><code class="textmate">1.mmap+write方式(mmap将一个文件或者其它对象映射进内存)    优点：使用小块文件传输，效率高，支持频繁调用    缺点：不能很好的利用DMA方式(Direct Memory Access，直接存储器访问),会比sendfile多消耗CPU,内存安全性控制复杂，需要避免JVM Crash文件2.使用sendfile方式    优点：可以利用DMA方式，消耗CPU较少，大块文件传输效率高，无内存安全问题    缺点：小块文件效率低于mmap方式，只能BIO方式传递，不能使用NIO。RocketMQ选择了mmap+write方式，因为现有小块数据传输需求，效果比sendfile更好</code></pre><h3 id="2-文件系统"><a href="#2-文件系统" class="headerlink" title="2.文件系统"></a>2.文件系统</h3><pre><code class="textmate">RocketMQ 选择 Linux Ext4 文件系统原因：    Ext4 文件系统删除 1G 大小的文件通常耗时小于50ms，而 Ext3 文件系统耗时约 1s 左右，且删除文件时，磁盘 IO 压力极大，会导致IO写入超时。  文件系统层面需要做以下调优措施    文件系统 IO 调度算法需要调整为 deadline，因为 deadline 算法在随机读情冴下，可以合并读请求为顺序跳跃方式，从而提高读 IO 吞吐量。</code></pre><h3 id="3-数据存储结构-amp-存储目录结构"><a href="#3-数据存储结构-amp-存储目录结构" class="headerlink" title="3.数据存储结构&amp;存储目录结构"></a>3.数据存储结构&amp;存储目录结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-data.jpg" alt="数据存储结构" width="600px" height="400px"/><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-file.png" alt="存储目录结构" width="600px" height="400px" /><h2 id="四、关键特性"><a href="#四、关键特性" class="headerlink" title="四、关键特性"></a>四、关键特性</h2><h3 id="1-单机支持1万以上持久化队列"><a href="#1-单机支持1万以上持久化队列" class="headerlink" title="1.单机支持1万以上持久化队列"></a>1.单机支持1万以上持久化队列</h3><pre><code class="textmate">|       8Byte     | 4Byte |        8Byte        || CommitLogOffset | Size  | Message Tag Hashcode|1.所有数据单独存储到CommitLog文件中，完全顺序写，随机读2.对最终用户展现的队列实际只存储消息在CommitLog的位置信息，使用串行方式刷盘</code></pre><h3 id="2-刷盘策略"><a href="#2-刷盘策略" class="headerlink" title="2.刷盘策略"></a>2.刷盘策略</h3><pre><code class="textmate">先写入系统pageCache 然后刷盘，保证内存与磁盘都有一份数据，访问时从内存中读取- 同步刷盘    1. 写入 PAGECACHE 后，线程等待，通知刷盘线程刷盘。     2. 刷盘线程刷盘后，唤醒前端等待线程，可能是一批线程。     3. 前端等待线程吐用户迒回成功。- 异步刷盘同步刷盘与异步刷盘的唯一区别是异步刷盘写完 PAGECACHE 直接返回，而同步刷盘需要等待刷盘完成才返回</code></pre><h3 id="3-消息查询"><a href="#3-消息查询" class="headerlink" title="3.消息查询"></a>3.消息查询</h3><pre><code class="textmate">- 按照MessageId查询消息    | 8Byte | 8Byte |    |消息所属Broker地址|CommitLogOffset|- 按照MessageKey查询消息    |4Byte|8Byte|4Byte|4Byte|    |keyHash|CommitLogOffset|Timestamp|NextIndexOffset|</code></pre><h2 id="五、消息过滤"><a href="#五、消息过滤" class="headerlink" title="五、消息过滤"></a>五、消息过滤</h2><h3 id="1-简单消息过滤"><a href="#1-简单消息过滤" class="headerlink" title="1.简单消息过滤"></a>1.简单消息过滤</h3><pre><code class="textmate">通过topic和 tags进行过滤consumer.subscribe(&quot;TopicTest1&quot;,&quot;TagA || TagB&quot;);</code></pre><h3 id="2-高级过滤方式"><a href="#2-高级过滤方式" class="headerlink" title="2.高级过滤方式"></a>2.高级过滤方式</h3><pre><code class="textmate">RocketMQ 提供了基于表达式与基于类模式两种过滤模式可以实现 MessageFilter 接口，实现自定义过滤</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 后端 </category>
-          
-          <category> 消息队列 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> message </tag>
-            
-            <tag> rocketmq </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>SpringBoot集成Kafka</title>
       <link href="/2021/02/03/backend/mq/kafka/"/>
       <url>/2021/02/03/backend/mq/kafka/</url>
@@ -707,6 +707,35 @@
             <tag> message </tag>
             
             <tag> kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>RocketMQ相关文档</title>
+      <link href="/2021/02/03/backend/mq/rocketmq/"/>
+      <url>/2021/02/03/backend/mq/rocketmq/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、专业术语"><a href="#一、专业术语" class="headerlink" title="一、专业术语"></a>一、专业术语</h2><h3 id="1-角色名称"><a href="#1-角色名称" class="headerlink" title="1. 角色名称"></a>1. 角色名称</h3><pre><code class="textmate">- Product    消息生产者- Consumer    消息消费者- Push Consumer    消息消费-推模式，应用通常向 Consumer 对象注册一个Listener接口，一旦收到消息，Consumer对象立刻回调Listener接口方法。- Pull Consumer    消息消费-拉模式，应用通常主动调用 Consumer 的拉消息方法从 Broker 拉消息，主动权由应用控制。- ProducerGroup    一类 Producer 的集合名称，这类 Producer 通常发送一类消息，且发送逻辑一致。- ConsumerGroup    一类 Consumer 的集合名称，这类 Consumer 通常消费一类消息，且消费逻辑一致。- Broker    消息中转角色，负责存储消息，转发消息，一般也称为 Server。在 JMS 规范中称为 Provider。- Message Queue    消息存储队列，长度无线(offset作为数据下标，long类型64位，理论上在 100 年内不会溢出，所以认为是长度无限)</code></pre><h3 id="2-消费模式"><a href="#2-消费模式" class="headerlink" title="2. 消费模式"></a>2. 消费模式</h3><pre><code class="textmate">- 广播消费    一条消息被多个 Consumer 消费，每个Consumer都会至少消费一次消息，广播消费中的 Consumer Group 概念可以认为在消息划分方面无意义。    在 CORBA Notification 规范中，消费方式都属于广播消费。在 JMS 规范中，相当于JMS publish/subscribe model- 集群消费    一个 Consumer Group 中的 Consumer 实例平均分摊消费消息。- 顺序消费    消费消息的顺序要同发送消息的顺序一致(局部顺序)，一类消息为满足顺序性，必须Producer单线程顺序发送到同一个队列，    这样 Consumer 就可以按照 Producer 发送 的顺序去消费消息。- 普通顺序消息    顺序消息的一种，正常情况下可以保证完全的顺序消息，但是一旦发生通信异常，Broker 重启，由于队列 总数发生发化，哈希取模后定位的队列会发化，产生短暂的消息顺序不一致。- 严格顺序消息    顺序消息的一种，无论正常异常情况都能保证顺序，但是牺牲了分布式 Failover(故障转移) 特性，即 Broker 集群中只 要有一台机器不可用，则整个集群都不可用，服务可用性大大降低。 如果服务器部署为同步双写模式，此缺陷可通过备机自动切换为主避免，不过仍然会存在几分钟的服务不可用。    目前已知的应用只有数据库 binlog 同步强依赖严格顺序消息，其他应用绝大部分都可以容忍短暂乱序，推    荐使用普通的顺序消息。</code></pre><h2 id="二、部署"><a href="#二、部署" class="headerlink" title="二、部署"></a>二、部署</h2><ul><li>队列模型的消息中间件，高性能、高可用、高实时、分布式特点</li><li>Producer、Consumer、队列都可以分布式</li><li>能够保证严格的消息顺序</li><li>提供消息推拉消息模式</li><li>亿级消息堆积能力</li><li>较少依赖</li></ul><h3 id="1-物理部署结构"><a href="#1-物理部署结构" class="headerlink" title="1.物理部署结构"></a>1.物理部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-deploy.jpg" alt="物理部署结构图"/><pre><code class="textmate">1.NameServer     无状态节点，可集群部署，节点之间无通信2.Broker    分为Master和Slave,一个master可以对应多个slave，但是一个slave只能对应一个master; master和slave的对应关系通过指定相同的BrokerName不同的BrokerId来定义，BorkerId为0标识master,非0标识slave。master可以部署多个。    每个Broker和NameServer集群中的所有节点建立长连接，定时注册Topic信息到所有的NameServer中3.Producer    Producer与NameServer集群中其中一个节点(随机选择)建立长连接，定期拉取Topic路由信息，并向提供Topic服务的Master建立长连接，并定时发送心跳。Producer完全无状态，可集群部署4.Consumer    Consumer与NameServer集群中的其中一个节点建立长连接，定期获取Topic路由，并向提供Topic服务的Master、Slave建立长连接，并定时发送心跳。Consumer订阅规则由Broker配置决定，既可以从Master订阅消息，也可以从Salve消息</code></pre><h3 id="2-逻辑部署结构"><a href="#2-逻辑部署结构" class="headerlink" title="2.逻辑部署结构"></a>2.逻辑部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-logic-deploy.png" alt="逻辑部署结构图"/><h2 id="三、存储特点"><a href="#三、存储特点" class="headerlink" title="三、存储特点"></a>三、存储特点</h2><h3 id="1-零拷贝原理"><a href="#1-零拷贝原理" class="headerlink" title="1.零拷贝原理"></a>1.零拷贝原理</h3><blockquote><p>Consumer消费消息过程中使用了零拷贝</p></blockquote><ul><li><a href="https://www.linuxjournal.com/article/6345">零拷贝相关链接</a></li><li>零拷贝方式</li></ul><pre><code class="textmate">1.mmap+write方式(mmap将一个文件或者其它对象映射进内存)    优点：使用小块文件传输，效率高，支持频繁调用    缺点：不能很好的利用DMA方式(Direct Memory Access，直接存储器访问),会比sendfile多消耗CPU,内存安全性控制复杂，需要避免JVM Crash文件2.使用sendfile方式    优点：可以利用DMA方式，消耗CPU较少，大块文件传输效率高，无内存安全问题    缺点：小块文件效率低于mmap方式，只能BIO方式传递，不能使用NIO。RocketMQ选择了mmap+write方式，因为现有小块数据传输需求，效果比sendfile更好</code></pre><h3 id="2-文件系统"><a href="#2-文件系统" class="headerlink" title="2.文件系统"></a>2.文件系统</h3><pre><code class="textmate">RocketMQ 选择 Linux Ext4 文件系统原因：    Ext4 文件系统删除 1G 大小的文件通常耗时小于50ms，而 Ext3 文件系统耗时约 1s 左右，且删除文件时，磁盘 IO 压力极大，会导致IO写入超时。  文件系统层面需要做以下调优措施    文件系统 IO 调度算法需要调整为 deadline，因为 deadline 算法在随机读情冴下，可以合并读请求为顺序跳跃方式，从而提高读 IO 吞吐量。</code></pre><h3 id="3-数据存储结构-amp-存储目录结构"><a href="#3-数据存储结构-amp-存储目录结构" class="headerlink" title="3.数据存储结构&amp;存储目录结构"></a>3.数据存储结构&amp;存储目录结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-data.jpg" alt="数据存储结构" width="600px" height="400px"/><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-file.png" alt="存储目录结构" width="600px" height="400px" /><h2 id="四、关键特性"><a href="#四、关键特性" class="headerlink" title="四、关键特性"></a>四、关键特性</h2><h3 id="1-单机支持1万以上持久化队列"><a href="#1-单机支持1万以上持久化队列" class="headerlink" title="1.单机支持1万以上持久化队列"></a>1.单机支持1万以上持久化队列</h3><pre><code class="textmate">|       8Byte     | 4Byte |        8Byte        || CommitLogOffset | Size  | Message Tag Hashcode|1.所有数据单独存储到CommitLog文件中，完全顺序写，随机读2.对最终用户展现的队列实际只存储消息在CommitLog的位置信息，使用串行方式刷盘</code></pre><h3 id="2-刷盘策略"><a href="#2-刷盘策略" class="headerlink" title="2.刷盘策略"></a>2.刷盘策略</h3><pre><code class="textmate">先写入系统pageCache 然后刷盘，保证内存与磁盘都有一份数据，访问时从内存中读取- 同步刷盘    1. 写入 PAGECACHE 后，线程等待，通知刷盘线程刷盘。     2. 刷盘线程刷盘后，唤醒前端等待线程，可能是一批线程。     3. 前端等待线程吐用户迒回成功。- 异步刷盘同步刷盘与异步刷盘的唯一区别是异步刷盘写完 PAGECACHE 直接返回，而同步刷盘需要等待刷盘完成才返回</code></pre><h3 id="3-消息查询"><a href="#3-消息查询" class="headerlink" title="3.消息查询"></a>3.消息查询</h3><pre><code class="textmate">- 按照MessageId查询消息    | 8Byte | 8Byte |    |消息所属Broker地址|CommitLogOffset|- 按照MessageKey查询消息    |4Byte|8Byte|4Byte|4Byte|    |keyHash|CommitLogOffset|Timestamp|NextIndexOffset|</code></pre><h2 id="五、消息过滤"><a href="#五、消息过滤" class="headerlink" title="五、消息过滤"></a>五、消息过滤</h2><h3 id="1-简单消息过滤"><a href="#1-简单消息过滤" class="headerlink" title="1.简单消息过滤"></a>1.简单消息过滤</h3><pre><code class="textmate">通过topic和 tags进行过滤consumer.subscribe(&quot;TopicTest1&quot;,&quot;TagA || TagB&quot;);</code></pre><h3 id="2-高级过滤方式"><a href="#2-高级过滤方式" class="headerlink" title="2.高级过滤方式"></a>2.高级过滤方式</h3><pre><code class="textmate">RocketMQ 提供了基于表达式与基于类模式两种过滤模式可以实现 MessageFilter 接口，实现自定义过滤</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 消息队列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> message </tag>
+            
+            <tag> rocketmq </tag>
             
         </tags>
       
@@ -939,9 +968,9 @@
       
         <tags>
             
-            <tag> 注册中心 </tag>
-            
             <tag> zookeeper </tag>
+            
+            <tag> 注册中心 </tag>
             
             <tag> 分布式锁 </tag>
             
