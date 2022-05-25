@@ -34,7 +34,7 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/js/titleTip.js?v=1.1.0" ></script>
 
-<script src="https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
 </script>
@@ -56,7 +56,7 @@
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
   <input id="theme_highlight_on" value="true" />
-  <input id="theme_code_copy" value="false" />
+  <input id="theme_code_copy" value="true" />
 </div>
 
 
@@ -572,19 +572,19 @@
             <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
         </a>
         
-        <a  class="全部文章 写作 "
-           href="/2022/01/10/thinking/write/"
-           data-tag="思维"
-           data-author="" >
-            <span class="post-title" title="写作思路和技巧">写作思路和技巧</span>
-            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
-        </a>
-        
         <a  class="全部文章 摘要 "
            href="/2022/01/10/thinking/tv/"
            data-tag="思维"
            data-author="" >
             <span class="post-title" title="《资本的故事》 第一季">《资本的故事》 第一季</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 写作 "
+           href="/2022/01/10/thinking/write/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="写作思路和技巧">写作思路和技巧</span>
             <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
         </a>
         
@@ -1068,7 +1068,7 @@
 
     <div id="comments"></div>
 <link rel="stylesheet" href="https://unpkg.com/gitalk@1.7.2/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script>
 
 
 <script type="text/javascript">
@@ -1158,6 +1158,20 @@
         
 
         /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
         
 
         /*访问数量*/
@@ -1450,6 +1464,38 @@
 </script>
 
 <!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
 
 <!--自定义样式设置-->
 <style>
