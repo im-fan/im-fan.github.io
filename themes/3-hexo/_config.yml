@@ -171,8 +171,8 @@ code:
 
 highlight:
   on: true # true开启代码高亮，开启需要关闭博客 _config.yml 中的 highlight
-  lineNum: false # true显示行号
-  copy: false # 复制功能
+  lineNum: true # true显示行号
+  copy: true # 复制功能
   theme: atom-dark
 # 代码高亮主题,效果可以查看 https://highlightjs.org/static/demo/
 # 支持主题：
@@ -297,7 +297,7 @@ utteranc:
 CDN:
   jquery: https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js
   jquery_cookie: https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js
-  highlight: https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js
+  highlight: https://cdn.bootcdn.net/ajax/libs/highlight.js/9.16.2/highlight.min.js
   pjax: https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js
   animate: https://cdn.bootcss.com/animate.css/4.1.0/animate.min.css
   nprogres_js: https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js
