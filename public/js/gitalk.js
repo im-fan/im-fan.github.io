@@ -2930,7 +2930,6 @@
                     }
                 });
 
-
                 var axiosGithub = exports.axiosGithub = _axios2.default.create({
                     baseURL: 'https://api.github.com',
                     headers: {
