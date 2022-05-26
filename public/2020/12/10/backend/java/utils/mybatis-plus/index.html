@@ -572,19 +572,19 @@
             <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
         </a>
         
-        <a  class="全部文章 摘要 "
-           href="/2022/01/10/thinking/tv/"
-           data-tag="思维"
-           data-author="" >
-            <span class="post-title" title="《资本的故事》 第一季">《资本的故事》 第一季</span>
-            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
-        </a>
-        
         <a  class="全部文章 写作 "
            href="/2022/01/10/thinking/write/"
            data-tag="思维"
            data-author="" >
             <span class="post-title" title="写作思路和技巧">写作思路和技巧</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 摘要 "
+           href="/2022/01/10/thinking/tv/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="《资本的故事》 第一季">《资本的故事》 第一季</span>
             <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
         </a>
         
@@ -702,7 +702,7 @@
         
         <a  class="全部文章 后端 服务治理 "
            href="/2021/04/13/backend/service/nacos/"
-           data-tag="nacos,动态配置,注册中心"
+           data-tag="注册中心,nacos,动态配置"
            data-author="" >
             <span class="post-title" title="nacos">nacos</span>
             <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
@@ -757,18 +757,18 @@
         </a>
         
         <a  class="全部文章 后端 消息队列 "
-           href="/2021/02/03/backend/mq/kafka/"
-           data-tag="message,kafka"
-           data-author="" >
-            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
-            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
-        </a>
-        
-        <a  class="全部文章 后端 消息队列 "
            href="/2021/02/03/backend/mq/rocketmq/"
            data-tag="message,rocketmq"
            data-author="" >
             <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/kafka/"
+           data-tag="message,kafka"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
             <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
         </a>
         
@@ -838,7 +838,7 @@
         
         <a  class="全部文章 后端 服务治理 "
            href="/2020/10/29/backend/service/zookeeper/"
-           data-tag="注册中心,zookeeper,分布式锁"
+           data-tag="zookeeper,注册中心,分布式锁"
            data-author="" >
             <span class="post-title" title="Zookeeper简介">Zookeeper简介</span>
             <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
@@ -1099,20 +1099,18 @@ public class MybatisPlusAspect &#123;
 
 
 <script type="text/javascript">
-    $.getScript('/js/gitalk.js', function () {
-        var gitalk = new Gitalk({
-            clientID: 'cd9c7d8003d54ab55feb',
-            clientSecret: 'f32edd931a003b89b50d28a4d762a2535438c221',
-            repo: 'im-fan.gitee.io',
-            owner: 'im-fan',
-            admin: ['im-fan'],
-            id: decodeURI('location.pathname'),
-            distractionFreeMode: 'true',
-            language: 'zh-CN',
-            perPage: parseInt('10',10)
-        })
-        gitalk.render('comments')
+    var gitalk = new Gitalk({
+        clientID: 'cd9c7d8003d54ab55feb',
+        clientSecret: 'f32edd931a003b89b50d28a4d762a2535438c221',
+        repo: 'im-fan.gitee.io',
+        owner: 'im-fan',
+        admin: ['im-fan'],
+        id: decodeURI('location.pathname'),
+        distractionFreeMode: 'true',
+        language: 'zh-CN',
+        perPage: parseInt('10',10)
     })
+    gitalk.render('comments')
 </script>
 
 
