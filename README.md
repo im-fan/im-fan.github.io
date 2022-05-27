@@ -25,6 +25,7 @@ categories:    -- 菜单，多个表示一级、二级
 ## 相关命令
 ```text
 1.本地启动
+npm install (首次启动需执行)
 npm run server
 
 2.编译静态文件

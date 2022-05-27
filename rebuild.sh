@@ -9,5 +9,5 @@ sleep 2
 git push
 echo "提交完成====》》》"
 
-echo "正在打开Gitee Pages 》》》"
-open https://gitee.com/im-fan/im-fan/pages
+echo "正在打开GitHub Pages 》》》"
+open https://github.com/im-fan/im-fan.github.io/settings/pages
