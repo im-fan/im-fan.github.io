@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>高并发相关 | Imfan笔记</title>
+  <meta name="keywords" content=" 高并发 ">
+  <meta name="description" content="高并发相关 | Imfan笔记">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="后端测试工具 PostMan JMH-性能优化测试(转) Jmeter(接口测试)  移动端测试 Charles(抓包) Perfdog(软件性能) Android专项测试工具 Monkey">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试相关">
+<meta property="og:url" content="https://im-fan.gitee.io/2022/05/26/test/test/index.html">
+<meta property="og:site_name" content="Imfan笔记">
+<meta property="og:description" content="后端测试工具 PostMan JMH-性能优化测试(转) Jmeter(接口测试)  移动端测试 Charles(抓包) Perfdog(软件性能) Android专项测试工具 Monkey">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-26T12:33:45.605Z">
+<meta property="article:modified_time" content="2022-05-26T12:33:45.605Z">
+<meta property="article:author" content="imfan">
+<meta property="article:tag" content="test">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/road.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/mermaid/9.1.1/mermaid.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/road.png" />
+</a>
+<div class="author">
+    <span>imfan</span>
+</div>
+
+<!--个人联系方式icon-->
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/im-fan" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:wyf3634@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(48)</small></div></li>
+    
+        
+            
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(22)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="后端<--->服务治理">服务治理<small>(2)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->高并发">高并发<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->工具">工具<small>(5)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->接口文档">接口文档<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->框架">框架<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->三方集成">三方集成<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->数据结构与算法">数据结构与算法<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->线程池">线程池<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->项目编译">项目编译<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->消息队列">消息队列<small>(3)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->io">io<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->ognl表达式">ognl表达式<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="架构">架构<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="思考">思考<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他">其他<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="测试">测试<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="存储">存储<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="写作">写作<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="运维">运维<small>(8)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="摘要">摘要<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+
+<!-- 左边导航栏 关于&友链 -->
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    </div>
+    <div>
+    
+    <a  class="friends">友链</a></div>
+</div>
+
+<input type="hidden" id="yelog_site_posts_number" value="48">
+<input type="hidden" id="yelog_site_word_count" value="55k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://www.infoq.cn/">InfoQ</a></li>
+            
+            <li><a target="_blank" href="https://www.csdn.net/">CSDN</a></li>
+            
+            <li><a target="_blank" href="https://www.liaoxuefeng.com/">廖雪峰的官方网站</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用语</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态配置</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>分布式锁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>高并发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>技术文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>接口文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>三方集成</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>思维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线程池</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目编译</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>注册中心</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arthas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>canal</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>COLA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DDD</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>devops</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>es</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gateway</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>io</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>istio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>kafka</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ldap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>message</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>oauth2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ognl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pulsar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rocketmq</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>skywalking</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringFramework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>test</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utils</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 测试 "
+           href="/2022/05/26/test/test/"
+           data-tag="test"
+           data-author="" >
+            <span class="post-title" title="测试相关">测试相关</span>
+            <span class="post-date" title="2022-05-26 20:33:45">2022/05/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 ognl表达式 "
+           href="/2022/05/25/backend/other/ognl/"
+           data-tag="ognl"
+           data-author="" >
+            <span class="post-title" title="Ognl表达式">Ognl表达式</span>
+            <span class="post-date" title="2022-05-25 15:40:00">2022/05/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2022/05/23/backend/mq/pulsar/"
+           data-tag="message,pulsar"
+           data-author="" >
+            <span class="post-title" title="Pulsar消息队列">Pulsar消息队列</span>
+            <span class="post-date" title="2022-05-23 10:20:00">2022/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2022/03/08/devops/shell/"
+           data-tag="shell命令"
+           data-author="" >
+            <span class="post-title" title="Shell命令记录">Shell命令记录</span>
+            <span class="post-date" title="2022-03-08 11:13:00">2022/03/08</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2022/02/15/backend/storage/es/"
+           data-tag="es"
+           data-author="" >
+            <span class="post-title" title="ES官方文档笔记">ES官方文档笔记</span>
+            <span class="post-date" title="2022-02-15 13:38:00">2022/02/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 数据结构与算法 "
+           href="/2022/01/13/backend/java/algorithm/book1/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="大话数据结构-摘要">大话数据结构-摘要</span>
+            <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
+        </a>
+        
+        <a  class="全部文章 摘要 "
+           href="/2022/01/10/thinking/tv/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="《资本的故事》 第一季">《资本的故事》 第一季</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 写作 "
+           href="/2022/01/10/thinking/write/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="写作思路和技巧">写作思路和技巧</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 接口文档 "
+           href="/2021/11/25/backend/other/swagger/"
+           data-tag="接口文档"
+           data-author="" >
+            <span class="post-title" title="集成SwaggerUI">集成SwaggerUI</span>
+            <span class="post-date" title="2021-11-25 10:00:00">2021/11/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 高并发 "
+           href="/2021/11/22/backend/java/thread/concurrent/"
+           data-tag="高并发"
+           data-author="" >
+            <span class="post-title" title="高并发相关">高并发相关</span>
+            <span class="post-date" title="2021-11-22 20:06:00">2021/11/22</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/10/13/devops/arthas/"
+           data-tag="arthas"
+           data-author="" >
+            <span class="post-title" title="Arthas-问题排查工具">Arthas-问题排查工具</span>
+            <span class="post-date" title="2021-10-13 09:17:00">2021/10/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 io "
+           href="/2021/08/11/backend/java/netty/io/"
+           data-tag="io"
+           data-author="" >
+            <span class="post-title" title="IO">IO</span>
+            <span class="post-date" title="2021-08-11 09:31:00">2021/08/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 三方集成 "
+           href="/2021/08/04/backend/other/jimu-report/"
+           data-tag="三方集成"
+           data-author="" >
+            <span class="post-title" title="集成Jimu报表">集成Jimu报表</span>
+            <span class="post-date" title="2021-08-04 18:28:22">2021/08/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/07/26/backend/spring/framework/springframework-2/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码学习">SpringFramework源码学习</span>
+            <span class="post-date" title="2021-07-26 15:05:00">2021/07/26</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/07/20/backend/storage/mysql/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-知识点">MySQL相关-知识点</span>
+            <span class="post-date" title="2021-07-20 09:45:00">2021/07/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/26/backend/spring/framework/springframework-1/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码编译">SpringFramework源码编译</span>
+            <span class="post-date" title="2021-06-26 20:00:00">2021/06/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/15/backend/spring/springcloud-gateway/"
+           data-tag="gateway"
+           data-author="" >
+            <span class="post-title" title="SpringClougGateway">SpringClougGateway</span>
+            <span class="post-date" title="2021-06-15 14:16:00">2021/06/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/19/devops/skywalking/"
+           data-tag="skywalking"
+           data-author="" >
+            <span class="post-title" title="调用链监控-skywalking">调用链监控-skywalking</span>
+            <span class="post-date" title="2021-05-19 16:52:25">2021/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/18/devops/istio/"
+           data-tag="istio"
+           data-author="" >
+            <span class="post-title" title="istio">istio</span>
+            <span class="post-date" title="2021-05-18 16:30:00">2021/05/18</span>
+        </a>
+        
+        <a  class="全部文章 前端 "
+           href="/2021/04/28/frontend/vue/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue">vue</span>
+            <span class="post-date" title="2021-04-28 11:44:02">2021/04/28</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/16/devops/docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="运维相关">运维相关</span>
+            <span class="post-date" title="2021-04-16 14:19:25">2021/04/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2021/04/13/backend/service/nacos/"
+           data-tag="nacos,动态配置,注册中心"
+           data-author="" >
+            <span class="post-title" title="nacos">nacos</span>
+            <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/05/devops/nginx/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx">nginx</span>
+            <span class="post-date" title="2021-04-05 10:26:05">2021/04/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/03/22/backend/spring/spring-boot/"
+           data-tag="springboot"
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2021-03-22 09:44:01">2021/03/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2021/03/20/backend/java/utils/convert/orika/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-Orika">对象转换工具-Orika</span>
+            <span class="post-date" title="2021-03-20 14:15:00">2021/03/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/18/devops/ldap/"
+           data-tag="ldap"
+           data-author="" >
+            <span class="post-title" title="LDAP学习笔记">LDAP学习笔记</span>
+            <span class="post-date" title="2021-02-18 14:25:55">2021/02/18</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/09/devops/check/"
+           data-tag="devops"
+           data-author="" >
+            <span class="post-title" title="服务常见问题排查">服务常见问题排查</span>
+            <span class="post-date" title="2021-02-09 17:08:25">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 线程池 "
+           href="/2021/02/09/backend/java/thread/threadPool/"
+           data-tag="线程池"
+           data-author="" >
+            <span class="post-title" title="ThreadPool详解">ThreadPool详解</span>
+            <span class="post-date" title="2021-02-09 14:12:45">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/kafka/"
+           data-tag="message,kafka"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/rocketmq/"
+           data-tag="message,rocketmq"
+           data-author="" >
+            <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/02/02/backend/storage/redis/"
+           data-tag="cache"
+           data-author="" >
+            <span class="post-title" title="Redis学习笔记">Redis学习笔记</span>
+            <span class="post-date" title="2021-02-02 19:59:00">2021/02/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 项目编译 "
+           href="/2021/01/21/backend/java/build/gradle/"
+           data-tag="项目编译"
+           data-author="" >
+            <span class="post-title" title="Gradle学习笔记">Gradle学习笔记</span>
+            <span class="post-date" title="2021-01-21 13:24:22">2021/01/21</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/25/framework/design/uml/"
+           data-tag="技术文档"
+           data-author="" >
+            <span class="post-title" title="技术文档">技术文档</span>
+            <span class="post-date" title="2020-12-25 18:57:00">2020/12/25</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/15/framework/cola/"
+           data-tag="COLA"
+           data-author="" >
+            <span class="post-title" title="领域建模&amp;业务建模方法论">领域建模&amp;业务建模方法论</span>
+            <span class="post-date" title="2020-12-15 16:24:00">2020/12/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/12/10/backend/java/utils/mybatis-plus/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="MybatisPlus使用笔记">MybatisPlus使用笔记</span>
+            <span class="post-date" title="2020-12-10 12:00:00">2020/12/10</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/11/17/framework/oauth2/"
+           data-tag="oauth2"
+           data-author="" >
+            <span class="post-title" title="OAuth2学习笔记">OAuth2学习笔记</span>
+            <span class="post-date" title="2020-11-17 09:58:26">2020/11/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/11/11/backend/java/utils/swagger/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="Java解析Swagger文档接口及参数">Java解析Swagger文档接口及参数</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/11/04/thinking/ali-words/"
+           data-tag="常用语"
+           data-author="" >
+            <span class="post-title" title="互联网常用语记录">互联网常用语记录</span>
+            <span class="post-date" title="2020-11-04 22:31:24">2020/11/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2020/10/29/backend/service/zookeeper/"
+           data-tag="注册中心,zookeeper,分布式锁"
+           data-author="" >
+            <span class="post-title" title="Zookeeper简介">Zookeeper简介</span>
+            <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/20/backend/java/utils/excel/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="EasyExcel使用遇到的问题">EasyExcel使用遇到的问题</span>
+            <span class="post-date" title="2020-10-20 17:22:53">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/09/framework/ddd/"
+           data-tag="DDD"
+           data-author="" >
+            <span class="post-title" title="DDD-领域驱动设计">DDD-领域驱动设计</span>
+            <span class="post-date" title="2020-10-09 16:51:54">2020/10/09</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/02/framework/design-model/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="14种常用设计模式">14种常用设计模式</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/canal/"
+           data-tag="canal"
+           data-author="" >
+            <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/mysql-other/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-常用命令">MySQL相关-常用命令</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/02/backend/java/utils/convert/map-struct/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-MapStruct">对象转换工具-MapStruct</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/10/02/thinking/book/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/10/02/other/software/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="软件推荐">软件推荐</span>
+            <span class="post-date" title="2020-10-02 14:34:06">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/09/30/other/hexo/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Hexo搭建博客">Hexo搭建博客</span>
+            <span class="post-date" title="2020-09-30 14:51:20">2020/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <!-- <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div> -->
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-backend/java/thread/concurrent" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">高并发相关</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;高并发">高并发</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">高并发</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-05-26 20:33:45'>2021-11-22 20:06</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:5k</span>
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E7%9B%B8%E5%85%B3"><span class="toc-text">高并发相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">进程的结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java%E7%BA%BF%E7%A8%8B%E5%92%8COS%E7%BA%BF%E7%A8%8B%E5%85%B3%E7%B3%BB"><span class="toc-text">Java线程和OS线程关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java%E7%BA%BF%E7%A8%8B%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-text">Java线程底层实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK%E5%88%9B%E5%BB%BALinux%E7%BA%BF%E7%A8%8B%E6%BA%90%E7%A0%81"><span class="toc-text">JDK创建Linux线程源码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">创建线程的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%95%B0"><span class="toc-text">确定线程池的线程数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E4%B8%AA%E9%83%A8%E5%88%86"><span class="toc-text">Java对象的三个部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%AD%97%E6%AE%B5%E4%BD%9C%E7%94%A8"><span class="toc-text">对象结构中的核心字段作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6"><span class="toc-text">对象结构中的字段长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JOL"><span class="toc-text">JOL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%81%E5%88%86%E7%B1%BB"><span class="toc-text">锁分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-text">重量级锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E5%86%85%E7%BD%AE%E9%94%81%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">三种内置锁的对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-text">线程通信</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAS"><span class="toc-text">CAS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ABA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">ABA问题解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8BCAS%E6%93%8D%E4%BD%9C%E6%80%A7%E8%83%BD"><span class="toc-text">提高高并发场景下CAS操作性能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">可见性和缓存一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MESI%E5%8D%8F%E8%AE%AE%E8%A7%A3%E9%87%8A"><span class="toc-text">MESI协议解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92"><span class="toc-text">指令重排</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%B1%82%E9%9D%A2%E7%9A%84%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C"><span class="toc-text">硬件层面的内存屏障</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">JMM(Java内存模型)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E9%94%81"><span class="toc-text">显式锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lock"><span class="toc-text">Lock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReentrantLock"><span class="toc-text">ReentrantLock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Condition"><span class="toc-text">Condition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LockSupport"><span class="toc-text">LockSupport</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E9%94%81%E5%88%86%E7%B1%BB"><span class="toc-text">显式锁分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">高并发设计模式</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="高并发相关"><a href="#高并发相关" class="headerlink" title="高并发相关"></a>高并发相关</h1><blockquote>
+<p>高并发相关书籍总结文档</p>
+</blockquote>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h4 id="进程的结构"><a href="#进程的结构" class="headerlink" title="进程的结构"></a>进程的结构</h4><blockquote>
+<p>由程序段、数据端和进程控制块组成</p>
+</blockquote>
+<pre><code class="textmate">线程的大致结构
+线程描述信息、程序计数器和栈内存组成
+
+区别
+1.进程是进程代码段的一次顺序执行流程，一个进程有一个或多个线程组成
+2.线程是CPU调度最小单位；进项是操作系统分配资源的最小单位。
+3.线程从进程的内部演进而来。
+4.进程之间相互独立；进程中的各个线程不完全独立，共享进程的方法区内存、堆内存、系统资源等
+5.切换速度不同： 线程上下文切换比进程上下文切换速度快。
+</code></pre>
+<h4 id="Java线程和OS线程关系"><a href="#Java线程和OS线程关系" class="headerlink" title="Java线程和OS线程关系"></a>Java线程和OS线程关系</h4><pre><code class="textmate">一对一模型，缺点是创建一个用户线程也要创建一个内核线程，开销大
+</code></pre>
+<h4 id="Java线程底层实现"><a href="#Java线程底层实现" class="headerlink" title="Java线程底层实现"></a>Java线程底层实现</h4><pre><code class="textmate">Windows上采用Win32 API实现
+UNIX和Linux采用Pthread( POSIX标准的扩展，提供用户级或内核级库)
+</code></pre>
+<h4 id="JDK创建Linux线程源码"><a href="#JDK创建Linux线程源码" class="headerlink" title="JDK创建Linux线程源码"></a>JDK创建Linux线程源码</h4><pre><code class="textmate">src/hotspot/os/linux/os_linux.cpp
+</code></pre>
+<h4 id="创建线程的方式"><a href="#创建线程的方式" class="headerlink" title="创建线程的方式"></a>创建线程的方式</h4><pre><code class="textmate">Thread/Runnable/FutureTask/线程池(ThreadPoolExecutor)
+
+SynchronousQueued(同步队列)
+必须有take线程在阻塞等待，offer操作才能成功；否则会为新任务开一条新线程去执行
+
+关闭线程池方法
+shutdown/shutdownNow/awaitTermination
+</code></pre>
+<h4 id="确定线程池的线程数"><a href="#确定线程池的线程数" class="headerlink" title="确定线程池的线程数"></a>确定线程池的线程数</h4><pre><code class="textmate">分类：
+IO密集型   最佳线程数 = CPU核心线程的2倍
+CPU密集型  最佳线程数 = CPU核心线程数量
+混合型     最佳线程数 = ((线程等待时间+线程 CPU 时间)/线程 CPU 时间 )* CPU 核数 = 最佳线程数目 =(线程等待时间与线程 CPU 时间之比 + 1)* CPU 核数
+</code></pre>
+<h4 id="Java对象的三个部分"><a href="#Java对象的三个部分" class="headerlink" title="Java对象的三个部分"></a>Java对象的三个部分</h4><pre><code class="textmate">1.对象头
+对象头包括三个字段，
+Mark Word(标记字)，用于存储自身运行时的数据 例如 GC 标志位、哈希码、锁状态等信息。
+Class Pointer(类对象指针)，用于存放方法区 Class 对象的地址，虚拟机通 过这个指针来确定这个对象是哪个类的实例。
+Array Length(数组长度)。如果对象是一个 Java 数组，那么此字段必须有， 用于记录数组长度的数据;如果对象不是一个 Java 数组，那么此字段不存在，所以这是一个可选 字段。
+
+2.对象体
+对象体包含了对象的实例变量(成员变量)。用于成员属性值，包括父类的成员属性值。这 部分内存按 4 字节对齐。
+
+3.对齐字节
+对齐字节也叫做填充对齐，其作用是用来保证 Java 对象在所占内存字节数为 8 的倍数(8N bytes)。HotSpot VM 的内存管理要求对象起始地址必须是 8 字节的整数倍。对象头本身是 8 的 倍数，当对象的实例变量数据不是 8 的倍数，便需要填充数据来保证 8 字节的对齐。
+</code></pre>
+<h4 id="对象结构中的核心字段作用"><a href="#对象结构中的核心字段作用" class="headerlink" title="对象结构中的核心字段作用"></a>对象结构中的核心字段作用</h4><pre><code class="textmate">(1)Mark Word(标记字)字段主要用来表示对象的线程锁状态，另外还可以用来配合 GC、 存放该对象的 hashCode。
+(2)Class Pointer(类对象指针)字段是一个指向方法区中 Class 信息的指针，意味着该对象 可随时知道自己是哪个 Class 的实例。
+(3)Array Length(数组长度)字段也占用 32 位(在 32 位 JVM 中)的字节，这是可选的， 只有当本对象是一个数组对象时才会有这个部分。
+(4)对象体用于保存对象属性值，是对象的主体部分，占用的内存空间大小取决于对象的属 性数量和类型。
+(5)对齐字节并不是必然存在的，也没有特别的含义，它仅仅起着占位符的作用。当对象实 例数据部分没有对齐(8 字节的整数倍)时，就需要通过对齐填充来补全。
+</code></pre>
+<h4 id="对象结构中的字段长度"><a href="#对象结构中的字段长度" class="headerlink" title="对象结构中的字段长度"></a>对象结构中的字段长度</h4><pre><code class="textmate">Mark Word、Class Pointer、Array Length 等字段的长度，都与 JVM 的位数有关。Mark Word 的长度为 JVM 的一个 Word(字)大小，也就是说 32 位 JVM 的 Mark Word 为 32 位，64 位 JVM 为 64 位。Class Pointer(类对象指针)字段的长度也为 JVM 的一个 Word(字)大小，即 32 位的 JVM为32位，64位的JVM为64位。
+所以，在 32 位 JVM 虚拟机中，Mark Word 和 Class Pointer 这两部分都是 32 位的;在 64 位 JVM 虚拟机中，Mark Word 和 Class Pointer 这两部分都是 64 位的。
+对于对象指针而言，如果 JVM 中对象数量过多，使用 64 位的指针将浪费大量内存，通过简 单统计，64 位的 JVM 将会比 32 位的 JVM 多耗费 50%的内存。为了节约内存可以使用选项 +UseCompressedOops 开启指针压缩。选项 UseCompressedOops 中的 Oop 部分为 Ordinary object pointer 普通对象指针的缩写。
+
+如果开启 UseCompressedOops 选项，以下类型的指针将从 64 位压缩至 32 位:
+1.Class 对象的属性指针(即静态变量)
+2.Object 对象的属性指针(即成员变量)
+3.普通对象数组的元素指针
+当然，也不是所有的指针都会压缩，一些特殊类型的指针不会压缩，比如指向 PermGen(永 久代)的 Class 对象指针(JDK8 中指向元空间的 Class 对象指针)、本地变量、堆栈元素、入参、返 回值和 NULL 指针等。
+</code></pre>
+<h4 id="JOL"><a href="#JOL" class="headerlink" title="JOL"></a>JOL</h4><pre><code class="textmate">JOL 全称为 Java Object Layout，是分析 JVM 中对象的结构布局的工具，该工具大量使用了 Unsafe、JVMTI 来解码内部布局情况，其分析结果相对比较精准的。要使用 JOL 工具，先引入 Maven 的依赖坐标:
+&lt;!--Java Object Layout --&gt; 
+&lt;dependency&gt;
+    &lt;groupId&gt;org.openjdk.jol&lt;/groupId&gt; 
+    &lt;artifactId&gt;jol-core&lt;/artifactId&gt; 
+    &lt;version&gt;0.11&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="锁分类"><a href="#锁分类" class="headerlink" title="锁分类"></a>锁分类</h4><blockquote>
+<p>偏向锁、轻量级锁、重量级锁</p>
+</blockquote>
+<h4 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h4><pre><code class="textmate">偏向锁的核心原理是:
+    如果不存在线程竞争的一个线程获得了锁，那么锁就进入偏向状态， 此时 Mark Word 的结构变为偏向锁结构，锁对象的锁标志位(lock)被改为 01，偏向标志位 (biased_lock)被改为 1，然后线程的 ID 记录在锁对象的 Mark Word 中(使用 CAS 操作完成)以后该线程获取锁的时，判断一下线程 ID 和标志位，就可以直接进入同步块，连 CAS 操作都不 需要，这样就省去了大量有关锁申请的操作，从而也就提供程序的性能。
+偏向锁的主要作用:
+    消除无竞争情况下的同步原语，进一步提升程序性能，所在于没有锁竞 争的场合，偏向锁有很好的优化效果。但是，一旦有第二条线程需要竞争锁，那么偏向模式立即 结束，进入轻量级锁的状态。
+偏向锁的缺点:
+    如果锁对象时常被多条线程竞争，那偏向锁就是多余的，并且其撤销的过程 会带来一些性能开销。
+</code></pre>
+<h4 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h4><pre><code class="textmate">轻量锁存在的目的是尽可能不用动用操作系统层面的互斥锁，因为那个性能会比较差，轻量级锁是一种自旋锁；
+轻量级锁主要有两种:
+    (1)普通自旋锁，
+        所谓普通自旋锁，就是指当有线程来竞争锁时，抢锁线程会在原地循环等待，而不是被阻塞，直到那个占有锁的线程释放锁之后，这个抢锁线程就可以马上获得锁的。默认情况下，自旋的次数为 10 次，用户可以通过-XX:PreBlockSpin 选项来进行更改。
+    (2)自适应自旋锁。
+        所谓自适应自旋锁，就是等待线程空循环的自旋次数并非是固定的，而是会动态着根据实际 情况来改变自旋等待的次数，自旋次数由前一次在同一个锁上的自旋时间及锁的拥有者的状态来决定
+JDK1.6 的轻量级锁使用的是普通自旋锁，且需要使用 -XX:+UseSpinning 选 项手工开启。JDK1.7 后，轻量级锁使用自适应自旋锁，JVM 启动时自动开启，且自 旋时间由 JVM 自动控制。
+</code></pre>
+<h4 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h4><pre><code class="textmate">JVM 中每个对象都会有一个监视器，监视器和对象一起创建、销毁
+Monitor 是一种同步工具，也可以说是一种同步机制，主要特点是:
+(1)同步。
+    Monitor 所保护的临界区代码，是互斥的执行。一个 Monitor 是一个运行许可，任一个线程进入临界区代码都需要获得这个许可，离开时把许可归还。
+(2)协作。
+    Monitor 提供 Signal 机制:允许正持有许可的线程暂时放弃许可进入阻塞等待状 态，等待其他线程发送 Signal去唤醒;其他拥有许可的线程可以发送 Signal，唤醒正在阻塞等待 的线程，让它可以重新获得许可并启动执行。
+</code></pre>
+<h4 id="三种内置锁的对比"><a href="#三种内置锁的对比" class="headerlink" title="三种内置锁的对比"></a>三种内置锁的对比</h4><table>
+<thead>
+<tr>
+<th>锁</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>偏向锁</td>
+<td>加锁和解锁不需要额外的消耗，和执行非同步方法比仅存在纳秒级的差距</td>
+<td>如果线程间存在锁竞争，会带来额外的锁撤销的消耗</td>
+<td>适用于只有一个线程访问 临界区场景</td>
+</tr>
+<tr>
+<td>轻量级锁</td>
+<td>竞争的线程不会阻塞，提高了程序的响应速度</td>
+<td>抢不到锁的线程会CAS自旋等待，消耗CPU</td>
+<td>锁占用时间短，吞吐量低</td>
+</tr>
+<tr>
+<td>重量级锁</td>
+<td>线程竞争不使用自旋，不会消耗CPU</td>
+<td>线程阻塞，响应时间缓慢</td>
+<td>锁占用时间较长，吞吐量高</td>
+</tr>
+</tbody></table>
+<h4 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h4><pre><code class="textmate">定义:当多个线程共同操作共享的资源时，线程间通过某种方式互相告 知自己的状态，以避免无效的资源争夺。
+分类:等待-通知、共享内存、管道流。
+1.等待-通知
+    &quot;等待-通知&quot; 是Java中使用最为普遍的线程间通信方式，其最为经典的案例就是 “生产者-消费者”模式。
+2.共享内存
+    通过实现Runnable或内部类的形式，共享同一个变量
+3.管道通信就是使用java.io.PipedInputStream 和 java.io.PipedOutputStream进行通信
+
+wait 方法的原理:
+    首先 JVM 会释放当前线程的对象锁 Monitor 的 Owner 资格;其次 JVM 会 当前线程移入 Monitor 的 WaitSet 队列，而这些操作都和对象锁 Monitor 是相关的。
+    所以，wait 方法必须在 synchronized 同步块的内部使用。在当前线程执行 wait 方法前，必须 通过 synchronized 方法成为对象锁的 Monitor 的 Owner。
+notify 方法的原理:
+    JVM 从对象锁的 Monitor 的 WaitSet 队列，移动一条线程到其 EntryList 队列，这些操作都与对象锁的 Monitor 有关。
+    所以，notify 方法也必须在 synchronized 同步块的内部使用。在执行 notify 方法前，当前线 程也必须通过 synchronized 方法成为对象锁的 Monitor 的 Owner。
+</code></pre>
+<h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><h4 id="ABA问题解决方案"><a href="#ABA问题解决方案" class="headerlink" title="ABA问题解决方案"></a>ABA问题解决方案</h4><pre><code class="textmate">AtomicStampedReference  compareAndSet
+AtomicMarkableReference   
+    AtomicMarkableReference适用只要知道对象是否有被修改过，而不适用于对象被反复修改的 场景。
+</code></pre>
+<h4 id="提高高并发场景下CAS操作性能"><a href="#提高高并发场景下CAS操作性能" class="headerlink" title="提高高并发场景下CAS操作性能"></a>提高高并发场景下CAS操作性能</h4><pre><code class="textmate">LongAdder 以空间换时间的方式提升高并发场景下 CAS 操作性能
+    LongAdder 的实现思路，与 ConcurrentHashMap 中分段锁基本原理非常相似，本质上，都是不同的线程在不同的单元上进行操作，这样减少了线程竞争，提高了并发效率
+</code></pre>
+<h3 id="可见性和缓存一致性"><a href="#可见性和缓存一致性" class="headerlink" title="可见性和缓存一致性"></a>可见性和缓存一致性</h3><pre><code class="textmate">1. 总线锁
+    效率低，开销大
+2. 缓存锁
+     MESI 协议，保证缓存一致性
+     缓存一致性:缓存一致性机制就整体来说，是当某块CPU对缓存中的数据进行操作了之后， 就通知其他 CPU 放弃储存在它们内部的缓存，或者从主内存中重新读取
+
+    CPU 对 Cache 副 本如何与主存内容保持一致有几种写入方式可供选择，主要的写入方式有以下两种
+    1)Write-through(直写模式)  更新低一级缓存和存储器，数据写入速度慢
+    2)Write-back(回写模式)  只写入缓存，发现数据有变动，才将数据更新到存储器
+</code></pre>
+<h4 id="MESI协议解释"><a href="#MESI协议解释" class="headerlink" title="MESI协议解释"></a>MESI协议解释</h4><pre><code class="textmate">M: 被修改(Modified)
+E: 独享的(Exclusive)
+S: 共享的(Shared)
+I: 无效的(Invalid)
+</code></pre>
+<h4 id="指令重排"><a href="#指令重排" class="headerlink" title="指令重排"></a>指令重排</h4><pre><code class="textmate">As-if-Serial规则： 不管如何重排序，都必须保证代码在单线程下的运行正确。
+
+扩展:
+    JIT 是 Just In Time 的缩写, 也就是“即时编译器”。JVM 读入“.class” 文件的字 节码后，默认情况下是解释执行的。但是对于运行频率很高(如&gt;5000 次)的字节码， JVM 采用了 JIT 技术，将直接编译为机器指令，以提高性能。
+</code></pre>
+<h4 id="硬件层面的内存屏障"><a href="#硬件层面的内存屏障" class="headerlink" title="硬件层面的内存屏障"></a>硬件层面的内存屏障</h4><pre><code class="texxtmate">1. 硬件层的内存屏障定义
+    内存屏障(Memory Barrier)又称内存栅栏(Memory Fences)，是让一个 CPU 高速缓存的内 存状态对其他 CPU 内核可见的一项技术，也是一项保障跨 CPU 内核有序执行指令的技术。
+    硬件层常用的内存屏障分为三种:读屏障(Load Barrier)、写屏障(Store Barrier)、全屏障 (Full Barrier)。
+
+2.作用
+    1).阻止屏障两侧的指令重排序
+    2).强制让高速缓存的数据失效
+</code></pre>
+<h4 id="JMM-Java内存模型"><a href="#JMM-Java内存模型" class="headerlink" title="JMM(Java内存模型)"></a>JMM(Java内存模型)</h4><blockquote>
+<p>JMM 并不像 JVM 内存结构一样是真实存在的运行实体，更多体现为一种规范和规则</p>
+</blockquote>
+<pre><code class="textmate">1.核心的价值在于解决可见性和有序性。
+2.JMM的另一大价值，在于能屏蔽了各种硬件和操作系统的访问差异的，保证了Java程序在各种平台下对内存的访问都能保证最终的一致。
+
+Java 内存模型的规定:
+    (1)所有变量存储在主内存中。 
+    (2)每个线程都有自己的工作内存，且对变量的操作都是在工作内存中进行。 
+    (3)不同线程之间无法直接访问彼此工作内存中的变量，要想访问只能通过主内存来传递。
+
+volatile内存屏障操作
+    LoadLoad、LoadStore、StoreStore、StoreLoad
+
+Happens-Before(先行发生)规则
+</code></pre>
+<h2 id="显式锁"><a href="#显式锁" class="headerlink" title="显式锁"></a>显式锁</h2><h3 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h3><pre><code class="textmate">Lock锁对比Java内置锁
+1.可中断获取锁
+2.可非阻塞获取锁
+3.可限时抢锁
+</code></pre>
+<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><pre><code class="textmate">1)“可重入”含义:表示该锁能够支持一个线程对资源的重复加锁，也就是说，一个线程 可以多次进入同一个锁所同步的临界区代码块。比如，同一线程在外层函数获得锁后，在内层函 数能再次获取该锁，甚至多次抢占到同一把锁。
+2)“独占”含义:在同一时刻只能有一个线程获取到锁，而其他获取锁的线程只能等待， 只有拥有锁的线程释放了锁后，其他的线程才能够获取锁。
+</code></pre>
+<h3 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h3><blockquote>
+<p> Lock代替了synchronized方法和语句的使用，而Condition代替了对象监视器方法的使用</p>
+</blockquote>
+<pre><code class="textmate">Condition实例本质上绑定到一个锁。要获取特定Lock实例的Condition实例，请使用其newCondition()方法。
+
+基于显示锁进行“等待-通知”方式的线程间通信接口
+Condition 的“等待-通知”方法和 Object 的“等待-通知”方法的语义等效关系为:
+    - Condition 类的 awiat 方法和 Object 类的 wait 方法等效。
+    - Condition 类的 signal 方法和 Object 类的 notify 方法等效。
+    - Condition 类的 signalAll 方法和 Object 类的 notifyAll 方法等效。
+Condition 对象的 signal(通知)方法和同一个对象的 await(等待)方法是一一配对使用的， 也就是说，一个 Condition 对象的 signal(或 signalAll)方法，不能去唤醒其他 Condition 对象上的 await 线程。
+</code></pre>
+<h3 id="LockSupport"><a href="#LockSupport" class="headerlink" title="LockSupport"></a>LockSupport</h3><blockquote>
+<p>LockSupport 是 JUC 提供的一线程阻塞与唤醒的工具类，该工具类可以让线程在任意位置阻 塞和唤醒，其所有的方法都是静态方法。</p>
+</blockquote>
+<ul>
+<li><p>LockSupport.park()和 Thread.sleep()的区别</p>
+<pre><code class="textmate">从功能上说，LockSupport.park()与 Thread.sleep()方法类似，都是让线程阻塞，二者的区别如下:
+(1)Thread.sleep()没法从外部唤醒，只能自己醒过来;而被LockSupport.park()方法阻塞的线程可以通过调用LockSupport.unpark()方法去唤醒。
+(2)Thread.sleep()方法声明了 InterruptedException 中断异常，这是一个受检异常，调用者需要捕获这个异常或者再抛出;而使用 LockSupport.park()方法时，不需要捕获中断异常。
+(3)LockSupport.park()方法、Thread.sleep()方法所阻塞的线程，当被阻塞线程的 Thread.interrup(t方法被调用时，被阻塞线程都会响应线程的中断信号，唤醒线程的执行。不同的是， 二者对中断信号的响应的方式不同。LockSupport.park( )方法不会抛出InterruptedException异常， 仅仅设置了线程的中断标志;而Thread.sleep()方法还会抛出InterruptedException 异常。
+(4)与 Thread.sleep()相比，使用 LockSupport.park()能更精准、更加灵活的阻塞、唤醒指定 线程。
+(5)Thread.sleep()本身就是一个 Native 方法;LockSupport.park()并不是一个 Native 方法，只是调用了一个Unsafe 类的Native方法(名字也叫 park)去实现。
+(6)LockSupport.park()方法还允许设置一个 Blocker 对象，主要用来给监视工具或诊断工具 确定线程受阻塞的原因。
+</code></pre>
+</li>
+<li><p> LockSupport.park( )与 Object.wait()的区别</p>
+<pre><code class="textmate">LockSupport.park()与 Object.wait()方法也类似，都是让线程阻塞，二者的区别如下:
+(1)Object.wait()方法需要在synchronized块中执行;而LockSupport.park()可以在任意地方执行。
+(2)当被阻塞线程被中断时，Object.wait()方法抛出了中断异常，调用者需要捕获或者再抛出;当被阻塞线程被中断时，LockSupport.park()不会抛出异常，使用时不需要处理中断异常。
+(3)线程如果在Object.wait()执行之前去执行Object.notify()，会抛出 IllegalMonitorStateException异常，是不被允许的;而线程如果在LockSupport.park()执行之前去执行LockSupport.unPark()，不会抛出任何异常，是被允许的。
+</code></pre>
+</li>
+</ul>
+<h3 id="显式锁分类"><a href="#显式锁分类" class="headerlink" title="显式锁分类"></a>显式锁分类</h3><pre><code class="textmate">1. 可重入锁与不可重入锁
+    可重入: 递归锁，同一个线程可重复获取当前对象的锁
+    不可重入: 同一时间，只有一个线程能持有对象的锁
+2. 悲观锁和乐观锁
+    悲观锁: 每次操作都会加锁
+    乐观锁: 基于AQS实现的锁都是乐观锁，操作不会加锁，采取在写时先读出当前版本号，然后加锁操作(失败则重复该操作)
+    悲观锁适用于写多读少的场景，遇到高并发写时性能高；乐观锁用于读多写少的情况
+3. 公平锁和非公平锁
+    公平锁就是保障了各个线程获取锁都是按照顺序来的，先到的线程先获取锁，抢锁成功的次序体现为 FIFO(先进先出)顺序
+4. 可中断锁和不可中断锁
+    在抢锁过程中能通过某些方法去终止抢占过程，那就是可中断锁，否则就是不可 中断锁。
+5. 共享锁和独占锁
+    “独占锁”指的是每次只能有一个线程能持有的锁。
+    “共享锁”允许多个线程同时获取锁，容许线程并发进入临界区。
+
+其他
+    CAS自旋锁可能会导致&quot;总线风暴&quot;，CLH 自旋锁(基于队列(具体为单向链表)排队的一种自旋锁),避免了总线风暴
+    AQS是CLH的一个变种
+</code></pre>
+<h3 id="高并发设计模式"><a href="#高并发设计模式" class="headerlink" title="高并发设计模式"></a>高并发设计模式</h3><pre><code class="textmate">1.安全的单例模式
+2.Master-Worker模式
+3.ForkJoin模式
+4.生产者消费者模式
+5.Future模式
+</code></pre>
+
+      
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>高并发相关</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">5k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
+    <p><span class="copy-title">发布时间:</span>2021-11-22, 20:06:00</p>
+    <p><span class="copy-title">最后更新:</span>2022-05-26, 20:33:45</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/11/22/backend/java/thread/concurrent/" title="高并发相关">https://im-fan.gitee.io/2021/11/22/backend/java/thread/concurrent/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk@1.7.2/dist/gitalk.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'cd9c7d8003d54ab55feb',
+            clientSecret: 'f32edd931a003b89b50d28a4d762a2535438c221',
+            repo: 'im-fan.gitee.io',
+            owner: 'im-fan',
+            admin: ['im-fan'],
+            id: decodeURI('location.pathname'),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <!--
+<p class="footer-entry">
+    ©2015-2022 Imfan
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+ -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'photoSwipe';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("https://cdn.bootcdn.net/ajax/libs/mermaid/8.4.2/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #c0bfbf;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #2b2929;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background/index-1920x1200.jpg);
+    }
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/moon.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+</html>
