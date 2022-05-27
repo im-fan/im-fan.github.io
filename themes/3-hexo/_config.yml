@@ -222,7 +222,7 @@ friends:
 comment:
   on: true
   type: gitalk  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
-  comment_count: false  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
+  comment_count: true  # 文章标题下方显示评论数 目前仅支持 gitalk 和 disqus
   ## 使用说明 https://yelog.org//2020/05/23/3-hexo-comment/
 # 各评论系统配置 ↓↓
 

@@ -6788,7 +6788,7 @@ object-assign
                             pagerDirection: 'last', // last or first
                             createIssueManually: false,
                             distractionFreeMode: false,
-                            proxy: 'https://fan-cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token',
+                            proxy: 'https://github.com/login/oauth/access_token',
                             flipMoveOptions: {
                                 staggerDelayBy: 150,
                                 appearAnimation: 'accordionVertical',
