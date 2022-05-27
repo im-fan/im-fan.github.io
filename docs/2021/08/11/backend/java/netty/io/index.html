@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>IO | Imfan笔记</title>
+  <meta name="keywords" content=" io ">
+  <meta name="description" content="IO | Imfan笔记">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="后端测试工具 PostMan JMH-性能优化测试(转) Jmeter(接口测试)  移动端测试 Charles(抓包) Perfdog(软件性能) Android专项测试工具 Monkey">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试相关">
+<meta property="og:url" content="https://im-fan.gitee.io/2022/05/26/test/test/index.html">
+<meta property="og:site_name" content="Imfan笔记">
+<meta property="og:description" content="后端测试工具 PostMan JMH-性能优化测试(转) Jmeter(接口测试)  移动端测试 Charles(抓包) Perfdog(软件性能) Android专项测试工具 Monkey">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-26T12:33:45.605Z">
+<meta property="article:modified_time" content="2022-05-26T12:33:45.605Z">
+<meta property="article:author" content="imfan">
+<meta property="article:tag" content="test">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/road.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/mermaid/9.1.1/mermaid.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/road.png" />
+</a>
+<div class="author">
+    <span>imfan</span>
+</div>
+
+<!--个人联系方式icon-->
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/im-fan" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:wyf3634@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(48)</small></div></li>
+    
+        
+            
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(22)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="后端<--->服务治理">服务治理<small>(2)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->高并发">高并发<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->工具">工具<small>(5)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->接口文档">接口文档<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->框架">框架<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->三方集成">三方集成<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->数据结构与算法">数据结构与算法<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->线程池">线程池<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->项目编译">项目编译<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->消息队列">消息队列<small>(3)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->io">io<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->ognl表达式">ognl表达式<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="架构">架构<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="思考">思考<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他">其他<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="测试">测试<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="存储">存储<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="写作">写作<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="运维">运维<small>(8)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="摘要">摘要<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+
+<!-- 左边导航栏 关于&友链 -->
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    </div>
+    <div>
+    
+    <a  class="friends">友链</a></div>
+</div>
+
+<input type="hidden" id="yelog_site_posts_number" value="48">
+<input type="hidden" id="yelog_site_word_count" value="55k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://www.infoq.cn/">InfoQ</a></li>
+            
+            <li><a target="_blank" href="https://www.csdn.net/">CSDN</a></li>
+            
+            <li><a target="_blank" href="https://www.liaoxuefeng.com/">廖雪峰的官方网站</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用语</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态配置</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>分布式锁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>高并发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>技术文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>接口文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>三方集成</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>思维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线程池</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目编译</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>注册中心</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arthas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>canal</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>COLA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DDD</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>devops</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>es</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gateway</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>io</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>istio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>kafka</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ldap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>message</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>oauth2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ognl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pulsar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rocketmq</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>skywalking</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringFramework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>test</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utils</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 测试 "
+           href="/2022/05/26/test/test/"
+           data-tag="test"
+           data-author="" >
+            <span class="post-title" title="测试相关">测试相关</span>
+            <span class="post-date" title="2022-05-26 20:33:45">2022/05/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 ognl表达式 "
+           href="/2022/05/25/backend/other/ognl/"
+           data-tag="ognl"
+           data-author="" >
+            <span class="post-title" title="Ognl表达式">Ognl表达式</span>
+            <span class="post-date" title="2022-05-25 15:40:00">2022/05/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2022/05/23/backend/mq/pulsar/"
+           data-tag="message,pulsar"
+           data-author="" >
+            <span class="post-title" title="Pulsar消息队列">Pulsar消息队列</span>
+            <span class="post-date" title="2022-05-23 10:20:00">2022/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2022/03/08/devops/shell/"
+           data-tag="shell命令"
+           data-author="" >
+            <span class="post-title" title="Shell命令记录">Shell命令记录</span>
+            <span class="post-date" title="2022-03-08 11:13:00">2022/03/08</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2022/02/15/backend/storage/es/"
+           data-tag="es"
+           data-author="" >
+            <span class="post-title" title="ES官方文档笔记">ES官方文档笔记</span>
+            <span class="post-date" title="2022-02-15 13:38:00">2022/02/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 数据结构与算法 "
+           href="/2022/01/13/backend/java/algorithm/book1/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="大话数据结构-摘要">大话数据结构-摘要</span>
+            <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
+        </a>
+        
+        <a  class="全部文章 摘要 "
+           href="/2022/01/10/thinking/tv/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="《资本的故事》 第一季">《资本的故事》 第一季</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 写作 "
+           href="/2022/01/10/thinking/write/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="写作思路和技巧">写作思路和技巧</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 接口文档 "
+           href="/2021/11/25/backend/other/swagger/"
+           data-tag="接口文档"
+           data-author="" >
+            <span class="post-title" title="集成SwaggerUI">集成SwaggerUI</span>
+            <span class="post-date" title="2021-11-25 10:00:00">2021/11/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 高并发 "
+           href="/2021/11/22/backend/java/thread/concurrent/"
+           data-tag="高并发"
+           data-author="" >
+            <span class="post-title" title="高并发相关">高并发相关</span>
+            <span class="post-date" title="2021-11-22 20:06:00">2021/11/22</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/10/13/devops/arthas/"
+           data-tag="arthas"
+           data-author="" >
+            <span class="post-title" title="Arthas-问题排查工具">Arthas-问题排查工具</span>
+            <span class="post-date" title="2021-10-13 09:17:00">2021/10/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 io "
+           href="/2021/08/11/backend/java/netty/io/"
+           data-tag="io"
+           data-author="" >
+            <span class="post-title" title="IO">IO</span>
+            <span class="post-date" title="2021-08-11 09:31:00">2021/08/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 三方集成 "
+           href="/2021/08/04/backend/other/jimu-report/"
+           data-tag="三方集成"
+           data-author="" >
+            <span class="post-title" title="集成Jimu报表">集成Jimu报表</span>
+            <span class="post-date" title="2021-08-04 18:28:22">2021/08/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/07/26/backend/spring/framework/springframework-2/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码学习">SpringFramework源码学习</span>
+            <span class="post-date" title="2021-07-26 15:05:00">2021/07/26</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/07/20/backend/storage/mysql/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-知识点">MySQL相关-知识点</span>
+            <span class="post-date" title="2021-07-20 09:45:00">2021/07/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/26/backend/spring/framework/springframework-1/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码编译">SpringFramework源码编译</span>
+            <span class="post-date" title="2021-06-26 20:00:00">2021/06/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/15/backend/spring/springcloud-gateway/"
+           data-tag="gateway"
+           data-author="" >
+            <span class="post-title" title="SpringClougGateway">SpringClougGateway</span>
+            <span class="post-date" title="2021-06-15 14:16:00">2021/06/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/19/devops/skywalking/"
+           data-tag="skywalking"
+           data-author="" >
+            <span class="post-title" title="调用链监控-skywalking">调用链监控-skywalking</span>
+            <span class="post-date" title="2021-05-19 16:52:25">2021/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/18/devops/istio/"
+           data-tag="istio"
+           data-author="" >
+            <span class="post-title" title="istio">istio</span>
+            <span class="post-date" title="2021-05-18 16:30:00">2021/05/18</span>
+        </a>
+        
+        <a  class="全部文章 前端 "
+           href="/2021/04/28/frontend/vue/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue">vue</span>
+            <span class="post-date" title="2021-04-28 11:44:02">2021/04/28</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/16/devops/docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="运维相关">运维相关</span>
+            <span class="post-date" title="2021-04-16 14:19:25">2021/04/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2021/04/13/backend/service/nacos/"
+           data-tag="nacos,动态配置,注册中心"
+           data-author="" >
+            <span class="post-title" title="nacos">nacos</span>
+            <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/05/devops/nginx/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx">nginx</span>
+            <span class="post-date" title="2021-04-05 10:26:05">2021/04/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/03/22/backend/spring/spring-boot/"
+           data-tag="springboot"
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2021-03-22 09:44:01">2021/03/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2021/03/20/backend/java/utils/convert/orika/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-Orika">对象转换工具-Orika</span>
+            <span class="post-date" title="2021-03-20 14:15:00">2021/03/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/18/devops/ldap/"
+           data-tag="ldap"
+           data-author="" >
+            <span class="post-title" title="LDAP学习笔记">LDAP学习笔记</span>
+            <span class="post-date" title="2021-02-18 14:25:55">2021/02/18</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/09/devops/check/"
+           data-tag="devops"
+           data-author="" >
+            <span class="post-title" title="服务常见问题排查">服务常见问题排查</span>
+            <span class="post-date" title="2021-02-09 17:08:25">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 线程池 "
+           href="/2021/02/09/backend/java/thread/threadPool/"
+           data-tag="线程池"
+           data-author="" >
+            <span class="post-title" title="ThreadPool详解">ThreadPool详解</span>
+            <span class="post-date" title="2021-02-09 14:12:45">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/kafka/"
+           data-tag="message,kafka"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/rocketmq/"
+           data-tag="message,rocketmq"
+           data-author="" >
+            <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/02/02/backend/storage/redis/"
+           data-tag="cache"
+           data-author="" >
+            <span class="post-title" title="Redis学习笔记">Redis学习笔记</span>
+            <span class="post-date" title="2021-02-02 19:59:00">2021/02/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 项目编译 "
+           href="/2021/01/21/backend/java/build/gradle/"
+           data-tag="项目编译"
+           data-author="" >
+            <span class="post-title" title="Gradle学习笔记">Gradle学习笔记</span>
+            <span class="post-date" title="2021-01-21 13:24:22">2021/01/21</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/25/framework/design/uml/"
+           data-tag="技术文档"
+           data-author="" >
+            <span class="post-title" title="技术文档">技术文档</span>
+            <span class="post-date" title="2020-12-25 18:57:00">2020/12/25</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/15/framework/cola/"
+           data-tag="COLA"
+           data-author="" >
+            <span class="post-title" title="领域建模&amp;业务建模方法论">领域建模&amp;业务建模方法论</span>
+            <span class="post-date" title="2020-12-15 16:24:00">2020/12/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/12/10/backend/java/utils/mybatis-plus/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="MybatisPlus使用笔记">MybatisPlus使用笔记</span>
+            <span class="post-date" title="2020-12-10 12:00:00">2020/12/10</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/11/17/framework/oauth2/"
+           data-tag="oauth2"
+           data-author="" >
+            <span class="post-title" title="OAuth2学习笔记">OAuth2学习笔记</span>
+            <span class="post-date" title="2020-11-17 09:58:26">2020/11/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/11/11/backend/java/utils/swagger/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="Java解析Swagger文档接口及参数">Java解析Swagger文档接口及参数</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/11/04/thinking/ali-words/"
+           data-tag="常用语"
+           data-author="" >
+            <span class="post-title" title="互联网常用语记录">互联网常用语记录</span>
+            <span class="post-date" title="2020-11-04 22:31:24">2020/11/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2020/10/29/backend/service/zookeeper/"
+           data-tag="注册中心,zookeeper,分布式锁"
+           data-author="" >
+            <span class="post-title" title="Zookeeper简介">Zookeeper简介</span>
+            <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/20/backend/java/utils/excel/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="EasyExcel使用遇到的问题">EasyExcel使用遇到的问题</span>
+            <span class="post-date" title="2020-10-20 17:22:53">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/09/framework/ddd/"
+           data-tag="DDD"
+           data-author="" >
+            <span class="post-title" title="DDD-领域驱动设计">DDD-领域驱动设计</span>
+            <span class="post-date" title="2020-10-09 16:51:54">2020/10/09</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/02/framework/design-model/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="14种常用设计模式">14种常用设计模式</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/canal/"
+           data-tag="canal"
+           data-author="" >
+            <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/mysql-other/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-常用命令">MySQL相关-常用命令</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/02/backend/java/utils/convert/map-struct/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-MapStruct">对象转换工具-MapStruct</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/10/02/thinking/book/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/10/02/other/software/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="软件推荐">软件推荐</span>
+            <span class="post-date" title="2020-10-02 14:34:06">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/09/30/other/hexo/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Hexo搭建博客">Hexo搭建博客</span>
+            <span class="post-date" title="2020-09-30 14:51:20">2020/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <!-- <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div> -->
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-backend/java/netty/io" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">IO</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;io">io</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">io</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-05-26 20:33:45'>2021-08-11 09:31</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.6k</span>
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E6%A8%A1%E5%9E%8B"><span class="toc-text">IO模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E5%8C%85"><span class="toc-text">IO包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8F%A5%E6%9F%84-%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-text">文件句柄(文件描述符)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NIO"><span class="toc-text">NIO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-NIO%E7%B1%BB%E5%BA%93%E5%8C%85%E5%90%AB%E4%BB%A5%E4%B8%8B%E4%B8%89%E4%B8%AA%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="toc-text">Java NIO类库包含以下三个核心组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NIO%E4%B8%8EOIO-Old-IO-%E5%AF%B9%E6%AF%94"><span class="toc-text">NIO与OIO(Old IO)对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E9%81%93-Channel"><span class="toc-text">通道(Channel)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA-Buffer"><span class="toc-text">缓冲区(Buffer)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8-Selector"><span class="toc-text">选择器(Selector)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer%E7%B1%BB"><span class="toc-text">Buffer类</span></a>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>阻塞IO</td>
+<td>返回数据就绪状态后，用户线程才能做其他动作</td>
+</tr>
+<tr>
+<td>非阻塞IO</td>
+<td>用户线程不断询问数据是否就绪</td>
+</tr>
+<tr>
+<td>多路复用IO</td>
+<td>即NIO(NewIO)  有一个线程不断去轮询多个 socket 的状态，只有当 socket 真正有读写事件时，才真正调用实际的 IO 读写操作，这个操作在内核中，比用户线程效率高<br/>缺点：一旦事件响应体很大，那么就会导致后续的事件迟迟得不到处理，并且会影响新的事件轮询。</td>
+</tr>
+<tr>
+<td>信号驱动IO</td>
+<td>当用户线程发起一个 IO 请求操作，会给对应的 socket 注册一个信号函数，然后用户线程会继续执行，当内核数据就绪时会发送一个信号给用户线程，用户线程接收到之后，在信号函数中调用 IO 读写操作来进行实际的 IO 请求操作</td>
+</tr>
+<tr>
+<td>异步IO</td>
+<td>最理想的IO模型  <br/>1.用户线程发起read操作，内核立即返回响应。<br/>2.内核接收到请求后，准备数据-&gt;copy至用户线程-&gt;给用户线程发信号<br/>比较：   信号驱动IO是需要client端调用函数操作IO，异步IO是内核异步处理，client端无需处理</td>
+</tr>
+</tbody></table>
+<ul>
+<li>多路复用IO</li>
+</ul>
+<pre><code class="textmate">IO多路复用模型的IO涉及两种系统调用，一种是IO操作的系
+统调用，另一种是select/epoll就绪查询系统调用。IO多路复用模型建立在操作系统的基础 设施之上，即操作系统的内核必须能够提供多路分离的系统调用select/epoll。
+优点:一个选择器查询线程，可以同时处理成千上万的网络连接， 所以，用户程序不必创建大量的线程，也不必维护这些线程，从而大大减小了系统的开 销。这是一个线程维护一个连接的阻塞IO模式相比，使用多路IO复用模型的最大优势。
+缺点:本质上，select/epoll系统调用是阻塞式的，属于同步IO。需要在读写事件就绪后，由系统调用本身负责进行读写，也就是说这个读写过程是阻塞 的
+</code></pre>
+<h3 id="IO包"><a href="#IO包" class="headerlink" title="IO包"></a>IO包</h3><table>
+<thead>
+<tr>
+<th>包名</th>
+<th>类型/包</th>
+<th>类名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.io</td>
+<td>字节流</td>
+<td>InputStream</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>OutputStream</td>
+</tr>
+<tr>
+<td></td>
+<td>字符流</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Writer</td>
+</tr>
+<tr>
+<td>java.nio</td>
+<td>channels包</td>
+<td></td>
+</tr>
+<tr>
+<td>java.nio</td>
+<td>charset包</td>
+<td></td>
+</tr>
+<tr>
+<td>java.nio</td>
+<td>Buffer包</td>
+<td></td>
+</tr>
+<tr>
+<td>java.nio</td>
+<td>ByteOrder</td>
+<td></td>
+</tr>
+<tr>
+<td>java.nio</td>
+<td>MappedByteBuffer</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="文件句柄-文件描述符"><a href="#文件句柄-文件描述符" class="headerlink" title="文件句柄(文件描述符)"></a>文件句柄(文件描述符)</h3><ul>
+<li><p>解释</p>
+<pre><code class="textmate">文件句柄，也叫文件描述符。在Linux系统中，文件可分为:普通文件、目录文件、链 接文件和设备文件。
+文件描述符(File Descriptor)是内核为了高效管理已被打开的文件所 创建的索引，它是一个非负整数(通常是小整数)，用于指代被打开的文件。
+所有的IO系 统调用，包括socket的读写调用，都是通过文件描述符完成的。
+</code></pre>
+</li>
+<li><p>Linux的系统默认值为1024，需要解除文件句柄数的限制</p>
+</li>
+<li><p>调整步骤</p>
+</li>
+</ul>
+<pre><code class="textmate">1.查看一个进程最大文件句柄数量
+  ulimit -n
+
+2.调整最大句柄数(当期会话有效)
+  ulimit -n 1000000
+
+3.永久调整最大句柄数(root权限)
+    vim /etc/rc.local
+    添加  ulimit -SHn 1000000
+    解释: 选项-S表示软性极限值，-H表示硬性极限值。硬 性极限是实际的限制，就是最大可以是100万，不能再多了。软性极限值则是系统发出警告 (Warning)的极限值，超过这个极限值，内核会发出警告。
+
+4.终极解除Linux系统的最大文件打开数量的限制
+    vim /etc/security/limits.conf
+    添加 
+        soft nofile 1000000
+        hard nofile 1000000
+    解释: soft nofile表示软性极限，hard nofile表示硬性极限。
+</code></pre>
+<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><h4 id="Java-NIO类库包含以下三个核心组件"><a href="#Java-NIO类库包含以下三个核心组件" class="headerlink" title="Java NIO类库包含以下三个核心组件"></a>Java NIO类库包含以下三个核心组件</h4><ul>
+<li>Channel(通道)</li>
+<li>Buffer(缓冲区)</li>
+<li>Selector(选择器)</li>
+</ul>
+<h4 id="NIO与OIO-Old-IO-对比"><a href="#NIO与OIO-Old-IO-对比" class="headerlink" title="NIO与OIO(Old IO)对比"></a>NIO与OIO(Old IO)对比</h4><pre><code class="textmate">1)OIO是面向流(Stream Oriented)的，NIO是面向缓冲区(Buffer Oriented)的。 
+面向流:
+    在一般的OIO操作中，面向字节流或字符流的IO操作，总是以流式的方式顺序地从一个流(Stream)中读取一个或多个字节，因此，我们不能随意地改变读取指针的位置。
+面向缓冲区:
+    在NIO操作中则不同，NIO中引入了Channel(通道)和Buffer(缓冲区)的概念。面向缓冲 区的读取和写入，只需要从通道中读取数据到缓冲区中，或将数据从缓冲区中写入到通道 中。
+    NIO不像OIO那样是顺序操作，可以随意地读取Buffer中任意位置的数据。
+
+(2)OIO的操作是阻塞的，而NIO的操作是非阻塞的。
+    OIO操作都是阻塞的，例如，我们调用一个 read方法读取一个文件的内容，那么调用read的线程会被阻塞住，直到read操作完成。
+    而在NIO的非阻塞模式中，当我们调用read方法时，如果此时有数据，则read读取数据并返回;如果此时没有数据，则read也会直接返回，而不会阻塞当前线程。
+    NIO的非阻塞: NIO使用了通道和 通道的多路复用技术。
+(3)OIO没有选择器(Selector)概念，而NIO有选择器的概念。
+NIO的实现是基于底层的选择器的系统调用，所以NIO的需要底层操作系统提供支持。
+</code></pre>
+<h4 id="通道-Channel"><a href="#通道-Channel" class="headerlink" title="通道(Channel)"></a>通道(Channel)</h4><pre><code class="textmate">OIO: InputStream、OutputStream
+NIO: 向通道中写入数据，也可以从通道中读取数据
+</code></pre>
+<h4 id="缓冲区-Buffer"><a href="#缓冲区-Buffer" class="headerlink" title="缓冲区(Buffer)"></a>缓冲区(Buffer)</h4><pre><code class="textmate">所谓通道的读取，就是将数据从通道读取到缓冲区中;所谓通道的写入，就是将 数据从缓冲区中写入到通道中。
+</code></pre>
+<h3 id="选择器-Selector"><a href="#选择器-Selector" class="headerlink" title="选择器(Selector)"></a>选择器(Selector)</h3><pre><code class="textmate">Selector 选择器可以理解为一个IO事件的监听与查询 器。通过选择器，一个线程可以查询多个通道的IO事件的就绪状态
+</code></pre>
+<h2 id="Buffer类"><a href="#Buffer类" class="headerlink" title="Buffer类"></a>Buffer类</h2><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">capacity</td>
+<td>容量，即可以容纳的最大数据量;在缓冲区创建时设置并且不能改变</td>
+</tr>
+<tr>
+<td align="center">limit</td>
+<td>上限，缓冲区中当前的数据量</td>
+</tr>
+<tr>
+<td align="center">position</td>
+<td>位置，缓冲区中下一个要被读或写的元素的索引</td>
+</tr>
+<tr>
+<td align="center">mark</td>
+<td>调用 mark()方法来设置 mark=position，再调用 reset()可以让 position 恢复到 mark 标记的位置，即 position=mark</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>IO</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1.6k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
+    <p><span class="copy-title">发布时间:</span>2021-08-11, 09:31:00</p>
+    <p><span class="copy-title">最后更新:</span>2022-05-26, 20:33:45</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/08/11/backend/java/netty/io/" title="IO">https://im-fan.gitee.io/2021/08/11/backend/java/netty/io/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk@1.7.2/dist/gitalk.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'cd9c7d8003d54ab55feb',
+            clientSecret: 'f32edd931a003b89b50d28a4d762a2535438c221',
+            repo: 'im-fan.gitee.io',
+            owner: 'im-fan',
+            admin: ['im-fan'],
+            id: decodeURI('location.pathname'),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <!--
+<p class="footer-entry">
+    ©2015-2022 Imfan
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+ -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'photoSwipe';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("https://cdn.bootcdn.net/ajax/libs/mermaid/8.4.2/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #c0bfbf;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #2b2929;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background/index-1920x1200.jpg);
+    }
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/moon.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+</html>
