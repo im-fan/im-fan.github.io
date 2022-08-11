@@ -1,0 +1,17 @@
+<div id="comments"></div>
+<link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css">
+<script src="https://giteement.oss-cn-beijing.aliyuncs.com/giteement.browser.js"></script>
+<script>
+    var giteement = new Giteement({
+        id: '<%=url %>',
+        owner: '<%=theme.giteement.giteeID%>',
+        repo: '<%=theme.giteement.repo%>',
+        backcall_uri: '<%=theme.giteement.redirect_uri%>',
+        oauth_uri: '<%=theme.giteement.oauth_uri%>',
+        oauth: {
+          client_id: '<%=theme.giteement.gitment_oauth.client_id%>',
+          client_secret: '<%=theme.giteement.gitment_oauth.client_secret%>'
+        },
+    })
+    giteement.render('comments')
+</script>

@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>阅读摘要 | Imfan笔记</title>
+  <meta name="keywords" content=" 摘要 ">
+  <meta name="description" content="阅读摘要 | Imfan笔记">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="简介 MySQL 5.7 增加了 JSON 数据类型的支持; 可以直接通过内置语法对json结构数据进行操作注意: 对json结构位置不能变更的业务，强烈建议使用varchar或者text等结构存储，json类型会优化key顺序  查询语法   语法 描述 最小可用版本(5.7+) 已弃用    -&gt; 评估路径后从 JSON 列返回值；相当于 JSON_EXTRACT()。     -&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL相关-json类型">
+<meta property="og:url" content="https://im-fan.gitee.io/2022/06/01/backend/storage/mysql-json/index.html">
+<meta property="og:site_name" content="Imfan笔记">
+<meta property="og:description" content="简介 MySQL 5.7 增加了 JSON 数据类型的支持; 可以直接通过内置语法对json结构数据进行操作注意: 对json结构位置不能变更的业务，强烈建议使用varchar或者text等结构存储，json类型会优化key顺序  查询语法   语法 描述 最小可用版本(5.7+) 已弃用    -&gt; 评估路径后从 JSON 列返回值；相当于 JSON_EXTRACT()。     -&amp;gt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-01T07:20:00.000Z">
+<meta property="article:modified_time" content="2022-06-07T03:53:00.659Z">
+<meta property="article:author" content="imfan">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="json类型">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/road.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/mermaid/9.1.1/mermaid.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/road.png" />
+</a>
+<div class="author">
+    <span>imfan</span>
+</div>
+
+<!--个人联系方式icon-->
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/im-fan" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:wyf3634@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(51)</small></div></li>
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(23)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="后端<--->服务治理">服务治理<small>(2)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->高并发">高并发<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->工具">工具<small>(5)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->接口文档">接口文档<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->框架">框架<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->三方集成">三方集成<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->数据结构与算法">数据结构与算法<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->线程池">线程池<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->项目编译">项目编译<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->消息队列">消息队列<small>(3)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->io">io<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->ognl表达式">ognl表达式<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="测试">测试<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="存储">存储<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="运维">运维<small>(8)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="架构">架构<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="思考">思考<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他">其他<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+
+<!-- 左边导航栏 关于&友链 -->
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    </div>
+    <div>
+    
+    <a  class="friends">友链</a></div>
+</div>
+
+<input type="hidden" id="yelog_site_posts_number" value="51">
+<input type="hidden" id="yelog_site_word_count" value="59.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://www.infoq.cn/">InfoQ</a></li>
+            
+            <li><a target="_blank" href="https://www.csdn.net/">CSDN</a></li>
+            
+            <li><a target="_blank" href="https://www.liaoxuefeng.com/">廖雪峰的官方网站</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用语</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态配置</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>分布式锁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>高并发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>技术文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>接口文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>三方集成</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>思维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线程池</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目编译</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>写作</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>摘要</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>注册中心</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>总结方法论</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arthas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>canal</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>COLA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DDD</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>devops</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>es</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gateway</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>io</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>istio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json类型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>kafka</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ldap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>message</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>oauth2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ognl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pulsar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rocketmq</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>skywalking</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SPI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringFramework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>test</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utils</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 存储 "
+           href="/2022/06/01/backend/storage/mysql-json/"
+           data-tag="mysql,json类型"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-json类型">MySQL相关-json类型</span>
+            <span class="post-date" title="2022-06-01 15:20:00">2022/06/01</span>
+        </a>
+        
+        <a  class="全部文章 后端 ognl表达式 "
+           href="/2022/05/25/backend/other/ognl/"
+           data-tag="ognl"
+           data-author="" >
+            <span class="post-title" title="Ognl表达式">Ognl表达式</span>
+            <span class="post-date" title="2022-05-25 15:40:00">2022/05/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2022/05/23/backend/mq/pulsar/"
+           data-tag="message,pulsar"
+           data-author="" >
+            <span class="post-title" title="Pulsar消息队列">Pulsar消息队列</span>
+            <span class="post-date" title="2022-05-23 10:20:00">2022/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2022/03/08/devops/shell/"
+           data-tag="shell命令"
+           data-author="" >
+            <span class="post-title" title="Shell命令记录">Shell命令记录</span>
+            <span class="post-date" title="2022-03-08 11:13:00">2022/03/08</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2022/02/15/backend/storage/es/"
+           data-tag="es"
+           data-author="" >
+            <span class="post-title" title="ES官方文档笔记">ES官方文档笔记</span>
+            <span class="post-date" title="2022-02-15 13:38:00">2022/02/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 数据结构与算法 "
+           href="/2022/01/13/backend/java/algorithm/book1/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="大话数据结构-摘要">大话数据结构-摘要</span>
+            <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2022/01/10/thinking/design/"
+           data-tag="总结方法论"
+           data-author="" >
+            <span class="post-title" title="工作相关">工作相关</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2022/01/10/thinking/write/"
+           data-tag="写作"
+           data-author="" >
+            <span class="post-title" title="写作思路和技巧">写作思路和技巧</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 接口文档 "
+           href="/2021/11/25/backend/other/swagger/"
+           data-tag="接口文档"
+           data-author="" >
+            <span class="post-title" title="集成SwaggerUI">集成SwaggerUI</span>
+            <span class="post-date" title="2021-11-25 10:00:00">2021/11/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 高并发 "
+           href="/2021/11/22/backend/java/thread/concurrent/"
+           data-tag="高并发"
+           data-author="" >
+            <span class="post-title" title="高并发相关">高并发相关</span>
+            <span class="post-date" title="2021-11-22 20:06:00">2021/11/22</span>
+        </a>
+        
+        <a  class="全部文章 测试 "
+           href="/2021/11/15/test/test/"
+           data-tag="test"
+           data-author="" >
+            <span class="post-title" title="测试相关">测试相关</span>
+            <span class="post-date" title="2021-11-15 17:51:54">2021/11/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/10/13/devops/arthas/"
+           data-tag="arthas"
+           data-author="" >
+            <span class="post-title" title="Arthas-问题排查工具">Arthas-问题排查工具</span>
+            <span class="post-date" title="2021-10-13 09:17:00">2021/10/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 io "
+           href="/2021/08/11/backend/java/netty/io/"
+           data-tag="io"
+           data-author="" >
+            <span class="post-title" title="IO">IO</span>
+            <span class="post-date" title="2021-08-11 09:31:00">2021/08/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 三方集成 "
+           href="/2021/08/04/backend/other/jimu-report/"
+           data-tag="三方集成"
+           data-author="" >
+            <span class="post-title" title="集成Jimu报表">集成Jimu报表</span>
+            <span class="post-date" title="2021-08-04 18:28:22">2021/08/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/07/26/backend/spring/framework/springframework-2/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码学习">SpringFramework源码学习</span>
+            <span class="post-date" title="2021-07-26 15:05:00">2021/07/26</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/07/20/backend/storage/mysql/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-知识点">MySQL相关-知识点</span>
+            <span class="post-date" title="2021-07-20 09:45:00">2021/07/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/26/backend/spring/framework/springframework-1/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码编译">SpringFramework源码编译</span>
+            <span class="post-date" title="2021-06-26 20:00:00">2021/06/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/15/backend/spring/springcloud-gateway/"
+           data-tag="gateway"
+           data-author="" >
+            <span class="post-title" title="SpringClougGateway">SpringClougGateway</span>
+            <span class="post-date" title="2021-06-15 14:16:00">2021/06/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/19/devops/skywalking/"
+           data-tag="skywalking"
+           data-author="" >
+            <span class="post-title" title="调用链监控-skywalking">调用链监控-skywalking</span>
+            <span class="post-date" title="2021-05-19 16:52:25">2021/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/18/devops/istio/"
+           data-tag="istio"
+           data-author="" >
+            <span class="post-title" title="istio">istio</span>
+            <span class="post-date" title="2021-05-18 16:30:00">2021/05/18</span>
+        </a>
+        
+        <a  class="全部文章 前端 "
+           href="/2021/04/28/frontend/vue/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue">vue</span>
+            <span class="post-date" title="2021-04-28 11:44:02">2021/04/28</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/16/devops/docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="运维相关">运维相关</span>
+            <span class="post-date" title="2021-04-16 14:19:25">2021/04/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2021/04/13/backend/service/nacos/"
+           data-tag="nacos,动态配置,注册中心"
+           data-author="" >
+            <span class="post-title" title="nacos">nacos</span>
+            <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/05/devops/nginx/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx">nginx</span>
+            <span class="post-date" title="2021-04-05 10:26:05">2021/04/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/03/22/backend/spring/spring-boot/"
+           data-tag="springboot"
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2021-03-22 09:44:01">2021/03/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2021/03/20/backend/java/utils/convert/orika/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-Orika">对象转换工具-Orika</span>
+            <span class="post-date" title="2021-03-20 14:15:00">2021/03/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/18/devops/ldap/"
+           data-tag="ldap"
+           data-author="" >
+            <span class="post-title" title="LDAP学习笔记">LDAP学习笔记</span>
+            <span class="post-date" title="2021-02-18 14:25:55">2021/02/18</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/09/devops/check/"
+           data-tag="devops"
+           data-author="" >
+            <span class="post-title" title="服务常见问题排查">服务常见问题排查</span>
+            <span class="post-date" title="2021-02-09 17:08:25">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 线程池 "
+           href="/2021/02/09/backend/java/thread/threadPool/"
+           data-tag="线程池"
+           data-author="" >
+            <span class="post-title" title="ThreadPool详解">ThreadPool详解</span>
+            <span class="post-date" title="2021-02-09 14:12:45">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/kafka/"
+           data-tag="message,kafka"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/rocketmq/"
+           data-tag="message,rocketmq"
+           data-author="" >
+            <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/02/02/backend/storage/redis/"
+           data-tag="cache"
+           data-author="" >
+            <span class="post-title" title="Redis学习笔记">Redis学习笔记</span>
+            <span class="post-date" title="2021-02-02 19:59:00">2021/02/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 项目编译 "
+           href="/2021/01/21/backend/java/build/gradle/"
+           data-tag="项目编译"
+           data-author="" >
+            <span class="post-title" title="Gradle学习笔记">Gradle学习笔记</span>
+            <span class="post-date" title="2021-01-21 13:24:22">2021/01/21</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/25/framework/design/uml/"
+           data-tag="技术文档"
+           data-author="" >
+            <span class="post-title" title="技术文档">技术文档</span>
+            <span class="post-date" title="2020-12-25 18:57:00">2020/12/25</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/15/framework/cola/"
+           data-tag="COLA"
+           data-author="" >
+            <span class="post-title" title="领域建模&amp;业务建模方法论">领域建模&amp;业务建模方法论</span>
+            <span class="post-date" title="2020-12-15 16:24:00">2020/12/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/12/10/backend/java/utils/mybatis-plus/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="MybatisPlus使用笔记">MybatisPlus使用笔记</span>
+            <span class="post-date" title="2020-12-10 12:00:00">2020/12/10</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/11/17/framework/oauth2/"
+           data-tag="oauth2"
+           data-author="" >
+            <span class="post-title" title="OAuth2学习笔记">OAuth2学习笔记</span>
+            <span class="post-date" title="2020-11-17 09:58:26">2020/11/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 "
+           href="/2020/11/11/backend/java/spi/"
+           data-tag="SPI"
+           data-author="" >
+            <span class="post-title" title="SPI-Java内置服务发现机制">SPI-Java内置服务发现机制</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/11/11/backend/java/utils/swagger/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="Java解析Swagger文档接口及参数">Java解析Swagger文档接口及参数</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/11/04/thinking/ali-words/"
+           data-tag="常用语"
+           data-author="" >
+            <span class="post-title" title="互联网常用语记录">互联网常用语记录</span>
+            <span class="post-date" title="2020-11-04 22:31:24">2020/11/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2020/10/29/backend/service/zookeeper/"
+           data-tag="注册中心,zookeeper,分布式锁"
+           data-author="" >
+            <span class="post-title" title="Zookeeper简介">Zookeeper简介</span>
+            <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/20/backend/java/utils/excel/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="EasyExcel使用遇到的问题">EasyExcel使用遇到的问题</span>
+            <span class="post-date" title="2020-10-20 17:22:53">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/09/framework/ddd/"
+           data-tag="DDD"
+           data-author="" >
+            <span class="post-title" title="DDD-领域驱动设计">DDD-领域驱动设计</span>
+            <span class="post-date" title="2020-10-09 16:51:54">2020/10/09</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/02/framework/design-model/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="14种常用设计模式">14种常用设计模式</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/canal/"
+           data-tag="canal"
+           data-author="" >
+            <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/mysql-other/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-常用语句">MySQL相关-常用语句</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/02/backend/java/utils/convert/map-struct/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-MapStruct">对象转换工具-MapStruct</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/10/02/thinking/book/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/10/02/thinking/abstract/"
+           data-tag="摘要"
+           data-author="" >
+            <span class="post-title" title="阅读摘要">阅读摘要</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/10/02/other/software/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="软件推荐">软件推荐</span>
+            <span class="post-date" title="2020-10-02 14:34:06">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/09/30/other/hexo/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Hexo搭建博客">Hexo搭建博客</span>
+            <span class="post-date" title="2020-09-30 14:51:20">2020/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <!-- <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div> -->
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-thinking/abstract" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">阅读摘要</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="思考">思考</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">摘要</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-06-20 16:05:01'>2020-10-02 14:44</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:2.2k</span>
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%BB%E6%84%8F%E7%BB%83%E4%B9%A0-%E5%A6%82%E4%BD%95%E4%BB%8E%E6%96%B0%E6%89%8B%E5%88%B0%E5%A4%A7%E5%B8%88"><span class="toc-text">刻意练习-如何从新手到大师</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%92%E7%BB%9D%E4%B8%89%E7%A7%8D%E9%94%99%E8%AF%AF%E6%80%9D%E6%83%B3"><span class="toc-text">拒绝三种错误思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89F%E5%B7%A5%E5%85%B7"><span class="toc-text">三F工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8C%81%E5%8A%A8%E6%9C%BA"><span class="toc-text">保持动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%BF%E5%85%8D%E6%94%BE%E5%BC%83"><span class="toc-text">避免放弃</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%9C%AC%E7%9A%84%E6%95%85%E4%BA%8B-%E7%AC%AC%E4%B8%80%E5%AD%A3"><span class="toc-text">资本的故事 第一季</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%82%A1%E4%BB%BD%E7%9A%84%E5%8A%9B%E9%87%8F"><span class="toc-text">1.股份的力量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B3%A1%E6%B2%AB%E7%9A%84%E8%AF%B1%E6%83%91"><span class="toc-text">2.泡沫的诱惑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8D%97%E6%B5%B7%E9%AA%97%E5%B1%80"><span class="toc-text">3.南海骗局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B1%89%E5%AF%86%E5%B0%94%E9%A1%BF%E7%9A%84%E6%97%8B%E8%BD%AC%E9%97%A8-%E5%8D%8E%E5%B0%94%E8%A1%97%E4%B9%8B%E7%88%B6"><span class="toc-text">4.汉密尔顿的旋转门(华尔街之父)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%A2%A7%E6%A1%90%E6%A0%91%E4%B8%8B%E7%9A%84%E6%89%BF%E8%AF%BA"><span class="toc-text">5.梧桐树下的承诺</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%BB%99%E9%A3%8E%E9%99%A9%E5%AE%9A%E4%BB%B7"><span class="toc-text">6.给风险定价</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%B3%A8%E6%B0%B4%E7%9A%84%E8%82%A1%E7%A5%A8"><span class="toc-text">7.注水的股票</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%B7%A8%E4%BA%BA%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="toc-text">8.巨人的诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%95%80%E9%87%91%E7%9A%84%E7%BE%8E%E5%85%83"><span class="toc-text">9.镀金的美元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%A3%8E%E9%99%A9%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="toc-text">10.风险的价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%97%A5%E6%9C%AC%E6%B3%A1%E6%B2%AB"><span class="toc-text">11.日本泡沫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%85%AB%E4%BD%B0%E4%BC%B4%E5%80%92%E9%97%AD"><span class="toc-text">12.八佰伴倒闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E9%97%A8%E5%8F%A3%E7%9A%84%E9%87%8E%E8%9B%AE%E4%BA%BA"><span class="toc-text">13.门口的野蛮人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E8%8B%B1%E9%95%91%E7%8B%99%E5%87%BB%E6%88%98"><span class="toc-text">14.英镑狙击战</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="刻意练习-如何从新手到大师"><a href="#刻意练习-如何从新手到大师" class="headerlink" title="刻意练习-如何从新手到大师"></a>刻意练习-如何从新手到大师</h2><h3 id="拒绝三种错误思想"><a href="#拒绝三种错误思想" class="headerlink" title="拒绝三种错误思想"></a>拒绝三种错误思想</h3><pre><code class="textmate">1. 第一种错误思想认为 某人的能力通常受到基因特征的限制。这种思 想常常表现为各种各样“我不能”或者“我不 是”之类的表述:“我不是很有创造力的 人。”、
+“我不能管理好别人。”、“我不擅长和数字 打交道。”、“我做不到比这更好。”但是，如我 们已经了解的那样，在任何一个人们选择着重发展的行业或领域之中，
+人人都可以通过正确 的训练来帮助自己大幅度地提高。我们可以塑 造自己的潜力。
+
+2. 第二种错误思想认为，如果你足够长时间地做某件事情，一定会更擅长。这种思想错在哪里，我们很清楚。以完全相同的方式一而再
+再而三地做某件事情，并不是提高绩效和表现的秘诀;它会使人们停下前进的脚步，并且缓慢地下滑。
+
+3.第三种错误思想认为，要想提高，只需要努力。如果足够刻苦，你会更加优秀。如果你想成为一位更优秀的经理，加倍努力。如果你
+想销售更多的产品或服务，加倍努力。如果你想优化你的团队协作，加倍努力。但现实是，所有这些事情，即管理、销售和团队合作，全
+都是专业化的技能，除非你运用一些专门用于提升那些特定技能的练习方法，否则，即使加倍努力，也无法让你有更大的进步。
+</code></pre>
+<h3 id="三F工具"><a href="#三F工具" class="headerlink" title="三F工具"></a>三F工具</h3><pre><code class="textmate">在没有导师的时候有效地练习某种技能，牢牢记住以下三个F，将是有帮助的。
+这 三个F，其实是以字母F开头三个单词，即:专 注(focus)、反馈(feedback)以及纠正(fixit)。
+将技能分解成一些组成部分，以便反复 地练习，并且有效地分析、确定你的不足之 处，然后想出各种办法来解决它们。
+</code></pre>
+<h3 id="保持动机"><a href="#保持动机" class="headerlink" title="保持动机"></a>保持动机</h3><ul>
+<li><p>保持动机的两个组成部分</p>
+<pre><code class="textmate">继续前行的理由和停下脚步的理由。
+你不再做自己当初想做的事情，是因为停下脚步的理由最终战胜了继续前行的理由。
+因此，你要保持动机，要么强化继续前行的理由，要么弱化停下脚步的理由。成功地保持动机，通常包括这两个方面。
+</code></pre>
+</li>
+<li><p>弱化停下脚步的理由</p>
+<pre><code class="textmate">找出那些可能干扰你练习的事情，并想办法将其影响控制在最小。
+两个重要的事情：
+  第一件是一般的身体保养:保证充足的睡眠并保持健康。
+  第二件是将练习课的时间限制在1小时左右。如果比那个时间长得多，你将无法保持高度的专注。
+</code></pre>
+</li>
+<li><p>增强继续前行的倾向</p>
+</li>
+</ul>
+<h3 id="避免放弃"><a href="#避免放弃" class="headerlink" title="避免放弃"></a>避免放弃</h3><pre><code class="textmate">如果你不再相信自己可以实现某个目标，要么是因为你的水平已经倒退了，要
+么是因为你陷入了停滞阶段，此时，千万不要半途而废。和你自己达成一个协议，你将尽自
+己的努力回归到之前的状态或者跨越停滞阶段，然后你再放弃。到那个时候，也许你不会放弃了。
+</code></pre>
+<h2 id="资本的故事-第一季"><a href="#资本的故事-第一季" class="headerlink" title="资本的故事 第一季"></a>资本的故事 第一季</h2><h3 id="1-股份的力量"><a href="#1-股份的力量" class="headerlink" title="1.股份的力量"></a>1.股份的力量</h3><pre><code class="textmate">股份制可以融到更多的钱，扩大生产规模；同时也分摊了风险
+</code></pre>
+<h3 id="2-泡沫的诱惑"><a href="#2-泡沫的诱惑" class="headerlink" title="2.泡沫的诱惑"></a>2.泡沫的诱惑</h3><pre><code class="textmate">郁金香引入后，由于作为身份和地位的象征，价格飙升，导致大量资金涌入郁金香市场；最终由于一个没有买家的传言，导致价格崩盘；
+郁金香泡沫后，郁金香价格趋势图频繁出现，常见于金融危机、A股危机中
+</code></pre>
+<h3 id="3-南海骗局"><a href="#3-南海骗局" class="headerlink" title="3.南海骗局"></a>3.南海骗局</h3><pre><code class="textmate">曾经的商业巨头由于战争原因，后续无法盈利；用股票换国债，加上用股票贿赂主要决策人的方式通过了提案；后续真相暴露，推动了资本市场开始往华尔街转移
+</code></pre>
+<h3 id="4-汉密尔顿的旋转门-华尔街之父"><a href="#4-汉密尔顿的旋转门-华尔街之父" class="headerlink" title="4.汉密尔顿的旋转门(华尔街之父)"></a>4.汉密尔顿的旋转门(华尔街之父)</h3><pre><code class="textmate">解释: 美国发行新货币、新债务、联邦信用替代州政府信用，达到统一货币、统一财政的目的
+作用: 构建了美国的信用货币和国债体系，是现代美国金融体系的两大支柱
+建立国家信用体系，并将国家信用直接转换为社会财富，促进经济增长
+引用： 信 国之宝也 --《左传》
+</code></pre>
+<h3 id="5-梧桐树下的承诺"><a href="#5-梧桐树下的承诺" class="headerlink" title="5.梧桐树下的承诺"></a>5.梧桐树下的承诺</h3><pre><code class="textmate">背景: 初期股票市场信息不透明，私下交易，利用利害信息可以影响股价
+有人利用提前的值得利好消息，利用大量杠杆成为银行股票的持有者，结果贷款渠道被掌权者切断，导致第一次股市崩盘
+股票交易员在梧桐树下初步签订了关于股票交易的一些协议(行业的自律和交易的规则)，成为纽约股票交易所的起点
+引用: 不以规矩，不能成方圆 --孟子
+</code></pre>
+<h3 id="6-给风险定价"><a href="#6-给风险定价" class="headerlink" title="6.给风险定价"></a>6.给风险定价</h3><pre><code class="textmate">期货，初期是从谷物期货交易开始，规避谷物价格不稳定带来的风险(戈登哈伯德)；市场监督机制出现，保证金交易制度出现
+    保证金交易和标准化合约，是芝加哥期货交易的两大发明，也是全球期货交易的基石
+</code></pre>
+<h3 id="7-注水的股票"><a href="#7-注水的股票" class="headerlink" title="7.注水的股票"></a>7.注水的股票</h3><pre><code class="textmate">滥发股票导致交易市场混乱，催生了新的股票交易规则，遏制滥发股票
+</code></pre>
+<h3 id="8-巨人的诞生"><a href="#8-巨人的诞生" class="headerlink" title="8.巨人的诞生"></a>8.巨人的诞生</h3><pre><code class="textmate">美国钢铁公司诞生，首家市值超过10亿美元的公司；通过整合美国钢铁制造业，提升美国刚铁制造业地位，垄断了美国钢铁行业；
+随后促进和行业整合浪潮，诞生了很多大公司
+引用: 相出新办法的人，在他的办法没有成功以前，人家总是说他异想天开 --马克吐温
+</code></pre>
+<h3 id="9-镀金的美元"><a href="#9-镀金的美元" class="headerlink" title="9.镀金的美元"></a>9.镀金的美元</h3><pre><code class="textmate">构建一个全球性的货币金融体系，重要人物: 凯恩斯 
+布雷顿森林协议签订：各国货币与美元挂钩，年度汇率波动不超过10%;美元与黄金挂钩(35/盎司)  双挂钩
+后续由于美国随意增发货币，导致各国挤兑黄金，美国为了防止黄金被挤兑，颁布尼克松冲击(美元与黄金脱钩)，随后各国兑美元固定汇率改为浮动汇率；
+中东石油危机爆发，导致双挂钩失效
+</code></pre>
+<h3 id="10-风险的价值"><a href="#10-风险的价值" class="headerlink" title="10.风险的价值"></a>10.风险的价值</h3><pre><code class="textmate">第一家风险投资公司诞生(多利奥特-风险投资之父)；纳斯达克成立，为风险投资提供了一条从进入到退出的产业链
+</code></pre>
+<h3 id="11-日本泡沫"><a href="#11-日本泡沫" class="headerlink" title="11.日本泡沫"></a>11.日本泡沫</h3><pre><code class="textmate">快速升值的日元，带来楼市和股市的飞涨，资本逃离实体经济
+广场协议: 联合干预外汇市场，让美元对主要货币有序贬值；促进了日元的升值；
+日元升值导致投资人大量收购海外资产，对内投资楼市股市，泡沫逐渐产生 
+两个日本说法: 一个是低迷的本土资产，另一个是日本国民的海外资产不断向本土汇回收入
+</code></pre>
+<h3 id="12-八佰伴倒闭"><a href="#12-八佰伴倒闭" class="headerlink" title="12.八佰伴倒闭"></a>12.八佰伴倒闭</h3><pre><code class="textmate">由于日元升值，大量购入海外固定资产开连锁超市；后期由于经济原因股价崩盘，需要偿还大量债务，最终导致破产；
+八佰伴腾飞到倒闭，伴随着日本经期泡沫的腾飞与破灭
+</code></pre>
+<h3 id="13-门口的野蛮人"><a href="#13-门口的野蛮人" class="headerlink" title="13.门口的野蛮人"></a>13.门口的野蛮人</h3><pre><code class="textmate">黑色星期一导致纳斯维克公司股价暴跌，KKR打算联合另一公司收购纳斯维克，结果反被踢出局，诞生当时最大规模收购案；
+垃圾债券：已少量自有资金，外加拟收购目标的资产为抵押，大大降低了收购方的资金压力
+各路资本对公司控制权的争夺，却在争夺自身利益的同时，提升了公司的价值，此时的公司，已是一个可交易的商品 
+</code></pre>
+<h3 id="14-英镑狙击战"><a href="#14-英镑狙击战" class="headerlink" title="14.英镑狙击战"></a>14.英镑狙击战</h3><pre><code class="textmate">索罗斯  对冲基金
+英镑兑马克(德国货币)采用固定汇率，索罗斯判断英镑价值被高估，做空英镑，导致英镑采用浮动利率
+</code></pre>
+<p>未完待续。。。</p>
+
+      
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>阅读摘要</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">2.2k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-10-02, 14:44:10</p>
+    <p><span class="copy-title">最后更新:</span>2022-06-20, 16:05:01</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/10/02/thinking/abstract/" title="阅读摘要">https://im-fan.gitee.io/2020/10/02/thinking/abstract/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk@1.7.2/dist/gitalk.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'cd9c7d8003d54ab55feb',
+            clientSecret: 'f32edd931a003b89b50d28a4d762a2535438c221',
+            repo: 'im-fan.gitee.io',
+            owner: 'im-fan',
+            admin: ['im-fan'],
+            id: decodeURI('location.pathname'),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <!--
+<p class="footer-entry">
+    ©2015-2022 Imfan
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+ -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'photoSwipe';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("https://cdn.bootcdn.net/ajax/libs/mermaid/8.4.2/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #c0bfbf;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #2b2929;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background/index-1920x1200.jpg);
+    }
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/moon.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+</html>
