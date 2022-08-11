@@ -346,7 +346,7 @@ GET /my_store/products/_search
       "must" :     [],  //相当于and,有评分
       "should" :   [],  //相当于or
       "must_not" : [],  //相当于not
-      "filter" : []     //过滤查询，无评分
+      "filter" : []     //相当于and,无评分,与must比效率高
    }
 }
 ```
