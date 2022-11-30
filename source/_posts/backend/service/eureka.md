@@ -72,6 +72,11 @@ ApplicationConsumer消费服务
 - [ ]  Eureka 的多级缓存设计
 - [ ]  Eureka 自我保护机制
 
+## 3.前期准备
+- [spring-cloud-netflix源码地址](https://github.com/spring-cloud/spring-cloud-netflix)
+- SequenceDiagram Idea插件
+
+
 # 二、服务启动源码拆解
 
 ## 1.入口分析
@@ -785,8 +790,3 @@ class PeerAwareInstanceRegistry {
     }
 }
 ```
-
-
-# 相关资料
-
-- [spring-cloud-netflix源码地址](https://github.com/spring-cloud/spring-cloud-netflix)
