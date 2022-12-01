@@ -19,7 +19,7 @@ Eureka还附带了一个基于java的客户端组件Eureka client，它使与服
 客户端还有一个内置的负载均衡器，用于进行基本的轮询负载平衡。
 Eureka填补了中间层负载平衡的需求
 
-REST扩展: 资源(URI)表述性状态转移 
+tips: REST,资源(URI)表述性状态转移 
     状态转移就是客户端通过一系列请求动作，推动服务端的资源状态发生变化，资源的状态可以在「创建-修改-查看-删除」之间转移。
 ```
 
@@ -752,7 +752,7 @@ class Test {
 }
 ```
 
-### 5.同步集群节点注册表 PeerAwareInstanceRegistry.syncUp()
+## 5.同步集群节点注册表 PeerAwareInstanceRegistry.syncUp()
 ```java
 class PeerAwareInstanceRegistry {
     @Override
@@ -791,7 +791,7 @@ class PeerAwareInstanceRegistry {
 }
 ```
 
-### 6.PeerAwareInstanceRegistry.openForTraffic()
+## 6.PeerAwareInstanceRegistry.openForTraffic()
 ```java
 @Singleton
 public class PeerAwareInstanceRegistryImpl extends AbstractInstanceRegistry implements PeerAwareInstanceRegistry {
@@ -823,10 +823,21 @@ public abstract class AbstractInstanceRegistry implements InstanceRegistry {
 }
 ```
 
-### 启动过程总结
+## 7.启动过程总结
 ```textmate
-    1.加载配置
-    2.注入PeerEurekaNodes(EurekaServer节点类)、注入EurekaServerBootstrap、注入上下文及其他相关类
-    3.导入EurekaServerInitializerConfiguration类,开始处理初始化过程
-    4.初始化本地注册表、启动相关异步定时任务、修改服务状态、从其他节点同步信息、发布启动事件，启动成功
+1.加载配置
+	eureka.server
+	eureka.dashboard
+	eureka.instance.registry
+	/eureka/server.properties
+
+2.初始化相关类
+	初始化PeerEurekaNodes(EurekaServer节点类)
+	初始化EurekaServerBootstrap、
+	初始化上下文及其他相关类
+
+3.初始化EurekaServer
+	初始化环境变量
+	初始化EurekaServer上下文、同步节点信息、启动异步任务、修改实例状态
+	发布相关事件(注册表可用事件、EurekaServer启动事件)
 ```
