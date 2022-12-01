@@ -226,7 +226,7 @@ sequenceDiagram
       instance->>instance: 添加队列数据、缓存失效
       registry->>-bootStrap: 返回数量
     end
-    bootStrap->>registry: 3.openForTraffic()
+    bootStrap->>registry: 4.openForTraffic()开放注册
     note right of conf: 调整每分钟更新节点的阈值,更新应用实例状态为UP、开启主动下线实例一步任务
     bootStrap->>bootStrap: EurekaMonitors.registerAllStats()
   
@@ -752,7 +752,7 @@ class Test {
 }
 ```
 
-### 同步集群节点注册表 PeerAwareInstanceRegistry.syncUp()
+### 5.同步集群节点注册表 PeerAwareInstanceRegistry.syncUp()
 ```java
 class PeerAwareInstanceRegistry {
     @Override
@@ -789,4 +789,44 @@ class PeerAwareInstanceRegistry {
       return count;
     }
 }
+```
+
+### 6.PeerAwareInstanceRegistry.openForTraffic()
+```java
+@Singleton
+public class PeerAwareInstanceRegistryImpl extends AbstractInstanceRegistry implements PeerAwareInstanceRegistry {
+    @Override
+    public void openForTraffic(ApplicationInfoManager applicationInfoManager, int count) {
+        //...省略
+        logger.info("Changing status to UP");
+        //设置状态
+        applicationInfoManager.setInstanceStatus(InstanceStatus.UP);
+        //执行初始化后,后续任务
+        super.postInit();
+    }
+}
+
+public abstract class AbstractInstanceRegistry implements InstanceRegistry {
+    private final AtomicReference<EvictionTask> evictionTaskRef = new AtomicReference<EvictionTask>();
+    protected void postInit() {
+      renewsLastMin.start();
+      //驱逐任务
+      if (evictionTaskRef.get() != null) {
+            evictionTaskRef.get().cancel();
+      }
+      evictionTaskRef.set(new EvictionTask());
+      //启动定时驱逐任务
+      evictionTimer.schedule(evictionTaskRef.get(),
+              serverConfig.getEvictionIntervalTimerInMs(),
+              serverConfig.getEvictionIntervalTimerInMs());
+    }
+}
+```
+
+### 启动过程总结
+```textmate
+    1.加载配置
+    2.注入PeerEurekaNodes(EurekaServer节点类)、注入EurekaServerBootstrap、注入上下文及其他相关类
+    3.导入EurekaServerInitializerConfiguration类,开始处理初始化过程
+    4.初始化本地注册表、启动相关异步定时任务、修改服务状态、从其他节点同步信息、发布启动事件，启动成功
 ```
