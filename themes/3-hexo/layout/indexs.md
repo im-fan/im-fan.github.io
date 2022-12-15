@@ -34,6 +34,21 @@
 本博客通过 [Hexo](https://hexo.io/) 生成，部署在 [Gitee Pages](https://gitee.com/help/articles/4136#article-header0)<p>
 引用主题 [3-hexo](https://yelog.org/2017/03/23/3-hexo-instruction/)
 
+### 常用链接
+<div>
+    <span><a href="https://www.ruanyifeng.com/">阮一峰的个人网站</a>&nbsp;&nbsp;</span>
+    <span><a href="https://www.oceanengine.com/">巨量引擎</a>&nbsp;&nbsp;</span>
+    <span><a href="https://www.woshipm.com/">人人都是产品经理</a>&nbsp;&nbsp;</span>
+</div>
+<div>
+    <span><a href="https://www.cnblogs.com/crazymakercircle">疯狂创客圈</a>&nbsp;&nbsp;</span>
+    <span><a href="https://www.infoq.cn/">InfoQ</a>&nbsp;&nbsp;</span>
+    <span><a href="https://new.shuge.org/">书格</a>&nbsp;&nbsp;</span>
+</div>
+<div>
+    <span><a href="https://www.shidianguji.com/">识典古籍</a>&nbsp;&nbsp;</span>
+</div>
+
 
 总文章:<code class="article_number"></code>篇，所有文章总字数：<code class="site_word_count"></code>字<p>
 历史访问人数：<code class="site_uv"></code>人，历史访问量：<code class="site_pv"></code>次
