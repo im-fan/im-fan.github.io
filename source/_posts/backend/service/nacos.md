@@ -54,6 +54,10 @@ Raft 协议强依赖 Leader 节点来确保集群数据一致性。
     3.Leader 随后向 client 发送数据已接收确认，client 发送出已数据接收后，再向所有 Follower 节点发送通知表明该数据状态为committed。
 ```
 
+### nacos源码拆解
+
+  <img alt="Nacos服务模型" width="600px" height="400px" src="/resource/nacos源码.png"/>
+
 ## 相关资料
 - [Nacos官方文档](https://nacos.io/zh-cn/docs/what-is-nacos.html)
 - [小白也能懂的 Nacos 服务模型介绍(转)](https://mp.weixin.qq.com/s/S8HI7DG5v9C2IfjXtkVjuQ)

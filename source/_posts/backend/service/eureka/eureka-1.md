@@ -1,5 +1,5 @@
 ---
-title: Eureka源码学习笔记
+title: Eureka源码学习笔记(一)
 description: eureka
 date: 2022-09-28 16:50
 tags:
@@ -9,6 +9,7 @@ categories:
 - 后端
 - 服务治理
 ---
+> EurekaServer启动流程,包括Eureka服务注册、心跳、注册表同步、服务剔除等流程
 > 基于4R架构理论拆解: 顶层结构(Rank) --> 组成角色(Role) --> 角色关系(Relation) --> 运作规则(Rule)
 
 # 一、Eureka是什么
@@ -59,20 +60,7 @@ ApplicationConsumer消费服务
 服务剔除 Eviction：在默认的情况下，当 Client 连续 90 秒没有向 Server 发送服务续约，Server 会将该 Client 从服务注册列表删除。
 ```
 
-## 2.目标
-
-- [X]  EurekaServer启动流程
-- [ ]  Eureka Server 处理注册请求
-- [ ]  Eureka Server 服务信息同步
-- [ ]  Eureka Serer 收到续约心跳请求的处理
-- [ ]  服务续约
-- [ ]  服务发现
-- [ ]  服务注册入口
-- [ ]  服务注册请求的发起
-- [ ]  Eureka 的多级缓存设计
-- [ ]  Eureka 自我保护机制
-
-## 3.前期准备
+## 2.前期准备
 - [spring-cloud-netflix源码地址](https://github.com/spring-cloud/spring-cloud-netflix)
 - SequenceDiagram Idea插件
 
