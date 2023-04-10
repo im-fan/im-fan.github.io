@@ -84,8 +84,8 @@ public class EurekaClientAutoConfiguration {
 - 总结
 ```textmate
 1：项目启动
-2：初始化配置EurekaClientAutoConfiguration->eurekaInstanceConfigBean
-3：构造EurekaClient对象（内部类EurekaClientAutoConfiguration：：RefreshableEurekaClientConfiguration）
+2：初始化配置EurekaClientAutoConfiguration -> eurekaInstanceConfigBean
+3：构造EurekaClient对象（内部类EurekaClientAutoConfiguration: RefreshableEurekaClientConfiguration）
     3.1：构造心跳任务线程池
     3.2：构造缓存刷新任务线程池
 4：启动定时任务（心跳+缓存刷新）
