@@ -39,6 +39,8 @@
     <span><a href="https://www.ruanyifeng.com/">阮一峰的个人网站</a>&nbsp;&nbsp;</span>
     <span><a href="https://www.oceanengine.com/">巨量引擎</a>&nbsp;&nbsp;</span>
     <span><a href="https://www.woshipm.com/">人人都是产品经理</a>&nbsp;&nbsp;</span>
+    <span><a href="https://learn.lianglianglee.com/">技术文章摘抄</a>&nbsp;&nbsp;</span>
+
 </div>
 <div>
     <span><a href="https://www.cnblogs.com/crazymakercircle">疯狂创客圈</a>&nbsp;&nbsp;</span>
