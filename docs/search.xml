@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>GPT-AI介绍</title>
+      <link href="/2023/04/11/ai/gpt/gpt/"/>
+      <url>/2023/04/11/ai/gpt/gpt/</url>
+      
+        <content type="html"><![CDATA[<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul><li><a href="https://www.cursor.so/">cursor</a></li><li><a href="https://chat.openai.com/">chat.openai</a></li><li><a href="http://35.77.74.125/#/">ChatGPT-网友搭建</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> GTP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+            <tag> GTP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LLM-AI介绍</title>
+      <link href="/2023/04/11/ai/llm/llm/"/>
+      <url>/2023/04/11/ai/llm/llm/</url>
+      
+        <content type="html"><![CDATA[<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul><li><a href="https://baijiahao.baidu.com/s?id=1762777142029974542&wfr=spider&for=pc">开源LLM,ChatGPT平替</a></li><li><a href="https://freedomgpt.com/">freedomGPT-无限制回答</a></li><li><a href="https://chat.colossalai.org/">colossalai-最接近ChatGPT的项目</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> LLM </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+            <tag> LLM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>线上问题处理过程-ES</title>
       <link href="/2023/03/29/error/es-error/"/>
       <url>/2023/03/29/error/es-error/</url>
@@ -731,11 +785,11 @@
       
         <tags>
             
-            <tag> 注册中心 </tag>
-            
             <tag> nacos </tag>
             
             <tag> 动态配置 </tag>
+            
+            <tag> 注册中心 </tag>
             
         </tags>
       
@@ -1182,9 +1236,9 @@
       
         <tags>
             
-            <tag> zookeeper </tag>
-            
             <tag> 注册中心 </tag>
+            
+            <tag> zookeeper </tag>
             
             <tag> 分布式锁 </tag>
             
