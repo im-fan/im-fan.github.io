@@ -36,6 +36,22 @@ categories:
     邮箱
 ```
 
+```textmate
+1. 下载对应系统版本release包
+https://github.com/ilanyu/ReverseProxy/releases
+https://github.com/ilanyu/ReverseProxy/issues/30   M1用这个
+
+#执行sh命令
+chmod a+x ReverseProxy_darwin_arm64
+./ReverseProxy_darwin_arm64 -l "0.0.0.0:8888" -r "http://idea.lanyue.com:80"
+
+# 启动失败查看8888端口是否被占用(大概率是charles)
+sudo lsof -i tcp:8888
+
+#在激活框中输入
+http://localhost:8888/{gudi}
+```
+
 - 方式二
 
 ```textmate
