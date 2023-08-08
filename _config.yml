@@ -15,7 +15,8 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://im-fan.github.io
+## https://im-fan.github.io
+url: https://wiki.aistart.cc/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
