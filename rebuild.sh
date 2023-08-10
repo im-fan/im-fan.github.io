@@ -18,19 +18,21 @@ rebuild() {
     #open https://gitee.com/im-fan/im-fan/pages
 }
 
-channel=$1
-# 切换源
-if [[ $channel = '' ]]
-then
-  echo '输入 gitee or github'
-  exit;
-elif [[ $channel = 'gitee' ]]; then
-    git remote rm origin
-    git remote add origin 'git@gitee.com:im-fan/im-fan.git'
-    rebuild;
-elif [[ $1 = 'github' ]]; then
-    git remote rm origin
-    git remote add origin 'git@github.com:im-fan/im-fan.github.io.git'
-    rebuild;
-fi
+#channel=$1
 
+# 切换源
+
+#if [[ $channel = '' ]]
+#then
+#  echo '输入 gitee or github'
+#  exit;
+#elif [[ $channel = 'gitee' ]]; then
+#    git remote rm origin
+#    git remote add origin 'git@gitee.com:im-fan/im-fan.git'
+#    rebuild;
+#elif [[ $1 = 'github' ]]; then
+#    git remote rm origin
+#    git remote add origin 'git@github.com:im-fan/im-fan.github.io.git'
+#    rebuild;
+#fi
+rebuild;

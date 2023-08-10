@@ -823,11 +823,11 @@
       
         <tags>
             
+            <tag> 注册中心 </tag>
+            
             <tag> nacos </tag>
             
             <tag> 动态配置 </tag>
-            
-            <tag> 注册中心 </tag>
             
         </tags>
       
@@ -1274,9 +1274,9 @@
       
         <tags>
             
-            <tag> 注册中心 </tag>
-            
             <tag> zookeeper </tag>
+            
+            <tag> 注册中心 </tag>
             
             <tag> 分布式锁 </tag>
             
