@@ -9,6 +9,7 @@ categories:
 ---
 # 有趣的链接
 
+- [Flutter Demo](https://afgprogrammer.com/flutter/)
 - [手工解码二维码](https://blog.qartis.com/decoding-small-qr-codes-by-hand/)
 - [emaction](https://github.com/emaction/emaction.frontend)
 <br/>自部署 GitHub 风格的 Reactions 点赞功能
