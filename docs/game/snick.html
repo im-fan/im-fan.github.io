@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>game-snick</title>
+    <style>
+        body {
+            /* 以中心点往四周边缘渐变色，从黑色渐变到白色 */
+            background: radial-gradient(circle at center, black, rgb(63, 62, 62));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            /* 毛玻璃背景 */
+            backdrop-filter: blur(10px);
+        }
+
+        #game-board {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            /* 边缘圆角,1px,白色 */
+            border: 1px solid white;
+            border-radius: 20px;
+            /* 透明背景色 */
+            background-color: transparent;
+        }
+
+        .snake {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+        }
+
+        .snake-head {
+            /* background-color: red; */
+        }
+
+        .food {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            line-height: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        #count {
+            /* 字体颜色白色，大小18 */
+            color: white;
+            font-size: 18px;
+            border: 1px solid white;
+            border-radius: 10px;
+            /* 文字靠右 */
+            text-align: center;
+            width: 100px;
+            /* 距离右边0px */
+            margin-left: 300px;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 用一个无边框的div框将两个div包裹起来，并形成count在上，game-board框在下 -->
+<div>
+    <!-- 添加一个计数板,用于显示蛇吃到的食物的数量-->
+    <div id="count"></div>
+
+    <div id="game-board"></div>
+</div>
+
+
+<script>
+    //添加一个计数板,用于显示蛇吃到的食物的数量
+    const countDiv = document.getElementById('count');
+    //设置初始内容
+    countDiv.innerHTML = "分数: 0";
+    let foodCount = 0;
+
+    // 游戏面板大小
+    const boardSize = 20;
+    const board = document.getElementById('game-board');
+
+    // 蛇初始位置和移动方向
+    let snake = [{ x: 10, y: 10 }];
+    let direction = { x: 0, y: 0 };
+
+    // 随机生成食物
+    let food = generateFood();
+
+    //每次移动的像素值
+    const stepPx = 0.5;
+
+    // 键盘事件监听，改变蛇的移动方向
+    document.addEventListener('keydown', changeDirection)
+
+    // 游戏主循环,每隔200毫秒执行一次,游戏结束后停止循环
+    let loopFlag = setInterval(gameLoop, 200);
+
+    function gameLoop() {
+        // 移动蛇头
+        const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+        snake.unshift(head);
+
+        // 判断是否吃到食物
+        if (head.x === food.x && head.y === food.y) {
+            // 如果吃到食物，生成新的食物
+            food = generateFood();
+            foodCount++;
+            countDiv.innerHTML = "分数: "+foodCount;
+        } else {
+            // 如果没有吃到食物，移除蛇尾
+            snake.pop();
+        }
+
+        // 检查游戏是否结束,结束后保持当前页面并退出循环
+        if (isGameOver()) {
+            console.log('游戏结束,Enter键继续游戏');
+
+            //按下回车键后继续
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    location.reload();
+                }
+            });
+
+            //蛇停止在当前位置
+            clearInterval(loopFlag);
+        }
+        // 更新游戏面板元素
+        updateBoard();
+    }
+
+    function generateFood() {
+        const food = {
+            x: Math.floor(Math.random() * boardSize),
+            y: Math.floor(Math.random() * boardSize)
+        };
+        return food;
+    }
+
+    function updateBoard() {
+        // 清除游戏面板上的所有元素
+        board.innerHTML = '';
+
+        // 绘制蛇的身体
+        snake.forEach((segment, index) => {
+            const snakeElement = document.createElement('div');
+            snakeElement.className = `snake ${index === 0 ? 'snake-head' : ''}`;
+            snakeElement.innerHTML = '😈';
+            snakeElement.style.left = segment.x * 20 + 'px';
+            snakeElement.style.top = segment.y * 20 + 'px';
+            board.appendChild(snakeElement);
+        });
+
+        // 绘制食物
+        const foodElement = document.createElement('div');
+        foodElement.className = 'food';
+        foodElement.innerHTML = '🍎';
+        foodElement.style.left = food.x * 20 + 'px';
+        foodElement.style.top = food.y * 20 + 'px';
+        board.appendChild(foodElement);
+    }
+
+    function changeDirection(event) {
+        // console.log(event.key);
+        switch (event.key) {
+            //上键或者键盘上的w键都可以往上走
+            case 'w':
+            case 'ArrowUp':
+                if (direction.y !== stepPx) {
+                    direction = { x: 0, y: -stepPx };
+                }
+                break;
+            case 's':
+            case 'ArrowDown':
+                if (direction.y !== -stepPx) {
+                    direction = { x: 0, y: stepPx };
+                }
+                break;
+            case 'a':
+            case 'ArrowLeft':
+                if (direction.x !== stepPx) {
+                    direction = { x: -stepPx, y: 0 };
+                }
+                break;
+            case 'd':
+            case 'ArrowRight':
+                if (direction.x !== -stepPx) {
+                    direction = { x: stepPx, y: 0 };
+                }
+            default :
+                direction = { x: stepPx, y: 0 };
+                break;
+        }
+    }
+
+    function isGameOver() {
+        // 检查蛇是否碰到边界
+        const head = snake[0];
+
+        if (head.x < 0 || head.x >= boardSize-stepPx || head.y <= 0 || head.y >= boardSize-stepPx) {
+            //修改game-board边框颜色
+            board.style.borderColor = 'red';
+            return true;
+        }
+
+        // 检查蛇是否碰到自己
+        for (let i = 1; i < snake.length; i++) {
+            if (head.x === snake[i].x && head.y === snake[i].y) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+</script>
+</body>
+</html>
