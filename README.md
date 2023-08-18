@@ -2,6 +2,14 @@
 - [官方文档](https://hexo.io/zh-cn/docs/)
 - [Imfan博客地址](https://im-fan.gitee.io/)
  
+## 资源文件所在位置
+```textmate
+themes/source/
+docImg -> 文章图片文件夹
+game -> 小游戏
+
+```
+
 ## 新增文档
 ```text
 1.source/_posts文件夹下新增对应目录&文件夹

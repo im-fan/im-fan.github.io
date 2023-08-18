@@ -56,7 +56,7 @@ Raft 协议强依赖 Leader 节点来确保集群数据一致性。
 
 ### nacos源码拆解
 
-  <img alt="Nacos服务模型" width="600px" height="400px" src="/resource/nacos源码.png"/>
+  <img alt="Nacos服务模型" width="600px" height="400px" src="/docImg/nacos源码.png"/>
 
 ## 相关资料
 - [Nacos官方文档](https://nacos.io/zh-cn/docs/what-is-nacos.html)

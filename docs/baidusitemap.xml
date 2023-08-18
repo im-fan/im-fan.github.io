@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wiki.aistart.cc/2023/08/19/other/game/</loc>
+    <lastmod>2023-08-18</lastmod>
+  </url>
+  <url>
+    <loc>https://wiki.aistart.cc/2021/04/13/backend/service/nacos/</loc>
+    <lastmod>2023-08-18</lastmod>
+  </url>
+  <url>
     <loc>https://wiki.aistart.cc/2023/08/08/other/url/</loc>
-    <lastmod>2023-08-08</lastmod>
+    <lastmod>2023-08-14</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2020/10/02/other/software/</loc>
@@ -27,10 +35,6 @@
   <url>
     <loc>https://wiki.aistart.cc/2023/03/16/backend/service/eureka/eureka-2/</loc>
     <lastmod>2023-03-22</lastmod>
-  </url>
-  <url>
-    <loc>https://wiki.aistart.cc/2021/04/13/backend/service/nacos/</loc>
-    <lastmod>2023-03-20</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2022/09/28/backend/service/eureka/eureka-1/</loc>
