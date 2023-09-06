@@ -1,5 +1,5 @@
 ---
-title: Stable Diffusion Web UI学习(一)
+title: Stable Diffusion Web UI(一)-部署
 date: 2023-09-06
 tags:
 - AIGC,SD,StableDiffusion
@@ -87,7 +87,7 @@ Nvidia显卡需要安装CUDA、AMD显卡需要安装Ort
 下载插件项目后放在 /extensions 目录下
 ```
 
-- 插件推荐
+- 部分插件推荐
 
 | 名称                                      | 简介                   |
 | ----------------------------------------- | ---------------------- |
