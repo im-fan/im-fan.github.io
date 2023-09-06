@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Stable Diffusion Web UI学习(一)</title>
+      <link href="/2023/09/06/ai/gc/stable-diffusion/"/>
+      <url>/2023/09/06/ai/gc/stable-diffusion/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h1><h2 id="1-1-Stable-Diffusion"><a href="#1-1-Stable-Diffusion" class="headerlink" title="1.1 Stable Diffusion"></a>1.1 Stable Diffusion</h2><p><strong>Stable Diffusion</strong>是2022年发布的主要用于 <strong>文本生成图像</strong> 的深度学习模型，也就是常说的txt2img的应用场景，通过给定 <strong>文本提示词（text prompt）</strong>，该模型会输出一张匹配提示词的图片。</p><p>Stable Diffusion是基于“潜在扩散模型”（latent diffusion model；LDM）的模型</p><ul><li>原理图(基于LDM论文)</li></ul><img alt="LDM论文" height="400" src="/img/ai/LDM.png" width="600"/><ul><li><ul><li>变分编码器 Vector Quantised Variational AutoEncoder，VQ-VAE</li></ul></li><li><p>扩散模型 Diffusion Model， DM</p></li><li><p>条件控制器 Conditioning</p></li><li><p>应用场景</p></li></ul><p>txt2img(文生图)、img2img(图生图)、Depth-to-image（深度图生图）、Inpainting（图片修复）</p><h2 id="1-2-Stable-Diffusion-WebUI"><a href="#1-2-Stable-Diffusion-WebUI" class="headerlink" title="1.2 Stable Diffusion WebUI"></a>1.2 Stable Diffusion WebUI</h2><blockquote><p>基于Stable Diffusion的Web端操作页面</p></blockquote><img alt="sd-webui" height="400" src="/img/ai/sd-webui.png" width="600"/><h1 id="二、部署"><a href="#二、部署" class="headerlink" title="二、部署"></a>二、部署</h1><h2 id="1-安装部署"><a href="#1-安装部署" class="headerlink" title="1. 安装部署"></a>1. 安装部署</h2><h3 id="1-1-简易安装步骤"><a href="#1-1-简易安装步骤" class="headerlink" title="1.1. 简易安装步骤"></a>1.1. 简易安装步骤</h3><p>前提条件：Windows系统+Nvidia独立显卡+最低4G显存</p><p><a href="https://www.bilibili.com/video/BV1iM4y1y7oA/?vd_source=a587431d27f99623cb0298cf5e56d7c1">秋叶-整合包</a></p><p><a href="https://www.bilibili.com/video/BV1bT411p7Gt/?spm_id_from=333.788&vd_source=a587431d27f99623cb0298cf5e56d7c1">星空-整合包</a></p><h3 id="1-2-专业安装步骤-推荐"><a href="#1-2-专业安装步骤-推荐" class="headerlink" title="1.2. 专业安装步骤(推荐)"></a>1.2. 专业安装步骤(推荐)</h3><ul><li>环境准备</li></ul><p>git、Python3.10及以上版本、最低4GB显存(低显存也能跑)</p><p>Nvidia显卡需要安装CUDA、AMD显卡需要安装Ort</p><p><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon">MacOS Apple芯片部署</a></p><ul><li>下载&amp;部署</li></ul><p>步骤参考 <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">stable-diffusion-webui</a> 文档</p><ul><li>启动</li></ul><p>在项目根目录下执行</p><pre><code class="shell"># 更多参数参考github文档，启动后会自动安装需要的包./webui.sh --medvram --theme dark</code></pre><ul><li><p>解决疑难杂症</p><p>  先在SDWebui github上的文档查找解决方案，没有了再参考网上相关解决方案</p></li></ul><h2 id="2-插件"><a href="#2-插件" class="headerlink" title="2. 插件"></a>2. 插件</h2><ul><li>页面安装(需🪜)<pre><code class="textmate">首页 -&gt; Extensions -&gt; Available;  点击Load from加载插件 或者 从URL安装插件安装完成后点击 Settings -&gt;  Reload UI</code></pre></li></ul><img alt="sd-web-plugin" height="400" src="/img/ai/sd-web-plugin.png" width="800"/><ul><li><p>本地安装</p><pre><code class="textmate">下载插件项目后放在 /extensions 目录下</code></pre></li><li><p>插件推荐</p></li></ul><table><thead><tr><th>名称</th><th>简介</th></tr></thead><tbody><tr><td>sd-webui-bilingual-localization</td><td>双语翻译</td></tr><tr><td>stable-diffusion-webui-localization-zh_CN</td><td>汉化包，搭配上面的使用</td></tr><tr><td>sd-webui-controlnet</td><td>模型细节控制</td></tr><tr><td>sd-webui-infinite-image-browsing</td><td>图片管理器</td></tr></tbody></table><ul><li>汉化</li></ul><pre><code class="textmate">Settings -&gt; User interface -&gt; Localization，选择zh_CN完成后点击 Settings -&gt;  Reload UI</code></pre><h2 id="3-所需资源文件"><a href="#3-所需资源文件" class="headerlink" title="3. 所需资源文件"></a>3. 所需资源文件</h2><blockquote><p><strong>注意，资源文件名中不要有汉字</strong><br><strong>下载完成后需要重启下SD Webui才能记载到资源</strong></p></blockquote><ul><li>下载地址</li></ul><p><a href="https://link.zhihu.com/?target=http://www.liandange.com/models">炼丹阁 (www.liandange.com)</a> 国内，大多来自于civitai</p><ul><li>资源类型介绍</li></ul><table><thead><tr><th>描述</th><th>后缀名</th><th>存放位置</th><th>作用</th><th>备注</th></tr></thead><tbody><tr><td>权重文件</td><td>ckptsafetensors</td><td>/stable-diffusion-webui/models/Stable-diffusion</td><td>基础模型文件，必须</td><td>部分模型会附带(.vae.pt)或配置文件(.yaml)如果一个模型附带配置文件或者VAE，需要先把它们的文件名改为相同的文件名，然后再放入目录中</td></tr><tr><td>Lora</td><td></td><td>/stable-diffusion-webui/models/Stable-diffusion</td><td>非必须，生成的图片的风格更加细腻</td><td></td></tr><tr><td>ControlNet</td><td></td><td></td><td>非必须，模型细节控制简单点理解就是，按我给的图片风格生成新的图片</td><td>需要插件支持</td></tr><tr><td>vae</td><td></td><td></td><td>解码器/滤镜，非必须</td><td></td></tr></tbody></table><h1 id="三、简单使用"><a href="#三、简单使用" class="headerlink" title="三、简单使用"></a>三、简单使用</h1><h2 id="1-常用功能"><a href="#1-常用功能" class="headerlink" title="1. 常用功能"></a>1. 常用功能</h2><ul><li><p>text2img-文生图</p></li><li><p>img2img-图生图、绘图、局部重绘</p></li><li><p>PNG Info-图片信息，可将图片信息发送到text2img和img2img中</p></li></ul><h2 id="2-参数介绍"><a href="#2-参数介绍" class="headerlink" title="2. 参数介绍"></a>2. 参数介绍</h2><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>Prompt</td><td>正向提示词</td></tr><tr><td>Negative prompt</td><td>反向/消极的提示词</td></tr><tr><td>Width、Height</td><td>图片尺寸。尺寸越大越耗性能，生成时间越久。</td></tr><tr><td>Batch count</td><td>生成批次</td></tr><tr><td>Batch size</td><td>每一批生成的图片数</td></tr><tr><td>CFG scale</td><td>AI 对描述参数（Prompt）的倾向程度。值越小生成的图片越偏离你的描述，但越符合逻辑；值越大则生成的图片越符合你的描述，但可能不符合逻辑。</td></tr><tr><td>Sampling method</td><td>采样方法。有很多种，但只是采样算法上有差别，没有好坏之分，选用适合的即可。</td></tr><tr><td>Sampling steps</td><td>采样步长。太小的话采样的随机性会很高，太大的话采样的效率会很低，拒绝概率高(可以理解为没有采样到,采样的结果被舍弃了)。</td></tr><tr><td>Seed</td><td>随机数种子。生成每张图片时的随机种子，这个种子是用来作为确定扩散初始状态的基础。不懂的话，用随机的即可。</td></tr></tbody></table><h2 id="3-描述词学习"><a href="#3-描述词学习" class="headerlink" title="3. 描述词学习"></a>3. 描述词学习</h2><ul><li><a href="https://thereisnospon.github.io/NovelAiTag/">Tag网站</a></li></ul><pre><code class="textmate">通过点点点生成描述词知识点: 权重通过 &#123;描述词&#125; 形式表示，高权重词写法&#123;&#123;&#123;描述词&#125;&#125;&#125;</code></pre><h2 id="4-效果展示"><a href="#4-效果展示" class="headerlink" title="4. 效果展示"></a>4. 效果展示</h2><blockquote><p>自行下载对应模型</p></blockquote><pre><code class="textmate">prompt: a girlNegative prompt: uglySteps: 40, Sampler: Euler a, CFG scale: 7, Seed: 1348569158, Size: 512x512, Model hash: e7aab5067d, Model: caricature, Clip skip: 7, ENSD: 31337, Eta: 0.68, Version: v1.6.0</code></pre><img alt="demo1" height="500" src="/img/ai/demo1.png" width="500"/><pre><code class="textmate">prompt: a girl,Delicate face, HD, extreme detail, master of realism, short-sleeved jeans Negative prompt: Ugly faces, extra fingers, extra hands, discordant images Steps: 35, Sampler: Euler a, CFG scale: 7, Seed: 123124, Size: 512x512, Model hash: e4a30e4607, Model: realHuman_majicmixRealistic_v6, Clip skip: 7, ENSD: 31337, Eta: 0.68, Version: v1.5.1-RC-3-geb6d330b</code></pre><img alt="demo2" height="500" src="/img/ai/demo2.png" width="500"/><h2 id="5-扩展"><a href="#5-扩展" class="headerlink" title="5. 扩展"></a>5. 扩展</h2><img alt="ikun1" height="400" src="/img/ai/ikun1.png" width="600"/><img alt="ikun2" height="500" src="/img/ai/ikun2.png" width="500"/><img alt="ikun3" height="500" src="/img/ai/ikun3.png" width="500"/>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AIGC,SD,StableDiffusion </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>小游戏</title>
       <link href="/2023/08/19/other/game/"/>
       <url>/2023/08/19/other/game/</url>
@@ -54,31 +79,6 @@
     
     
     <entry>
-      <title>GPT-AI介绍</title>
-      <link href="/2023/04/11/ai/gpt/gpt/"/>
-      <url>/2023/04/11/ai/gpt/gpt/</url>
-      
-        <content type="html"><![CDATA[<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><ul><li><a href="https://chat.openai.com/">chat.openai</a></li></ul><h3 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h3><ul><li><a href="https://www.midjourney.com/">midjourney</a></li><li><a href="https://firefly.adobe.com/">Firefly</a></li><li><a href="https://editor.fusionbrain.ai/">Fusionbrain</a><br>   免🪜，多种风格，不限量</li><li><a href="http://www.liuyuxiang.com:9999/chatIMG.html">免费文生图</a><br>   每小时有限制数</li></ul><h3 id="编程助手"><a href="#编程助手" class="headerlink" title="编程助手"></a>编程助手</h3><ul><li><a href="https://www.cursor.so/">Cursor</a><br>   客户端软件,免费有限额</li><li><a href="https://codeium.com/">Codeium🔥</a><br>   Web端和插件,支持多种编程工具,个人免费暂无限额</li></ul><h3 id="ChatGPT"><a href="#ChatGPT" class="headerlink" title="ChatGPT"></a>ChatGPT</h3><ul><li><p><a href="https://auth.xf233.com/contribute">免费公益平台</a></p></li><li><p><a href="https://app.myshell.ai/">MyShell</a><br> create robot</p></li><li><p><a href="https://you.com/">You</a><br>  需🪜,免费ChatGPT3.5</p></li><li><p><a href="https://claude.ai/">Claude</a><br>  需🪜，web端，免费，ChatGPT平替</p></li><li><p><a href="https://ai.w3school.top/">三方chat网站</a></p><ul><li><a href="https://juejin.cn/post/7238917620849672247">搭建步骤</a></li></ul></li><li><p><a href="https://chat.forefront.ai/">Forefront</a><br>免费 gpt3.5, 限额gpt4</p></li></ul><ul><li><p><a href="https://gpt.ai-copilot.cn/#/home">AI Copilot</a></p></li><li><p><a href="https://shellgpt.top/#/chat">ShellGTP综合平台</a></p><ul><li><a href="https://github.com/akl7777777/ShellGPT">Github</a></li></ul></li><li><p><a href="https://luna-oss.github.io/awesome-free-ai-apis/">API接口</a></p></li><li><p><a href="https://github.com/LiLittleCat/awesome-free-chatgpt">AwesomeFreeChatGPT</a></p></li><li><p><a href="https://perplexity.ai/">浏览器AI插件🔥🔥🔥</a><br>  可以总结网页信息、提供类似查询等</p></li></ul><h3 id="其他AI工具"><a href="#其他AI工具" class="headerlink" title="其他AI工具"></a>其他AI工具</h3><ul><li><p><a href="https://mubert.com/render">生成音乐</a></p></li><li><p><a href="https://www.mindshow.fun/">生成ppt</a></p></li><li><p><a href="https://replicate.com/sczhou/codeformer">图片修复-1</a></p></li><li><p><a href="https://replicate.com/tencentarc/gfpgan">图片修复-2</a></p></li><li><p>文字生视频，形象等</p><ul><li>1 <a href="http://kaiber.ai/">http://kaiber.ai</a></li><li>2 <a href="http://runwayml.com/">http://runwayml.com</a></li><li>3 <a href="http://studio.d-id.com/">http://studio.d-id.com</a></li><li>4 <a href="http://fliki.ai/">http://fliki.ai</a></li><li>5 <a href="http://synthesia.io/">http://synthesia.io</a></li><li>6 <a href="http://pictory.ai/">http://pictory.ai</a></li><li>7 <a href="http://app.heygen.com/">http://app.heygen.com</a></li><li>8 <a href="http://wonderdynamics.com/">http://wonderdynamics.com</a></li><li>9 <a href="http://alpha.genmo.ai/">http://alpha.genmo.ai</a></li></ul></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> AI </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> ai相关 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>LLM-AI介绍</title>
       <link href="/2023/04/11/ai/llm/llm/"/>
       <url>/2023/04/11/ai/llm/llm/</url>
@@ -98,6 +98,31 @@
             <tag> AI </tag>
             
             <tag> LLM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GPT-AI介绍</title>
+      <link href="/2023/04/11/ai/gpt/gpt/"/>
+      <url>/2023/04/11/ai/gpt/gpt/</url>
+      
+        <content type="html"><![CDATA[<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><ul><li><a href="https://chat.openai.com/">chat.openai</a></li></ul><h3 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h3><ul><li><a href="https://www.midjourney.com/">midjourney</a></li><li><a href="https://firefly.adobe.com/">Firefly</a></li><li><a href="https://editor.fusionbrain.ai/">Fusionbrain</a><br>   免🪜，多种风格，不限量</li><li><a href="http://www.liuyuxiang.com:9999/chatIMG.html">免费文生图</a><br>   每小时有限制数</li></ul><h3 id="编程助手"><a href="#编程助手" class="headerlink" title="编程助手"></a>编程助手</h3><ul><li><a href="https://www.cursor.so/">Cursor</a><br>   客户端软件,免费有限额</li><li><a href="https://codeium.com/">Codeium🔥</a><br>   Web端和插件,支持多种编程工具,个人免费暂无限额</li></ul><h3 id="ChatGPT"><a href="#ChatGPT" class="headerlink" title="ChatGPT"></a>ChatGPT</h3><ul><li><p><a href="https://auth.xf233.com/contribute">免费公益平台</a></p></li><li><p><a href="https://app.myshell.ai/">MyShell</a><br> create robot</p></li><li><p><a href="https://you.com/">You</a><br>  需🪜,免费ChatGPT3.5</p></li><li><p><a href="https://claude.ai/">Claude</a><br>  需🪜，web端，免费，ChatGPT平替</p></li><li><p><a href="https://ai.w3school.top/">三方chat网站</a></p><ul><li><a href="https://juejin.cn/post/7238917620849672247">搭建步骤</a></li></ul></li><li><p><a href="https://chat.forefront.ai/">Forefront</a><br>免费 gpt3.5, 限额gpt4</p></li></ul><ul><li><p><a href="https://gpt.ai-copilot.cn/#/home">AI Copilot</a></p></li><li><p><a href="https://shellgpt.top/#/chat">ShellGTP综合平台</a></p><ul><li><a href="https://github.com/akl7777777/ShellGPT">Github</a></li></ul></li><li><p><a href="https://luna-oss.github.io/awesome-free-ai-apis/">API接口</a></p></li><li><p><a href="https://github.com/LiLittleCat/awesome-free-chatgpt">AwesomeFreeChatGPT</a></p></li><li><p><a href="https://perplexity.ai/">浏览器AI插件🔥🔥🔥</a><br>  可以总结网页信息、提供类似查询等</p></li></ul><h3 id="其他AI工具"><a href="#其他AI工具" class="headerlink" title="其他AI工具"></a>其他AI工具</h3><ul><li><p><a href="https://mubert.com/render">生成音乐</a></p></li><li><p><a href="https://www.mindshow.fun/">生成ppt</a></p></li><li><p><a href="https://replicate.com/sczhou/codeformer">图片修复-1</a></p></li><li><p><a href="https://replicate.com/tencentarc/gfpgan">图片修复-2</a></p></li><li><p>文字生视频，形象等</p><ul><li>1 <a href="http://kaiber.ai/">http://kaiber.ai</a></li><li>2 <a href="http://runwayml.com/">http://runwayml.com</a></li><li>3 <a href="http://studio.d-id.com/">http://studio.d-id.com</a></li><li>4 <a href="http://fliki.ai/">http://fliki.ai</a></li><li>5 <a href="http://synthesia.io/">http://synthesia.io</a></li><li>6 <a href="http://pictory.ai/">http://pictory.ai</a></li><li>7 <a href="http://app.heygen.com/">http://app.heygen.com</a></li><li>8 <a href="http://wonderdynamics.com/">http://wonderdynamics.com</a></li><li>9 <a href="http://alpha.genmo.ai/">http://alpha.genmo.ai</a></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ai相关 </tag>
             
         </tags>
       
@@ -138,6 +163,35 @@
       <url>/2023/03/16/backend/service/eureka/eureka-2/</url>
       
         <content type="html"><![CDATA[<blockquote><p>Client注册、服务信息同步、Server端收到续约心跳请求的处理细节</p></blockquote><h1 id="一、Client注册分析"><a href="#一、Client注册分析" class="headerlink" title="一、Client注册分析"></a>一、Client注册分析</h1><h2 id="1-入口类"><a href="#1-入口类" class="headerlink" title="1.入口类"></a>1.入口类</h2><pre><code class="java">@Configuration(proxyBeanMethods = false)@EnableConfigurationProperties@ConditionalOnClass(EurekaClientConfig.class)@ConditionalOnProperty(value = &quot;eureka.client.enabled&quot;, matchIfMissing = true)/**  * spring.cloud.discovery.enabled=true才生效，配置默认为true * */@ConditionalOnDiscoveryEnabled@AutoConfigureBefore(&#123;         NoopDiscoveryClientAutoConfiguration.class,        /** 初始化客户端健康状况指示器: 初始化状态、启动状态 */        CommonsClientAutoConfiguration.class,         ServiceRegistryAutoConfiguration.class &#125;)/** 自动注入完成后，注入这些信息 */@AutoConfigureAfter(name = &#123;        &quot;org.springframework.cloud.netflix.eureka.config.DiscoveryClientOptionalArgsConfiguration&quot;,                /** 自动刷新配置 */        &quot;org.springframework.cloud.autoconfigure.RefreshAutoConfiguration&quot;,        /** client服务发现配置 */        &quot;org.springframework.cloud.netflix.eureka.EurekaDiscoveryClientConfiguration&quot;,        /** 服务自动注册配置 */        &quot;org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationAutoConfiguration&quot; &#125;)public class EurekaClientAutoConfiguration &#123;    /** client配置bean */    @Bean    @ConditionalOnMissingBean(value = EurekaClientConfig.class,            search = SearchStrategy.CURRENT)    public EurekaClientConfigBean eurekaClientConfigBean(ConfigurableEnvironment env) &#123;        return new EurekaClientConfigBean();    &#125;    /** 获取eureka.instance开头的配置,封装到EurekaInstanceConfigBean类中 */    @Bean    @ConditionalOnMissingBean(value = EurekaInstanceConfig.class,            search = SearchStrategy.CURRENT)    public EurekaInstanceConfigBean eurekaInstanceConfigBean(            InetUtils inetUtils,            ManagementMetadataProvider managementMetadataProvider) &#123;     //...       &#125;    /** 初始化eurekaService注册器，提供register、deregister */    @Bean    public EurekaServiceRegistry eurekaServiceRegistry() &#123;        return new EurekaServiceRegistry();    &#125;        /** 自动注册逻辑     * 提供start、stop方法     * */    @Bean    @ConditionalOnBean(AutoServiceRegistrationProperties.class)    @ConditionalOnProperty(            value = &quot;spring.cloud.service-registry.auto-registration.enabled&quot;,            matchIfMissing = true)    public EurekaAutoServiceRegistration eurekaAutoServiceRegistration(            ApplicationContext context, EurekaServiceRegistry registry,            EurekaRegistration registration) &#123;        return new EurekaAutoServiceRegistration(context, registry, registration);    &#125;&#125;</code></pre><ul><li>总结<pre><code class="textmate">1：项目启动2：初始化配置EurekaClientAutoConfiguration -&gt; eurekaInstanceConfigBean3：构造EurekaClient对象（内部类EurekaClientAutoConfiguration: RefreshableEurekaClientConfiguration）  3.1：构造心跳任务线程池  3.2：构造缓存刷新任务线程池4：启动定时任务（心跳+缓存刷新）  4.1：启动缓存刷新定时任务  4.2：启动心跳定时任务  4.3：启动instanceInfoReplicator线程，执行注册任务5：服务启动时，会延迟40秒向注册中心注册6：心跳时间默认是30秒，可通过eureka.instance.lease-renewal-interval-in-seconds修改</code></pre></li></ul><pre><code># 二、服务信息同步分析# 三、服务心跳续约分析</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 服务治理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 注册中心 </tag>
+            
+            <tag> eureka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Eureka源码学习笔记汇总</title>
+      <link href="/2023/03/16/backend/service/eureka/eureka/"/>
+      <url>/2023/03/16/backend/service/eureka/eureka/</url>
+      
+        <content type="html"><![CDATA[<h2 id="2-目标"><a href="#2-目标" class="headerlink" title="2.目标"></a>2.目标</h2><ul><li><input checked="" disabled="" type="checkbox"> EurekaServer启动流程</li><li><input disabled="" type="checkbox"> Eureka Server 处理注册请求</li><li><input disabled="" type="checkbox"> Eureka Server 服务信息同步</li><li><input disabled="" type="checkbox"> Eureka Serer 收到续约心跳请求的处理</li><li><input disabled="" type="checkbox"> 服务续约</li><li><input disabled="" type="checkbox"> 服务发现</li><li><input disabled="" type="checkbox"> 服务注册入口</li><li><input disabled="" type="checkbox"> 服务注册请求的发起</li><li><input disabled="" type="checkbox"> Eureka 的多级缓存设计</li><li><input disabled="" type="checkbox"> Eureka 自我保护机制</li></ul><h2 id="笔记目录"><a href="#笔记目录" class="headerlink" title="笔记目录"></a>笔记目录</h2><ul><li><a href="./eureka-1.md">Eureka源码学习笔记(一): EurekaServer启动流程</a></li></ul>]]></content>
       
       
       <categories>

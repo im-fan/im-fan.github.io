@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wiki.aistart.cc/2023/09/06/ai/gc/stable-diffusion/</loc>
+    <lastmod>2023-09-06</lastmod>
+  </url>
+  <url>
+    <loc>https://wiki.aistart.cc/2023/03/16/backend/service/eureka/eureka/</loc>
+    <lastmod>2023-09-06</lastmod>
+  </url>
+  <url>
     <loc>https://wiki.aistart.cc/2023/04/11/ai/gpt/gpt/</loc>
     <lastmod>2023-08-18</lastmod>
   </url>
