@@ -5,7 +5,7 @@ date: 2023-03-16 17:10
 tags:
 - eureka
 - 注册中心
-  categories:
+categories:
 - 后端
 - 服务治理
 ---
