@@ -9,6 +9,10 @@ categories:
 ---
 # 有趣的链接
 
+- [任正非：华为有业务边界，人才要在边界内研究探索](https://www.bjnews.com.cn/detail/1693810149129843.html)
+- [如何自己写一个前端框架](https://18alan.space/posts/how-hard-is-it-to-build-a-frontend-framework.html) 
+- [财务安全的17条法则](https://thetaoofwealth.wordpress.com/2013/02/17/harry-brownes-17-golden-rules-of-financial-safety/)
+- [Hello 算法🔥](https://github.com/krahets/hello-algo)
 - [Flutter Demo](https://afgprogrammer.com/flutter/)
 - [手工解码二维码](https://blog.qartis.com/decoding-small-qr-codes-by-hand/)
 - [emaction](https://github.com/emaction/emaction.frontend)
@@ -34,8 +38,11 @@ categories:
 - [tcpdump 快速上手](https://jvns.ca/blog/2016/03/16/tcpdump-is-amazing/)
 - [HorusPass](https://horuspass.com/send)
 
-### GPT相关
+### AI相关
 
+- [AI小镇](https://github.com/get-convex/ai-town)
+- [StableDiffusion XL 体验站](https://www.stablediffusionai.ai/)
+- [AIHub-免费AI合集](https://www.aihub.cn/)
 - [ToolAI](https://www.toolai.io/)
 - [面向开发人员的 ChatGPT 提示工程](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
 - [FreeGPT](https://freegpt.one/)
@@ -49,6 +56,7 @@ categories:
 
 ### 工具
 
+- [NiceShots-iPhone截图美化工具](https://apps.apple.com/cn/app/niceshots/id6450619697)
 - [RustDesk](https://rustdesk.com/)
 - [Sniffnet](https://github.com/GyulyVGC/sniffnet)
 - [Automa](https://www.automa.site/)
