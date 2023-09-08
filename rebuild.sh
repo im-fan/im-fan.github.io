@@ -8,7 +8,7 @@ rebuild() {
     echo "编译完成====》》》"
     sleep 2
     git add db.json
-    git commit -m 'rebuild'
+    git commit -a -m 'rebuild'
     sleep 2
     git push -u origin "master"
     echo "提交完成====》》》"
