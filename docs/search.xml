@@ -455,31 +455,6 @@
     
     
     <entry>
-      <title>工作相关</title>
-      <link href="/2022/01/10/thinking/design/"/>
-      <url>/2022/01/10/thinking/design/</url>
-      
-        <content type="html"><![CDATA[<h2 id="方案设计方法论"><a href="#方案设计方法论" class="headerlink" title="方案设计方法论"></a>方案设计方法论</h2><h3 id="4R架构理论"><a href="#4R架构理论" class="headerlink" title="4R架构理论"></a>4R架构理论</h3><blockquote><p>根据4R理论；可以很好的协助我们很清晰的去认识一套系统；尤其是我们在学习一套框架源码原理的时候</p></blockquote><pre><code class="textmate">顶层结构Rank -&gt; 组成角色Role -&gt; 角色关系Relation -&gt; 运行规则Rule</code></pre><h2 id="方案设计要点总结"><a href="#方案设计要点总结" class="headerlink" title="方案设计要点总结"></a>方案设计要点总结</h2><h4 id="数据量"><a href="#数据量" class="headerlink" title="数据量"></a>数据量</h4><ul><li>接口查询的数据量<pre><code class="textmate">过大的走分页或让数据端出接口</code></pre></li><li>批量更新的数据量</li></ul><h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><ul><li>是否兼容老接口</li><li>是否兼容老数据</li><li>不同端口是否兼容</li></ul><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><ul><li>新业务上线老数据是否要处理</li><li>原来的配置项是否要更新或新增</li></ul><h4 id="扩展性"><a href="#扩展性" class="headerlink" title="扩展性"></a>扩展性</h4><ul><li>其他业务是否有类似需求</li><li>代码或数据模型预留扩展口</li></ul><h4 id="业务数据采集"><a href="#业务数据采集" class="headerlink" title="业务数据采集"></a>业务数据采集</h4><ul><li>是否方便后续数据统计</li><li>是否影响大数据业务</li></ul><h4 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h4><ul><li>三方接口出入参数打印</li><li>核心流程出入口打印标识</li><li>日志格式建议<pre><code class="textmate">[xx业务] xx操作 success/failed param1:xxx param2:xxx</code></pre></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 思考 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 总结方法论 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>名人名言和一些思维模型</title>
       <link href="/2022/01/10/thinking/famous/"/>
       <url>/2022/01/10/thinking/famous/</url>
@@ -497,6 +472,31 @@
         <tags>
             
             <tag> 思维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>工作相关</title>
+      <link href="/2022/01/10/thinking/design/"/>
+      <url>/2022/01/10/thinking/design/</url>
+      
+        <content type="html"><![CDATA[<h2 id="方案设计方法论"><a href="#方案设计方法论" class="headerlink" title="方案设计方法论"></a>方案设计方法论</h2><h3 id="4R架构理论"><a href="#4R架构理论" class="headerlink" title="4R架构理论"></a>4R架构理论</h3><blockquote><p>根据4R理论；可以很好的协助我们很清晰的去认识一套系统；尤其是我们在学习一套框架源码原理的时候</p></blockquote><pre><code class="textmate">顶层结构Rank -&gt; 组成角色Role -&gt; 角色关系Relation -&gt; 运行规则Rule</code></pre><h2 id="方案设计要点总结"><a href="#方案设计要点总结" class="headerlink" title="方案设计要点总结"></a>方案设计要点总结</h2><h4 id="数据量"><a href="#数据量" class="headerlink" title="数据量"></a>数据量</h4><ul><li>接口查询的数据量<pre><code class="textmate">过大的走分页或让数据端出接口</code></pre></li><li>批量更新的数据量</li></ul><h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><ul><li>是否兼容老接口</li><li>是否兼容老数据</li><li>不同端口是否兼容</li></ul><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><ul><li>新业务上线老数据是否要处理</li><li>原来的配置项是否要更新或新增</li></ul><h4 id="扩展性"><a href="#扩展性" class="headerlink" title="扩展性"></a>扩展性</h4><ul><li>其他业务是否有类似需求</li><li>代码或数据模型预留扩展口</li></ul><h4 id="业务数据采集"><a href="#业务数据采集" class="headerlink" title="业务数据采集"></a>业务数据采集</h4><ul><li>是否方便后续数据统计</li><li>是否影响大数据业务</li></ul><h4 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h4><ul><li>三方接口出入参数打印</li><li>核心流程出入口打印标识</li><li>日志格式建议<pre><code class="textmate">[xx业务] xx操作 success/failed param1:xxx param2:xxx</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 总结方法论 </tag>
             
         </tags>
       
