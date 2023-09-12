@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MySQL相关-知识点 | Imfan笔记</title>
+  <meta name="keywords" content=" mysql ">
+  <meta name="description" content="MySQL相关-知识点 | Imfan笔记">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="一、介绍1.1 Stable DiffusionStable Diffusion是2022年发布的主要用于 文本生成图像 的深度学习模型，也就是常说的txt2img的应用场景，通过给定 文本提示词（text prompt），该模型会输出一张匹配提示词的图片。 Stable Diffusion是基于“潜在扩散模型”（latent diffusion model；LDM）的模型  原理图(基于LDM论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stable Diffusion Web UI(一)-部署">
+<meta property="og:url" content="https://wiki.aistart.cc/2023/09/06/ai/gc/stable-diffusion-01/index.html">
+<meta property="og:site_name" content="Imfan笔记">
+<meta property="og:description" content="一、介绍1.1 Stable DiffusionStable Diffusion是2022年发布的主要用于 文本生成图像 的深度学习模型，也就是常说的txt2img的应用场景，通过给定 文本提示词（text prompt），该模型会输出一张匹配提示词的图片。 Stable Diffusion是基于“潜在扩散模型”（latent diffusion model；LDM）的模型  原理图(基于LDM论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/LDM.png">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/sd-webui.png">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/sd-web-plugin.png">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/demo1.png">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/demo2.png">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/ikun1.png">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/ikun2.png">
+<meta property="og:image" content="https://wiki.aistart.cc/img/ai/ikun3.png">
+<meta property="article:published_time" content="2023-09-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-06T08:24:23.694Z">
+<meta property="article:author" content="imfan">
+<meta property="article:tag" content="AIGC,SD,StableDiffusion">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wiki.aistart.cc/img/ai/LDM.png">
+
+
+<link rel="icon" href="/img/road.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<link href="https://cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+/*  */
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/mermaid/9.1.1/mermaid.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/road.png" />
+</a>
+<div class="author">
+    <span>imfan</span>
+</div>
+
+<!--个人联系方式icon-->
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/im-fan" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:wyf3634@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(63)</small></div></li>
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(26)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="后端<--->服务治理">服务治理<small>(5)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->高并发">高并发<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->工具">工具<small>(5)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->接口文档">接口文档<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->框架">框架<small>(4)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->三方集成">三方集成<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->数据结构与算法">数据结构与算法<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->线程池">线程池<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->项目编译">项目编译<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->消息队列">消息队列<small>(3)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->io">io<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->ognl表达式">ognl表达式<small>(1)</small></div>
+                            
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="测试">测试<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="存储">存储<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="运维">运维<small>(8)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="架构">架构<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="思考">思考<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他">其他<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="名人名言">名人名言<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="线上问题">线上问题<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="杂记">杂记<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="AI">AI<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="LLM">LLM<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+
+<!-- 左边导航栏 关于&友链 -->
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    </div>
+    <div>
+    
+    </div>
+</div>
+
+<input type="hidden" id="yelog_site_posts_number" value="63">
+<input type="hidden" id="yelog_site_word_count" value="70.6k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://www.infoq.cn/">InfoQ</a></li>
+            
+            <li><a target="_blank" href="https://www.csdn.net/">CSDN</a></li>
+            
+            <li><a target="_blank" href="https://www.liaoxuefeng.com/">廖雪峰的官方网站</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态配置</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>分布式锁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>高并发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>技术文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>接口文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>三方集成</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构与算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>思维</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线程池</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线上问题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目编译</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>写作</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>杂记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>摘要</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>注册中心</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>总结方法论</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ai相关</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AIGC,SD,StableDiffusion</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arthas</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>canal</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>COLA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DDD</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>devops</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>elasticsearch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>es</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>eureka</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>game</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gateway</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>io</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>istio</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json类型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>kafka</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ldap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>LLM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>message</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>oauth2</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ognl</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pulsar</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rocketmq</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>skywalking</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SPI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringFramework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>test</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>url</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>utils</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zookeeper</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 AI "
+           href="/2023/09/06/ai/gc/stable-diffusion-01/"
+           data-tag="AIGC,SD,StableDiffusion"
+           data-author="" >
+            <span class="post-title" title="Stable Diffusion Web UI(一)-部署">Stable Diffusion Web UI(一)-部署</span>
+            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/2023/09/06/ai/gc/stable-diffusion-02/"
+           data-tag="AIGC,SD,StableDiffusion"
+           data-author="" >
+            <span class="post-title" title="Stable Diffusion Web UI(二)-资源">Stable Diffusion Web UI(二)-资源</span>
+            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2023/08/19/other/game/"
+           data-tag="game"
+           data-author="" >
+            <span class="post-title" title="小游戏">小游戏</span>
+            <span class="post-date" title="2023-08-19 17:10:00">2023/08/19</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2023/08/08/other/url/"
+           data-tag="url"
+           data-author="" >
+            <span class="post-title" title="有趣的链接">有趣的链接</span>
+            <span class="post-date" title="2023-08-08 09:20:00">2023/08/08</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/2023/04/11/ai/gpt/gpt/"
+           data-tag="ai相关"
+           data-author="" >
+            <span class="post-title" title="GPT-AI介绍">GPT-AI介绍</span>
+            <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
+        </a>
+        
+        <a  class="全部文章 LLM "
+           href="/2023/04/11/ai/llm/llm/"
+           data-tag="AI,LLM"
+           data-author="" >
+            <span class="post-title" title="LLM-AI介绍">LLM-AI介绍</span>
+            <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
+        </a>
+        
+        <a  class="全部文章 线上问题 "
+           href="/2023/03/29/error/es-error/"
+           data-tag="线上问题,elasticsearch"
+           data-author="" >
+            <span class="post-title" title="线上问题处理过程-ES">线上问题处理过程-ES</span>
+            <span class="post-date" title="2023-03-29 10:30:00">2023/03/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2023/03/16/backend/service/eureka/eureka/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
+            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2023/03/16/backend/service/eureka/eureka-2/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
+            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2022/11/19/other/markdown/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Markdown画图">Markdown画图</span>
+            <span class="post-date" title="2022-11-19 14:50:00">2022/11/19</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2022/09/28/backend/service/eureka/eureka-1/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记(一)">Eureka源码学习笔记(一)</span>
+            <span class="post-date" title="2022-09-28 16:50:00">2022/09/28</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2022/06/01/backend/storage/mysql-json/"
+           data-tag="mysql,json类型"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-json类型">MySQL相关-json类型</span>
+            <span class="post-date" title="2022-06-01 15:20:00">2022/06/01</span>
+        </a>
+        
+        <a  class="全部文章 后端 ognl表达式 "
+           href="/2022/05/25/backend/other/ognl/"
+           data-tag="ognl"
+           data-author="" >
+            <span class="post-title" title="Ognl表达式">Ognl表达式</span>
+            <span class="post-date" title="2022-05-25 15:40:00">2022/05/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2022/05/23/backend/mq/pulsar/"
+           data-tag="message,pulsar"
+           data-author="" >
+            <span class="post-title" title="Pulsar消息队列">Pulsar消息队列</span>
+            <span class="post-date" title="2022-05-23 10:20:00">2022/05/23</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2022/03/08/devops/shell/"
+           data-tag="shell命令"
+           data-author="" >
+            <span class="post-title" title="Shell命令记录">Shell命令记录</span>
+            <span class="post-date" title="2022-03-08 11:13:00">2022/03/08</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2022/02/15/backend/storage/es/"
+           data-tag="es"
+           data-author="" >
+            <span class="post-title" title="ES官方文档笔记">ES官方文档笔记</span>
+            <span class="post-date" title="2022-02-15 13:38:00">2022/02/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 数据结构与算法 "
+           href="/2022/01/13/backend/java/algorithm/book1/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="大话数据结构-摘要">大话数据结构-摘要</span>
+            <span class="post-date" title="2022-01-13 16:54:00">2022/01/13</span>
+        </a>
+        
+        <a  class="全部文章 名人名言 "
+           href="/2022/01/10/thinking/famous/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="名人名言和一些思维模型">名人名言和一些思维模型</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2022/01/10/thinking/design/"
+           data-tag="总结方法论"
+           data-author="" >
+            <span class="post-title" title="工作相关">工作相关</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2022/01/10/thinking/write/"
+           data-tag="写作"
+           data-author="" >
+            <span class="post-title" title="写作思路和技巧">写作思路和技巧</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 接口文档 "
+           href="/2021/11/25/backend/other/swagger/"
+           data-tag="接口文档"
+           data-author="" >
+            <span class="post-title" title="集成SwaggerUI">集成SwaggerUI</span>
+            <span class="post-date" title="2021-11-25 10:00:00">2021/11/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 高并发 "
+           href="/2021/11/22/backend/java/thread/concurrent/"
+           data-tag="高并发"
+           data-author="" >
+            <span class="post-title" title="高并发相关">高并发相关</span>
+            <span class="post-date" title="2021-11-22 20:06:00">2021/11/22</span>
+        </a>
+        
+        <a  class="全部文章 测试 "
+           href="/2021/11/15/test/test/"
+           data-tag="test"
+           data-author="" >
+            <span class="post-title" title="测试相关">测试相关</span>
+            <span class="post-date" title="2021-11-15 17:51:54">2021/11/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/10/13/devops/arthas/"
+           data-tag="arthas"
+           data-author="" >
+            <span class="post-title" title="Arthas-问题排查工具">Arthas-问题排查工具</span>
+            <span class="post-date" title="2021-10-13 09:17:00">2021/10/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 io "
+           href="/2021/08/11/backend/java/netty/io/"
+           data-tag="io"
+           data-author="" >
+            <span class="post-title" title="IO">IO</span>
+            <span class="post-date" title="2021-08-11 09:31:00">2021/08/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 三方集成 "
+           href="/2021/08/04/backend/other/jimu-report/"
+           data-tag="三方集成"
+           data-author="" >
+            <span class="post-title" title="集成Jimu报表">集成Jimu报表</span>
+            <span class="post-date" title="2021-08-04 18:28:22">2021/08/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/07/26/backend/spring/framework/springframework-2/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码学习">SpringFramework源码学习</span>
+            <span class="post-date" title="2021-07-26 15:05:00">2021/07/26</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/07/20/backend/storage/mysql/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-知识点">MySQL相关-知识点</span>
+            <span class="post-date" title="2021-07-20 09:45:00">2021/07/20</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/26/backend/spring/framework/springframework-1/"
+           data-tag="SpringFramework"
+           data-author="" >
+            <span class="post-title" title="SpringFramework源码编译">SpringFramework源码编译</span>
+            <span class="post-date" title="2021-06-26 20:00:00">2021/06/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/06/15/backend/spring/springcloud-gateway/"
+           data-tag="gateway"
+           data-author="" >
+            <span class="post-title" title="SpringClougGateway">SpringClougGateway</span>
+            <span class="post-date" title="2021-06-15 14:16:00">2021/06/15</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/19/devops/skywalking/"
+           data-tag="skywalking"
+           data-author="" >
+            <span class="post-title" title="调用链监控-skywalking">调用链监控-skywalking</span>
+            <span class="post-date" title="2021-05-19 16:52:25">2021/05/19</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/05/18/devops/istio/"
+           data-tag="istio"
+           data-author="" >
+            <span class="post-title" title="istio">istio</span>
+            <span class="post-date" title="2021-05-18 16:30:00">2021/05/18</span>
+        </a>
+        
+        <a  class="全部文章 前端 "
+           href="/2021/04/28/frontend/vue/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue">vue</span>
+            <span class="post-date" title="2021-04-28 11:44:02">2021/04/28</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/16/devops/docker/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="运维相关">运维相关</span>
+            <span class="post-date" title="2021-04-16 14:19:25">2021/04/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2021/04/13/backend/service/nacos/"
+           data-tag="nacos,动态配置,注册中心"
+           data-author="" >
+            <span class="post-title" title="nacos">nacos</span>
+            <span class="post-date" title="2021-04-13 10:56:52">2021/04/13</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/04/05/devops/nginx/"
+           data-tag="nginx"
+           data-author="" >
+            <span class="post-title" title="nginx">nginx</span>
+            <span class="post-date" title="2021-04-05 10:26:05">2021/04/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 框架 "
+           href="/2021/03/22/backend/spring/spring-boot/"
+           data-tag="springboot"
+           data-author="" >
+            <span class="post-title" title="SpringBoot">SpringBoot</span>
+            <span class="post-date" title="2021-03-22 09:44:01">2021/03/22</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2021/03/20/backend/java/utils/convert/orika/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-Orika">对象转换工具-Orika</span>
+            <span class="post-date" title="2021-03-20 14:15:00">2021/03/20</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/18/devops/ldap/"
+           data-tag="ldap"
+           data-author="" >
+            <span class="post-title" title="LDAP学习笔记">LDAP学习笔记</span>
+            <span class="post-date" title="2021-02-18 14:25:55">2021/02/18</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2021/02/09/devops/check/"
+           data-tag="devops"
+           data-author="" >
+            <span class="post-title" title="服务常见问题排查">服务常见问题排查</span>
+            <span class="post-date" title="2021-02-09 17:08:25">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 线程池 "
+           href="/2021/02/09/backend/java/thread/threadPool/"
+           data-tag="线程池"
+           data-author="" >
+            <span class="post-title" title="ThreadPool详解">ThreadPool详解</span>
+            <span class="post-date" title="2021-02-09 14:12:45">2021/02/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/rocketmq/"
+           data-tag="message,rocketmq"
+           data-author="" >
+            <span class="post-title" title="RocketMQ相关文档">RocketMQ相关文档</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 消息队列 "
+           href="/2021/02/03/backend/mq/kafka/"
+           data-tag="message,kafka"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Kafka">SpringBoot集成Kafka</span>
+            <span class="post-date" title="2021-02-03 16:06:00">2021/02/03</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2021/02/02/backend/storage/redis/"
+           data-tag="cache"
+           data-author="" >
+            <span class="post-title" title="Redis学习笔记">Redis学习笔记</span>
+            <span class="post-date" title="2021-02-02 19:59:00">2021/02/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 项目编译 "
+           href="/2021/01/21/backend/java/build/gradle/"
+           data-tag="项目编译"
+           data-author="" >
+            <span class="post-title" title="Gradle学习笔记">Gradle学习笔记</span>
+            <span class="post-date" title="2021-01-21 13:24:22">2021/01/21</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/25/framework/design/uml/"
+           data-tag="技术文档"
+           data-author="" >
+            <span class="post-title" title="技术文档">技术文档</span>
+            <span class="post-date" title="2020-12-25 18:57:00">2020/12/25</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/12/15/framework/cola/"
+           data-tag="COLA"
+           data-author="" >
+            <span class="post-title" title="领域建模&amp;业务建模方法论">领域建模&amp;业务建模方法论</span>
+            <span class="post-date" title="2020-12-15 16:24:00">2020/12/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/12/10/backend/java/utils/mybatis-plus/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="MybatisPlus使用笔记">MybatisPlus使用笔记</span>
+            <span class="post-date" title="2020-12-10 12:00:00">2020/12/10</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/11/17/framework/oauth2/"
+           data-tag="oauth2"
+           data-author="" >
+            <span class="post-title" title="OAuth2学习笔记">OAuth2学习笔记</span>
+            <span class="post-date" title="2020-11-17 09:58:26">2020/11/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 "
+           href="/2020/11/11/backend/java/spi/"
+           data-tag="SPI"
+           data-author="" >
+            <span class="post-title" title="SPI-Java内置服务发现机制">SPI-Java内置服务发现机制</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/11/11/backend/java/utils/swagger/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="Java解析Swagger文档接口及参数">Java解析Swagger文档接口及参数</span>
+            <span class="post-date" title="2020-11-11 19:30:00">2020/11/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2020/10/29/backend/service/zookeeper/"
+           data-tag="注册中心,zookeeper,分布式锁"
+           data-author="" >
+            <span class="post-title" title="Zookeeper简介">Zookeeper简介</span>
+            <span class="post-date" title="2020-10-29 15:40:46">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/20/backend/java/utils/excel/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="EasyExcel使用遇到的问题">EasyExcel使用遇到的问题</span>
+            <span class="post-date" title="2020-10-20 17:22:53">2020/10/20</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/09/framework/ddd/"
+           data-tag="DDD"
+           data-author="" >
+            <span class="post-title" title="DDD-领域驱动设计">DDD-领域驱动设计</span>
+            <span class="post-date" title="2020-10-09 16:51:54">2020/10/09</span>
+        </a>
+        
+        <a  class="全部文章 架构 "
+           href="/2020/10/02/framework/design-model/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="14种常用设计模式">14种常用设计模式</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/canal/"
+           data-tag="canal"
+           data-author="" >
+            <span class="post-title" title="Canal服务搭建">Canal服务搭建</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 存储 "
+           href="/2020/10/02/backend/storage/mysql-other/"
+           data-tag="mysql"
+           data-author="" >
+            <span class="post-title" title="MySQL相关-常用语句">MySQL相关-常用语句</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 工具 "
+           href="/2020/10/02/backend/java/utils/convert/map-struct/"
+           data-tag="utils"
+           data-author="" >
+            <span class="post-title" title="对象转换工具-MapStruct">对象转换工具-MapStruct</span>
+            <span class="post-date" title="2020-10-02 15:51:46">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/10/02/thinking/abstract/"
+           data-tag="摘要"
+           data-author="" >
+            <span class="post-title" title="阅读摘要">阅读摘要</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2020/10/02/thinking/book/"
+           data-tag="思维"
+           data-author="" >
+            <span class="post-title" title="阅读">阅读</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 杂记 "
+           href="/2020/10/02/thinking/something/"
+           data-tag="杂记"
+           data-author="" >
+            <span class="post-title" title="杂记">杂记</span>
+            <span class="post-date" title="2020-10-02 14:44:10">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/10/02/other/software/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="软件推荐">软件推荐</span>
+            <span class="post-date" title="2020-10-02 14:34:06">2020/10/02</span>
+        </a>
+        
+        <a  class="全部文章 其他 "
+           href="/2020/09/30/other/hexo/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Hexo搭建博客">Hexo搭建博客</span>
+            <span class="post-date" title="2020-09-30 14:51:20">2020/09/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <!-- <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div> -->
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-backend/storage/mysql" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">MySQL相关-知识点</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="存储">存储</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">mysql</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2022-08-11 20:08:42'>2021-07-20 09:45</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:5.5k</span>
+        
+        
+        <!-- <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span> -->
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E6%A1%A3"><span class="toc-text">相关文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93"><span class="toc-text">部分总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Innodb%E5%BC%95%E6%93%8E%E7%9A%844%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-text">Innodb引擎的4大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E7%BC%93%E5%86%B2"><span class="toc-text">插入缓冲</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-text">事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6"><span class="toc-text">重要文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-text">存储引擎</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8AMySQL%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%90%E8%A1%8C%E7%9A%84%EF%BC%9A%E4%BB%8E%E6%A0%B9%E4%B8%8A%E7%90%86%E8%A7%A3MySQL%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="toc-text">《MySQL是怎样运行的：从根上理解MySQL》 读书笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">InnoDB数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">InnoDB统计数据的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E9%87%8D%E5%86%99%E6%96%B9%E5%BC%8F"><span class="toc-text">SQL重写方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8C%96%E7%AE%80"><span class="toc-text">条件化简</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%B6%88%E9%99%A4"><span class="toc-text">外连接消除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="toc-text">子查询优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Explain"><span class="toc-text">Explain</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BC%98%E5%8C%96%E5%99%A8%E7%94%9F%E6%88%90%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B"><span class="toc-text">查看优化器生成执行计划的整个过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98"><span class="toc-text">磁盘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1-1"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ReadView"><span class="toc-text">ReadView</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81"><span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%81%E5%88%86%E7%B1%BB"><span class="toc-text">锁分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">事务隔离级别</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.jcole.us/innodb">Jeremy Cole的博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/dev/mysql-server">MySQL8.0的源码文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://publications.sba-research.org/publications/WSDF2012_InnoDB.pdf">mariadb-innodb原理文档(带图)</a></li>
+<li><a target="_blank" rel="noopener" href="http://mysqlserverteam.com/">MySQL Team Blog</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.unofficialmysqlguide.com/optimizer-trace.html">非官方MySQL8.0优化器指南</a></li>
+</ul>
+<h2 id="部分总结"><a href="#部分总结" class="headerlink" title="部分总结"></a>部分总结</h2><h3 id="Innodb引擎的4大特性"><a href="#Innodb引擎的4大特性" class="headerlink" title="Innodb引擎的4大特性"></a>Innodb引擎的4大特性</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhs0/p/10528520.html">参考文档</a></p>
+</blockquote>
+<ul>
+<li>插入缓冲</li>
+<li>二次写</li>
+<li>自适应哈希</li>
+<li>预读</li>
+</ul>
+<h4 id="插入缓冲"><a href="#插入缓冲" class="headerlink" title="插入缓冲"></a>插入缓冲</h4><pre><code class="textmate">用于提升插入性能，分为Insert Buffer、Change Buffer
+change buffering是insert buffer的加强，insert buffer只针对insert有效，change buffering对insert、delete、update(delete+insert)、purge都有效
+
+使用插入缓冲的条件：
+* 非聚集索引
+* 非唯一索引
+</code></pre>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
+<li><p>事务的特性ACID</p>
+<pre><code class="textmate">原子性(atomicity)：一个事务被事务不可分割的最小工作单元，要么全部提交，要么全部失败回滚。
+一致性(consistency)：数据库总是从一致性状态到另一个一致性状态，它只包含成功事务提交的结果
+隔离型(isolation)：事务所做的修改在最终提交一起，对其他事务是不可见的
+持久性(durability)：一旦事务提交，则其所做的修改就会永久保存到数据库中。
+</code></pre>
+</li>
+<li><p>事务隔离级别 </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+<th>解决原理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>读已提交</td>
+<td>√</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>√</td>
+<td>√</td>
+<td>x</td>
+<td>gap锁 (mysql默认级别)</td>
+</tr>
+<tr>
+<td>串行化</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>读锁</td>
+</tr>
+</tbody></table>
+<h4 id="重要文件"><a href="#重要文件" class="headerlink" title="重要文件"></a>重要文件</h4><ul>
+<li>undolog</li>
+<li>redolog</li>
+<li>binlog</li>
+</ul>
+<h4 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h4><pre><code class="sql">show engines;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>磁盘文件</th>
+<th>特性</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FEDERATED</td>
+<td>用来访问远程表存储引擎</td>
+<td>访问远程表</td>
+<td></td>
+</tr>
+<tr>
+<td>MRG_MYISAM</td>
+<td>把多个MyISAM表合并为一个逻辑单元；查询一个表时，相当与查询其所有成员表</td>
+<td>可以用分区表替换merge表</td>
+<td></td>
+</tr>
+<tr>
+<td>MyISAM</td>
+<td>.MDY数据)<br/> .MYI(索引)</td>
+<td>主要的非实物处理存储引擎</td>
+<td></td>
+</tr>
+<tr>
+<td>BLACKHOLE</td>
+<td>丢弃写操作，读操作返回空内容</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>.CSV(数据)<br/>.CSM(元数据)</td>
+<td>存储数据时，会以逗号作为数据项之间的分割符号</td>
+<td>不支持索引，数据存在为普通文本文件</td>
+</tr>
+<tr>
+<td>MEMORY</td>
+<td></td>
+<td>置于内存的表</td>
+<td></td>
+</tr>
+<tr>
+<td>ARCHIVE</td>
+<td></td>
+<td>用于数据存档(行插入后不能再修改)</td>
+<td>数据归档，大批量存储后不修改</td>
+</tr>
+<tr>
+<td>InnoDB</td>
+<td>.ibd(数据&amp;索引)</td>
+<td>具备外键支持功能的事务处理引擎</td>
+<td></td>
+</tr>
+<tr>
+<td>PERFORMANCE_SCHEMA</td>
+<td></td>
+<td>用于监视MySQL服务器</td>
+<td></td>
+</tr>
+<tr>
+<td>NDB</td>
+<td></td>
+<td>集群存储引擎</td>
+<td></td>
+</tr>
+<tr>
+<td>TokuDB</td>
+<td></td>
+<td>存储速度快，查询速度略慢与InnoDB,支持事务等，未来替代InnoDB</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="《MySQL是怎样运行的：从根上理解MySQL》-读书笔记"><a href="#《MySQL是怎样运行的：从根上理解MySQL》-读书笔记" class="headerlink" title="《MySQL是怎样运行的：从根上理解MySQL》 读书笔记"></a>《MySQL是怎样运行的：从根上理解MySQL》 读书笔记</h2><blockquote>
+<p>第一次读，摘录了其中部分知识点 2021-09-13读完</p>
+</blockquote>
+<h3 id="InnoDB数据格式"><a href="#InnoDB数据格式" class="headerlink" title="InnoDB数据格式"></a>InnoDB数据格式</h3><ul>
+<li><p>内存与磁盘交互方式</p>
+<pre><code class="textmate">InnoDB 采取的方式是:将数据划分为若干个页，以页作为磁盘和内存之间交互的基本单位，InnoDB中页的大小 一般为 16 KB。
+也就是在一般情况下，一次最少从磁盘中读取16KB的内容到内存中，一次最少把内存中的16KB 内容刷新到磁盘中。
+</code></pre>
+</li>
+<li><p>行格式<br><br/><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/mysql-compact%E8%A1%8C%E6%A0%BC%E5%BC%8F.png">Compact行</a></p>
+<pre><code class="textmate">Compact 、 Redundant 、Dynamic 和 Compressed
+变长字段(varchar(n)、text等)占用内存：1. 真正的数据内容 2. 占用的字节数
+对于 CHAR(M) 类型的列来说，当列采用的是定长字符集时，该列占用的字节数不会被加到变长字 段长度列表，而如果采用变长字符集时，该列占用的字节数也会被加到变长字段长度列表。
+</code></pre>
+</li>
+<li><p>数据太多造成的溢出</p>
+<pre><code class="textmate">行溢出：一个页一般是 16KB ，当记录中的数据太多，当前页放不下的时候，会把多余的数据存储到其他页中；
+MySQL 是以 页为单位管理存储空间，一个页一般16kb,16384字节，一个varchar最多存储65532个字节
+对于占用存储空间非常大的列，在 记录的真实数据 处只会存储该列的一部 分数据，把剩余的数据分散存储在几个其他的页中，然后记录的真实数据处用20个字节存储指向这些页的地址 
+(当然这20个字节中还包括这些分散在其他页面中的数据的占用的字节数)，从而可以找到剩余数据所在的页，
+</code></pre>
+</li>
+<li><p>行溢出的临界点</p>
+<pre><code class="textmate">MySQL 中规定一个页中至少存放两行记录
+对于只有一个列的表，发生行溢出现象时需要满足这个式子: 136 + 2×(27 + n) &gt; 16384 ， n &gt; 8098
+重点:
+  不用关注这个临界点是什么，只要知道如果我们向一个行中存储了很大的数据时，可能发生 行溢出 的现象
+不论我们怎么对页中的记录做增删改操作，InnoDB始终会维护一条记录的单链表，链表中的各个 节点是按照主键值由小到大的顺序连接起来的
+</code></pre>
+</li>
+<li><p>总结<br><br/><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/InnoDB_data_page.png">InnoDB数据页结构</a></p>
+</li>
+</ul>
+<pre><code class="textmate">1. InnoDB为了不同的目的而设计了不同类型的页，我们把用于存放记录的页叫做 数据页 。
+2. 一个数据页可以被大致划分为7个部分，分别是
+   File Header ，表示页的一些通用信息，占固定的38字节。
+   Page Header ，表示数据页专有的一些信息，占固定的56个字节。
+   Infimum + Supremum ，两个虚拟的伪记录，分别表示页中的最小和最大记录，占固定的 26 个字节。
+   User Records :真实存储我们插入的记录的部分，大小不固定。
+   Free Space :页中尚未使用的部分，大小不确定。
+   Page Directory: 页中的某些记录相对位置，也就是各个槽在页面中的地址偏移量，大小不固定，插入的记录越多，这个部分占用的空间越多。
+   File Trailer :用于检验页是否完整的部分，占用固定的8个字节。
+3. 每个记录的头信息中都有一个 next_record 属性，从而使页中的所有记录串联成一个 单链表 。
+4. InnoDB 会为把页中的记录划分为若干个组，每个组的最后一个记录的地址偏移量作为一个 槽 ，存放在
+   Page Directory 中，所以在一个页中根据主键查找记录是非常快的，分为两步:
+   4.1 通过二分法确定该记录所在的槽。
+   4.2 通过记录的next_record属性遍历该槽所在的组中的各个记录。
+5. 每个数据页的 File Header 部分都有上一个和下一个页的编号，所以所有的数据页会组成一个 双链表 。
+6. 为保证从内存中同步到磁盘的页的完整性，在页的首部和尾部都会存储页中数据的校验和和页面最后修改时
+   对应的 LSN 值，如果首部和尾部的校验和和 LSN 值校验不成功的话，就说明同步过程出现了问题。
+</code></pre>
+<ul>
+<li>Innodb通用页结构<br><br/><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/InnoDB%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">Innodb通用页结构</a><br><br/><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/Innodb%E9%80%9A%E7%94%A8%E9%A1%B5%E7%BB%93%E6%9E%84-%E8%A7%A3%E9%87%8A.png">Innodb通用页结构-解释</a></li>
+</ul>
+<pre><code class="textmate">表空间结构(系统表空间/独立表空间)
+连续64个页面 = 一个区(默认1MB)
+每256个区被划分为一个组
+每个组的最开始的几个页面类型是固定的
+1.FSP_HDR 类型:这个类型的页面是用来登记整个表空间的一些整体属性以及本组所有的 区 ，也就是
+  extent 0 ~ extent 255 这256个区的属性，稍后详细唠叨。需要注意的一点是，整个表空间只有一 个 FSP_HDR 类型的页面。
+2.IBUF_BITMAP 类型:这个类型的页面是存储本组所有的区的所有页面关于 INSERT BUFFER 的信息。
+3.INODE 类型:这个类型的页面存储了许多称为 INODE 的数据结构，
+
+其余各组最开始的2个页面的类型是固定的
+1.DES 类型:全称是 extent descriptor ，用来登记本组256个区的属性，也就是说对于在 extent 256 区中的该类型页面存储的就是 extent 256 ~ extent 511 这些区的属性，对于在 extent 512 区中的该 类型页面存储的就是 extent 512 ~ extent 767 这些区的属性。上边介绍的 FSP_HDR 类型的页面其实 和 XDES 类型的页面的作用类似，只不过 FSP_HDR 类型的页面还会额外存储一些表空间的属性。
+2.IBUF_BITMAP
+</code></pre>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/mysql-innondb%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png">InnonDB文件结构总结</a></li>
+</ul>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><pre><code class="textmate">SHOW INDEX FROM 表名 - 索引统计数据
+    对于InnoDB存储引擎来说，使用SHOW INDEX语句展示出来的某个索引列的Cardinality属性是一个估计 值，并不是精确的
+注意：
+    在MySQL 5.7.3以及之前的版本中，eq_range_index_dive_limit的默认值为10，之 后的版本默认值为200。
+    所以如果大家采用的是5.7.3以及之前的版本的话，很容易采用索引统计数据而 不是index dive的方式来计算查询成本。当你的查询中使用到了IN查询，但是却实际没有用到索引，就 应该考虑一下是不是由于 eq_range_index_dive_limit 值太小导致的。
+连接查询的成本计算公式:
+    连接查询总成本 = 单次访问驱动表的成本 + 驱动表扇出数 x 单次访问被驱动表的成本
+</code></pre>
+<h4 id="InnoDB统计数据的方式"><a href="#InnoDB统计数据的方式" class="headerlink" title="InnoDB统计数据的方式"></a>InnoDB统计数据的方式</h4><pre><code class="textmate">InnoDB 以表为单位来收集统计数据，这些统计数据可以是基于磁盘的永久性统计数据，也可以是基于内存 的非永久性统计数据。
+    innodb_stats_persistent 控制着使用永久性统计数据还是非永久性统计数据; 
+    innodb_stats_persistent_sample_pages 控制着永久性统计数据的采样页面数量; 
+    innodb_stats_transient_sample_pages 控制着非永久性统计数据的采样页面数量; 
+    innodb_stats_auto_recalc 控制着是否自动重新计算统计数据。
+我们可以针对某个具体的表，在创建和修改表时通过指定 STATS_PERSISTENT 、 STATS_AUTO_RECALC 、 STATS_SAMPLE_PAGES 的值来控制相关统计数据属性。
+    innodb_stats_method 决定着在统计某个索引列不重复值的数量时如何对待 NULL 值。
+通过配置将决定权交给用户
+    1.nulls_equal :认为所有 NULL 值都是相等的。这个值也是 innodb_stats_method 的默认值。如果某个索引列中 NULL 值特别多的话，这种统计方式会让优化器认为某个列中平均一个值重复次数特别 多，所以倾向于不使用索引进行访问。
+    2.nulls_unequal :认为所有 NULL 值都是不相等的。如果某个索引列中 NULL 值特别多的话，这种统计方式会让优化器认为某个列中平均一个值重复次数特别 少，所以倾向于使用索引进行访问。
+    3.nulls_ignored :直接把 NULL 值忽略掉。
+</code></pre>
+<h4 id="SQL重写方式"><a href="#SQL重写方式" class="headerlink" title="SQL重写方式"></a>SQL重写方式</h4><h5 id="条件化简"><a href="#条件化简" class="headerlink" title="条件化简"></a>条件化简</h5><pre><code class="textmate">1.移除不必要的括号
+2.常量传递
+    a = 5 AND b &gt; a 改写为 a = 5 AND b &gt; 5
+3.等值传递
+    a = b and b = c and c = 5 改写为 a = 5 and b = 5 and c = 5
+4.移除没用的条件
+    (a &lt; 1 and b = b) OR (a = 6 OR 5 != 5) 改写为 (a &lt; 1 and TRUE) OR (a = 6 OR FALSE)  ==&gt;  a &lt; 1 OR a = 6
+5.表达式计算
+    a =5 + 1 改写为 a=6
+6.having和where子句合并
+7.常量表检测
+</code></pre>
+<h5 id="外连接消除"><a href="#外连接消除" class="headerlink" title="外连接消除"></a>外连接消除</h5><ul>
+<li>外连接和内连接区别<pre><code class="textmate">外连接和内连接的本质区别就是:
+  对于外连接的驱动表的记录来说，如果无法在被驱动表中找到 匹配ON子句中的过滤条件的记录，那么该记录仍然会被加入到结果集中，对应的被驱动表记录的各个字段使用 NULL值填充;
+  而内连接的驱动表的记录如果无法在被驱动表中找到匹配ON子句中的过滤条件的记录，那么该记 录会被舍弃
+空值拒绝:
+  在被驱动表的WHERE子句符合空值拒绝的条件后，外连接和内连接可以相互转 换。这种转换带来的好处就是查询优化器可以通过评估表的不同连接顺序的成本，选出成本最低的那种连接顺序 来执行查询。
+</code></pre>
+</li>
+</ul>
+<h5 id="子查询优化"><a href="#子查询优化" class="headerlink" title="子查询优化"></a>子查询优化</h5><pre><code class="textmate">1.按返回的结果集区分子查询
+    标量子查询
+    行子查询
+    列子查询
+    表子查询
+2.按与外层查询关系来区分子查询
+    不相关子查询
+    相关子查询
+3.子查询在布尔表达式中的使用
+4.子查询语法注意事项
+    4.1 子查询必须用小括号扩起来
+    4.2 在 SELECT 子句中的子查询必须是标量子查询
+    4.3 在想要得到标量子查询或者行子查询，但又不能保证子查询的结果集只有一条记录时，应该使用LIMIT 1语句来限制记录数量。
+    4.4 对于[NOT]IN/ANY/SOME/ALL 子查询来说，子查询中不允许有 LIMIT 语句。
+    4.5 不允许在一条语句中增删改某个表的记录时同时还对该表进行子查询。
+
+    如果 IN 子查询符合转换为 semi-join 的条件，查询优化器会优先把该子查询为 semi-join ，然后再考虑下边5种执行半连接的策略中哪个成本最低:
+    Table pullout
+    DuplicateWeedout 
+    LooseScan 
+    Materialization 
+    FirstMatch
+    选择成本最低的那种执行策略来执行子查询。
+    如果 IN 子查询不符合转换为 semi-join 的条件，那么查询优化器会从下边两种策略中找出一种成本更低的 方式执行子查询:
+    先将子查询物化之后再执行查询 执行 IN to EXISTS 转换。
+
+5.[NOT] EXISTS子查询的执行
+    如果 [NOT] EXISTS 子查询是不相关子查询，可以先执行子查询，得出该 [NOT] EXISTS 子查询的结果是 TRUE 还
+    是 FALSE ，并重写原先的查询语句
+
+6.对于派生表的优化
+    6.1 最容易想到的就是把派生表物化
+    6.2将派生表和外层的表合并，也就是将查询重写为没有派生表的形式
+</code></pre>
+<h3 id="Explain"><a href="#Explain" class="headerlink" title="Explain"></a>Explain</h3><h5 id="查看优化器生成执行计划的整个过程"><a href="#查看优化器生成执行计划的整个过程" class="headerlink" title="查看优化器生成执行计划的整个过程"></a>查看优化器生成执行计划的整个过程</h5><pre><code class="textmate">SHOW VARIABLES LIKE &#39;optimizer_trace&#39;;
+ 1. 打开optimizer trace功能 (默认情况下它是关闭的):
+    SET optimizer_trace=&quot;enabled=on&quot;;
+ 2. 这里输入你自己的查询语句 SELECT ...;
+ 3. 从OPTIMIZER_TRACE表中查看上一个查询的优化过程 
+    SELECT * FROM information_schema.OPTIMIZER_TRACE;
+ 4. 可能你还要观察其他语句执行的优化过程，重复上边的第2、3步 ...
+ 5. 当你停止查看语句的优化过程时，把optimizer trace功能关闭 SET optimizer_trace=&quot;enabled=off&quot;;
+</code></pre>
+<h3 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h3><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><pre><code class="textmate">1. 磁盘太慢，用内存作为缓存很有必要。
+2. Buffer Pool 本质上是 InnoDB 向操作系统申请的一段连续的内存空间，可以通过
+   innodb_buffer_pool_size 来调整它的大小。
+3. Buffer Pool 向操作系统申请的连续内存由控制块和缓存页组成，每个控制块和缓存页都是一一对应的，在
+   填充足够多的控制块和缓存页的组合后， Buffer Pool 剩余的空间可能产生不够填充一组控制块和缓存页，
+   这部分空间不能被使用，也被称为 碎片 。
+4. InnoDB 使用了许多 链表 来管理 Buffer Pool 。
+5. free链表 中每一个节点都代表一个空闲的缓存页，在将磁盘中的页加载到 Buffer Pool 时，会从 free链 表 中寻找空闲的缓存页。
+6. 为了快速定位某个页是否被加载到 Buffer Pool ，使用 表空间号 + 页号 作为 key ，缓存页作为 value ， 建立哈希表。
+7. 在 Buffer Pool 中被修改的页称为 脏页 ，脏页并不是立即刷新，而是被加入到 flush链表 中，待之后的某 个时刻同步到磁盘上。
+8. LRU链表 分为 young 和 old 两个区域，可以通过 innodb_old_blocks_pct 来调节 old 区域所占的比例。
+   首次从磁盘上加载到 Buffer Pool 的页会被放到 old 区域的头部，在 innodb_old_blocks_time 间隔时间内访 问该页不会把它移动到 young 区域头部。在 Buffer Pool 没有可用的空闲缓存页时，会首先淘汰掉 old 区 域的一些页。
+9. 我们可以通过指定 innodb_buffer_pool_instances 来控制 Buffer Pool 实例的个数，每个 Buffer Pool 实 例中都有各自独立的链表，互不干扰。
+10. 自 MySQL 5.7.5 版本之后，可以在服务器运行过程中调整 Buffer Pool 大小。每个 Buffer Pool 实例由若 干个 chunk 组成，每个 chunk 的大小可以在服务器启动时通过启动参数调整。
+11. 可以用下边的命令查看 Buffer Pool 的状态信息: SHOW ENGINE INNODB STATUS\G
+</code></pre>
+<h3 id="事务-1"><a href="#事务-1" class="headerlink" title="事务"></a>事务</h3><h4 id="ReadView"><a href="#ReadView" class="headerlink" title="ReadView"></a>ReadView</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/mysql-innodb-%E7%89%88%E6%9C%AC%E9%93%BE.png">版本链</a></li>
+</ul>
+<pre><code class="textmate">READ COMMITTED 和 REPEATABLE READ 隔离级别的事务来说，
+核心问题就是:需要判断一下版本链中的哪个版本是当前事务可见的;
+</code></pre>
+<ul>
+<li>ReadView包含信息</li>
+</ul>
+<pre><code class="textmate">1.m_ids :表示在生成 ReadView 时当前系统中活跃的读写事务的 事务id 列表。
+2.min_trx_id :表示在生成 ReadView 时当前系统中活跃的读写事务中最小的 事务id ，也就是 m_ids 中的最 小值。
+3.max_trx_id :表示生成 ReadView 时系统中应该分配给下一个事务的 id 值。
+  小贴士:
+  注意max_trx_id并不是m_ids中的最大值，事务id是递增分配的。比方说现在有id为1，2，3这三 个事务，之后id为3的事务提交了。那么一个新的读事务在生成ReadView时，m_ids就包括1和2，mi n_trx_id的值就是1，max_trx_id的值就是4。
+4.creator_trx_id :表示生成该 ReadView 的事务的 事务id 。
+</code></pre>
+<ul>
+<li>区别</li>
+</ul>
+<pre><code class="textmate">READ COMMITTED 和 REPEATABLE READ 隔离级别的的一个非常大的区别就是它们生成ReadView的 时机不同
+READ COMMITTED —— 同一事务每次读取数据前都生成一个ReadView
+REPEATABLE READ —— 同一事务在第一次读取数据时生成一个ReadView
+</code></pre>
+<ul>
+<li>ReadView判断步骤</li>
+</ul>
+<pre><code class="textmate">1.如果被访问版本的 trx_id 属性值与 ReadView 中的 creator_trx_id 值相同，意味着当前事务在访问它自己 修改过的记录，所以该版本可以被当前事务访问。
+2.如果被访问版本的 trx_id 属性值小于 ReadView 中的 min_trx_id 值，表明生成该版本的事务在当前事务生 成 ReadView 前已经提交，所以该版本可以被当前事务访问。
+3.如果被访问版本的 trx_id 属性值大于 ReadView 中的 max_trx_id 值，表明生成该版本的事务在当前事务生 成 ReadView 后才开启，所以该版本不可以被当前事务访问。
+4.如果被访问版本的 trx_id 属性值在 ReadView 的 min_trx_id 和 max_trx_id 之间，那就需要判断一下 trx_id 属性值是不是在 m_ids 列表中，如果在，说明创建 ReadView 时生成该版本的事务还是活跃的，该
+  版本不可以被访问;如果不在，说明创建 ReadView 时生成该版本的事务已经被提交，该版本可以被访问。
+
+MVCC (Multi-Version Concurrency Control ，多版本并发控制)指的就 是在使用 READ COMMITTD 、 REPEATABLE READ 这两种隔离级别的事务在执行普通的 SEELCT 操作时访问记录的版 本链的过程，这样子可以使不同事务的 读-写 、 写-读 操作并发执行，从而提升系统性能。
+</code></pre>
+<ul>
+<li><p>purge</p>
+<pre><code class="textmate">insert undo 在事务提交之后就可以被释放掉了，而 update undo 由于还需要支持 MVCC ，不能立即 删除掉。
+为了支持 MVCC ，对于 delete mark 操作来说，仅仅是在记录上打一个删除标记，并没有真正将它删除掉。
+随着系统的运行，在确定系统中包含最早产生的那个 ReadView 的事务不会再访问某些 update undo日志 以及被 打了删除标记的记录后，有一个后台运行的 purge线程 会把它们真正的删除掉
+</code></pre>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><h4 id="锁分类"><a href="#锁分类" class="headerlink" title="锁分类"></a>锁分类</h4><pre><code class="textmate">行级锁、表锁(S锁-共享锁、X锁-独占锁、IS-意向共享、IX-意向独占)
+总结:
+  IS、IX锁是表级锁，它们的提出仅仅为了在之后加表级别的S锁和X锁时可以快速判断表中的记录是否 被上锁，
+  以避免用遍历的方式来查看表中有没有上锁的记录，也就是说其实IS锁和IX锁是兼容的，IX锁和IX锁是 兼容的
+</code></pre>
+</li>
+<li><p>兼容性</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>是否兼容</th>
+<th>X</th>
+<th>IX</th>
+<th>S</th>
+<th>IS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>IX</td>
+<td>否</td>
+<td>是</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>S</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>IS</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<ul>
+<li>锁结构(简易)<pre><code class="textmate">trx信息 :代表这个锁结构是哪个事务生成的。
+is_waiting :代表当前事务是否在等待。
+</code></pre>
+</li>
+<li>操作锁步骤<pre><code class="textmate">在事务 T1 提交之后，就会把该事务生成的 锁结构 释放掉，然后看看还有没有别的事务在等待获取锁， 发现了事务 T2 还在等待获取锁，
+所以把事务 T2 对应的锁结构的 is_waiting 属性设置为 false ，然后 把该事务对应的线程唤醒，让它继续执行，此时事务 T2 就算获取到锁了
+</code></pre>
+</li>
+</ul>
+<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4><pre><code class="textmate">在 READ UNCOMMITTED 隔离级别下， 脏读 、 不可重复读 、 幻读 都可能发生。
+在 READ COMMITTED 隔离级别下， 不可重复读 、 幻读 可能发生， 脏读 不可以发生。
+在 REPEATABLE READ 隔离级别下， 幻读 可能发生， 脏读 和 不可重复读 不可以发生。
+在 SERIALIZABLE 隔离级别下，上述问题都不可以发生。
+
+脏读：读到另一个事务未提交的数据
+不可重复读: 同一个事务两次读取，第二次读取到了另外一个事务提交的数据
+幻读: 同一个事务两次读取范围数据，第二次读取到新的记录
+</code></pre>
+
+      
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>MySQL相关-知识点</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">5.5k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
+    <p><span class="copy-title">发布时间:</span>2021-07-20, 09:45:00</p>
+    <p><span class="copy-title">最后更新:</span>2022-08-11, 20:08:42</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/07/20/backend/storage/mysql/" title="MySQL相关-知识点">https://wiki.aistart.cc/2021/07/20/backend/storage/mysql/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk@1.7.2/dist/gitalk.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'cd9c7d8003d54ab55feb',
+            clientSecret: 'f32edd931a003b89b50d28a4d762a2535438c221',
+            repo: 'im-fan.gitee.io',
+            owner: 'im-fan',
+            admin: ['im-fan'],
+            id: decodeURI('location.pathname'),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <!--
+<p class="footer-entry">
+    ©2015-2022 Imfan
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+ -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'photoSwipe';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("https://cdn.bootcdn.net/ajax/libs/mermaid/8.4.2/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #c0bfbf;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #2b2929;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background/index-1920x1200.jpg);
+    }
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/moon.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+</html>

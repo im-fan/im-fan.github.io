@@ -229,8 +229,8 @@ comment:
 # 各评论系统配置 ↓↓
 
 #删了会报错
-#disqus:
-#  shortname:
+disqus:
+  shortname:
   # disqus评论系统， 2016年9月被GFW认证，大陆不能使用。
   # 获取shortname：https://help.disqus.com/customer/en/portal/articles/466208-what-s-a-shortname-
 
