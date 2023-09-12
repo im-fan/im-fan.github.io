@@ -12,6 +12,7 @@
     "version": "5.4.2"
   },
   "dependencies": {
+    "@giscus/react": "^2.3.0",
     "gitalk": "^1.7.2",
     "hexo": "^5.0.0",
     "hexo-filter-mermaid-diagrams": "^1.0.5",
