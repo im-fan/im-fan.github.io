@@ -229,8 +229,8 @@ comment:
 # 各评论系统配置 ↓↓
 
 #删了会报错
-disqus:
-  shortname:
+#disqus:
+#  shortname:
   # disqus评论系统， 2016年9月被GFW认证，大陆不能使用。
   # 获取shortname：https://help.disqus.com/customer/en/portal/articles/466208-what-s-a-shortname-
 
@@ -254,8 +254,8 @@ gitalk:
   id: location.pathname
   githubID: im-fan
   repo: im-fan.gitee.io
-  ClientID: cd9c7d8003d54ab55feb
-  ClientSecret: f32edd931a003b89b50d28a4d762a2535438c221
+  ClientID: 76daaf8c695cf11a5edd
+  ClientSecret: ed0eef7d481ba45f3358e553927b4b56fbc745fa
   adminUser: im-fan
   distractionFreeMode: true
   language: zh-CN
