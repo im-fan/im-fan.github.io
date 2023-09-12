@@ -221,6 +221,8 @@ friends:
   廖雪峰的官方网站: https://www.liaoxuefeng.com/
 
 ##########评论设置#############
+# TODO 接入giscus
+
 comment:
   on: false
   type: gitalk  # 评论系统：gitalk、disqus、gitment、utteranc、livere,注意：使用时，在下方对应位置进行配置
