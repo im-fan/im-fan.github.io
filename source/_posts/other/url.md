@@ -8,7 +8,7 @@ categories:
 - 其他
 ---
 # 有趣的链接
-
+- [10 个最昂贵的设计错误](https://adplist.substack.com/p/10-most-expensive-design-mistakes)
 - [任正非：华为有业务边界，人才要在边界内研究探索](https://www.bjnews.com.cn/detail/1693810149129843.html)
 - [如何自己写一个前端框架](https://18alan.space/posts/how-hard-is-it-to-build-a-frontend-framework.html) 
 - [财务安全的17条法则](https://thetaoofwealth.wordpress.com/2013/02/17/harry-brownes-17-golden-rules-of-financial-safety/)
@@ -38,8 +38,10 @@ categories:
 - [tcpdump 快速上手](https://jvns.ca/blog/2016/03/16/tcpdump-is-amazing/)
 - [HorusPass](https://horuspass.com/send)
 
-### AI相关
 
+### AI相关
+- [NoteAI-笔记汇总](https://noteai.com/)
+- [马斯克的AI之路](https://finance.sina.cn/2023-09-08/detail-imzkzkea2108254.d.html)
 - [AI小镇](https://github.com/get-convex/ai-town)
 - [StableDiffusion XL 体验站](https://www.stablediffusionai.ai/)
 - [AIHub-免费AI合集](https://www.aihub.cn/)
@@ -54,8 +56,16 @@ categories:
     - [2](https://github.com/lzwme/chatgpt-sites)
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
+### 技术
+
+- [Code Review 终极大法（中文）](https://mp.weixin.qq.com/s/HoFSNCd1U3eoUqYaQiEgwQ)
+- [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
+
 ### 工具
 
+- [签名插件 DocuSign](https://github.com/docusealco/docuseal)
+- [Github Old Feed](https://github.com/wangrongding/github-old-feed)
+- [Idify-工作照生成](https://github.com/zhbhun/idify)
 - [NiceShots-iPhone截图美化工具](https://apps.apple.com/cn/app/niceshots/id6450619697)
 - [RustDesk](https://rustdesk.com/)
 - [Sniffnet](https://github.com/GyulyVGC/sniffnet)
@@ -65,6 +75,8 @@ categories:
 
 ### 音乐
 
+- [EarTrainX](https://www.eartrainx.com/)
+<br/>该网站提供音乐初学者的各种听音练习，训练辨识旋律的能力。
 - [自定义酒吧背景音](http://imissmybar.com/)
 - [音乐创作网站](https://learningmusic.ableton.com/zh-Hans/)
 - [AI x Mubert](https://mubert.com/)
