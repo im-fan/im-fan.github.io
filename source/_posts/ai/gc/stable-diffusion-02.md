@@ -72,17 +72,17 @@ categories:
 
 - [gitcode地址](https://gitcode.net/rubble7343/sd-webui-extensions/raw/master/index.json)
 
-| 名称                                      | 简介                   | 下载地址                                                     |
-| ----------------------------------------- | ---------------------- | ------------------------------------------------------------ |
-| sd-webui-bilingual-localization           | 双语翻译               | https://github.com/journey-ad/sd-webui-bilingual-localization |
-| stable-diffusion-webui-localization-zh_CN | 汉化包，搭配上面的使用 | https://github.com/dtlnor/stable-diffusion-webui-localization-zh_CN |
-| sd-webui-controlnet                       | 模型细节控制           | https://github.com/Mikubill/sd-webui-controlnet.git          |
-| sd-webui-infinite-image-browsing          | 图片管理器             |                                                              |
-| WD 1.4 Tagger                             | 图片描述信息拆解       |                                                              |
-| segment anything                          | 抠图插件               |                                                              |
-| vae                                       | 解码器/滤镜，非必须    | [VAE介绍](https://zhuanlan.zhihu.com/p/646853233)            |
+| 名称                                      | 简介                   | 下载地址                                                                                                                                                                                                                          |
+| ----------------------------------------- | ---------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| sd-webui-bilingual-localization           | 双语翻译               | https://github.com/journey-ad/sd-webui-bilingual-localization                                                                                                                                                                 |
+| stable-diffusion-webui-localization-zh_CN | 汉化包，搭配上面的使用 | https://github.com/dtlnor/stable-diffusion-webui-localization-zh_CN                                                                                                                                                           |
+| sd-webui-controlnet                       | 模型细节控制           | https://github.com/Mikubill/sd-webui-controlnet.git                                                                                                                                                                           |
+| sd-webui-infinite-image-browsing          | 图片管理器             |                                                                                                                                                                                                                               |
+| WD 1.4 Tagger                             | 图片描述信息拆解       |                                                                                                                                                                                                                               |
+| segment anything                          | 抠图插件               |                                                                                                                                                                                                                               |
+| vae                                       | 解码器/滤镜，非必须    | [VAE介绍](https://zhuanlan.zhihu.com/p/646853233)                                                                                                                                                                               |
 | tagcomplete                               | tag提示                | https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git[设置提示词翻译](https://xie.infoq.cn/article/ef345282c4de3ec742952b344)[中文Tag地址](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete/files/9834821/danbooru.csv) |
-
+| LightDiffusionFlow                        | SD工作流               | [Lightdiffusionflow-Gitee](https://gitee.com/mirrors/lightdiffusionflow) |
 
 
 ## 其他相关链接
