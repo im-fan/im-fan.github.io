@@ -80,6 +80,7 @@ categories:
 - [Automa](https://www.automa.site/)
 - [用户行为录制](https://developer.chrome.com/docs/devtools/recorder/)
 - [自动化工具n8n](https://github.com/n8n-io/n8n)
+- [去图片背景](http://idphoto.aistart.cc/)
 
 ### 音乐
 
@@ -88,3 +89,6 @@ categories:
 - [自定义酒吧背景音](http://imissmybar.com/)
 - [音乐创作网站](https://learningmusic.ableton.com/zh-Hans/)
 - [AI x Mubert](https://mubert.com/)
+
+### 小游戏
+- <a href="/game/snick.html" target="_blank"></a>
