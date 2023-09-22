@@ -7,7 +7,11 @@ tags:
 categories:
 - 其他
 ---
+
 # 有趣的链接
+- [博特罗作品展](https://botero.art/cn/exhibitions/8-botero-in-china/works/)
+- [古代地球](https://dinosaurpictures.org/ancient-earth/)
+- [领导者的喋喋不休假说](https://bigthink.com/leadership/babble-hypothesis-leader/)
 - [10 个最昂贵的设计错误](https://adplist.substack.com/p/10-most-expensive-design-mistakes)
 - [任正非：华为有业务边界，人才要在边界内研究探索](https://www.bjnews.com.cn/detail/1693810149129843.html)
 - [如何自己写一个前端框架](https://18alan.space/posts/how-hard-is-it-to-build-a-frontend-framework.html) 
@@ -40,6 +44,8 @@ categories:
 
 
 ### AI相关
+- [财报AI](https://finchat.io/)
+- [BeeBee AI](https://beebee.ai/)
 - [NoteAI-笔记汇总](https://noteai.com/)
 - [马斯克的AI之路](https://finance.sina.cn/2023-09-08/detail-imzkzkea2108254.d.html)
 - [AI小镇](https://github.com/get-convex/ai-town)
@@ -62,7 +68,9 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
-
+- [子域名查询 Subdomain Center](https://www.subdomain.center/)
+- [ipinfo.io](https://ipinfo.io/)
+- [ipapi.is](https://ipapi.is/)
 - [签名插件 DocuSign](https://github.com/docusealco/docuseal)
 - [Github Old Feed](https://github.com/wangrongding/github-old-feed)
 - [Idify-工作照生成](https://github.com/zhbhun/idify)
