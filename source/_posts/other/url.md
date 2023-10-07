@@ -91,4 +91,4 @@ categories:
 - [AI x Mubert](https://mubert.com/)
 
 ### 小游戏
-- <a href="/game/snick.html" target="_blank"></a>
+- <a href="/game/snick.html" target="_blank">贪吃蛇游戏</a>
