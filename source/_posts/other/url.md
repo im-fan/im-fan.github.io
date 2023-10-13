@@ -44,6 +44,7 @@ categories:
 
 
 ### AI相关
+- [AI开放云服务](https://www.lepton.ai/playground)
 - [财报AI](https://finchat.io/)
 - [BeeBee AI](https://beebee.ai/)
 - [NoteAI-笔记汇总](https://noteai.com/)
