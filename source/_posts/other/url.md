@@ -9,6 +9,13 @@ categories:
 ---
 
 # 有趣的链接
+- [顶级域名统计](https://github.com/tb0hdan/domains/blob/master/STATS.md)
+- [Flash博物馆](https://flashmuseum.org/)
+- [《我的工程公理》](https://martinrue.com/my-engineering-axioms/)
+  - 产品是资产，代码是负债。
+  - 你的产品解决了客户的问题，因此是你的资产。代码则是创造资产的成本。你拥有的代码越多，阅读、测试、更改和理解所付出的成本就越高。
+- [《好的代码就像写给接手者的一封情书》](https://addyosmani.com/blog/good-code/)
+  - 程序员的任务不仅仅是解决今天的问题，还要确保你的代码不会成为明天的问题。
 - [博特罗作品展](https://botero.art/cn/exhibitions/8-botero-in-china/works/)
 - [古代地球](https://dinosaurpictures.org/ancient-earth/)
 - [领导者的喋喋不休假说](https://bigthink.com/leadership/babble-hypothesis-leader/)
@@ -44,6 +51,7 @@ categories:
 
 
 ### AI相关
+- [Fooocus-离线文本生图](https://github.com/lllyasviel/Fooocus)
 - [AI开放云服务](https://www.lepton.ai/playground)
 - [财报AI](https://finchat.io/)
 - [BeeBee AI](https://beebee.ai/)
@@ -64,11 +72,15 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
-
+- [try-linux沙盒](https://github.com/binpash/try)
+- [谷歌编程竞赛试题](https://zibada.guru/gcj/)
+- [数据库的数据库](https://dbdb.io/)
 - [Code Review 终极大法（中文）](https://mp.weixin.qq.com/s/HoFSNCd1U3eoUqYaQiEgwQ)
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [little-rat chrome网络插件](https://github.com/dnakov/little-rat)
+- [在线ffmpeg](https://ffmpeg-online.vercel.app/)
 - [子域名查询 Subdomain Center](https://www.subdomain.center/)
 - [ipinfo.io](https://ipinfo.io/)
 - [ipapi.is](https://ipapi.is/)
