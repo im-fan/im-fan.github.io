@@ -7,7 +7,18 @@ categories:
 - 运维
 ---
 
-## macos下自定义快捷命令
+# 快捷打开软件
+```shell
+alias sublime='open -a "Sublime Text"'
+```
+
+### 获取本机IP
+```shell
+# 输出ip地址
+alias ip="ifconfig | grep 'inet 192' | grep -Eo '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' | head -1"
+```
+
+
 ### 判断使用的是那个shell
 ```shell
 echo $0
@@ -47,3 +58,4 @@ ssh-add work_id_rsa
 #将以上命令写入shell文件，然后自定义alias命令，使用的时候切换即可
 alias gitee-work="sh work.sh"
 ```
+
