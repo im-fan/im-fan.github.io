@@ -79,6 +79,7 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [Free for Developers](https://free-for.dev/)
 - [little-rat chrome网络插件](https://github.com/dnakov/little-rat)
 - [在线ffmpeg](https://ffmpeg-online.vercel.app/)
 - [子域名查询 Subdomain Center](https://www.subdomain.center/)
