@@ -49,6 +49,8 @@ categories:
 - [tcpdump 快速上手](https://jvns.ca/blog/2016/03/16/tcpdump-is-amazing/)
 - [HorusPass](https://horuspass.com/send)
 
+### 成长
+- [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
 - [Fooocus-离线文本生图](https://github.com/lllyasviel/Fooocus)
