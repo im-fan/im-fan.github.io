@@ -53,6 +53,7 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
+- [Vercel-v0.dev(自动生成网页)](https://v0.dev/)
 - [Fooocus-离线文本生图](https://github.com/lllyasviel/Fooocus)
 - [AI开放云服务](https://www.lepton.ai/playground)
 - [财报AI](https://finchat.io/)
