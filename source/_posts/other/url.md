@@ -9,6 +9,9 @@ categories:
 ---
 
 # 有趣的链接
+- [可拖动对象的网页实现](https://www.redblobgames.com/making-of/draggable/)
+- [如何生成虚拟的世界地图](https://frozenfractal.com/blog/2023/11/2/around-the-world-1-continents/)
+- [《错误信息的解药》](https://fcpp.org/2021/07/28/misinformation-should-be-refuted-not-censored/)
 - [顶级域名统计](https://github.com/tb0hdan/domains/blob/master/STATS.md)
 - [Flash博物馆](https://flashmuseum.org/)
 - [《我的工程公理》](https://martinrue.com/my-engineering-axioms/)
@@ -53,6 +56,17 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
+- [《如何认识 ChatGPT》](https://xorvoid.com/chatgpt_a_mental_model.html)
+- [微软-机器学习入门教程](https://github.com/microsoft/ML-For-Beginners)
+- [Bing 图像创建器](https://www.bing.com/images/create)
+  - 微软官方的 AI 文生图服务。
+- [ShortbreadAI-生成漫画](https://shortbread.ai/)
+- [ripsecrets-代码泄露密钥检查](https://github.com/sirwart/ripsecrets)
+- [EmojiGen-生成Emoji](https://emoji.fly.dev/)
+- [screenshot-to-code(根据图片给出html代码实现)](https://github.com/abi/screenshot-to-code)
+- [ChatGot-多AI模型会话](https://start.chatgot.io)
+- [网页 AI 评审](https://uxaudit.vercel.app/)
+- [AITDK-AI SEO优化](https://aitdk.com/zh-CN/)
 - [Vercel-v0.dev(自动生成网页)](https://v0.dev/)
 - [Fooocus-离线文本生图](https://github.com/lllyasviel/Fooocus)
 - [AI开放云服务](https://www.lepton.ai/playground)
@@ -82,6 +96,10 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [Bubble](https://github.com/LHRUN/bubble)
+  - 仓库收集各种可以放在 GitHub Profile 和 Readme 上面的小组件
+- [2D 图形库 TGFX](https://github.com/Tencent/tgfx)
+- [动效解决方案 PAG](https://pag.art/)
 - [Free for Developers](https://free-for.dev/)
 - [little-rat chrome网络插件](https://github.com/dnakov/little-rat)
 - [在线ffmpeg](https://ffmpeg-online.vercel.app/)
