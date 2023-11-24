@@ -8,7 +8,12 @@ categories:
 - 其他
 ---
 
+
 # 有趣的链接
+- [CV 声音克隆工具](https://github.com/jianchang512/clone-voice)
+- [VAVE BG-AI壁纸库](https://vavebg.com/)
+- [谷歌编程风格指南](https://google.github.io/styleguide/)
+- [最好的讲座视频-英文](https://news.ycombinator.com/item?id=34591291)
 - [可拖动对象的网页实现](https://www.redblobgames.com/making-of/draggable/)
 - [如何生成虚拟的世界地图](https://frozenfractal.com/blog/2023/11/2/around-the-world-1-continents/)
 - [《错误信息的解药》](https://fcpp.org/2021/07/28/misinformation-should-be-refuted-not-censored/)
@@ -56,6 +61,7 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
+- [ChatGPT 使用入门](https://blog.warmplace.cn/post/chatgpt)
 - [《如何认识 ChatGPT》](https://xorvoid.com/chatgpt_a_mental_model.html)
 - [微软-机器学习入门教程](https://github.com/microsoft/ML-For-Beginners)
 - [Bing 图像创建器](https://www.bing.com/images/create)
