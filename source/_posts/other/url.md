@@ -9,6 +9,8 @@ categories:
 ---
 
 
+
+
 # 有趣的链接
 - [CV 声音克隆工具](https://github.com/jianchang512/clone-voice)
 - [VAVE BG-AI壁纸库](https://vavebg.com/)
@@ -61,6 +63,7 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
+- [draw-fast-画作进阶](https://github.com/tldraw/draw-fast)
 - [ChatGPT 使用入门](https://blog.warmplace.cn/post/chatgpt)
 - [《如何认识 ChatGPT》](https://xorvoid.com/chatgpt_a_mental_model.html)
 - [微软-机器学习入门教程](https://github.com/microsoft/ML-For-Beginners)
@@ -102,6 +105,12 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [简历生成器：Reactive-Resume](https://github.com/AmruthPillai/Reactive-Resume)
+- [可视化开发：windmill](https://github.com/windmill-labs/windmill)
+- [Docker 跑 macOS：Docker-OSX](https://github.com/sickcodes/Docker-OSX)
+- [headless CMS：tinacms](https://github.com/tinacms/tinacms)
+  - 这是一个完全的 headless CMS，支持 Markdown 和实时预览的可视化编辑。除了 Markdown，还支持 MDX、JSON、Yaml 等。
+- [摄像头目标检测：frigate](https://github.com/blakeblackshear/frigate)
 - [Bubble](https://github.com/LHRUN/bubble)
   - 仓库收集各种可以放在 GitHub Profile 和 Readme 上面的小组件
 - [2D 图形库 TGFX](https://github.com/Tencent/tgfx)
