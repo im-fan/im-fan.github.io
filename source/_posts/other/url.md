@@ -63,6 +63,9 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
+- [AIGC-免费-吐司](https://tusiart.com/)
+- [AIGC-免费-liblib](https://www.liblib.ai/)
+- [AIGC-导航](https://www.aigc.cn/sites/12818.html)
 - [映技派-AI工具合集](https://www.yjpoo.com/ai-fuwushang/)
 - [draw-fast-画作进阶](https://github.com/tldraw/draw-fast)
 - [ChatGPT 使用入门](https://blog.warmplace.cn/post/chatgpt)
