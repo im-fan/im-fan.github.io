@@ -63,6 +63,7 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
+- [映技派-AI工具合集](https://www.yjpoo.com/ai-fuwushang/)
 - [draw-fast-画作进阶](https://github.com/tldraw/draw-fast)
 - [ChatGPT 使用入门](https://blog.warmplace.cn/post/chatgpt)
 - [《如何认识 ChatGPT》](https://xorvoid.com/chatgpt_a_mental_model.html)
