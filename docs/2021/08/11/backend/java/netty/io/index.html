@@ -6,27 +6,18 @@
   <meta name="keywords" content=" io ">
   <meta name="description" content="IO | Imfan笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="一、介绍1.1 Stable DiffusionStable Diffusion是2022年发布的主要用于 文本生成图像 的深度学习模型，也就是常说的txt2img的应用场景，通过给定 文本提示词（text prompt），该模型会输出一张匹配提示词的图片。 Stable Diffusion是基于“潜在扩散模型”（latent diffusion model；LDM）的模型  原理图(基于LDM论">
+<meta name="description" content="事件推送实现方式 WebSocket SseEmitter  对比   实现方式 建立连接 传输效率 兼容性 传输内容 功能 使用场景    WebSocket 采用双工通信,客户端和服务器建立实时的双向通信信道。 建立后保持连接不断,效率高于SSE。 现代浏览器基本全面支持。 支持传输文本以及二进制数据。 支持双向全 duplex 通信,客户端和服务器都可以主动发送消息。 适用于需要实时双向交互">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Stable Diffusion Web UI(一)-部署">
-<meta property="og:url" content="https://wiki.aistart.cc/2023/09/06/ai/gc/stable-diffusion-01/index.html">
+<meta property="og:title" content="SpringBoot-EventStream">
+<meta property="og:url" content="https://wiki.aistart.cc/2023/12/06/backend/spring/springboot-event-stream/index.html">
 <meta property="og:site_name" content="Imfan笔记">
-<meta property="og:description" content="一、介绍1.1 Stable DiffusionStable Diffusion是2022年发布的主要用于 文本生成图像 的深度学习模型，也就是常说的txt2img的应用场景，通过给定 文本提示词（text prompt），该模型会输出一张匹配提示词的图片。 Stable Diffusion是基于“潜在扩散模型”（latent diffusion model；LDM）的模型  原理图(基于LDM论">
+<meta property="og:description" content="事件推送实现方式 WebSocket SseEmitter  对比   实现方式 建立连接 传输效率 兼容性 传输内容 功能 使用场景    WebSocket 采用双工通信,客户端和服务器建立实时的双向通信信道。 建立后保持连接不断,效率高于SSE。 现代浏览器基本全面支持。 支持传输文本以及二进制数据。 支持双向全 duplex 通信,客户端和服务器都可以主动发送消息。 适用于需要实时双向交互">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/LDM.png">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/sd-webui.png">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/sd-web-plugin.png">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/demo1.png">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/demo2.png">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/ikun1.png">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/ikun2.png">
-<meta property="og:image" content="https://wiki.aistart.cc/img/ai/ikun3.png">
-<meta property="article:published_time" content="2023-09-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-06T08:24:23.694Z">
+<meta property="article:published_time" content="2023-12-06T07:10:00.000Z">
+<meta property="article:modified_time" content="2023-12-06T07:23:20.211Z">
 <meta property="article:author" content="imfan">
-<meta property="article:tag" content="AIGC,SD,StableDiffusion">
+<meta property="article:tag" content="事件推送">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wiki.aistart.cc/img/ai/LDM.png">
 
 
 <link rel="icon" href="/img/road.png">
@@ -110,7 +101,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(62)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(63)</small></div></li>
     
         
             
@@ -122,7 +113,7 @@
     
         
             
-            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(26)</small></div>
+            <li><div data-rel="后端"><i class="fold iconfont icon-right"></i>后端<small>(27)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -147,6 +138,10 @@
                         </li>
                         
                         <li><div data-rel="后端<--->三方集成">三方集成<small>(1)</small></div>
+                            
+                        </li>
+                        
+                        <li><div data-rel="后端<--->事件推送">事件推送<small>(1)</small></div>
                             
                         </li>
                         
@@ -270,6 +265,10 @@
     
         
             
+        
+    
+        
+            
             <li><div data-rel="线上问题">线上问题<small>(1)</small></div>
                 
             </li>
@@ -329,8 +328,8 @@
     </div>
 </div>
 
-<input type="hidden" id="yelog_site_posts_number" value="62">
-<input type="hidden" id="yelog_site_word_count" value="71.3k">
+<input type="hidden" id="yelog_site_posts_number" value="63">
+<input type="hidden" id="yelog_site_word_count" value="72.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -407,6 +406,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>事件推送</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -616,6 +619,14 @@
     
     <nav id="title-list-nav">
         
+        <a  class="全部文章 后端 事件推送 "
+           href="/2023/12/06/backend/spring/springboot-event-stream/"
+           data-tag="事件推送"
+           data-author="" >
+            <span class="post-title" title="SpringBoot-EventStream">SpringBoot-EventStream</span>
+            <span class="post-date" title="2023-12-06 15:10:00">2023/12/06</span>
+        </a>
+        
         <a  class="全部文章 AI "
            href="/2023/09/06/ai/gc/stable-diffusion-01/"
            data-tag="AIGC,SD,StableDiffusion"
@@ -665,18 +676,18 @@
         </a>
         
         <a  class="全部文章 后端 服务治理 "
-           href="/2023/03/16/backend/service/eureka/eureka-2/"
-           data-tag="注册中心,eureka"
-           data-author="" >
-            <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
-            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
-        </a>
-        
-        <a  class="全部文章 后端 服务治理 "
            href="/2023/03/16/backend/service/eureka/eureka/"
            data-tag="注册中心,eureka"
            data-author="" >
             <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
+            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2023/03/16/backend/service/eureka/eureka-2/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
             <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
         </a>
         
