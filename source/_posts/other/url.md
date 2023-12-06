@@ -95,7 +95,7 @@ categories:
 - [FreeGPT](https://freegpt.one/)
 - [Chat GPT Demo-免费ChatGPT](https://chatgptdemo.net/zh-hans)
 - [提示工程入门](https://www.promptingguide.ai/)
-- [ChatGPT 中文在线](https://codenews.cc/chatgpt)
+- [ChatGPT 中文在线 - 工具合集](https://codenews.cc/chatgpt)
 - 搜索 ChatGPT源
     - [1](https://github.com/LiLittleCat/awesome-free-chatgpt)
     - [2](https://github.com/lzwme/chatgpt-sites)
