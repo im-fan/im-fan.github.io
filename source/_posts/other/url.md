@@ -8,9 +8,6 @@ categories:
 - 其他
 ---
 
-
-
-
 # 有趣的链接
 - [CV 声音克隆工具](https://github.com/jianchang512/clone-voice)
 - [VAVE BG-AI壁纸库](https://vavebg.com/)
@@ -63,6 +60,7 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 
 ### AI相关
+- [llamafile 是运行 LLM 最方便的方法](https://simonwillison.net/2023/Nov/29/llamafile/)
 - [AIGC-免费-吐司](https://tusiart.com/)
 - [AIGC-免费-liblib](https://www.liblib.ai/)
 - [AIGC-导航](https://www.aigc.cn/sites/12818.html)
@@ -109,6 +107,25 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+
+- [AI Image Captions](https://felix.link/apps/captions)
+  一个在线工具，可以为图片生成介绍词，用于社交媒体，可以指定语言、风格和长度。
+- [Python Online Compiler](https://pythononlinecompiler.com/)
+  一个在网页运行 Python 代码、显示运行结果的编译器，可以指定 Python 版本。
+- [IP工具箱](https://github.com/jason5ng32/MyIP/blob/main/README_CN.md)
+  一个开源的本地网站，集成了 IP 相关的各种查询。
+- [33字幕](https://www.33subs.com/)
+  一个 Win/Mac 桌面软件，用于识别/制作音频和视频文件的双语字幕。
+- [周刊工具搜索引擎](https://www.apigpts.dev/tools)
+- [LLM可视化](https://bbycroft.net/llm)
+  这个网站提供大型语言模型（LLM）原理讲解，每一步讲解都在右侧配上动画。
+- [软件漏洞数据库](https://nvd.nist.gov/)
+  美国的国家软件漏洞数据库，收入了各种软件漏洞，以及补丁情况，方便检索。
+- [3D植物](https://plant.max-richter.dev/)
+  一个在线的 3D 植物构建器，可以调节各种参数，生成一个 3D 模型。
+- [《乔布斯的遗产》](https://every.to/napkin-math/steve-jobs-legacy-for-builders)
+- [Aha Vector Search](https://github.com/esteininger/vector-search)
+  矢量搜索
 - [简历生成器：Reactive-Resume](https://github.com/AmruthPillai/Reactive-Resume)
 - [可视化开发：windmill](https://github.com/windmill-labs/windmill)
 - [Docker 跑 macOS：Docker-OSX](https://github.com/sickcodes/Docker-OSX)
