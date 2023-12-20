@@ -107,7 +107,9 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
-
+- [meat-Imagine](https://imagine.meta.com/)
+- [Mac命令行命令](https://git.herrbischoff.com/awesome-macos-command-line/about/)
+- [最漂亮的网页游戏](https://news.ycombinator.com/item?id=37931804)
 - [AI Image Captions](https://felix.link/apps/captions)
   一个在线工具，可以为图片生成介绍词，用于社交媒体，可以指定语言、风格和长度。
 - [Python Online Compiler](https://pythononlinecompiler.com/)
