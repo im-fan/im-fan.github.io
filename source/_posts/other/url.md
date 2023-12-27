@@ -56,10 +56,12 @@ categories:
 - [tcpdump 快速上手](https://jvns.ca/blog/2016/03/16/tcpdump-is-amazing/)
 - [HorusPass](https://horuspass.com/send)
 
-### 成长
+### 工作
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
+- [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### AI相关
+- [动手学深度学习](https://zh.d2l.ai/)
 - [llamafile 是运行 LLM 最方便的方法](https://simonwillison.net/2023/Nov/29/llamafile/)
 - [AIGC-免费-吐司](https://tusiart.com/)
 - [AIGC-免费-liblib](https://www.liblib.ai/)
