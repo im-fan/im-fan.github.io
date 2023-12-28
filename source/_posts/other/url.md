@@ -56,11 +56,17 @@ categories:
 - [tcpdump 快速上手](https://jvns.ca/blog/2016/03/16/tcpdump-is-amazing/)
 - [HorusPass](https://horuspass.com/send)
 
+### 资讯类
+- [2023年的总结](https://medium.com/magnetic/52-things-i-learned-in-2023-a3bbb9f9323d)
+- [中文版黑客新闻](https://dizkaz.com/)
+- [阮一峰周刊的 Chat 服务](https://www.ahavs.com/chat-ruanyifeng)
+
 ### 工作
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### AI相关
+- [Photo to Anime](https://photo-to-anime.com/)
 - [动手学深度学习](https://zh.d2l.ai/)
 - [llamafile 是运行 LLM 最方便的方法](https://simonwillison.net/2023/Nov/29/llamafile/)
 - [AIGC-免费-吐司](https://tusiart.com/)
@@ -109,6 +115,8 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [浏览器的67个调试技巧](https://alan.norbauer.com/articles/browser-debugging-tricks)
+- [CBox-Chrome浏览器快捷搜索插件](https://github.com/jokimina/cbox-chrome-extension)
 - [meat-Imagine](https://imagine.meta.com/)
 - [Mac命令行命令](https://git.herrbischoff.com/awesome-macos-command-line/about/)
 - [最漂亮的网页游戏](https://news.ycombinator.com/item?id=37931804)
