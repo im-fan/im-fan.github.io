@@ -66,6 +66,8 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### AI相关
+- [Drawing Prompt-免费文生图的辅助工具](https://drawing-prompt.com/en)
+- [Hugging Face 课程](https://huggingface.co/learn)
 - [Photo to Anime](https://photo-to-anime.com/)
 - [动手学深度学习](https://zh.d2l.ai/)
 - [llamafile 是运行 LLM 最方便的方法](https://simonwillison.net/2023/Nov/29/llamafile/)
@@ -115,6 +117,9 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [如何用 Node.js 写一个命令行工具](https://evertpot.com/node-changelog-cli-tool/)
+- [vocal-separate-人声背景音分离](https://github.com/ruanyf/weekly/issues/3806)
+- [DouyinLiveRecorder-免费的直播录制工具](https://github.com/ihmily/DouyinLiveRecorder)
 - [浏览器的67个调试技巧](https://alan.norbauer.com/articles/browser-debugging-tricks)
 - [CBox-Chrome浏览器快捷搜索插件](https://github.com/jokimina/cbox-chrome-extension)
 - [meat-Imagine](https://imagine.meta.com/)
