@@ -8,7 +8,10 @@ categories:
 - 其他
 ---
 
+
 # 有趣的链接
+- [中国历朝代视频讲解](https://www.historyline.online/)
+- [YUERGS-解决自学吉他过程遇到的痛点](https://hougiser.gitee.io/music-score/)
 - [CV 声音克隆工具](https://github.com/jianchang512/clone-voice)
 - [VAVE BG-AI壁纸库](https://vavebg.com/)
 - [谷歌编程风格指南](https://google.github.io/styleguide/)
@@ -61,7 +64,7 @@ categories:
 - [中文版黑客新闻](https://dizkaz.com/)
 - [阮一峰周刊的 Chat 服务](https://www.ahavs.com/chat-ruanyifeng)
 
-### 工作
+### 职场
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
@@ -110,6 +113,10 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [Beej 的网络概念指南](https://beej.us/guide/bgnet0/html/split/)
+- [stt](https://github.com/jianchang512/stt)
+   离线运行的本地语音识别转文字工具，基于 fast-whipser 模型
+- [文本编辑器实时协同的原理和实现](https://www.aadhav.me/posts/collaborative-editor)
 - [try-linux沙盒](https://github.com/binpash/try)
 - [谷歌编程竞赛试题](https://zibada.guru/gcj/)
 - [数据库的数据库](https://dbdb.io/)
@@ -179,4 +186,7 @@ categories:
 - [AI x Mubert](https://mubert.com/)
 
 ### 小游戏
+- [Nostalgist.js](https://github.com/arianrhodsandlot/nostalgist)
+   一个在浏览器中运行怀旧游戏主机模拟器的 JavaScript 库，比如运行任天堂FC 模拟器、世嘉 MD 模拟器、街机模拟器等等
+- [RetroAssembly-复古游戏收藏柜](https://github.com/arianrhodsandlot/retro-assembly)
 - <a href="/game/snick.html" target="_blank">贪吃蛇</a>
