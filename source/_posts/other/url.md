@@ -8,8 +8,8 @@ categories:
 - 其他
 ---
 
-
 # 有趣的链接
+- [如何在没有信号的地方找到手机](https://manas.tech/blog/2023/10/25/approaching-unconventional-problems/)
 - [中国历朝代视频讲解](https://www.historyline.online/)
 - [YUERGS-解决自学吉他过程遇到的痛点](https://hougiser.gitee.io/music-score/)
 - [CV 声音克隆工具](https://github.com/jianchang512/clone-voice)
@@ -113,6 +113,7 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [iOS 应用开发教程-斯坦福大学](https://cs193p.sites.stanford.edu/2023)
 - [Beej 的网络概念指南](https://beej.us/guide/bgnet0/html/split/)
 - [stt](https://github.com/jianchang512/stt)
    离线运行的本地语音识别转文字工具，基于 fast-whipser 模型
@@ -124,6 +125,8 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [AITDK](https://aitdk.com/zh-CN/extension/)
+  一款浏览器插件，提供当前网站的流量/Whois/SEO 等信息
 - [如何用 Node.js 写一个命令行工具](https://evertpot.com/node-changelog-cli-tool/)
 - [vocal-separate-人声背景音分离](https://github.com/ruanyf/weekly/issues/3806)
 - [DouyinLiveRecorder-免费的直播录制工具](https://github.com/ihmily/DouyinLiveRecorder)
