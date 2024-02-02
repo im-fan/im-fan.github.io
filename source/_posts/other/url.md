@@ -9,6 +9,8 @@ categories:
 ---
 
 # 有趣的链接
+- [HelloGitHub 年度热门开源项目-2023](https://mp.weixin.qq.com/s/Ju762fMagWiipg-5H9R7Qw)
+- [可视化全球天气实况](https://earth.nullschool.net/zh-cn)
 - [如何在没有信号的地方找到手机](https://manas.tech/blog/2023/10/25/approaching-unconventional-problems/)
 - [中国历朝代视频讲解](https://www.historyline.online/)
 - [YUERGS-解决自学吉他过程遇到的痛点](https://hougiser.gitee.io/music-score/)
@@ -69,6 +71,7 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### AI相关
+- [实时直播和视频 AI 换脸程序](https://github.com/iperov/DeepFaceLive)
 - [Drawing Prompt-免费文生图的辅助工具](https://drawing-prompt.com/en)
 - [Hugging Face 课程](https://huggingface.co/learn)
 - [Photo to Anime](https://photo-to-anime.com/)
@@ -113,6 +116,8 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [全面的 Leetcode 算法解题指南](https://github.com/doocs/leetcode)
+- [从 0 到 1 数据库内核实战教程](https://github.com/oceanbase/miniob)
 - [iOS 应用开发教程-斯坦福大学](https://cs193p.sites.stanford.edu/2023)
 - [Beej 的网络概念指南](https://beej.us/guide/bgnet0/html/split/)
 - [stt](https://github.com/jianchang512/stt)
@@ -125,6 +130,7 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [photoprism-Go语言个人相册](https://github.com/photoprism/photoprism)
 - [AITDK](https://aitdk.com/zh-CN/extension/)
   一款浏览器插件，提供当前网站的流量/Whois/SEO 等信息
 - [如何用 Node.js 写一个命令行工具](https://evertpot.com/node-changelog-cli-tool/)
