@@ -71,6 +71,10 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### AI相关
+- SoraPrompt
+  - [SoraPrompts](https://soraprompts.co/)
+  - [SoraHub](https://sorahub.video/zh)
+  - [Sora Videos](https://soravideos.media/)
 - [实时直播和视频 AI 换脸程序](https://github.com/iperov/DeepFaceLive)
 - [Drawing Prompt-免费文生图的辅助工具](https://drawing-prompt.com/en)
 - [Hugging Face 课程](https://huggingface.co/learn)
@@ -130,6 +134,10 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+ -[SirTunnel](https://github.com/anderspitman/SirTunnel)
+  一个开源软件，只需要50行代码，就能建立一条隧道，将你的内网电脑可以被公网访问，这里有一篇教程
+- [background-erase](https://background-erase.xyz/)
+  去除图片背景的免费网站
 - [photoprism-Go语言个人相册](https://github.com/photoprism/photoprism)
 - [AITDK](https://aitdk.com/zh-CN/extension/)
   一款浏览器插件，提供当前网站的流量/Whois/SEO 等信息
