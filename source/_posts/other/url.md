@@ -134,7 +134,8 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
- -[SirTunnel](https://github.com/anderspitman/SirTunnel)
+- [ttsmaker-在线文字转语音](https://ttsmaker.cn/)
+- [SirTunnel](https://github.com/anderspitman/SirTunnel)
   一个开源软件，只需要50行代码，就能建立一条隧道，将你的内网电脑可以被公网访问，这里有一篇教程
 - [background-erase](https://background-erase.xyz/)
   去除图片背景的免费网站
