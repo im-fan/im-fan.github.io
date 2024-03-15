@@ -9,6 +9,7 @@ categories:
 ---
 
 # 有趣的链接
+- [家庭电子实验室设置指南](https://badar.tech/2023/04/30/electronics-lab-bench-setup-guide/)
 - [HelloGitHub 年度热门开源项目-2023](https://mp.weixin.qq.com/s/Ju762fMagWiipg-5H9R7Qw)
 - [可视化全球天气实况](https://earth.nullschool.net/zh-cn)
 - [如何在没有信号的地方找到手机](https://manas.tech/blog/2023/10/25/approaching-unconventional-problems/)
@@ -134,6 +135,12 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [Riffusion](https://www.riffusion.com/)
+  一个免费的 AI 工具，给出一段提示，它会生成相应的歌曲，并且是带有歌词、人声演唱的。
+- [Earthworm](https://github.com/cuixueshe/earthworm)
+  一个开源的 Web 程序，通过连词造句的方式，经过不断重复练习英语，线上体验
+- [AI时间线](http://www.ai-timeline.top/)
+  一个有意思的网站，输入一个关键词，自动生成该词的时间线，上图是输入“github”的生成结果，它的代码仓库在 GitHub[31]。
 - [Toolfk-在线工具合集](https://www.toolfk.com/zh-CN/)
 - [ttsmaker-在线文字转语音](https://ttsmaker.cn/)
 - [SirTunnel](https://github.com/anderspitman/SirTunnel)
