@@ -121,6 +121,7 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [【淘宝】2023技术人的百宝黑皮书](https://www.fxbaogao.com/view?id=4115252)
 - [全面的 Leetcode 算法解题指南](https://github.com/doocs/leetcode)
 - [从 0 到 1 数据库内核实战教程](https://github.com/oceanbase/miniob)
 - [iOS 应用开发教程-斯坦福大学](https://cs193p.sites.stanford.edu/2023)
@@ -135,6 +136,7 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [发现报告-研报](https://www.fxbaogao.com/)
 - [Riffusion](https://www.riffusion.com/)
   一个免费的 AI 工具，给出一段提示，它会生成相应的歌曲，并且是带有歌词、人声演唱的。
 - [Earthworm](https://github.com/cuixueshe/earthworm)
