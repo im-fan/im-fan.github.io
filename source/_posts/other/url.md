@@ -136,6 +136,7 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [ifixit-维修教程](https://zh.ifixit.com/#content)
 - [发现报告-研报](https://www.fxbaogao.com/)
 - [Riffusion](https://www.riffusion.com/)
   一个免费的 AI 工具，给出一段提示，它会生成相应的歌曲，并且是带有歌词、人声演唱的。
