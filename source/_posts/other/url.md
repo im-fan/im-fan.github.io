@@ -72,6 +72,7 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### AI相关
+- [长文本AI](https://kimi.moonshot.cn)   
 - [AI工具导航/问答](https://theresanaiforthat.com/)
 - SoraPrompt
   - [SoraPrompts](https://soraprompts.co/)
