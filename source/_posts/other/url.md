@@ -2,6 +2,7 @@
 title: 有趣的链接
 description: url
 date: 2023-08-08 09:20:00
+top: 1
 tags:
 - url
 categories:
@@ -72,6 +73,7 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### AI相关
+- [通义万相-AIGC](https://tongyi.aliyun.com/wanxiang/)
 - [长文本AI](https://kimi.moonshot.cn)   
 - [AI工具导航/问答](https://theresanaiforthat.com/)
 - SoraPrompt
