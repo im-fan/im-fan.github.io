@@ -141,6 +141,7 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [3D建模免费软件-blender](https://www.blender.org/)
 - [ifixit-维修教程](https://zh.ifixit.com/#content)
 - [发现报告-研报](https://www.fxbaogao.com/)
 - [Riffusion](https://www.riffusion.com/)
