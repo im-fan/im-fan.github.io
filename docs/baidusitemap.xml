@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wiki.aistart.cc/2020/10/02/thinking/something/</loc>
+    <lastmod>2024-04-10</lastmod>
+  </url>
+  <url>
     <loc>https://wiki.aistart.cc/2023/08/08/other/url/</loc>
     <lastmod>2024-04-10</lastmod>
   </url>
@@ -55,10 +59,6 @@
   <url>
     <loc>https://wiki.aistart.cc/2022/09/28/backend/service/eureka/eureka-1/</loc>
     <lastmod>2023-03-16</lastmod>
-  </url>
-  <url>
-    <loc>https://wiki.aistart.cc/2020/10/02/thinking/something/</loc>
-    <lastmod>2022-12-15</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2022/11/19/other/markdown/</loc>
