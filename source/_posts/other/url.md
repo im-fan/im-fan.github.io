@@ -10,6 +10,7 @@ categories:
 ---
 
 # 有趣的链接
+- [硬地骇客——两个月 $12000 ARR 实践之路](https://github.com/hardhackerlabs/book)
 - [家庭电子实验室设置指南](https://badar.tech/2023/04/30/electronics-lab-bench-setup-guide/)
 - [HelloGitHub 年度热门开源项目-2023](https://mp.weixin.qq.com/s/Ju762fMagWiipg-5H9R7Qw)
 - [可视化全球天气实况](https://earth.nullschool.net/zh-cn)
