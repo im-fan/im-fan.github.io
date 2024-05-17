@@ -10,8 +10,8 @@ categories:
 ---
 
 # 有趣的链接
+- [一个不知名的开源项目可以带来多少收入](https://github.com/ruanyf/weekly/issues/4458)
 - [硬地骇客——两个月 $12000 ARR 实践之路](https://github.com/hardhackerlabs/book)
-- [家庭电子实验室设置指南](https://badar.tech/2023/04/30/electronics-lab-bench-setup-guide/)
 - [HelloGitHub 年度热门开源项目-2023](https://mp.weixin.qq.com/s/Ju762fMagWiipg-5H9R7Qw)
 - [可视化全球天气实况](https://earth.nullschool.net/zh-cn)
 - [如何在没有信号的地方找到手机](https://manas.tech/blog/2023/10/25/approaching-unconventional-problems/)
@@ -73,7 +73,10 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
-### AI相关
+### 大模型相关
+- [Jan-大模型平台](https://jan.ai/)
+  ChatGPT 的替代品，可以在桌面和服务器运行，接入各种 LLM 模型，让初学者也能轻松上手。
+- [Veo-谷歌本周发布的“文生视频”模型](https://deepmind.google/technologies/veo/)
 - [提示工程指南](https://www.promptingguide.ai/zh)
 - [通义万相-AIGC](https://tongyi.aliyun.com/wanxiang/)
 - [长文本AI](https://kimi.moonshot.cn)   
@@ -127,6 +130,7 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [家庭电子实验室设置指南](https://badar.tech/2023/04/30/electronics-lab-bench-setup-guide/)
 - [【淘宝】2023技术人的百宝黑皮书](https://www.fxbaogao.com/view?id=4115252)
 - [全面的 Leetcode 算法解题指南](https://github.com/doocs/leetcode)
 - [从 0 到 1 数据库内核实战教程](https://github.com/oceanbase/miniob)
@@ -142,6 +146,16 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [字幕工具箱](https://zm.i8k.tv/)
+- [Logo 厨师](https://www.logocook.shop/)
+- [Easy Voice Toolkit](https://github.com/Spr-Aachen/Easy-Voice-Toolkit)
+  一个简易的语音工具箱，提供音频处理、语音识别、合成等音频工具，使用 Python 语言开发。
+- [引脚定义](https://pinouts.org/)
+  一本免费英文电子书，收集了130种电子产品常见组件（比如 USB 口）的引脚定义。
+- [DashPlayer](https://github.com/solidSpoon/DashPlayer)
+  一款专为英语学习打造的开源视频播放器，支持生成双语字幕，进行精听或泛听练习。
+- [Vnt](https://github.com/lbl8603/vnt)
+  一个开源工具，将不同网络下的多个设备虚拟到一个局域网下，类似与 tailscale、zerotier、n2n。
 - [3D建模免费软件-blender](https://www.blender.org/)
 - [ifixit-维修教程](https://zh.ifixit.com/#content)
 - [发现报告-研报](https://www.fxbaogao.com/)
