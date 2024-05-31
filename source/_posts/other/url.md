@@ -130,6 +130,13 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [雷池-WAF](https://waf-ce.chaitin.cn/)
+- [cobalt](https://github.com/wukko/cobalt)
+  一个开源的视频下载网址，支持多个视频网站，包括 B 站、Youtube、instagram 和 Twitter。
+- [掌握比特币：开放区块链编程(免费)](https://github.com/bitcoinbook/bitcoinbook/blob/develop/BOOK.md)
+  一本免费阅读的英文电子书。
+- [Docland](https://docland.io/)
+  这个网站可以快速查找 Java 的 API。
 - [家庭电子实验室设置指南](https://badar.tech/2023/04/30/electronics-lab-bench-setup-guide/)
 - [【淘宝】2023技术人的百宝黑皮书](https://www.fxbaogao.com/view?id=4115252)
 - [全面的 Leetcode 算法解题指南](https://github.com/doocs/leetcode)
