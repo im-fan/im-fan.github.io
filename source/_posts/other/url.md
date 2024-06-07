@@ -10,6 +10,9 @@ categories:
 ---
 
 # 有趣的链接
+- [薄冰大学英语语法](https://oldwestenglish.github.io/grammar/)
+- [Job In Corner](https://jobincorner.com/)
+  一个程序员招聘信息聚合网站，采集自各种社交平台/社区
 - [一个不知名的开源项目可以带来多少收入](https://github.com/ruanyf/weekly/issues/4458)
 - [硬地骇客——两个月 $12000 ARR 实践之路](https://github.com/hardhackerlabs/book)
 - [HelloGitHub 年度热门开源项目-2023](https://mp.weixin.qq.com/s/Ju762fMagWiipg-5H9R7Qw)
@@ -74,6 +77,9 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### 大模型相关
+- [MiGPT](https://github.com/idootop/mi-gpt)
+- [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx)
+  开源的语音库，支持各种平台（包括手机和 PC），用来本地语音识别、语音合成、声音事件检测、语种检测等。
 - [Jan-大模型平台](https://jan.ai/)
   ChatGPT 的替代品，可以在桌面和服务器运行，接入各种 LLM 模型，让初学者也能轻松上手。
 - [Veo-谷歌本周发布的“文生视频”模型](https://deepmind.google/technologies/veo/)
@@ -130,6 +136,9 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [如何简化布尔表达式](https://testing.googleblog.com/2024/04/isbooleantoolongandcomplex.html)
+- [理解 Docker 容器的层（layer）](https://www.kenmuse.com/blog/understanding-container-image-layers/)
+- [傅里叶级数的动画介绍](https://www.andreinc.net/2024/04/24/from-the-circle-to-epicycles)
 - [雷池-WAF](https://waf-ce.chaitin.cn/)
 - [cobalt](https://github.com/wukko/cobalt)
   一个开源的视频下载网址，支持多个视频网站，包括 B 站、Youtube、instagram 和 Twitter。
