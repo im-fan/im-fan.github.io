@@ -10,6 +10,7 @@ categories:
 ---
 
 # 有趣的链接
+- [美国大学申请成功率](https://flowingdata.com/2024/07/16/more-or-less-college-admissions-time/)
 - [薄冰大学英语语法](https://oldwestenglish.github.io/grammar/)
 - [Job In Corner](https://jobincorner.com/)
   一个程序员招聘信息聚合网站，采集自各种社交平台/社区
@@ -136,6 +137,9 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [DevDocs](https://devdocs.io/)
+  这个网站可以查询 Web 标准和主流软件工具的 API 文档。
+- [算法可视化](https://gallery.selfboot.cn/algorithms/)
 - [如何简化布尔表达式](https://testing.googleblog.com/2024/04/isbooleantoolongandcomplex.html)
 - [理解 Docker 容器的层（layer）](https://www.kenmuse.com/blog/understanding-container-image-layers/)
 - [傅里叶级数的动画介绍](https://www.andreinc.net/2024/04/24/from-the-circle-to-epicycles)
@@ -162,6 +166,10 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- Brev AI[41]  https://brev.ai/zh-CN
+  免费在线的 AI 音乐生成器，不需要注册。
+- [FastDownload.io](https://www.fastdownload.io/)
+  一个下载各种流媒体视频的在线工具，支持 Youtube 和 TikTok。
 - [字幕工具箱](https://zm.i8k.tv/)
 - [Logo 厨师](https://www.logocook.shop/)
 - [Easy Voice Toolkit](https://github.com/Spr-Aachen/Easy-Voice-Toolkit)
