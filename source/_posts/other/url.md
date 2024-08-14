@@ -10,6 +10,31 @@ categories:
 ---
 
 # 有趣的链接
+- [Zulip](https://github.com/zulip/zulip/)
+  一个开源的群聊软件，有服务端和各种平台的客户端。
+- [canvas-confetti](https://github.com/catdad/canvas-confetti)
+  在网页上抛洒五彩纸屑的 JS 库。
+- [code-box](https://github.com/027xiguapi/code-box)
+  一个开源的浏览器插件，用来解除 CSDN/知乎/脚本之家/博客园/博客园/51CTO博客等网站的限制（比如要求登录）
+- [Diffree](https://diffree.org/zh)
+  一个在线图像编辑工具，通过文字指令添加新元素到图片中，比如文字输入“为天空增加几片云”。
+- [古生物 3D 标本](https://www.vertebres3d.fr/)
+  这个网站提供各种古生物标本的 3D 模型，可以360度转动，还可以让骨骼运动。
+- [DistroSea](https://distrosea.com/)
+  在线试用各种 Linux 发行版，它会分配一个虚拟机，浏览器里连接桌面。
+- [自己动手写 OAuth 2.0 登录客户端](https://annotate.dev/p/hello-world/learn-oauth-2-0-by-building-your-own-oauth-client-U2HaZNtvQojn4F)
+  一篇初学者教程，详细介绍如何写 OAuth 2.0 登录客户端，以谷歌登录为例，配有代码注释。
+- [从测试驱动学习 Go 语言](https://kovalevsky.io/full-introduction-to-golang-with-test-driven-development-part-1/)
+  一篇初学者教程，从写测试用例开始，教你学习 Go 语言。
+- [软考高级架构师备考记录](https://nekonull.me/posts/ruankao-architect/)
+- [Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF)
+  一个开源工具，用来完成各种 PDF 操作，基于 Web，需要自己架设。
+- [GammaRay](https://github.com/RGAA-Software/GammaRay)
+  一个开源工具，用来把手机和 PC 的桌面传到其他设备，支持远程桌面、视频采集等功能。
+- [SERP Checker](https://www.serpchecking.com/)
+  一个比较谷歌在不同地区、不同语言下返回的搜索结果的工具，代码开源。
+- [wanderer](https://github.com/Flomp/wanderer)
+  一个管理 GPS 路径的开源工具，需要自己架设服务。
 - [美国大学申请成功率](https://flowingdata.com/2024/07/16/more-or-less-college-admissions-time/)
 - [薄冰大学英语语法](https://oldwestenglish.github.io/grammar/)
 - [Job In Corner](https://jobincorner.com/)
@@ -78,6 +103,8 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### 大模型相关
+- [Outfitify](https://outfitify.tech/)
+  一个免费的 AI 穿搭评价工具，无需注册
 - [MiGPT](https://github.com/idootop/mi-gpt)
 - [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx)
   开源的语音库，支持各种平台（包括手机和 PC），用来本地语音识别、语音合成、声音事件检测、语种检测等。
@@ -137,6 +164,11 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [我爱上了 Makefile](https://gagor.pro/2024/02/how-i-stopped-worrying-and-loved-makefiles/)
+- [Tunnelmole 入门](https://tunnelmole.com/)
+  Tunnelmole 是一个简单易用的隧道工具，不需要配置，只要一行命令，就让公网可以访问内网服务。
+- [Linux 系统管理手册](https://github.com/abdoufermat5/unix-and-linux-sysadmin-notes)
+  介绍 Linux 操作的入门书籍，这是该书的原文仓库，可以免费阅读。
 - [DevDocs](https://devdocs.io/)
   这个网站可以查询 Web 标准和主流软件工具的 API 文档。
 - [算法可视化](https://gallery.selfboot.cn/algorithms/)
