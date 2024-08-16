@@ -10,6 +10,20 @@ categories:
 ---
 
 # 有趣的链接
+- [软件工程师的必读书单](https://newsletter.techworld-with-milan.com/i/144462358/books-every-software-engineer-must-read-in)
+  作者列出一份英文书单，包括34本程序员的必读书籍。
+- [Porn Logo Maker](https://porn-logo.com/)
+  定制拼色 Logo 的在线工具。
+- [Frpc-Desktop](https://github.com/luckjiawei/frpc-desktop)
+  内网穿透工具 frp 的跨平台桌面客户端。
+- [Deep Live Cam](https://deeplive.cam/zh)
+  GitHub 本周热点项目，只需一张图片，就可实现视频的人脸替换。
+- [TikTok Voice Generator](https://tiktokvoice.net/)
+  一个在线的文本转语音网站，可以选择 TikTok 内置的各种语音，支持多种语言。
+- [Product Hunt 每日中文热榜](https://decohack.com/category/producthunt/)
+  每日 Product Hunt 热门产品的中文榜单，
+- [SVG Viewer](https://www.svgviewer.dev/)
+  一个 SVG 图标的搜索引擎，并且提供可视化编辑器，允许你对源文件进行调整。
 - [Zulip](https://github.com/zulip/zulip/)
   一个开源的群聊软件，有服务端和各种平台的客户端。
 - [canvas-confetti](https://github.com/catdad/canvas-confetti)
@@ -103,6 +117,8 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### 大模型相关
+- [Song Generator](https://songgenerator.io/zh-CN)
+  免费的 AI 歌曲在线生成器
 - [Outfitify](https://outfitify.tech/)
   一个免费的 AI 穿搭评价工具，无需注册
 - [MiGPT](https://github.com/idootop/mi-gpt)
