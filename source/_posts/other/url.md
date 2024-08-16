@@ -198,7 +198,8 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
-- Brev AI[41]  https://brev.ai/zh-CN
+- [Maccy-MacOS粘贴板历史](https://github.com/p0deje/Maccy?tab=readme-ov-file)
+- [Brev AI](https://brev.ai/zh-CN)
   免费在线的 AI 音乐生成器，不需要注册。
 - [FastDownload.io](https://www.fastdownload.io/)
   一个下载各种流媒体视频的在线工具，支持 Youtube 和 TikTok。
