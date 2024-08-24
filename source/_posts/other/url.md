@@ -10,8 +10,10 @@ categories:
 ---
 
 # 有趣的链接
-- [软件工程师的必读书单](https://newsletter.techworld-with-milan.com/i/144462358/books-every-software-engineer-must-read-in)
-  作者列出一份英文书单，包括34本程序员的必读书籍。
+- [bandwhich](https://github.com/imsnif/bandwhich) 
+  一个命令行程序，查看当前什么程序在占用带宽，以及不同 IP 地址产生的流量。
+- [AI 抠图](https://github.com/pangxiaobin/image-matting)
+  基于 RMBG-1.4 模型的本地抠图的桌面软件
 - [Porn Logo Maker](https://porn-logo.com/)
   定制拼色 Logo 的在线工具。
 - [Frpc-Desktop](https://github.com/luckjiawei/frpc-desktop)
@@ -180,6 +182,12 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [人工智能：现状、任务、构架与统一](http://www.stat.ucla.edu/~sczhu/Blog_articles/%E6%B5%85%E8%B0%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.pdf)
+  加州大学洛杉矶分校统计学和计算机科学教授朱松纯的一个中文演讲，PDF 文件。
+- [如果你是 CPU](https://cpu.land/)
+  一本英文科普书籍，介绍计算机底层知识，免费阅读。
+- [软件工程师的必读书单](https://newsletter.techworld-with-milan.com/i/144462358/books-every-software-engineer-must-read-in)
+  作者列出一份英文书单，包括34本程序员的必读书籍。
 - [我爱上了 Makefile](https://gagor.pro/2024/02/how-i-stopped-worrying-and-loved-makefiles/)
 - [Tunnelmole 入门](https://tunnelmole.com/)
   Tunnelmole 是一个简单易用的隧道工具，不需要配置，只要一行命令，就让公网可以访问内网服务。
