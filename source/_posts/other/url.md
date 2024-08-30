@@ -10,6 +10,13 @@ categories:
 ---
 
 # 有趣的链接
+- [.git子目录内部](https://jvns.ca/blog/2024/01/26/inside-git/)
+- [黑神话悟空wiki](https://wiki.biligame.com/wukong/%E9%A6%96%E9%A1%B5)
+  bilibili整理的关于黑神话悟空的咨询
+- [使用 Julia 语言学习微积分](https://jverzani.github.io/CalculusWithJuliaNotes.jl/)
+  一本在线阅读的电子书，从最简单的极限开始介绍微积分，需要计算的地方使用 Julia 语言举例。
+- [Documentaries](https://ihavenotv.com/)
+  该网站可以免费观看英文纪录片。（搜索Documentaries关键词，有其他类似网站）
 - [bandwhich](https://github.com/imsnif/bandwhich) 
   一个命令行程序，查看当前什么程序在占用带宽，以及不同 IP 地址产生的流量。
 - [AI 抠图](https://github.com/pangxiaobin/image-matting)
@@ -119,6 +126,14 @@ categories:
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 
 ### 大模型相关
+- [Linly-Dubbing](https://github.com/Kedreamix/Linly-Dubbing)
+  AI 视频配音的开源工具，自动将外语视频改成中文配音。
+- [kotaemon](https://github.com/Cinnamon/kotaemon)
+  一个开源的本地工具，可以指定 AI 模型，与添加的文档聊天。
+- [Watson AI](https://www.guillaume.sh/watson)
+  一个开源的 Mac/Windows 桌面程序，通过系统麦克风，录制远程会议的音频，然后用 AI 生成会议记录和摘要。
+- [Fluximg.com](https://fluximg.com/)
+  免费使用的 Flux AI 文生图服务。
 - [Song Generator](https://songgenerator.io/zh-CN)
   免费的 AI 歌曲在线生成器
 - [Outfitify](https://outfitify.tech/)
@@ -182,6 +197,8 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [Coolify](https://github.com/coollabsio/coolify)
+  一个开源的应用运行平台，相当于自己搭建一个 Heroku / Netlify / Vercel 替代品，各种应用可以轻松在上面运行。
 - [人工智能：现状、任务、构架与统一](http://www.stat.ucla.edu/~sczhu/Blog_articles/%E6%B5%85%E8%B0%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.pdf)
   加州大学洛杉矶分校统计学和计算机科学教授朱松纯的一个中文演讲，PDF 文件。
 - [如果你是 CPU](https://cpu.land/)
