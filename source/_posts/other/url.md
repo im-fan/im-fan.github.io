@@ -197,6 +197,8 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [计算机科学自学课程](https://github.com/ForrestKnight/open-source-cs)
+- [Coursera-全球最大公开课平台](https://www.coursera.org/)
 - [Coolify](https://github.com/coollabsio/coolify)
   一个开源的应用运行平台，相当于自己搭建一个 Heroku / Netlify / Vercel 替代品，各种应用可以轻松在上面运行。
 - [人工智能：现状、任务、构架与统一](http://www.stat.ucla.edu/~sczhu/Blog_articles/%E6%B5%85%E8%B0%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.pdf)
