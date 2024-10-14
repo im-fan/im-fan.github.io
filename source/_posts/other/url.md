@@ -10,6 +10,7 @@ categories:
 ---
 
 # 有趣的链接
+- [生成证件照](https://photo4you.win/)
 - [.git子目录内部](https://jvns.ca/blog/2024/01/26/inside-git/)
 - [黑神话悟空wiki](https://wiki.biligame.com/wukong/%E9%A6%96%E9%A1%B5)
   bilibili整理的关于黑神话悟空的咨询
