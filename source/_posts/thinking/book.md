@@ -1,10 +1,11 @@
 ---
-title: 阅读
+title: 阅读-书籍
 description: 思考 阅读
 date: 2020-10-02 14:44:10
 categories: 思考
 tags: 
-- 思维
+- 阅读
+- 思考
 ---
 
 ### 技术书

@@ -52,13 +52,13 @@ categories:
 
 3.写代码
 - 使用引导词
+
 ```textmate
   better:
   Create a MySQL query for all students in the Computer Science Department:
   Table departments, columns = [DepartmentId, DepartmentName]
   Table students, columns = [DepartmentId, StudentId, StudentName]
   SELECT
-
 ```
 
 ### 4.改写内容
@@ -109,7 +109,10 @@ categories:
 - PoenAI Playground
   注意：会消耗你的免费 Credit
 
-- 解释特殊词的含义 - 职位信息拆解
+- 解释特殊词的含义 
+
+- 职位信息拆解v1
+
 ```textmate
   你是一个文本拆解程序，你需要严格按照json模版及字段要求的格式解析输入内容，禁止输出注释。不要输出其他无关信息。
   以下是默认处理规则
@@ -141,6 +144,8 @@ categories:
     ```
 
 ```
+
+- 职位信息拆解v2
 
 ```textmate
       
@@ -254,6 +259,7 @@ categories:
 #### 6.2 完整示例
 
 - 文言文大师
+
 ```textmate
 ## Role : 文言文大师
 
@@ -309,6 +315,7 @@ Output: 己所不欲, 勿施于人
 ```
 
 - AI教师
+
 ```json
     {
         "ai_tutor": {

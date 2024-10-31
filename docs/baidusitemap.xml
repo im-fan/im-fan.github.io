@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wiki.aistart.cc/2022/01/10/thinking/design/</loc>
+    <lastmod>2024-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://wiki.aistart.cc/2020/10/02/thinking/abstract/</loc>
+    <lastmod>2024-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://wiki.aistart.cc/2020/10/02/thinking/book/</loc>
+    <lastmod>2024-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://wiki.aistart.cc/2024/10/31/thinking/famous-zuoer/</loc>
+    <lastmod>2024-10-31</lastmod>
+  </url>
+  <url>
     <loc>https://wiki.aistart.cc/2022/01/10/thinking/famous/</loc>
     <lastmod>2024-10-31</lastmod>
   </url>
@@ -15,10 +31,6 @@
   <url>
     <loc>https://wiki.aistart.cc/2022/01/10/thinking/write/</loc>
     <lastmod>2024-05-09</lastmod>
-  </url>
-  <url>
-    <loc>https://wiki.aistart.cc/2020/10/02/thinking/book/</loc>
-    <lastmod>2024-04-12</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2020/10/02/thinking/something/</loc>
@@ -77,10 +89,6 @@
     <lastmod>2022-11-21</lastmod>
   </url>
   <url>
-    <loc>https://wiki.aistart.cc/2022/01/10/thinking/design/</loc>
-    <lastmod>2022-09-08</lastmod>
-  </url>
-  <url>
     <loc>https://wiki.aistart.cc/2022/02/15/backend/storage/es/</loc>
     <lastmod>2022-08-11</lastmod>
   </url>
@@ -115,10 +123,6 @@
   <url>
     <loc>https://wiki.aistart.cc/2020/11/11/backend/java/spi/</loc>
     <lastmod>2022-06-21</lastmod>
-  </url>
-  <url>
-    <loc>https://wiki.aistart.cc/2020/10/02/thinking/abstract/</loc>
-    <lastmod>2022-06-20</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2022/06/01/backend/storage/mysql-json/</loc>
