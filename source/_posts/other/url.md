@@ -10,6 +10,12 @@ categories:
 ---
 
 # 有趣的链接
+- [蓝牙版本的变化](https://www.androidauthority.com/bluetooth-versions-3488170/)
+  本文介绍蓝牙协议如何进化，每个版本的特点是什么。
+- [了解电池](https://batteryuniversity.com/articles)
+  一本免费的英文书籍，向普通读者介绍电池的基本知识。
+- [地震地图](https://seismic-explorer.concord.org/)
+  这个网站是地震地图，标识出了1980年后大于5.2级的地震（共10万多次），可以清晰地看到地震带，也可以查看某个地区发生过的地震。
 - [生成证件照](https://photo4you.win/)
 - [.git子目录内部](https://jvns.ca/blog/2024/01/26/inside-git/)
 - [黑神话悟空wiki](https://wiki.biligame.com/wukong/%E9%A6%96%E9%A1%B5)
@@ -125,8 +131,15 @@ categories:
 ### 职场
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
+- [谷歌的三次面试记录](https://justyy.com/archives/66293)
 
 ### 大模型相关
+- [爱享写作](https://want-ai.top/writer/)
+  Windows 桌面软件，无需 GPU，离线生成万字长文
+- [Skyvern](https://github.com/Skyvern-AI/Skyvern)
+  一个开源项目，将 AI 模型与计算机视觉结合起来，用自然语言完成浏览器自动化。
+- [电子元件分类器](https://github.com/Vanguard-s/Electronic-Component-Sorter)
+  一个本机的 AI 工具，用摄像头识别电子元件。
 - [Linly-Dubbing](https://github.com/Kedreamix/Linly-Dubbing)
   AI 视频配音的开源工具，自动将外语视频改成中文配音。
 - [kotaemon](https://github.com/Cinnamon/kotaemon)
@@ -198,6 +211,15 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [业务逻辑不要放入数据库](https://www.infoworld.com/article/2269523/put-business-logic-in-the-application-not-the-database.html)
+  本文提出，数据库最好只用来存放数据，不要加入业务逻辑，让应用程序处理业务逻辑。
+- [逆向工程教程](https://0xinfection.github.io/reversing/)
+  面向初学者的逆向工程英文电子书，涵盖了 x86 和 ARM 架构。
+- [lcl.host](https://github.com/anchordotdev/cli)
+  一个为本地开发环境 localhost 提供 https 证书的工具。
+- [自己动手写 Git](https://wyag-zh.hanyujie.xyz/)
+  本教程使用 Python 从头实现简化版 Git，帮助读者理解 Git 的核心原理。
+- [提升 Shell 脚本用户体验](https://nochlin.com/blog/6-techniques-i-use-to-create-a-great-user-experience-for-shell-scripts)
 - [计算机科学自学课程](https://github.com/ForrestKnight/open-source-cs)
 - [Coursera-全球最大公开课平台](https://www.coursera.org/)
 - [Coolify](https://github.com/coollabsio/coolify)
@@ -329,7 +351,8 @@ categories:
 - [去图片背景](http://idphoto.aistart.cc/)
 
 ### 音乐
-
+- [Sound Box](https://soundbox.fun)
+  一个在线音效网站，提供多种自然环境音效以及白噪音。
 - [EarTrainX](https://www.eartrainx.com/)
 <br/>该网站提供音乐初学者的各种听音练习，训练辨识旋律的能力。
 - [自定义酒吧背景音](http://imissmybar.com/)
