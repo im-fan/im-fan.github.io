@@ -10,6 +10,12 @@ categories:
 ---
 
 # 有趣的链接
+- [GitHub Insights Pro](https://github-insights-pro.toolsnav.top/)
+  GitHub 的数据分析与可视化平台，提供项目和用户的各种统计信息，以及排行榜和趋势榜。
+- [Visual Sorting](https://mszula.github.io/visual-sorting/)
+  各种排序算法的可视化演示，代码开源。
+- [看见概率论](https://probability.visualized.fun/)
+  一个中文的数学教育网站，通过交互式可视化演示，讲解概率论知识。
 - [蓝牙版本的变化](https://www.androidauthority.com/bluetooth-versions-3488170/)
   本文介绍蓝牙协议如何进化，每个版本的特点是什么。
 - [了解电池](https://batteryuniversity.com/articles)
@@ -26,8 +32,6 @@ categories:
   该网站可以免费观看英文纪录片。（搜索Documentaries关键词，有其他类似网站）
 - [bandwhich](https://github.com/imsnif/bandwhich) 
   一个命令行程序，查看当前什么程序在占用带宽，以及不同 IP 地址产生的流量。
-- [AI 抠图](https://github.com/pangxiaobin/image-matting)
-  基于 RMBG-1.4 模型的本地抠图的桌面软件
 - [Porn Logo Maker](https://porn-logo.com/)
   定制拼色 Logo 的在线工具。
 - [Frpc-Desktop](https://github.com/luckjiawei/frpc-desktop)
@@ -134,6 +138,10 @@ categories:
 - [谷歌的三次面试记录](https://justyy.com/archives/66293)
 
 ### 大模型相关
+- [AI 抠图](https://github.com/pangxiaobin/image-matting)
+  基于 RMBG-1.4 模型的本地抠图的桌面软件
+- [MagicMirror](https://github.com/idootop/MagicMirror)
+  一个开源的桌面应用，一键 AI 换脸、换发型和穿搭。
 - [爱享写作](https://want-ai.top/writer/)
   Windows 桌面软件，无需 GPU，离线生成万字长文
 - [Skyvern](https://github.com/Skyvern-AI/Skyvern)
@@ -264,6 +272,8 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [UICloner Extension](https://github.com/AndySpider/uicloner-extension)
+  浏览器插件，一键克隆任意网页 UI 组件，生成代码。
 - [Maccy-MacOS粘贴板历史](https://github.com/p0deje/Maccy?tab=readme-ov-file)
 - [Brev AI](https://brev.ai/zh-CN)
   免费在线的 AI 音乐生成器，不需要注册。
