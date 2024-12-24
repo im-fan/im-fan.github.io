@@ -509,31 +509,6 @@
     
     
     <entry>
-      <title>工作相关</title>
-      <link href="/2022/01/10/thinking/design/"/>
-      <url>/2022/01/10/thinking/design/</url>
-      
-        <content type="html"><![CDATA[<h2 id="方案设计方法论"><a href="#方案设计方法论" class="headerlink" title="方案设计方法论"></a>方案设计方法论</h2><h3 id="4R架构理论"><a href="#4R架构理论" class="headerlink" title="4R架构理论"></a>4R架构理论</h3><blockquote><p>根据4R理论；可以很好的协助我们很清晰的去认识一套系统；尤其是我们在学习一套框架源码原理的时候</p></blockquote><pre><code class="textmate">顶层结构Rank -&gt; 组成角色Role -&gt; 角色关系Relation -&gt; 运行规则Rule</code></pre><h2 id="方案设计要点总结"><a href="#方案设计要点总结" class="headerlink" title="方案设计要点总结"></a>方案设计要点总结</h2><h4 id="数据量"><a href="#数据量" class="headerlink" title="数据量"></a>数据量</h4><ul><li>接口查询的数据量<pre><code class="textmate">过大的走分页或让数据端出接口</code></pre></li><li>批量更新的数据量</li></ul><h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><ul><li>是否兼容老接口</li><li>是否兼容老数据</li><li>不同端口是否兼容</li></ul><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><ul><li>新业务上线老数据是否要处理</li><li>原来的配置项是否要更新或新增</li></ul><h4 id="扩展性"><a href="#扩展性" class="headerlink" title="扩展性"></a>扩展性</h4><ul><li>其他业务是否有类似需求</li><li>代码或数据模型预留扩展口</li></ul><h4 id="业务数据采集"><a href="#业务数据采集" class="headerlink" title="业务数据采集"></a>业务数据采集</h4><ul><li>是否方便后续数据统计</li><li>是否影响大数据业务</li></ul><h4 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h4><ul><li>三方接口出入参数打印</li><li>核心流程出入口打印标识</li><li>日志格式建议<pre><code class="textmate">[xx业务] xx操作 success/failed param1:xxx param2:xxx</code></pre></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 思考 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 总结方法论 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>名人名言和一些思维模型</title>
       <link href="/2022/01/10/thinking/famous/"/>
       <url>/2022/01/10/thinking/famous/</url>
@@ -576,6 +551,31 @@
         <tags>
             
             <tag> 写作 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>工作相关</title>
+      <link href="/2022/01/10/thinking/design/"/>
+      <url>/2022/01/10/thinking/design/</url>
+      
+        <content type="html"><![CDATA[<h2 id="方案设计方法论"><a href="#方案设计方法论" class="headerlink" title="方案设计方法论"></a>方案设计方法论</h2><h3 id="4R架构理论"><a href="#4R架构理论" class="headerlink" title="4R架构理论"></a>4R架构理论</h3><blockquote><p>根据4R理论；可以很好的协助我们很清晰的去认识一套系统；尤其是我们在学习一套框架源码原理的时候</p></blockquote><pre><code class="textmate">顶层结构Rank -&gt; 组成角色Role -&gt; 角色关系Relation -&gt; 运行规则Rule</code></pre><h2 id="方案设计要点总结"><a href="#方案设计要点总结" class="headerlink" title="方案设计要点总结"></a>方案设计要点总结</h2><h4 id="数据量"><a href="#数据量" class="headerlink" title="数据量"></a>数据量</h4><ul><li>接口查询的数据量<pre><code class="textmate">过大的走分页或让数据端出接口</code></pre></li><li>批量更新的数据量</li></ul><h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><ul><li>是否兼容老接口</li><li>是否兼容老数据</li><li>不同端口是否兼容</li></ul><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><ul><li>新业务上线老数据是否要处理</li><li>原来的配置项是否要更新或新增</li></ul><h4 id="扩展性"><a href="#扩展性" class="headerlink" title="扩展性"></a>扩展性</h4><ul><li>其他业务是否有类似需求</li><li>代码或数据模型预留扩展口</li></ul><h4 id="业务数据采集"><a href="#业务数据采集" class="headerlink" title="业务数据采集"></a>业务数据采集</h4><ul><li>是否方便后续数据统计</li><li>是否影响大数据业务</li></ul><h4 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h4><ul><li>三方接口出入参数打印</li><li>核心流程出入口打印标识</li><li>日志格式建议<pre><code class="textmate">[xx业务] xx操作 success/failed param1:xxx param2:xxx</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 总结方法论 </tag>
             
         </tags>
       
@@ -642,7 +642,7 @@
       <link href="/2021/11/15/test/test/"/>
       <url>/2021/11/15/test/test/</url>
       
-        <content type="html"><![CDATA[<h3 id="后端测试工具"><a href="#后端测试工具" class="headerlink" title="后端测试工具"></a>后端测试工具</h3><ul><li>PostMan</li><li><a href="https://blog.csdn.net/weixin_43767015/article/details/104758415">JMH-性能优化测试(转)</a></li><li>Jmeter(接口测试)</li></ul><h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><ul><li>添加依赖</li></ul><pre><code class="xml">&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;  &lt;scope&gt;test&lt;/scope&gt;&lt;/dependency&gt;</code></pre><ul><li><p>单元测试类</p><pre><code class="java">//环境@ActiveProfiles(value = &quot;dev&quot;)@AutoConfigureObservability@SpringBootTest(classes = XXXApplication.class)@ExtendWith(SpringExtension.class)//支持按顺序执行单测@TestMethodOrder(MethodOrderer.OrderAnnotation.class)public class AbstractTestCore &#123;&#125;</code></pre></li><li><p>案例</p><blockquote><p>默认执行真实方法,打桩后返回mock数据</p></blockquote></li></ul><pre><code class="java">class UserService&#123;    @Autowired    private UserMapper userMapper;    @Autowired    private OrderRest orderRest;        public List&lt;OrderInfo&gt; orderList(Long userId,Integer pageNumber,Integer pageSize)&#123;        UserInfo userInfo = userMapper.getById(userId);        if(userInfo == null)&#123;            return new ArrayList();        &#125;        return orderRest.pageByUserId(userId,pageNumber,pageSize);    &#125;    &#125;class UserServiceTest extends AbstractTestCore&#123;    @Autowired    private UserService userService;    @SpyBean    private UserMapper userMapper;    @SpyBean    private OrderRest orderRest;        @Test    public void userByIdTest()&#123;        UserInfo userInfo = userMapper.getById(1L);        assertNull(userInfo);    &#125;        @Test    public void orderListTest()&#123;        Long userId = 1L;        //模拟用户不存在        doReturn(null).when(userMapper).getById(any());        List&lt;OrderInfo&gt; result = userService.orderList(userId,1,10);        assertNull(result);                //用户存在，模拟orderRest未返回数据情况        UserInfo userInfo = new UserInfo();        userInfo.setId(userId);        doReturn(userInfo).when(userMapper).getById(userId);        doReturn(new ArrayList()).when(orderRest).pageByUserId(any(),any(),any());        result = userService.orderList(userId,1,10);        assertNull(result);                //用户存在，模拟orderRest返回数据情况        OrderInfo orderInfo = new OrderInfo();        orderInfo.setOrderId(1L);        orderInfo.setUserId(userId);        orderInfo.setRealPrice(new Bigdecimal(1.12));        List&lt;OrderInfo&gt; orderInfos = new ArrayList();        orderInfos.add(orderInfo);        doReturn(orderInfos).when(orderRest).pageByUserId(any(),any(),any());        result = userService.orderList(userId,1,10);        assertNotNull(result);    &#125;&#125;</code></pre><h3 id="移动端测试"><a href="#移动端测试" class="headerlink" title="移动端测试"></a>移动端测试</h3><ul><li>Charles(抓包)</li><li><a href="https://perfdog.qq.com/">Perfdog(软件性能)</a></li><li><a href="https://testerhome.com/topics/19832">Android专项测试工具</a></li><li>Monkey</li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="后端测试工具"><a href="#后端测试工具" class="headerlink" title="后端测试工具"></a>后端测试工具</h3><ul><li>PostMan</li><li><a href="https://blog.csdn.net/weixin_43767015/article/details/104758415">JMH-性能优化测试(转)</a></li><li>Jmeter(接口测试)</li></ul><h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><ul><li>添加依赖</li></ul><pre><code class="xml">&lt;dependency&gt;  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;  &lt;scope&gt;test&lt;/scope&gt;&lt;/dependency&gt;</code></pre><ul><li><p>单元测试类</p><pre><code class="java">//环境@ActiveProfiles(value = &quot;dev&quot;)@AutoConfigureObservability@SpringBootTest(classes = XXXApplication.class)@ExtendWith(SpringExtension.class)//支持按顺序执行单测@TestMethodOrder(MethodOrderer.OrderAnnotation.class)public class AbstractTestCore &#123;&#125;</code></pre></li><li><p>案例</p><blockquote><p>默认执行真实方法,打桩后返回mock数据</p></blockquote></li></ul><pre><code class="java">class UserService&#123;    @Autowired    private UserMapper userMapper;    @Autowired    private OrderRest orderRest;        public List&lt;OrderInfo&gt; orderList(Long userId,Integer pageNumber,Integer pageSize)&#123;        UserInfo userInfo = userMapper.getById(userId);        if(userInfo == null)&#123;            return new ArrayList();        &#125;        return orderRest.pageByUserId(userId,pageNumber,pageSize);    &#125;    &#125;class UserServiceTest extends AbstractTestCore&#123;    @Autowired    private UserService userService;    @SpyBean    private UserMapper userMapper;    @SpyBean    private OrderRest orderRest;        @Test    public void userByIdTest()&#123;        UserInfo userInfo = userMapper.getById(1L);        assertNull(userInfo);    &#125;        @Test    public void orderListTest()&#123;        Long userId = 1L;        //模拟用户不存在        doReturn(null).when(userMapper).getById(any());        List&lt;OrderInfo&gt; result = userService.orderList(userId,1,10);        assertNull(result);                //用户存在，模拟orderRest未返回数据情况        UserInfo userInfo = new UserInfo();        userInfo.setId(userId);        doReturn(userInfo).when(userMapper).getById(userId);        doReturn(new ArrayList()).when(orderRest).pageByUserId(any(),any(),any());        result = userService.orderList(userId,1,10);        assertNull(result);                //用户存在，模拟orderRest返回数据情况        OrderInfo orderInfo = new OrderInfo();        orderInfo.setOrderId(1L);        orderInfo.setUserId(userId);        orderInfo.setRealPrice(new Bigdecimal(1.12));        List&lt;OrderInfo&gt; orderInfos = new ArrayList();        orderInfos.add(orderInfo);        doReturn(orderInfos).when(orderRest).pageByUserId(any(),any(),any());        result = userService.orderList(userId,1,10);        assertNotNull(result);    &#125;&#125;</code></pre><ul><li><p>纯mock数据单测</p><blockquote><p>可mock所有类型的类，如果未定义mock则对象为空</p></blockquote><pre><code class="java">@ExtendWith(SpringExtension.class)class DemoTest&#123;  @Mapper  private JobMapper jobMapper;  @InjectMocks  private JobService jobService;  @Test  void addTest()&#123;      when(jobMapper.count(any())).thenReturn(1);      int result = jobService.count(1);      assertEquals(1,result);  &#125;&#125;</code></pre></li></ul><pre><code>- 默认执行真实逻辑，如有mock逻辑则执行mock&gt; 只能用于有具体实现类的class```java@ExtendWith(SpringExtension.class)class DemoTest&#123;    @SpyBean    ThirdManage thirdManage;    @Autowired    JobService jobService;    @Test    class test()&#123;        Long jobId = 1L;        //1. thirdManager走真实逻辑        int result = jobService.count(jobId);        assertEquals(result,1);                //2. thirdManager走mock逻辑，可多次mock,返回不同值        doReturn(2).when(thirdManage).selectByJobId(any());        result = jobService.count(jobId);        assertEquals(result,2);    &#125;&#125;</code></pre><ul><li><p>SpringContextHolder 获取实例</p><blockquote><p>需全局唯一，单独定义获取的类</p></blockquote><pre><code class="java">public class ConfigMock &#123;  public static MockedStatic&lt;SpringContextHolder&gt; mockContext;  public static YmlConfig mockYml() &#123;      YmlConfig ymlConfig = Mockito.mock(YmlConfig.class);      if (mockContext == null) &#123;          mockContext = Mockito.mockStatic(SpringContextHolder.class);      &#125;      when(YmlConfig.getInstance()).thenReturn(ymlConfig);      return ymlConfig;  &#125;&#125;</code></pre></li></ul><p>//使用<br>@ExtendWith(SpringExtension.class)<br>class DemoTest(){</p><pre><code>@Testvoid ymlTest()&#123;    YmlConfig ymlConfig = ConfigMock.mockYml();    String result = &quot;true&quot;;    when(ymlConfig.getFlag()).thenReturn(result);&#125;</code></pre><p>}</p><pre><code>- 获取方法入参```java@ExtendWith(SpringExtension.class)pulic class DemoTest&#123;    @Captor    private ArgumentCaptor orderInfoArg;    @SpyBean    private OrderInfoService orderInfoService;    class addTest()&#123;        //不入库        doNothing().when(orderInfoService).save(any());                //获取入参        verify(orderInfoService).save((OrderInfo) orderInfoArg.capture());        OrderInfo saveOrderInfo = (OrderInfo) orderInfoArg.getValue();        //调用方法        OrderInfo param = new OrderInfo();        param.setOrderNo(&quot;aa123&quot;);        orderInfoService.add(param);        //校验入参值和入库值是否一致        assertEquals(param.getOrderNo(), saveOrderInfo.getOrderNo);    &#125;&#125;</code></pre><ul><li>特殊注解<pre><code class="java">//宽松模式,mock的代码没用上时会报错(默认严格模式),加上此注解后不会报错(最好不用)@MockitoSettings(strictness = Strictness.LENIENT)// 实例生效范围，此配置为当前class生效@TestInstance(TestInstance.Lifecycle.PER_CLASS)@ExtendWith(SpringExtension.class)public class DemoTest&#123;&#125;</code></pre></li></ul><h3 id="移动端测试"><a href="#移动端测试" class="headerlink" title="移动端测试"></a>移动端测试</h3><ul><li>Charles(抓包)</li><li><a href="https://perfdog.qq.com/">Perfdog(软件性能)</a></li><li><a href="https://testerhome.com/topics/19832">Android专项测试工具</a></li><li>Monkey</li></ul>]]></content>
       
       
       <categories>

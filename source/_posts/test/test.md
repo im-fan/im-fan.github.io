@@ -100,7 +100,119 @@ class UserServiceTest extends AbstractTestCore{
 }
 ```
 
+- 纯mock数据单测
+> 可mock所有类型的类，如果未定义mock则对象为空
+```java
+@ExtendWith(SpringExtension.class)
+class DemoTest{
+    @Mapper
+    private JobMapper jobMapper;
+    @InjectMocks
+    private JobService jobService;
 
+    @Test
+    void addTest(){
+        when(jobMapper.count(any())).thenReturn(1);
+        int result = jobService.count(1);
+        assertEquals(1,result);
+    }
+}
+
+```
+
+- 默认执行真实逻辑，如有mock逻辑则执行mock
+> 只能用于有具体实现类的class
+```java
+@ExtendWith(SpringExtension.class)
+class DemoTest{
+    @SpyBean
+    ThirdManage thirdManage;
+    @Autowired
+    JobService jobService;
+
+    @Test
+    class test(){
+        Long jobId = 1L;
+        //1. thirdManager走真实逻辑
+        int result = jobService.count(jobId);
+        assertEquals(result,1);
+        
+        //2. thirdManager走mock逻辑，可多次mock,返回不同值
+        doReturn(2).when(thirdManage).selectByJobId(any());
+        result = jobService.count(jobId);
+        assertEquals(result,2);
+    }
+}
+```
+
+- SpringContextHolder 获取实例
+> 需全局唯一，单独定义获取的类
+```java
+public class ConfigMock {
+
+    public static MockedStatic<SpringContextHolder> mockContext;
+    public static YmlConfig mockYml() {
+        YmlConfig ymlConfig = Mockito.mock(YmlConfig.class);
+        if (mockContext == null) {
+            mockContext = Mockito.mockStatic(SpringContextHolder.class);
+        }
+        when(YmlConfig.getInstance()).thenReturn(ymlConfig);
+        return ymlConfig;
+    }
+}
+
+//使用
+@ExtendWith(SpringExtension.class)
+class DemoTest(){
+
+    @Test
+    void ymlTest(){
+        YmlConfig ymlConfig = ConfigMock.mockYml();
+        String result = "true";
+        when(ymlConfig.getFlag()).thenReturn(result);
+    }
+    
+}
+```
+
+- 获取方法入参
+```java
+@ExtendWith(SpringExtension.class)
+pulic class DemoTest{
+    @Captor
+    private ArgumentCaptor orderInfoArg;
+
+    @SpyBean
+    private OrderInfoService orderInfoService;
+
+    class addTest(){
+        //不入库
+        doNothing().when(orderInfoService).save(any());
+        
+        //获取入参
+        verify(orderInfoService).save((OrderInfo) orderInfoArg.capture());
+        OrderInfo saveOrderInfo = (OrderInfo) orderInfoArg.getValue();
+
+        //调用方法
+        OrderInfo param = new OrderInfo();
+        param.setOrderNo("aa123");
+        orderInfoService.add(param);
+
+        //校验入参值和入库值是否一致
+        assertEquals(param.getOrderNo(), saveOrderInfo.getOrderNo);
+    }
+}
+```
+
+- 特殊注解
+```java
+//宽松模式,mock的代码没用上时会报错(默认严格模式),加上此注解后不会报错(最好不用)
+@MockitoSettings(strictness = Strictness.LENIENT)
+// 实例生效范围，此配置为当前class生效
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ExtendWith(SpringExtension.class)
+public class DemoTest{}
+```
 
 ### 移动端测试
 - Charles(抓包)
