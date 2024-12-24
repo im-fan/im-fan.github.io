@@ -102,6 +102,7 @@ class UserServiceTest extends AbstractTestCore{
 
 - 纯mock数据单测
 > 可mock所有类型的类，如果未定义mock则对象为空
+
 ```java
 @ExtendWith(SpringExtension.class)
 class DemoTest{
@@ -120,8 +121,10 @@ class DemoTest{
 
 ```
 
+
 - 默认执行真实逻辑，如有mock逻辑则执行mock
 > 只能用于有具体实现类的class
+
 ```java
 @ExtendWith(SpringExtension.class)
 class DemoTest{
@@ -147,6 +150,7 @@ class DemoTest{
 
 - SpringContextHolder 获取实例
 > 需全局唯一，单独定义获取的类
+
 ```java
 public class ConfigMock {
 
@@ -176,6 +180,7 @@ class DemoTest(){
 ```
 
 - 获取方法入参
+
 ```java
 @ExtendWith(SpringExtension.class)
 pulic class DemoTest{
@@ -205,6 +210,7 @@ pulic class DemoTest{
 ```
 
 - 特殊注解
+
 ```java
 //宽松模式,mock的代码没用上时会报错(默认严格模式),加上此注解后不会报错(最好不用)
 @MockitoSettings(strictness = Strictness.LENIENT)

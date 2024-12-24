@@ -692,18 +692,18 @@
         </a>
         
         <a  class="全部文章 后端 服务治理 "
-           href="/2023/03/16/backend/service/eureka/eureka/"
-           data-tag="注册中心,eureka"
-           data-author="" >
-            <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
-            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
-        </a>
-        
-        <a  class="全部文章 后端 服务治理 "
            href="/2023/03/16/backend/service/eureka/eureka-2/"
            data-tag="注册中心,eureka"
            data-author="" >
             <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
+            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2023/03/16/backend/service/eureka/eureka/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
             <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
         </a>
         
@@ -1183,12 +1183,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-12-24 11:36:07'>2021-11-15 17:51</time>
+            发布时间 : <time class="date" title='最后更新: 2024-12-24 11:43:28'>2021-11-15 17:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:737</span>
+        <span>字数:736</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -1316,32 +1316,33 @@ class UserServiceTest extends AbstractTestCore&#123;
 &#125;
 </code></pre>
 <ul>
-<li><p>纯mock数据单测</p>
-<blockquote>
+<li>纯mock数据单测<blockquote>
 <p>可mock所有类型的类，如果未定义mock则对象为空</p>
 </blockquote>
-<pre><code class="java">@ExtendWith(SpringExtension.class)
-class DemoTest&#123;
-  @Mapper
-  private JobMapper jobMapper;
-  @InjectMocks
-  private JobService jobService;
-
-  @Test
-  void addTest()&#123;
-      when(jobMapper.count(any())).thenReturn(1);
-      int result = jobService.count(1);
-      assertEquals(1,result);
-  &#125;
-&#125;
-</code></pre>
 </li>
 </ul>
-<pre><code>
-- 默认执行真实逻辑，如有mock逻辑则执行mock
-&gt; 只能用于有具体实现类的class
-```java
-@ExtendWith(SpringExtension.class)
+<pre><code class="java">@ExtendWith(SpringExtension.class)
+class DemoTest&#123;
+    @Mapper
+    private JobMapper jobMapper;
+    @InjectMocks
+    private JobService jobService;
+
+    @Test
+    void addTest()&#123;
+        when(jobMapper.count(any())).thenReturn(1);
+        int result = jobService.count(1);
+        assertEquals(1,result);
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>默认执行真实逻辑，如有mock逻辑则执行mock<blockquote>
+<p>只能用于有具体实现类的class</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="java">@ExtendWith(SpringExtension.class)
 class DemoTest&#123;
     @SpyBean
     ThirdManage thirdManage;
@@ -1363,38 +1364,41 @@ class DemoTest&#123;
 &#125;
 </code></pre>
 <ul>
-<li><p>SpringContextHolder 获取实例</p>
-<blockquote>
+<li>SpringContextHolder 获取实例<blockquote>
 <p>需全局唯一，单独定义获取的类</p>
 </blockquote>
-<pre><code class="java">public class ConfigMock &#123;
-
-  public static MockedStatic&lt;SpringContextHolder&gt; mockContext;
-  public static YmlConfig mockYml() &#123;
-      YmlConfig ymlConfig = Mockito.mock(YmlConfig.class);
-      if (mockContext == null) &#123;
-          mockContext = Mockito.mockStatic(SpringContextHolder.class);
-      &#125;
-      when(YmlConfig.getInstance()).thenReturn(ymlConfig);
-      return ymlConfig;
-  &#125;
-&#125;
-</code></pre>
 </li>
 </ul>
-<p>//使用<br>@ExtendWith(SpringExtension.class)<br>class DemoTest(){</p>
-<pre><code>@Test
-void ymlTest()&#123;
-    YmlConfig ymlConfig = ConfigMock.mockYml();
-    String result = &quot;true&quot;;
-    when(ymlConfig.getFlag()).thenReturn(result);
+<pre><code class="java">public class ConfigMock &#123;
+
+    public static MockedStatic&lt;SpringContextHolder&gt; mockContext;
+    public static YmlConfig mockYml() &#123;
+        YmlConfig ymlConfig = Mockito.mock(YmlConfig.class);
+        if (mockContext == null) &#123;
+            mockContext = Mockito.mockStatic(SpringContextHolder.class);
+        &#125;
+        when(YmlConfig.getInstance()).thenReturn(ymlConfig);
+        return ymlConfig;
+    &#125;
+&#125;
+
+//使用
+@ExtendWith(SpringExtension.class)
+class DemoTest()&#123;
+
+    @Test
+    void ymlTest()&#123;
+        YmlConfig ymlConfig = ConfigMock.mockYml();
+        String result = &quot;true&quot;;
+        when(ymlConfig.getFlag()).thenReturn(result);
+    &#125;
+    
 &#125;
 </code></pre>
-<p>}</p>
-<pre><code>
-- 获取方法入参
-```java
-@ExtendWith(SpringExtension.class)
+<ul>
+<li>获取方法入参</li>
+</ul>
+<pre><code class="java">@ExtendWith(SpringExtension.class)
 pulic class DemoTest&#123;
     @Captor
     private ArgumentCaptor orderInfoArg;
@@ -1421,15 +1425,15 @@ pulic class DemoTest&#123;
 &#125;
 </code></pre>
 <ul>
-<li>特殊注解<pre><code class="java">//宽松模式,mock的代码没用上时会报错(默认严格模式),加上此注解后不会报错(最好不用)
+<li>特殊注解</li>
+</ul>
+<pre><code class="java">//宽松模式,mock的代码没用上时会报错(默认严格模式),加上此注解后不会报错(最好不用)
 @MockitoSettings(strictness = Strictness.LENIENT)
 // 实例生效范围，此配置为当前class生效
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(SpringExtension.class)
 public class DemoTest&#123;&#125;
 </code></pre>
-</li>
-</ul>
 <h3 id="移动端测试"><a href="#移动端测试" class="headerlink" title="移动端测试"></a>移动端测试</h3><ul>
 <li>Charles(抓包)</li>
 <li><a target="_blank" rel="noopener" href="https://perfdog.qq.com/">Perfdog(软件性能)</a></li>
@@ -1449,10 +1453,10 @@ public class DemoTest&#123;&#125;
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>测试相关</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">737</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">736</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
     <p><span class="copy-title">发布时间:</span>2021-11-15, 17:51:54</p>
-    <p><span class="copy-title">最后更新:</span>2024-12-24, 11:36:07</p>
+    <p><span class="copy-title">最后更新:</span>2024-12-24, 11:43:28</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/11/15/test/test/" title="测试相关">https://wiki.aistart.cc/2021/11/15/test/test/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
