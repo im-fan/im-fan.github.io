@@ -23,7 +23,7 @@ categories:
 </dependency>
 ```
 
-- 单元测试类
+- 需要spring容器加载时配置如下
 ```java
 //环境
 @ActiveProfiles(value = "dev")
@@ -104,7 +104,7 @@ class UserServiceTest extends AbstractTestCore{
 > 可mock所有类型的类，如果未定义mock则对象为空
 
 ```java
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class DemoTest{
     @Mapper
     private JobMapper jobMapper;
@@ -126,7 +126,7 @@ class DemoTest{
 > 只能用于有具体实现类的class
 
 ```java
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class DemoTest{
     @SpyBean
     ThirdManage thirdManage;
@@ -166,7 +166,7 @@ public class ConfigMock {
 }
 
 //使用
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class DemoTest(){
 
     @Test
@@ -182,7 +182,7 @@ class DemoTest(){
 - 获取方法入参
 
 ```java
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 pulic class DemoTest{
     @Captor
     private ArgumentCaptor orderInfoArg;
@@ -209,14 +209,25 @@ pulic class DemoTest{
 }
 ```
 
-- 特殊注解
+- 通用打印当前执行的方法名
+> junit5下每个类打印当前方法名
+```java
+@BeforeEach
+public void setUp(TestInfo testInfo) {
+    String currentMethodName = testInfo.getDisplayName();
+    String className = testInfo.getTestClass().get().getSimpleName();
+    log.info("{}.{}================>start", className, currentMethodName);
+}
+```
 
+- 特殊注解
+> 注意ExtendWith注解是junit5的注解，方法上的Test要用org.junit.jupiter.api.Test
 ```java
 //宽松模式,mock的代码没用上时会报错(默认严格模式),加上此注解后不会报错(最好不用)
 @MockitoSettings(strictness = Strictness.LENIENT)
 // 实例生效范围，此配置为当前class生效
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 public class DemoTest{}
 ```
 
