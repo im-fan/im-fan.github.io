@@ -136,8 +136,11 @@ categories:
 - [CEO修炼手册](https://rngzej6pnb.feishu.cn/docx/ZIjjdVkXyowZrMxH8pZci9z9npg)
 - [鹅厂人的用户增长方法论与实践](https://mp.weixin.qq.com/s/Fp-Ocwcjzd5YkBhlmkdW4w)
 - [谷歌的三次面试记录](https://justyy.com/archives/66293)
+- [Meta 四次面试经历](https://justyy.com/archives/67279)
+- [算法面试心得](https://javayhu.com/2016-nian-mian-shi-zhi-nan-zhi-suan-fa-mian-shi-xin-de/)
 
 ### 大模型相关
+- [DeepSeek Coder](https://github.com/sing1ee/deepseekCoder)
 - [AI 抠图](https://github.com/pangxiaobin/image-matting)
   基于 RMBG-1.4 模型的本地抠图的桌面软件
 - [MagicMirror](https://github.com/idootop/MagicMirror)
@@ -272,6 +275,7 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [独立开发者工具](https://github.com/yaolifeng0629/Awesome-independent-tools)
 - [UICloner Extension](https://github.com/AndySpider/uicloner-extension)
   浏览器插件，一键克隆任意网页 UI 组件，生成代码。
 - [Maccy-MacOS粘贴板历史](https://github.com/p0deje/Maccy?tab=readme-ov-file)
