@@ -321,7 +321,7 @@
 </div>
 
 <input type="hidden" id="yelog_site_posts_number" value="65">
-<input type="hidden" id="yelog_site_word_count" value="85.9k">
+<input type="hidden" id="yelog_site_word_count" value="86k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -667,19 +667,19 @@
             <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
         </a>
         
-        <a  class="全部文章 LLM "
-           href="/2023/04/11/ai/llm/llm/"
-           data-tag="AI,LLM"
-           data-author="" >
-            <span class="post-title" title="LLM-AI介绍">LLM-AI介绍</span>
-            <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
-        </a>
-        
         <a  class="全部文章 AI "
            href="/2023/04/11/ai/gpt/gpt/"
            data-tag="ai相关"
            data-author="" >
             <span class="post-title" title="GPT-AI介绍">GPT-AI介绍</span>
+            <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
+        </a>
+        
+        <a  class="全部文章 LLM "
+           href="/2023/04/11/ai/llm/llm/"
+           data-tag="AI,LLM"
+           data-author="" >
+            <span class="post-title" title="LLM-AI介绍">LLM-AI介绍</span>
             <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
         </a>
         
@@ -1183,12 +1183,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-01-07 10:32:37'>2021-11-15 17:51</time>
+            发布时间 : <time class="date" title='最后更新: 2025-03-17 16:26:53'>2021-11-15 17:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:817</span>
+        <span>字数:906</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -1207,7 +1207,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">后端测试工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%B5%8B%E8%AF%95"><span class="toc-text">移动端测试</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">后端测试工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1449,13 +1449,42 @@ public void setUp(TestInfo testInfo) &#123;
 public class DemoTest&#123;&#125;
 </code></pre>
 </li>
+<li><p>MybatisPlus mock</p>
+<blockquote>
+<p>UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache</p>
+</blockquote>
+<pre><code class="java">@ExtendWith(MockitoExtension.class)
+class FunctionTest&#123;
+  @InjectMocks
+  private UserServiceImpl userService;
+  @Mock
+  private UserMapper userMapper;
+  
+  @BeforeAll
+  public static void init()&#123;
+      TableInfoHelper.initTableInfo(new MapperBuilderAssistant(new MybatisConfiguration(), &quot;&quot;), XXEntity.class);
+  &#125;
+  
+  @Test
+  public void functionATest()&#123;
+      List&lt;UserInfo&gt; list = new ArrayList();
+      when(userMapper).selectList(any())).thenReturn(list);
+      List&lt;UserInfo&gt; result = userService.list();
+      assertNotNull(result);
+  &#125;
+&#125;
+
+
+</code></pre>
+</li>
 </ul>
-<h3 id="移动端测试"><a href="#移动端测试" class="headerlink" title="移动端测试"></a>移动端测试</h3><ul>
-<li>Charles(抓包)</li>
-<li><a target="_blank" rel="noopener" href="https://perfdog.qq.com/">Perfdog(软件性能)</a></li>
-<li><a target="_blank" rel="noopener" href="https://testerhome.com/topics/19832">Android专项测试工具</a></li>
-<li>Monkey</li>
-</ul>
+<pre><code>
+### 移动端测试
+- Charles(抓包)
+- [Perfdog(软件性能)](https://perfdog.qq.com/)
+- [Android专项测试工具](https://testerhome.com/topics/19832)
+- Monkey
+</code></pre>
 
       
     </div>
@@ -1469,10 +1498,10 @@ public class DemoTest&#123;&#125;
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>测试相关</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">817</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">906</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
     <p><span class="copy-title">发布时间:</span>2021-11-15, 17:51:54</p>
-    <p><span class="copy-title">最后更新:</span>2025-01-07, 10:32:37</p>
+    <p><span class="copy-title">最后更新:</span>2025-03-17, 16:26:53</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/11/15/test/test/" title="测试相关">https://wiki.aistart.cc/2021/11/15/test/test/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。

@@ -231,6 +231,34 @@ public void setUp(TestInfo testInfo) {
 public class DemoTest{}
 ```
 
+- MybatisPlus mock
+> UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
+```java
+@ExtendWith(MockitoExtension.class)
+class FunctionTest{
+    @InjectMocks
+    private UserServiceImpl userService;
+    @Mock
+    private UserMapper userMapper;
+    
+    @BeforeAll
+    public static void init(){
+        TableInfoHelper.initTableInfo(new MapperBuilderAssistant(new MybatisConfiguration(), ""), XXEntity.class);
+    }
+    
+    @Test
+    public void functionATest(){
+        List<UserInfo> list = new ArrayList();
+        when(userMapper).selectList(any())).thenReturn(list);
+        List<UserInfo> result = userService.list();
+        assertNotNull(result);
+    }
+}
+
+
+
+```
+
 ### 移动端测试
 - Charles(抓包)
 - [Perfdog(软件性能)](https://perfdog.qq.com/)
