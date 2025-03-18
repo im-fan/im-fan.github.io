@@ -652,18 +652,18 @@
         </a>
         
         <a  class="全部文章 AI "
-           href="/2023/09/06/ai/gc/stable-diffusion-02/"
-           data-tag="AIGC,SD,StableDiffusion"
-           data-author="" >
-            <span class="post-title" title="Stable Diffusion Web UI(二)-资源">Stable Diffusion Web UI(二)-资源</span>
-            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
-        </a>
-        
-        <a  class="全部文章 AI "
            href="/2023/09/06/ai/gc/stable-diffusion-01/"
            data-tag="AIGC,SD,StableDiffusion"
            data-author="" >
             <span class="post-title" title="Stable Diffusion Web UI(一)-部署">Stable Diffusion Web UI(一)-部署</span>
+            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/2023/09/06/ai/gc/stable-diffusion-02/"
+           data-tag="AIGC,SD,StableDiffusion"
+           data-author="" >
+            <span class="post-title" title="Stable Diffusion Web UI(二)-资源">Stable Diffusion Web UI(二)-资源</span>
             <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
         </a>
         
@@ -692,18 +692,18 @@
         </a>
         
         <a  class="全部文章 后端 服务治理 "
-           href="/2023/03/16/backend/service/eureka/eureka-2/"
-           data-tag="注册中心,eureka"
-           data-author="" >
-            <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
-            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
-        </a>
-        
-        <a  class="全部文章 后端 服务治理 "
            href="/2023/03/16/backend/service/eureka/eureka/"
            data-tag="注册中心,eureka"
            data-author="" >
             <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
+            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2023/03/16/backend/service/eureka/eureka-2/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
             <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
         </a>
         
@@ -772,18 +772,18 @@
         </a>
         
         <a  class="全部文章 思考 "
-           href="/2022/01/10/thinking/design/"
-           data-tag="总结方法论"
-           data-author="" >
-            <span class="post-title" title="工作相关">工作相关</span>
-            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
-        </a>
-        
-        <a  class="全部文章 思考 "
            href="/2022/01/10/thinking/famous/"
            data-tag="思考"
            data-author="" >
             <span class="post-title" title="名人名言和一些思维模型">名人名言和一些思维模型</span>
+            <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
+        </a>
+        
+        <a  class="全部文章 思考 "
+           href="/2022/01/10/thinking/design/"
+           data-tag="总结方法论"
+           data-author="" >
+            <span class="post-title" title="工作相关">工作相关</span>
             <span class="post-date" title="2022-01-10 14:44:10">2022/01/10</span>
         </a>
         
@@ -1183,12 +1183,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-03-18 11:26:25'>2021-11-15 17:51</time>
+            发布时间 : <time class="date" title='最后更新: 2025-03-18 14:48:09'>2021-11-15 17:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:963</span>
+        <span>字数:1k</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -1454,34 +1454,36 @@ public class DemoTest&#123;&#125;
 <li>LambdaQueryWrapper mock<blockquote>
 <p>UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache</p>
 </blockquote>
-<pre><code class="java">@ExtendWith(MockitoExtension.class)
-class FunctionTest&#123;
-  @InjectMocks
-  private UserServiceImpl userService;
-  @Mock
-  private UserMapper userMapper;
-  
-  @BeforeAll
-  public static void init()&#123;
-      TableInfoHelper.initTableInfo(new MapperBuilderAssistant(new MybatisConfiguration(), &quot;&quot;), XXEntity.class);
-  &#125;
-  
-  @Test
-  public void functionATest()&#123;
-      List&lt;UserInfo&gt; list = new ArrayList();
-      when(userMapper.selectList(any())).thenReturn(list);
-      List&lt;UserInfo&gt; result = userService.list();
-      assertNotNull(result);
-  &#125;
-&#125;
-</code></pre>
 </li>
 </ul>
-<pre><code>
-- IService mock
-&gt; UserServiceImpl.batchAdd() 方法中使用IService.saveBatch()方法
-```java
-@ExtendWith(MockitoExtension.class)
+<pre><code class="java">@ExtendWith(MockitoExtension.class)
+class FunctionTest&#123;
+    @InjectMocks
+    private UserServiceImpl userService;
+    @Mock
+    private UserMapper userMapper;
+    
+    @BeforeAll
+    public static void init()&#123;
+        TableInfoHelper.initTableInfo(new MapperBuilderAssistant(new MybatisConfiguration(), &quot;&quot;), XXEntity.class);
+    &#125;
+    
+    @Test
+    public void functionATest()&#123;
+        List&lt;UserInfo&gt; list = new ArrayList();
+        when(userMapper.selectList(any())).thenReturn(list);
+        List&lt;UserInfo&gt; result = userService.list();
+        assertNotNull(result);
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>IService mock<blockquote>
+<p>UserServiceImpl.batchAdd() 方法中使用IService.saveBatch()方法</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="java">@ExtendWith(MockitoExtension.class)
 class FunctionTest&#123;
     @Spy
     @InjectMocks
@@ -1493,6 +1495,36 @@ class FunctionTest&#123;
         //设置入参略
         when(userService.saveBatch(any())).thenReturn(true);
         List&lt;UserInfo&gt; result = userService.batchAdd(list);
+        assertNotNull(result);
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>lambdaQuery mock<blockquote>
+<p>service中lambdaQuery.eq(xx).one()</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="java">
+@ExtendWith(MockitoExtension.class)
+class FunctionTest&#123;
+    @Spy
+    @InjectMocks
+    private UserServiceImpl userService;
+    @Mock
+    private UserMapper userMapper;
+    
+    @Test
+    public void functionATest()&#123;
+        //mock lambdaQuery
+        LambdaQueryChainWrapper&lt;CategoryBasePO&gt; chainWrapper = new LambdaQueryChainWrapper&lt;&gt;(categoryBaseMapper);
+        when(categoryBaseService.lambdaQuery()).thenReturn(chainWrapper);
+
+        //mock selectOne
+        UserInfo info = new UserInfo();
+        when(userMapper.selectOne(any())).thenReturn(info);
+
+        UserInfo result = userService.getById(1);
         assertNotNull(result);
     &#125;
 &#125;
@@ -1516,10 +1548,10 @@ class FunctionTest&#123;
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>测试相关</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">963</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
     <p><span class="copy-title">发布时间:</span>2021-11-15, 17:51:54</p>
-    <p><span class="copy-title">最后更新:</span>2025-03-18, 11:26:25</p>
+    <p><span class="copy-title">最后更新:</span>2025-03-18, 14:48:09</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/11/15/test/test/" title="测试相关">https://wiki.aistart.cc/2021/11/15/test/test/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。

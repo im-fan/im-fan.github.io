@@ -234,6 +234,7 @@ public class DemoTest{}
 ### MybatisPlus相关
 - LambdaQueryWrapper mock
 > UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
+
 ```java
 @ExtendWith(MockitoExtension.class)
 class FunctionTest{
@@ -260,6 +261,7 @@ class FunctionTest{
 
 - IService mock
 > UserServiceImpl.batchAdd() 方法中使用IService.saveBatch()方法
+
 ```java
 @ExtendWith(MockitoExtension.class)
 class FunctionTest{
@@ -273,6 +275,35 @@ class FunctionTest{
         //设置入参略
         when(userService.saveBatch(any())).thenReturn(true);
         List<UserInfo> result = userService.batchAdd(list);
+        assertNotNull(result);
+    }
+}
+```
+
+- lambdaQuery mock
+> service中lambdaQuery.eq(xx).one()
+
+```java
+
+@ExtendWith(MockitoExtension.class)
+class FunctionTest{
+    @Spy
+    @InjectMocks
+    private UserServiceImpl userService;
+    @Mock
+    private UserMapper userMapper;
+    
+    @Test
+    public void functionATest(){
+        //mock lambdaQuery
+        LambdaQueryChainWrapper<CategoryBasePO> chainWrapper = new LambdaQueryChainWrapper<>(categoryBaseMapper);
+        when(categoryBaseService.lambdaQuery()).thenReturn(chainWrapper);
+
+        //mock selectOne
+        UserInfo info = new UserInfo();
+        when(userMapper.selectOne(any())).thenReturn(info);
+
+        UserInfo result = userService.getById(1);
         assertNotNull(result);
     }
 }
