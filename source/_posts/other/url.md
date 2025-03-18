@@ -1,7 +1,7 @@
 ---
 title: 有趣的链接
 description: url
-date: 2025-02-01
+date: 2025-02-01 10:01:01
 top: 1
 tags:
 - url
