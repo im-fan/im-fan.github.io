@@ -309,6 +309,25 @@ class FunctionTest{
 }
 ```
 
+### Liteflow框架
+
+- mock上下文
+```java
+class Test{
+    @Spy
+    @InjectMocks
+    public XXCmp xxCmp;
+    
+    @Test
+    public void test(){
+        XXLiteflowContext liteflowContext = mock(XXLiteflowContext.class);
+        doReturn(liteflowContext).when(xxCmp).getContextBean(any());        
+    }
+}
+
+
+```
+
 ### 移动端测试
 - Charles(抓包)
 - [Perfdog(软件性能)](https://perfdog.qq.com/)
