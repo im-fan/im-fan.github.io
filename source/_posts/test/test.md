@@ -11,7 +11,7 @@ categories:
 - [JMH-性能优化测试(转)](https://blog.csdn.net/weixin_43767015/article/details/104758415)
 - Jmeter(接口测试)
 
-#### 单元测试
+### 单元测试-通用
 
 - 添加依赖
 
@@ -231,7 +231,8 @@ public void setUp(TestInfo testInfo) {
 public class DemoTest{}
 ```
 
-- MybatisPlus mock
+### MybatisPlus相关
+- LambdaQueryWrapper mock
 > UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
 ```java
 @ExtendWith(MockitoExtension.class)
@@ -249,14 +250,32 @@ class FunctionTest{
     @Test
     public void functionATest(){
         List<UserInfo> list = new ArrayList();
-        when(userMapper).selectList(any())).thenReturn(list);
+        when(userMapper.selectList(any())).thenReturn(list);
         List<UserInfo> result = userService.list();
         assertNotNull(result);
     }
 }
 
+```
 
-
+- IService mock
+> UserServiceImpl.batchAdd() 方法中使用IService.saveBatch()方法
+```java
+@ExtendWith(MockitoExtension.class)
+class FunctionTest{
+    @Spy
+    @InjectMocks
+    private UserServiceImpl userService;
+    
+    @Test
+    public void functionATest(){
+        List<UserInfo> list = new ArrayList();
+        //设置入参略
+        when(userService.saveBatch(any())).thenReturn(true);
+        List<UserInfo> result = userService.batchAdd(list);
+        assertNotNull(result);
+    }
+}
 ```
 
 ### 移动端测试
