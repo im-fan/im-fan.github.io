@@ -231,6 +231,29 @@ public void setUp(TestInfo testInfo) {
 public class DemoTest{}
 ```
 
+- mock threadPool
+```java
+@ExtendWith(MockitoExtension.class)
+class DemoTest{
+
+    @InjectMocks
+    private UserSerice userService;
+    @Mock
+    private ThreadPoolTaskExecutor threadPoolExecutor;
+    
+    @Test
+    public void test(){
+
+        // 模拟 submit 方法的行为
+        UserInfo mockResult = new UserInfo();
+        Future<InviteListResultVO> futureResult = CompletableFuture.completedFuture(mockResult);
+        when(threadPoolExecutor.submit((Callable) any())).thenAnswer(invocation -> futureResult);
+
+        userService.call();
+    }
+}
+```
+
 ### MybatisPlus相关
 - LambdaQueryWrapper mock
 > UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
