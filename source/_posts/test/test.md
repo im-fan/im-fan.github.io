@@ -283,6 +283,33 @@ class DemoTest{
 }
 ```
 
+- mock TransactionTemplate
+```java
+
+class DemoTest{
+    @Mock
+    private TransactionTemplate transactionTemplate;
+
+    @BeforeEach
+    void setUp() {
+        when(transactionTemplate.execute(any(TransactionCallback.class)))
+                .thenAnswer(invocation -> {
+                    TransactionCallback<?> callback = invocation.getArgument(0);
+                    try {
+                        // 实际执行事务回调
+                        Object result = callback.doInTransaction(null);
+                        // 模拟事务提交成功
+                        return result;
+                    } catch (Exception e) {
+                        // 模拟事务回滚
+                        return false;
+                    }
+                });
+    }
+}
+
+```
+
 ### MybatisPlus相关
 - LambdaQueryWrapper mock
 > UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
