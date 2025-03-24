@@ -254,6 +254,35 @@ class DemoTest{
 }
 ```
 
+- mock CompletableFuture
+```java
+@ExtendWith(MockitoExtension.class)
+class DemoTest{
+    @InjectMocks
+    private UserSerice userService;
+    @Mock
+    private Future<Integer> mockFuture;
+    
+    @Test
+    void queryTest(){
+        // 创建Answer来模拟异步执行
+        Answer<Future<Integer>> answer = invocation -> {
+            Callable<Integer> callable = invocation.getArgument(0);
+            callable.call(); // 立即执行以触发countDown
+            return mockFuture;
+        };
+
+        when(threadPoolExecutor.submit(any(Callable.class)))
+                .thenAnswer(answer)
+                .thenAnswer(answer);
+        when(mockFuture.get(anyLong(), any(TimeUnit.class)))
+                .thenReturn(10)
+                .thenReturn(5);
+        userService.query();
+    }
+}
+```
+
 ### MybatisPlus相关
 - LambdaQueryWrapper mock
 > UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
