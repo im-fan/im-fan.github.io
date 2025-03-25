@@ -285,7 +285,6 @@ class DemoTest{
 
 - mock TransactionTemplate
 ```java
-
 class DemoTest{
     @Mock
     private TransactionTemplate transactionTemplate;
@@ -307,7 +306,6 @@ class DemoTest{
                 });
     }
 }
-
 ```
 
 ### MybatisPlus相关
@@ -339,7 +337,8 @@ class FunctionTest{
 ```
 
 - IService mock
-> UserServiceImpl.batchAdd() 方法中使用IService.saveBatch()方法
+> UserServiceImpl.batchAdd() 方法中使用IService.saveBatch()方法;
+> 或者使用this.getBaseMapper().saveBatch()方法;
 
 ```java
 @ExtendWith(MockitoExtension.class)
