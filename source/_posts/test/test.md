@@ -308,6 +308,31 @@ class DemoTest{
 }
 ```
 
+- 修改方法出入参数
+
+```java
+class DemoTest{
+
+    @InjectMocks
+    private UserServiceImpl userService;
+    @Mock
+    private UserMapper userMapper;
+    
+    @Test
+    public void test(){
+        when(userMapper.insert(any())).thenAnswer(invocation -> {
+            UserInfo user = invocation.getArgument(0);
+            user.setId(12345);
+            return 1;
+        });
+        UserInfo info = new UserInfo();
+        int result = userService.add(info);
+        assertTrue(result == 1);
+        assertTrue(info.getId() == 12345);
+    }
+}
+```
+
 ### MybatisPlus相关
 - LambdaQueryWrapper mock
 > UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
