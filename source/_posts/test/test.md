@@ -333,6 +333,18 @@ class DemoTest{
 }
 ```
 
+- 设置私有变量值
+
+```java
+class DemoTest{
+    @BeforeEach
+    void setUp() {
+        ReflectionTestUtils.setField(jobDetailServiceImplUnderTest, "xxx", new HashSet<>(Arrays.asList(1L)));
+        ReflectionTestUtils.setField(jobDetailServiceImplUnderTest, "xxx", 1);
+    }
+}
+```
+
 ### MybatisPlus相关
 - LambdaQueryWrapper mock
 > UserServiceImpl.list() 方法中使用LambdaQueryWrapper，用以下方式初始化mybatisPlus的cache
