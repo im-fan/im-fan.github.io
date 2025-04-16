@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D抽奖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            perspective: 1000px; /* 透视效果 */
+        }
+        .card {
+            position: absolute;
+            width: 100px;
+            height: 150px;
+            border-radius: 15px; /* 增加圆角的半径 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold; /* 加粗文字 */
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            opacity: 1; /* 设置为不透明 */
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: rgba(0, 173, 181, 0.85); /* 设置透明度 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 浮雕效果 */
+        }
+        .highlight {
+            border-color: 3px rgba(241, 241, 4, 0.679); /* 边框颜色 */
+            animation: blink-border 0.5s infinite; /* 边框闪烁动画 */
+        }
+
+        @keyframes blink-card {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; } /* 中间透明度 */
+            100% { opacity: 1; }
+        }
+        .main_page {
+            display: flex;
+            flex-direction: column; /* 垂直排列 */
+            justify-content: center; /* 垂直居中 */
+            align-items: center; /* 水平居中 */
+            height: 100vh; /* 使其占满整个视口高度 */
+        }
+    </style>
+</head>
+<body>
+    <div class="main_page">
+        <div class="container" id="container"></div>
+        <button class="button" onclick="startLottery()">开始抽奖</button>
+    </div>
+
+<script>
+    const items = ["选项1", "选项2", "选项3", "选项4", "选项5",
+        "选项1", "选项2", "选项3", "选项4", "选项5",
+        "选项1", "选项2", "选项3", "选项4", "选项5",
+        "选项1", "选项2", "选项3", "选项4", "选项5",
+        "选项1", "选项2", "选项3", "选项4", "选项5"
+    ];
+    const container = document.getElementById("container");
+    const radius = 300; // 圆的半径
+
+    const usedColors = new Set(); // 用于存储已使用的颜色
+
+    /// 随机生成柔色系颜色
+    function getRandomPastelColor() {
+        let color;
+        do {
+            const h = Math.floor(Math.random() * 360); // 色相
+            const s = 100; // 饱和度
+            const l = Math.floor(Math.random() * 40 + 60); // 亮度，60-100之间
+            color = `hsl(${h}, ${s}%, ${l}%)`;
+        } while (usedColors.has(color)); // 检查颜色是否已使用
+
+        usedColors.add(color); // 添加新颜色到已使用集合
+        return color; // 返回新颜色
+    }
+
+    const radiusX = 500; // 椭圆的X轴半径
+    const radiusY = 200; // 椭圆的Y轴半径
+
+    // 动态生成卡片
+    items.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = item;
+
+        // 设置随机颜色
+        card.style.backgroundColor = getRandomPastelColor();
+
+        const angle = (index / items.length) * (2 * Math.PI); // 计算角度
+        const x = Math.min(Math.max(radiusX * Math.cos(angle), -300), 600); // 限制X轴范围
+        const z = radiusY * Math.sin(angle) + (index * 10); // 根据索引调整Z轴值，越靠前的卡片Z轴值越大
+        card.style.transform = `translateX(${x}px) translateZ(${z}px)`;
+        // 根据角度调整明暗和透明度
+        const distanceFromFront = Math.abs(Math.cos(angle)); // 距离正前方的距离
+        const brightness = 0.5 + distanceFromFront * 0.5; // 亮度范围
+        const opacity = Math.max(0.5, 1 - distanceFromFront); // 透明度范围，最低为0.3
+        card.style.filter = `brightness(${brightness})`;
+        card.style.opacity = opacity;
+
+        container.appendChild(card);
+    });
+
+    function startLottery() {
+        const cards = document.querySelectorAll('.card');
+        let rotation = 0;
+        const interval = setInterval(() => {
+            rotation += 10; // 每次旋转10度
+            cards.forEach((card, index) => {
+                const angle = (index / items.length) * (2 * Math.PI) + rotation * (Math.PI / 180);
+                const x = Math.min(Math.max(radiusX * Math.cos(angle), -300), 600); // 限制X轴范围
+                const z = radiusY * Math.sin(angle);
+                card.style.transform = `translateX(${x}px) translateZ(${z}px)`;
+
+                // 更新明暗和透明度
+                const distanceFromFront = Math.abs(Math.cos(angle));
+                const brightness = 0.5 + distanceFromFront * 0.5;
+                const opacity = Math.max(0.3, 1 - distanceFromFront); // 透明度范围，最低为0.3
+                card.style.filter = `brightness(${brightness})`;
+                card.style.opacity = opacity;
+            });
+        }, 100);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            const randomIndex = Math.floor(Math.random() * items.length);
+            const selectedCard = cards[randomIndex];
+
+            // 找到最前方的卡片
+            const frontCard = Array.from(cards).reduce((prev, curr) => {
+                const currTransform = curr.style.transform;
+                const currZ = parseFloat(currTransform.match(/translateZ\(([^px]*)px\)/)[1]);
+                return (currZ > prev.z) ? { card: curr, z: currZ } : prev;
+            }, { card: null, z: -Infinity }).card;
+
+            // 仅为最前方的卡片添加闪烁效果
+            if (frontCard) {
+                frontCard.style.animation = 'blink-card 0.5s infinite'; // 添加闪烁动画
+
+                // 3秒后移除闪烁效果
+                setTimeout(() => {
+                    frontCard.style.animation = ''; // 移除闪烁动画
+                }, 3000);
+            }
+        }, 3000); // 3秒后停止旋转
+    }
+</script>
+</body>
+</html>
