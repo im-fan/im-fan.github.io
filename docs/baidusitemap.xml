@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wiki.aistart.cc/2022/03/08/devops/shell/</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
     <loc>https://wiki.aistart.cc/2021/11/15/test/test/</loc>
-    <lastmod>2025-03-31</lastmod>
+    <lastmod>2025-04-14</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2025/02/01/other/url/</loc>
@@ -43,10 +47,6 @@
   <url>
     <loc>https://wiki.aistart.cc/2023/12/06/backend/spring/springboot-event-stream/</loc>
     <lastmod>2023-12-06</lastmod>
-  </url>
-  <url>
-    <loc>https://wiki.aistart.cc/2022/03/08/devops/shell/</loc>
-    <lastmod>2023-10-20</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2023/09/06/ai/gc/stable-diffusion-02/</loc>

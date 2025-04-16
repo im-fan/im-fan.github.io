@@ -59,3 +59,41 @@ ssh-add work_id_rsa
 alias gitee-work="sh work.sh"
 ```
 
+## git获取已合并master的分支
+```shell
+#!/bin/bash
+# 筛选出已合并过master的分支
+# 指定分支名称
+if [ "$1" == "" ]; then
+  targetBranch="master";
+fi
+
+
+# 获取所有分支
+branches=$(git branch -a | grep 'origin' | grep -v 'HEAD')
+
+# 创建一个空数组用于存储结果
+declare -a result
+
+# 遍历每个分支
+for branch in $branches; do
+
+    if [ "$branch" == '' ]; then
+      continue;
+    fi
+
+    # 获取当前分支的最后一次提交记录
+    last_commit=$(git log -1 --pretty=format:"%H" $branch)
+
+    # 判断指定分支是否包含该提交记录
+    if git branch --contains $last_commit | grep -w 'master'; then
+        result+=("$branch: 已合并到 $targetBranch")
+    fi
+done
+
+# 输出结果
+for res in "${result[@]}"; do
+    echo $res
+done
+
+```

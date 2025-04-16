@@ -436,7 +436,7 @@
       <link href="/2022/03/08/devops/shell/"/>
       <url>/2022/03/08/devops/shell/</url>
       
-        <content type="html"><![CDATA[<h1 id="快捷打开软件"><a href="#快捷打开软件" class="headerlink" title="快捷打开软件"></a>快捷打开软件</h1><pre><code class="shell">alias sublime=&#39;open -a &quot;Sublime Text&quot;&#39;</code></pre><h3 id="获取本机IP"><a href="#获取本机IP" class="headerlink" title="获取本机IP"></a>获取本机IP</h3><pre><code class="shell"># 输出ip地址alias ip=&quot;ifconfig | grep &#39;inet 192&#39; | grep -Eo &#39;\b([0-9]&#123;1,3&#125;\.)&#123;3&#125;[0-9]&#123;1,3&#125;\b&#39; | head -1&quot;</code></pre><h3 id="判断使用的是那个shell"><a href="#判断使用的是那个shell" class="headerlink" title="判断使用的是那个shell"></a>判断使用的是那个shell</h3><pre><code class="shell">echo $0# -zsh 表示使用的是zsh,对应配置文件 ~/.zshrc# bash 标识使用的是bash,对应配置文件 ~/.bashrc</code></pre><h3 id="自定义alias"><a href="#自定义alias" class="headerlink" title="自定义alias"></a>自定义alias</h3><pre><code class="shell">#在对应shell的配置文件中新增alias key=value#例如 alias gogogo=&quot;echo gogogo&quot;</code></pre><h3 id="输入自定义的alias命令"><a href="#输入自定义的alias命令" class="headerlink" title="输入自定义的alias命令"></a>输入自定义的alias命令</h3><pre><code class="shell">#此命令放在自定义alias命令之前; # +117 行号 输入文件117行之后的内容# 注意对应shell配置文件名名alias my-alias=&quot;tail -n +117 ~/.zshrc&quot;</code></pre><h2 id="一台电脑配置多个gitee-github公钥"><a href="#一台电脑配置多个gitee-github公钥" class="headerlink" title="一台电脑配置多个gitee/github公钥"></a>一台电脑配置多个gitee/github公钥</h2><h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><pre><code class="shell"># 查看ssh-agent缓存ssh-add -l# 删除所有缓存ssh-add -D# 添加密钥缓存ssh-add work_id_rsa#将以上命令写入shell文件，然后自定义alias命令，使用的时候切换即可alias gitee-work=&quot;sh work.sh&quot;</code></pre>]]></content>
+        <content type="html"><![CDATA[<h1 id="快捷打开软件"><a href="#快捷打开软件" class="headerlink" title="快捷打开软件"></a>快捷打开软件</h1><pre><code class="shell">alias sublime=&#39;open -a &quot;Sublime Text&quot;&#39;</code></pre><h3 id="获取本机IP"><a href="#获取本机IP" class="headerlink" title="获取本机IP"></a>获取本机IP</h3><pre><code class="shell"># 输出ip地址alias ip=&quot;ifconfig | grep &#39;inet 192&#39; | grep -Eo &#39;\b([0-9]&#123;1,3&#125;\.)&#123;3&#125;[0-9]&#123;1,3&#125;\b&#39; | head -1&quot;</code></pre><h3 id="判断使用的是那个shell"><a href="#判断使用的是那个shell" class="headerlink" title="判断使用的是那个shell"></a>判断使用的是那个shell</h3><pre><code class="shell">echo $0# -zsh 表示使用的是zsh,对应配置文件 ~/.zshrc# bash 标识使用的是bash,对应配置文件 ~/.bashrc</code></pre><h3 id="自定义alias"><a href="#自定义alias" class="headerlink" title="自定义alias"></a>自定义alias</h3><pre><code class="shell">#在对应shell的配置文件中新增alias key=value#例如 alias gogogo=&quot;echo gogogo&quot;</code></pre><h3 id="输入自定义的alias命令"><a href="#输入自定义的alias命令" class="headerlink" title="输入自定义的alias命令"></a>输入自定义的alias命令</h3><pre><code class="shell">#此命令放在自定义alias命令之前; # +117 行号 输入文件117行之后的内容# 注意对应shell配置文件名名alias my-alias=&quot;tail -n +117 ~/.zshrc&quot;</code></pre><h2 id="一台电脑配置多个gitee-github公钥"><a href="#一台电脑配置多个gitee-github公钥" class="headerlink" title="一台电脑配置多个gitee/github公钥"></a>一台电脑配置多个gitee/github公钥</h2><h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><pre><code class="shell"># 查看ssh-agent缓存ssh-add -l# 删除所有缓存ssh-add -D# 添加密钥缓存ssh-add work_id_rsa#将以上命令写入shell文件，然后自定义alias命令，使用的时候切换即可alias gitee-work=&quot;sh work.sh&quot;</code></pre><h2 id="git获取已合并master的分支"><a href="#git获取已合并master的分支" class="headerlink" title="git获取已合并master的分支"></a>git获取已合并master的分支</h2><pre><code class="shell">#!/bin/bash# 筛选出已合并过master的分支# 指定分支名称if [ &quot;$1&quot; == &quot;&quot; ]; then  targetBranch=&quot;master&quot;;fi# 获取所有分支branches=$(git branch -a | grep &#39;origin&#39; | grep -v &#39;HEAD&#39;)# 创建一个空数组用于存储结果declare -a result# 遍历每个分支for branch in $branches; do    if [ &quot;$branch&quot; == &#39;&#39; ]; then      continue;    fi    # 获取当前分支的最后一次提交记录    last_commit=$(git log -1 --pretty=format:&quot;%H&quot; $branch)    # 判断指定分支是否包含该提交记录    if git branch --contains $last_commit | grep -w &#39;master&#39;; then        result+=(&quot;$branch: 已合并到 $targetBranch&quot;)    fidone# 输出结果for res in &quot;$&#123;result[@]&#125;&quot;; do    echo $resdone</code></pre>]]></content>
       
       
       <categories>
@@ -509,31 +509,6 @@
     
     
     <entry>
-      <title>名人名言和一些思维模型</title>
-      <link href="/2022/01/10/thinking/famous/"/>
-      <url>/2022/01/10/thinking/famous/</url>
-      
-        <content type="html"><![CDATA[<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><pre><code class="textmate">不要浪费你的无知。当你对一门知识毫无所知时，最容易问出简单而重要的问题。一旦你习惯了某种现象或事物，认为它是理所当然时，思维就不知不觉受到了限制。-- David Kohn</code></pre><h2 id="思维模型"><a href="#思维模型" class="headerlink" title="思维模型"></a>思维模型</h2><p><a href="https://mp.weixin.qq.com/s/ZvNWabq0339YEOhmUOdCKA">一些思维模型</a></p><h2 id="左耳朵耗子的话"><a href="#左耳朵耗子的话" class="headerlink" title="左耳朵耗子的话"></a>左耳朵耗子的话</h2><blockquote><p><a href="https://mp.weixin.qq.com/s/bOnW8gDJ-dXp4KbAjhDw9A">原文地址</a></p></blockquote><h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><ul><li><p>基础服务<br>所有这些技术都会导向高并发、开发速度要快、并行开发，再加上高可用。最后都会导向只有那么一个类技术，就是云原生、分布式、微服务，还有 Kubernetes。但这些东西是不是能解决用户的问题？并不一定啊。<br>引导到这些地方，我们再抽象一下，基本上就 4 块，流量治理、服务治理、资源治理，还有数据治理，这四块东西会变成你的基础设施。要解决上层的问题，你的基础设施必须要好，就这意思。<br>就像我怎么让车开到 180 公里每小时，你先得铺路去，先得把路搞好，就像中国的高铁，并不是车开不快，而是之前铁路不支持这样的速度，所以基础设施不支持，你就没办法快起来。就像要让飞机起飞，必须要有大量大规模的配套设施，基础设施没跟上，你完全做不到。</p></li><li><p>确定新技术会不会成功<br>门槛低、有大公司撑着、好的社区，还有杀手级应用，决定这个技术会不会成功，会不会爆。</p></li></ul><h3 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h3><ul><li><p>解决问题不靠蛮力<br>所有的路都是可以走的，不用担心。但不是纯靠坚持，关键是你一定要去想方法，想更好的、更优的解，这个事很关键，千万不要使蛮力，没有太大意义。这是我创业学会的第一个道理。方法会比努力更重要<br>不追小兔子。能让你分心的事情太多太多了，你不知道你前面那座城池有多高</p></li><li><p>真正的技术是要拿来做创新的，你要去颠覆点什么，要去创造点什么</p></li><li><p>注重基础知识</p></li><li><p>风口<br>我始终都觉得我必须要靠上主流。说得俗一点，就是你必须要去风口，这个风口猪都会飞。但是，要看那个风口是不是个短暂的风口，千万不要去找短暂的风口，你要去找长风口，风可以吹一辈子的。</p></li><li><p>业务增长分级<br>分成 0 到 1、1 到 10、10 到 100<br>0-1快速成长<br>1 到 10，你开始要尊重两个东西。第一个你的开发速度要快，第二个你的稳定性、性能这些要保证因为要扩展用户</p></li><li><p>数据是没有用的，只有把数据关联起来才有意义<br>所有做科学实验都是走这条路的，不断地做实验、拿数据，在数据里面把它标注好，关联起来，然后找信息</p></li><li><p>简化—&gt;标准化—&gt;自动化<br>首先一件事情，你必须把它抽象化，因为抽象化之后才可以简化，简化后才可以标准化，标准化的事情才能自动化，自动化的事情才能规模化。</p></li><li><p>电商核心<br>电商，其实核心是想着怎么样让你更快地做决定，因为你做决定的时间越短，我流量的转化率就会越高</p></li></ul><h3 id="成长"><a href="#成长" class="headerlink" title="成长"></a>成长</h3><ul><li><p>坚持做有价值的事情</p></li><li><p>在大公司可以学习的事情<br>1.组织管理<br>大公司组织的运作方式、体系化的管理方式，怎么调动那么多人来完成一个事；或者一些思维方式，为什么他要做这个而不是做那个<br>2.怎么挣钱，大公司怎么挣钱的<br>3.大公司里面的一些高手是怎么工作的</p></li><li><p>朋友圈<br>你跟什么样的人在一起，决定了你怎么样成长；你跟什么样的人在一起，你就会被影响成什么样的人</p></li><li><p>写作<br>写作是一种深度思考，在写作的过程中，你才会认真地去想、去总结、去归纳你所学到的知识。</p></li><li><p>管理时间<br>管理时间。有时候向下管理，有时候向上管理。<br>向下管理：有手机随时都会来通知，一会就被打断。如果你的时间总是被打断的话，利用效率是不高的，所以不要被打断。<br>向上管理：排期坚持，我在外企里面学到的一个方法叫 Never Say No。他说和用户沟通的时候，你永远不要说不，这事我做不到。你要说 Yes，但永远是有条件的 Yes。比如这种情况下我能做到，那种情况下我做不到。你给我更多的时间，我能做得到，你给我那么短的时间我做不到。或者说在那么短的时间内我只能交付你半成品，你要不要？</p></li><li><p>反PUA<br><strong>被 PUA 就说是你进入了别人的环境里面，它营造了一个空间，把你扔进来，按照他的逻辑，就问你，给你一个答案，你能干还是不能干？</strong><br>那无论你的答案是能还是不能，你都是被 PUA 的。<br>你要反 PUA 的话，必须得把他拉到我们喜欢的角度来，把这个压力推回去，给他一系列的条件：<br>Option 1 ：我可以再按时完成，但是质量别想。<br>Option 2 ：你给我足够的时间，我保质保量全部交付。<br>Option 3 ：我还是按你这个时间，但是你必须砍掉一些需求。</p></li></ul><h3 id="怎么才能学得快？"><a href="#怎么才能学得快？" class="headerlink" title="怎么才能学得快？"></a>怎么才能学得快？</h3><ul><li>学习框架<br>你学一门编程语言，总是要把它抽象成一棵知识树<br>学一个新的语言，我就会把这个语言照着我的框架来套。这个语言有哪些分支逻辑、哪些声明变量，多线程是怎么玩的、面向对象多态怎么玩的等等。我就照着套，半天或一两天就套完了。这个语言也就学会了。</li></ul><h3 id="学了就忘怎么办？"><a href="#学了就忘怎么办？" class="headerlink" title="学了就忘怎么办？"></a>学了就忘怎么办？</h3><p>  因为你在用记忆去学，而不是基于问题去学。任何一个技术，都是在解决一个实际的问题。你一定要明白，你学这个技术，它到底解决什么样的问题，它是为什么而生的。当你明白了这个“为什么”以后，你才能够记住那些原理。</p><ul><li><p>如何做一个有质量的技术分享<br>你必须要告诉用户为什么，到底要解决什么样的问题。</p></li><li><p>学习的套路<br>Why 这种学习方式，我们叫理性学习；What 这种学习方式，我们叫感性学习<br>你的学习一定是从感性到理性的，所以一开始你大概知道有那么一回事，慢慢地看的东西多了，顺理成章你就会想去了解一下为什么</p></li><li><p>带着问题去学</p></li></ul><h3 id="对我影响比较大的书"><a href="#对我影响比较大的书" class="headerlink" title="对我影响比较大的书"></a>对我影响比较大的书</h3><ul><li><p>Effective C++<br>这本书让我感受到了作者 Scott Meyers 的严谨精神。他不是把一个技术设计出来就好了，他会想这个事有各种各样的副作用，然后这些副作用怎么不断地求解，这种求真精神让我很受震撼</p></li><li><p><strong>美丽的东西都是肤浅的</strong>(书中的一句话)<br>意思就是你看得见那些美好的东西都是表面上的，所以他就是肤浅。你把它剥开了以后，那些东西才是比较深刻的东西，所以千万不要被美所迷惑</p></li><li><p>《Code Complete》<br><strong>这本书讲了怎么样把一个代码写好的各种各样的方向，以前从来没有人跟我讲过这些东西，没有训练，所以这是一本让我觉得很爽的一个东西</strong><br>和这个书更相似的是像《设计模式》这样的书，比如《Beautiful Code》，就是教你怎么写代码，怎么组织代码，《重构》也是。</p></li><li><p>《Rework》<br>1.<strong>条件受限是个好事</strong>，因为条件受限可以倒逼你抓重点，倒逼你做自动化，倒逼你简化。我突然就想起我以前买不起书，那个条件受限的时候就必须要用更聪明的方式去学习，因为你买不起书，所以你必须要画知识图，全部都是在条件受限。<br>2.<strong>挠自己的痒处</strong>，自己觉得不爽了自己要去改变它。所以我觉得这个世界上很多能创业的人，或者说是能改变世界的人，一定是不能忍的人；<br>你觉得不能忍了，不能抱怨了，你决定行动起来，改变点什么，这时候，你就会琢磨怎么才能更好。所有的东西都是从不能忍开始的。<br>如果你什么都能忍，那对不起你一定是韭菜</p></li></ul><h3 id="35岁危机"><a href="#35岁危机" class="headerlink" title="35岁危机"></a>35岁危机</h3><ul><li><p>人不是因为变老了才没有热情，而是因为没有热情才会变老。</p></li><li><p>有的人说我老了，我学不动了。不是的，因为你学不动，你才变老了；不是你老了，你才学不动。这个世界上有大量这样本末倒置的因果关系的逻辑，如果你学得动，或者你还对这个事情充满憧憬，有想法，愿意去奋斗的话，70 岁你都不老。</p></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 思考 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 思考 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>工作相关</title>
       <link href="/2022/01/10/thinking/design/"/>
       <url>/2022/01/10/thinking/design/</url>
@@ -551,6 +526,31 @@
         <tags>
             
             <tag> 总结方法论 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>名人名言和一些思维模型</title>
+      <link href="/2022/01/10/thinking/famous/"/>
+      <url>/2022/01/10/thinking/famous/</url>
+      
+        <content type="html"><![CDATA[<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><pre><code class="textmate">不要浪费你的无知。当你对一门知识毫无所知时，最容易问出简单而重要的问题。一旦你习惯了某种现象或事物，认为它是理所当然时，思维就不知不觉受到了限制。-- David Kohn</code></pre><h2 id="思维模型"><a href="#思维模型" class="headerlink" title="思维模型"></a>思维模型</h2><p><a href="https://mp.weixin.qq.com/s/ZvNWabq0339YEOhmUOdCKA">一些思维模型</a></p><h2 id="左耳朵耗子的话"><a href="#左耳朵耗子的话" class="headerlink" title="左耳朵耗子的话"></a>左耳朵耗子的话</h2><blockquote><p><a href="https://mp.weixin.qq.com/s/bOnW8gDJ-dXp4KbAjhDw9A">原文地址</a></p></blockquote><h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><ul><li><p>基础服务<br>所有这些技术都会导向高并发、开发速度要快、并行开发，再加上高可用。最后都会导向只有那么一个类技术，就是云原生、分布式、微服务，还有 Kubernetes。但这些东西是不是能解决用户的问题？并不一定啊。<br>引导到这些地方，我们再抽象一下，基本上就 4 块，流量治理、服务治理、资源治理，还有数据治理，这四块东西会变成你的基础设施。要解决上层的问题，你的基础设施必须要好，就这意思。<br>就像我怎么让车开到 180 公里每小时，你先得铺路去，先得把路搞好，就像中国的高铁，并不是车开不快，而是之前铁路不支持这样的速度，所以基础设施不支持，你就没办法快起来。就像要让飞机起飞，必须要有大量大规模的配套设施，基础设施没跟上，你完全做不到。</p></li><li><p>确定新技术会不会成功<br>门槛低、有大公司撑着、好的社区，还有杀手级应用，决定这个技术会不会成功，会不会爆。</p></li></ul><h3 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h3><ul><li><p>解决问题不靠蛮力<br>所有的路都是可以走的，不用担心。但不是纯靠坚持，关键是你一定要去想方法，想更好的、更优的解，这个事很关键，千万不要使蛮力，没有太大意义。这是我创业学会的第一个道理。方法会比努力更重要<br>不追小兔子。能让你分心的事情太多太多了，你不知道你前面那座城池有多高</p></li><li><p>真正的技术是要拿来做创新的，你要去颠覆点什么，要去创造点什么</p></li><li><p>注重基础知识</p></li><li><p>风口<br>我始终都觉得我必须要靠上主流。说得俗一点，就是你必须要去风口，这个风口猪都会飞。但是，要看那个风口是不是个短暂的风口，千万不要去找短暂的风口，你要去找长风口，风可以吹一辈子的。</p></li><li><p>业务增长分级<br>分成 0 到 1、1 到 10、10 到 100<br>0-1快速成长<br>1 到 10，你开始要尊重两个东西。第一个你的开发速度要快，第二个你的稳定性、性能这些要保证因为要扩展用户</p></li><li><p>数据是没有用的，只有把数据关联起来才有意义<br>所有做科学实验都是走这条路的，不断地做实验、拿数据，在数据里面把它标注好，关联起来，然后找信息</p></li><li><p>简化—&gt;标准化—&gt;自动化<br>首先一件事情，你必须把它抽象化，因为抽象化之后才可以简化，简化后才可以标准化，标准化的事情才能自动化，自动化的事情才能规模化。</p></li><li><p>电商核心<br>电商，其实核心是想着怎么样让你更快地做决定，因为你做决定的时间越短，我流量的转化率就会越高</p></li></ul><h3 id="成长"><a href="#成长" class="headerlink" title="成长"></a>成长</h3><ul><li><p>坚持做有价值的事情</p></li><li><p>在大公司可以学习的事情<br>1.组织管理<br>大公司组织的运作方式、体系化的管理方式，怎么调动那么多人来完成一个事；或者一些思维方式，为什么他要做这个而不是做那个<br>2.怎么挣钱，大公司怎么挣钱的<br>3.大公司里面的一些高手是怎么工作的</p></li><li><p>朋友圈<br>你跟什么样的人在一起，决定了你怎么样成长；你跟什么样的人在一起，你就会被影响成什么样的人</p></li><li><p>写作<br>写作是一种深度思考，在写作的过程中，你才会认真地去想、去总结、去归纳你所学到的知识。</p></li><li><p>管理时间<br>管理时间。有时候向下管理，有时候向上管理。<br>向下管理：有手机随时都会来通知，一会就被打断。如果你的时间总是被打断的话，利用效率是不高的，所以不要被打断。<br>向上管理：排期坚持，我在外企里面学到的一个方法叫 Never Say No。他说和用户沟通的时候，你永远不要说不，这事我做不到。你要说 Yes，但永远是有条件的 Yes。比如这种情况下我能做到，那种情况下我做不到。你给我更多的时间，我能做得到，你给我那么短的时间我做不到。或者说在那么短的时间内我只能交付你半成品，你要不要？</p></li><li><p>反PUA<br><strong>被 PUA 就说是你进入了别人的环境里面，它营造了一个空间，把你扔进来，按照他的逻辑，就问你，给你一个答案，你能干还是不能干？</strong><br>那无论你的答案是能还是不能，你都是被 PUA 的。<br>你要反 PUA 的话，必须得把他拉到我们喜欢的角度来，把这个压力推回去，给他一系列的条件：<br>Option 1 ：我可以再按时完成，但是质量别想。<br>Option 2 ：你给我足够的时间，我保质保量全部交付。<br>Option 3 ：我还是按你这个时间，但是你必须砍掉一些需求。</p></li></ul><h3 id="怎么才能学得快？"><a href="#怎么才能学得快？" class="headerlink" title="怎么才能学得快？"></a>怎么才能学得快？</h3><ul><li>学习框架<br>你学一门编程语言，总是要把它抽象成一棵知识树<br>学一个新的语言，我就会把这个语言照着我的框架来套。这个语言有哪些分支逻辑、哪些声明变量，多线程是怎么玩的、面向对象多态怎么玩的等等。我就照着套，半天或一两天就套完了。这个语言也就学会了。</li></ul><h3 id="学了就忘怎么办？"><a href="#学了就忘怎么办？" class="headerlink" title="学了就忘怎么办？"></a>学了就忘怎么办？</h3><p>  因为你在用记忆去学，而不是基于问题去学。任何一个技术，都是在解决一个实际的问题。你一定要明白，你学这个技术，它到底解决什么样的问题，它是为什么而生的。当你明白了这个“为什么”以后，你才能够记住那些原理。</p><ul><li><p>如何做一个有质量的技术分享<br>你必须要告诉用户为什么，到底要解决什么样的问题。</p></li><li><p>学习的套路<br>Why 这种学习方式，我们叫理性学习；What 这种学习方式，我们叫感性学习<br>你的学习一定是从感性到理性的，所以一开始你大概知道有那么一回事，慢慢地看的东西多了，顺理成章你就会想去了解一下为什么</p></li><li><p>带着问题去学</p></li></ul><h3 id="对我影响比较大的书"><a href="#对我影响比较大的书" class="headerlink" title="对我影响比较大的书"></a>对我影响比较大的书</h3><ul><li><p>Effective C++<br>这本书让我感受到了作者 Scott Meyers 的严谨精神。他不是把一个技术设计出来就好了，他会想这个事有各种各样的副作用，然后这些副作用怎么不断地求解，这种求真精神让我很受震撼</p></li><li><p><strong>美丽的东西都是肤浅的</strong>(书中的一句话)<br>意思就是你看得见那些美好的东西都是表面上的，所以他就是肤浅。你把它剥开了以后，那些东西才是比较深刻的东西，所以千万不要被美所迷惑</p></li><li><p>《Code Complete》<br><strong>这本书讲了怎么样把一个代码写好的各种各样的方向，以前从来没有人跟我讲过这些东西，没有训练，所以这是一本让我觉得很爽的一个东西</strong><br>和这个书更相似的是像《设计模式》这样的书，比如《Beautiful Code》，就是教你怎么写代码，怎么组织代码，《重构》也是。</p></li><li><p>《Rework》<br>1.<strong>条件受限是个好事</strong>，因为条件受限可以倒逼你抓重点，倒逼你做自动化，倒逼你简化。我突然就想起我以前买不起书，那个条件受限的时候就必须要用更聪明的方式去学习，因为你买不起书，所以你必须要画知识图，全部都是在条件受限。<br>2.<strong>挠自己的痒处</strong>，自己觉得不爽了自己要去改变它。所以我觉得这个世界上很多能创业的人，或者说是能改变世界的人，一定是不能忍的人；<br>你觉得不能忍了，不能抱怨了，你决定行动起来，改变点什么，这时候，你就会琢磨怎么才能更好。所有的东西都是从不能忍开始的。<br>如果你什么都能忍，那对不起你一定是韭菜</p></li></ul><h3 id="35岁危机"><a href="#35岁危机" class="headerlink" title="35岁危机"></a>35岁危机</h3><ul><li><p>人不是因为变老了才没有热情，而是因为没有热情才会变老。</p></li><li><p>有的人说我老了，我学不动了。不是的，因为你学不动，你才变老了；不是你老了，你才学不动。这个世界上有大量这样本末倒置的因果关系的逻辑，如果你学得动，或者你还对这个事情充满憧憬，有想法，愿意去奋斗的话，70 岁你都不老。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 思考 </tag>
             
         </tags>
       
@@ -966,11 +966,11 @@
       
         <tags>
             
-            <tag> 注册中心 </tag>
-            
             <tag> nacos </tag>
             
             <tag> 动态配置 </tag>
+            
+            <tag> 注册中心 </tag>
             
         </tags>
       
@@ -1135,35 +1135,6 @@
     
     
     <entry>
-      <title>RocketMQ相关文档</title>
-      <link href="/2021/02/03/backend/mq/rocketmq/"/>
-      <url>/2021/02/03/backend/mq/rocketmq/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、专业术语"><a href="#一、专业术语" class="headerlink" title="一、专业术语"></a>一、专业术语</h2><h3 id="1-角色名称"><a href="#1-角色名称" class="headerlink" title="1. 角色名称"></a>1. 角色名称</h3><pre><code class="textmate">- Product    消息生产者- Consumer    消息消费者- Push Consumer    消息消费-推模式，应用通常向 Consumer 对象注册一个Listener接口，一旦收到消息，Consumer对象立刻回调Listener接口方法。- Pull Consumer    消息消费-拉模式，应用通常主动调用 Consumer 的拉消息方法从 Broker 拉消息，主动权由应用控制。- ProducerGroup    一类 Producer 的集合名称，这类 Producer 通常发送一类消息，且发送逻辑一致。- ConsumerGroup    一类 Consumer 的集合名称，这类 Consumer 通常消费一类消息，且消费逻辑一致。- Broker    消息中转角色，负责存储消息，转发消息，一般也称为 Server。在 JMS 规范中称为 Provider。- Message Queue    消息存储队列，长度无线(offset作为数据下标，long类型64位，理论上在 100 年内不会溢出，所以认为是长度无限)</code></pre><h3 id="2-消费模式"><a href="#2-消费模式" class="headerlink" title="2. 消费模式"></a>2. 消费模式</h3><pre><code class="textmate">- 广播消费    一条消息被多个 Consumer 消费，每个Consumer都会至少消费一次消息，广播消费中的 Consumer Group 概念可以认为在消息划分方面无意义。    在 CORBA Notification 规范中，消费方式都属于广播消费。在 JMS 规范中，相当于JMS publish/subscribe model- 集群消费    一个 Consumer Group 中的 Consumer 实例平均分摊消费消息。- 顺序消费    消费消息的顺序要同发送消息的顺序一致(局部顺序)，一类消息为满足顺序性，必须Producer单线程顺序发送到同一个队列，    这样 Consumer 就可以按照 Producer 发送 的顺序去消费消息。- 普通顺序消息    顺序消息的一种，正常情况下可以保证完全的顺序消息，但是一旦发生通信异常，Broker 重启，由于队列 总数发生发化，哈希取模后定位的队列会发化，产生短暂的消息顺序不一致。- 严格顺序消息    顺序消息的一种，无论正常异常情况都能保证顺序，但是牺牲了分布式 Failover(故障转移) 特性，即 Broker 集群中只 要有一台机器不可用，则整个集群都不可用，服务可用性大大降低。 如果服务器部署为同步双写模式，此缺陷可通过备机自动切换为主避免，不过仍然会存在几分钟的服务不可用。    目前已知的应用只有数据库 binlog 同步强依赖严格顺序消息，其他应用绝大部分都可以容忍短暂乱序，推    荐使用普通的顺序消息。</code></pre><h2 id="二、部署"><a href="#二、部署" class="headerlink" title="二、部署"></a>二、部署</h2><ul><li>队列模型的消息中间件，高性能、高可用、高实时、分布式特点</li><li>Producer、Consumer、队列都可以分布式</li><li>能够保证严格的消息顺序</li><li>提供消息推拉消息模式</li><li>亿级消息堆积能力</li><li>较少依赖</li></ul><h3 id="1-物理部署结构"><a href="#1-物理部署结构" class="headerlink" title="1.物理部署结构"></a>1.物理部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-deploy.jpg" alt="物理部署结构图"/><pre><code class="textmate">1.NameServer     无状态节点，可集群部署，节点之间无通信2.Broker    分为Master和Slave,一个master可以对应多个slave，但是一个slave只能对应一个master; master和slave的对应关系通过指定相同的BrokerName不同的BrokerId来定义，BorkerId为0标识master,非0标识slave。master可以部署多个。    每个Broker和NameServer集群中的所有节点建立长连接，定时注册Topic信息到所有的NameServer中3.Producer    Producer与NameServer集群中其中一个节点(随机选择)建立长连接，定期拉取Topic路由信息，并向提供Topic服务的Master建立长连接，并定时发送心跳。Producer完全无状态，可集群部署4.Consumer    Consumer与NameServer集群中的其中一个节点建立长连接，定期获取Topic路由，并向提供Topic服务的Master、Slave建立长连接，并定时发送心跳。Consumer订阅规则由Broker配置决定，既可以从Master订阅消息，也可以从Salve消息</code></pre><h3 id="2-逻辑部署结构"><a href="#2-逻辑部署结构" class="headerlink" title="2.逻辑部署结构"></a>2.逻辑部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-logic-deploy.png" alt="逻辑部署结构图"/><h2 id="三、存储特点"><a href="#三、存储特点" class="headerlink" title="三、存储特点"></a>三、存储特点</h2><h3 id="1-零拷贝原理"><a href="#1-零拷贝原理" class="headerlink" title="1.零拷贝原理"></a>1.零拷贝原理</h3><blockquote><p>Consumer消费消息过程中使用了零拷贝</p></blockquote><ul><li><a href="https://www.linuxjournal.com/article/6345">零拷贝相关链接</a></li><li>零拷贝方式</li></ul><pre><code class="textmate">1.mmap+write方式(mmap将一个文件或者其它对象映射进内存)    优点：使用小块文件传输，效率高，支持频繁调用    缺点：不能很好的利用DMA方式(Direct Memory Access，直接存储器访问),会比sendfile多消耗CPU,内存安全性控制复杂，需要避免JVM Crash文件2.使用sendfile方式    优点：可以利用DMA方式，消耗CPU较少，大块文件传输效率高，无内存安全问题    缺点：小块文件效率低于mmap方式，只能BIO方式传递，不能使用NIO。RocketMQ选择了mmap+write方式，因为现有小块数据传输需求，效果比sendfile更好</code></pre><h3 id="2-文件系统"><a href="#2-文件系统" class="headerlink" title="2.文件系统"></a>2.文件系统</h3><pre><code class="textmate">RocketMQ 选择 Linux Ext4 文件系统原因：    Ext4 文件系统删除 1G 大小的文件通常耗时小于50ms，而 Ext3 文件系统耗时约 1s 左右，且删除文件时，磁盘 IO 压力极大，会导致IO写入超时。  文件系统层面需要做以下调优措施    文件系统 IO 调度算法需要调整为 deadline，因为 deadline 算法在随机读情冴下，可以合并读请求为顺序跳跃方式，从而提高读 IO 吞吐量。</code></pre><h3 id="3-数据存储结构-amp-存储目录结构"><a href="#3-数据存储结构-amp-存储目录结构" class="headerlink" title="3.数据存储结构&amp;存储目录结构"></a>3.数据存储结构&amp;存储目录结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-data.jpg" alt="数据存储结构" width="600px" height="400px"/><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-file.png" alt="存储目录结构" width="600px" height="400px" /><h2 id="四、关键特性"><a href="#四、关键特性" class="headerlink" title="四、关键特性"></a>四、关键特性</h2><h3 id="1-单机支持1万以上持久化队列"><a href="#1-单机支持1万以上持久化队列" class="headerlink" title="1.单机支持1万以上持久化队列"></a>1.单机支持1万以上持久化队列</h3><pre><code class="textmate">|       8Byte     | 4Byte |        8Byte        || CommitLogOffset | Size  | Message Tag Hashcode|1.所有数据单独存储到CommitLog文件中，完全顺序写，随机读2.对最终用户展现的队列实际只存储消息在CommitLog的位置信息，使用串行方式刷盘</code></pre><h3 id="2-刷盘策略"><a href="#2-刷盘策略" class="headerlink" title="2.刷盘策略"></a>2.刷盘策略</h3><pre><code class="textmate">先写入系统pageCache 然后刷盘，保证内存与磁盘都有一份数据，访问时从内存中读取- 同步刷盘    1. 写入 PAGECACHE 后，线程等待，通知刷盘线程刷盘。     2. 刷盘线程刷盘后，唤醒前端等待线程，可能是一批线程。     3. 前端等待线程吐用户迒回成功。- 异步刷盘同步刷盘与异步刷盘的唯一区别是异步刷盘写完 PAGECACHE 直接返回，而同步刷盘需要等待刷盘完成才返回</code></pre><h3 id="3-消息查询"><a href="#3-消息查询" class="headerlink" title="3.消息查询"></a>3.消息查询</h3><pre><code class="textmate">- 按照MessageId查询消息    | 8Byte | 8Byte |    |消息所属Broker地址|CommitLogOffset|- 按照MessageKey查询消息    |4Byte|8Byte|4Byte|4Byte|    |keyHash|CommitLogOffset|Timestamp|NextIndexOffset|</code></pre><h2 id="五、消息过滤"><a href="#五、消息过滤" class="headerlink" title="五、消息过滤"></a>五、消息过滤</h2><h3 id="1-简单消息过滤"><a href="#1-简单消息过滤" class="headerlink" title="1.简单消息过滤"></a>1.简单消息过滤</h3><pre><code class="textmate">通过topic和 tags进行过滤consumer.subscribe(&quot;TopicTest1&quot;,&quot;TagA || TagB&quot;);</code></pre><h3 id="2-高级过滤方式"><a href="#2-高级过滤方式" class="headerlink" title="2.高级过滤方式"></a>2.高级过滤方式</h3><pre><code class="textmate">RocketMQ 提供了基于表达式与基于类模式两种过滤模式可以实现 MessageFilter 接口，实现自定义过滤</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 后端 </category>
-          
-          <category> 消息队列 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> message </tag>
-            
-            <tag> rocketmq </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>SpringBoot集成Kafka</title>
       <link href="/2021/02/03/backend/mq/kafka/"/>
       <url>/2021/02/03/backend/mq/kafka/</url>
@@ -1185,6 +1156,35 @@
             <tag> message </tag>
             
             <tag> kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>RocketMQ相关文档</title>
+      <link href="/2021/02/03/backend/mq/rocketmq/"/>
+      <url>/2021/02/03/backend/mq/rocketmq/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、专业术语"><a href="#一、专业术语" class="headerlink" title="一、专业术语"></a>一、专业术语</h2><h3 id="1-角色名称"><a href="#1-角色名称" class="headerlink" title="1. 角色名称"></a>1. 角色名称</h3><pre><code class="textmate">- Product    消息生产者- Consumer    消息消费者- Push Consumer    消息消费-推模式，应用通常向 Consumer 对象注册一个Listener接口，一旦收到消息，Consumer对象立刻回调Listener接口方法。- Pull Consumer    消息消费-拉模式，应用通常主动调用 Consumer 的拉消息方法从 Broker 拉消息，主动权由应用控制。- ProducerGroup    一类 Producer 的集合名称，这类 Producer 通常发送一类消息，且发送逻辑一致。- ConsumerGroup    一类 Consumer 的集合名称，这类 Consumer 通常消费一类消息，且消费逻辑一致。- Broker    消息中转角色，负责存储消息，转发消息，一般也称为 Server。在 JMS 规范中称为 Provider。- Message Queue    消息存储队列，长度无线(offset作为数据下标，long类型64位，理论上在 100 年内不会溢出，所以认为是长度无限)</code></pre><h3 id="2-消费模式"><a href="#2-消费模式" class="headerlink" title="2. 消费模式"></a>2. 消费模式</h3><pre><code class="textmate">- 广播消费    一条消息被多个 Consumer 消费，每个Consumer都会至少消费一次消息，广播消费中的 Consumer Group 概念可以认为在消息划分方面无意义。    在 CORBA Notification 规范中，消费方式都属于广播消费。在 JMS 规范中，相当于JMS publish/subscribe model- 集群消费    一个 Consumer Group 中的 Consumer 实例平均分摊消费消息。- 顺序消费    消费消息的顺序要同发送消息的顺序一致(局部顺序)，一类消息为满足顺序性，必须Producer单线程顺序发送到同一个队列，    这样 Consumer 就可以按照 Producer 发送 的顺序去消费消息。- 普通顺序消息    顺序消息的一种，正常情况下可以保证完全的顺序消息，但是一旦发生通信异常，Broker 重启，由于队列 总数发生发化，哈希取模后定位的队列会发化，产生短暂的消息顺序不一致。- 严格顺序消息    顺序消息的一种，无论正常异常情况都能保证顺序，但是牺牲了分布式 Failover(故障转移) 特性，即 Broker 集群中只 要有一台机器不可用，则整个集群都不可用，服务可用性大大降低。 如果服务器部署为同步双写模式，此缺陷可通过备机自动切换为主避免，不过仍然会存在几分钟的服务不可用。    目前已知的应用只有数据库 binlog 同步强依赖严格顺序消息，其他应用绝大部分都可以容忍短暂乱序，推    荐使用普通的顺序消息。</code></pre><h2 id="二、部署"><a href="#二、部署" class="headerlink" title="二、部署"></a>二、部署</h2><ul><li>队列模型的消息中间件，高性能、高可用、高实时、分布式特点</li><li>Producer、Consumer、队列都可以分布式</li><li>能够保证严格的消息顺序</li><li>提供消息推拉消息模式</li><li>亿级消息堆积能力</li><li>较少依赖</li></ul><h3 id="1-物理部署结构"><a href="#1-物理部署结构" class="headerlink" title="1.物理部署结构"></a>1.物理部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-deploy.jpg" alt="物理部署结构图"/><pre><code class="textmate">1.NameServer     无状态节点，可集群部署，节点之间无通信2.Broker    分为Master和Slave,一个master可以对应多个slave，但是一个slave只能对应一个master; master和slave的对应关系通过指定相同的BrokerName不同的BrokerId来定义，BorkerId为0标识master,非0标识slave。master可以部署多个。    每个Broker和NameServer集群中的所有节点建立长连接，定时注册Topic信息到所有的NameServer中3.Producer    Producer与NameServer集群中其中一个节点(随机选择)建立长连接，定期拉取Topic路由信息，并向提供Topic服务的Master建立长连接，并定时发送心跳。Producer完全无状态，可集群部署4.Consumer    Consumer与NameServer集群中的其中一个节点建立长连接，定期获取Topic路由，并向提供Topic服务的Master、Slave建立长连接，并定时发送心跳。Consumer订阅规则由Broker配置决定，既可以从Master订阅消息，也可以从Salve消息</code></pre><h3 id="2-逻辑部署结构"><a href="#2-逻辑部署结构" class="headerlink" title="2.逻辑部署结构"></a>2.逻辑部署结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-logic-deploy.png" alt="逻辑部署结构图"/><h2 id="三、存储特点"><a href="#三、存储特点" class="headerlink" title="三、存储特点"></a>三、存储特点</h2><h3 id="1-零拷贝原理"><a href="#1-零拷贝原理" class="headerlink" title="1.零拷贝原理"></a>1.零拷贝原理</h3><blockquote><p>Consumer消费消息过程中使用了零拷贝</p></blockquote><ul><li><a href="https://www.linuxjournal.com/article/6345">零拷贝相关链接</a></li><li>零拷贝方式</li></ul><pre><code class="textmate">1.mmap+write方式(mmap将一个文件或者其它对象映射进内存)    优点：使用小块文件传输，效率高，支持频繁调用    缺点：不能很好的利用DMA方式(Direct Memory Access，直接存储器访问),会比sendfile多消耗CPU,内存安全性控制复杂，需要避免JVM Crash文件2.使用sendfile方式    优点：可以利用DMA方式，消耗CPU较少，大块文件传输效率高，无内存安全问题    缺点：小块文件效率低于mmap方式，只能BIO方式传递，不能使用NIO。RocketMQ选择了mmap+write方式，因为现有小块数据传输需求，效果比sendfile更好</code></pre><h3 id="2-文件系统"><a href="#2-文件系统" class="headerlink" title="2.文件系统"></a>2.文件系统</h3><pre><code class="textmate">RocketMQ 选择 Linux Ext4 文件系统原因：    Ext4 文件系统删除 1G 大小的文件通常耗时小于50ms，而 Ext3 文件系统耗时约 1s 左右，且删除文件时，磁盘 IO 压力极大，会导致IO写入超时。  文件系统层面需要做以下调优措施    文件系统 IO 调度算法需要调整为 deadline，因为 deadline 算法在随机读情冴下，可以合并读请求为顺序跳跃方式，从而提高读 IO 吞吐量。</code></pre><h3 id="3-数据存储结构-amp-存储目录结构"><a href="#3-数据存储结构-amp-存储目录结构" class="headerlink" title="3.数据存储结构&amp;存储目录结构"></a>3.数据存储结构&amp;存储目录结构</h3><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-data.jpg" alt="数据存储结构" width="600px" height="400px"/><img src="https://raw.githubusercontent.com/im-fan/fan-pic/release/images/rocketmq-file.png" alt="存储目录结构" width="600px" height="400px" /><h2 id="四、关键特性"><a href="#四、关键特性" class="headerlink" title="四、关键特性"></a>四、关键特性</h2><h3 id="1-单机支持1万以上持久化队列"><a href="#1-单机支持1万以上持久化队列" class="headerlink" title="1.单机支持1万以上持久化队列"></a>1.单机支持1万以上持久化队列</h3><pre><code class="textmate">|       8Byte     | 4Byte |        8Byte        || CommitLogOffset | Size  | Message Tag Hashcode|1.所有数据单独存储到CommitLog文件中，完全顺序写，随机读2.对最终用户展现的队列实际只存储消息在CommitLog的位置信息，使用串行方式刷盘</code></pre><h3 id="2-刷盘策略"><a href="#2-刷盘策略" class="headerlink" title="2.刷盘策略"></a>2.刷盘策略</h3><pre><code class="textmate">先写入系统pageCache 然后刷盘，保证内存与磁盘都有一份数据，访问时从内存中读取- 同步刷盘    1. 写入 PAGECACHE 后，线程等待，通知刷盘线程刷盘。     2. 刷盘线程刷盘后，唤醒前端等待线程，可能是一批线程。     3. 前端等待线程吐用户迒回成功。- 异步刷盘同步刷盘与异步刷盘的唯一区别是异步刷盘写完 PAGECACHE 直接返回，而同步刷盘需要等待刷盘完成才返回</code></pre><h3 id="3-消息查询"><a href="#3-消息查询" class="headerlink" title="3.消息查询"></a>3.消息查询</h3><pre><code class="textmate">- 按照MessageId查询消息    | 8Byte | 8Byte |    |消息所属Broker地址|CommitLogOffset|- 按照MessageKey查询消息    |4Byte|8Byte|4Byte|4Byte|    |keyHash|CommitLogOffset|Timestamp|NextIndexOffset|</code></pre><h2 id="五、消息过滤"><a href="#五、消息过滤" class="headerlink" title="五、消息过滤"></a>五、消息过滤</h2><h3 id="1-简单消息过滤"><a href="#1-简单消息过滤" class="headerlink" title="1.简单消息过滤"></a>1.简单消息过滤</h3><pre><code class="textmate">通过topic和 tags进行过滤consumer.subscribe(&quot;TopicTest1&quot;,&quot;TagA || TagB&quot;);</code></pre><h3 id="2-高级过滤方式"><a href="#2-高级过滤方式" class="headerlink" title="2.高级过滤方式"></a>2.高级过滤方式</h3><pre><code class="textmate">RocketMQ 提供了基于表达式与基于类模式两种过滤模式可以实现 MessageFilter 接口，实现自定义过滤</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+          <category> 消息队列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> message </tag>
+            
+            <tag> rocketmq </tag>
             
         </tags>
       
@@ -1417,9 +1417,9 @@
       
         <tags>
             
-            <tag> zookeeper </tag>
-            
             <tag> 注册中心 </tag>
+            
+            <tag> zookeeper </tag>
             
             <tag> 分布式锁 </tag>
             
