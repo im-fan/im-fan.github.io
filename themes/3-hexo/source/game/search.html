@@ -17,8 +17,8 @@
         }
         .container {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 100%;
+            height: 500px;
             perspective: 1000px; /* 透视效果 */
         }
         .card {
@@ -34,7 +34,9 @@
             font-weight: bold; /* 加粗文字 */
             transform-style: preserve-3d;
             transition: transform 0.5s;
-            opacity: 1; /* 设置为不透明 */
+            /*opacity: 1; !* 设置为不透明 *!*/
+            /*每行文案居中*/
+            text-align: center;
         }
         .button {
             margin-top: 20px;
@@ -46,10 +48,6 @@
             border: none;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 浮雕效果 */
-        }
-        .highlight {
-            border-color: 3px rgba(241, 241, 4, 0.679); /* 边框颜色 */
-            animation: blink-border 0.5s infinite; /* 边框闪烁动画 */
         }
 
         @keyframes blink-card {
@@ -69,16 +67,15 @@
 <body>
     <div class="main_page">
         <div class="container" id="container"></div>
+        <div class="desc" id="desc"></div>
         <button class="button" onclick="startLottery()">开始抽奖</button>
     </div>
 
 <script>
-    const items = ["选项1", "选项2", "选项3", "选项4", "选项5",
-        "选项1", "选项2", "选项3", "选项4", "选项5",
-        "选项1", "选项2", "选项3", "选项4", "选项5",
-        "选项1", "选项2", "选项3", "选项4", "选项5",
-        "选项1", "选项2", "选项3", "选项4", "选项5"
-    ];
+    //64卦名
+    const items = ["乾为天","坤为地","屯为雷","蒙为山","需为水","讼为风","师为地","比为水","小畜为风","履为雷","泰为地","否为天","同人为天","大有为火","谦为地","豫为雷","随为泽","蛊为山","临为地","观为风","噬嗑为火","贲为山","剥为地","复为雷","无妄为天","大畜为山","颐为雷","大过为泽","坎为水","离为火","咸为泽","恒为风","遁为天","大壮为雷","晋为日","明夷为地","家人为风","睽为火","蹇为水","解为雷","损为山","益为风","夬为泽","姤为天","萃为地","升为地","困为泽","井为木","革为火","鼎为木","震为雷","艮为山","渐为木","归妹为泽","丰为雷","旅为火山","巽为风","兑为泽","涣为风","节为水","中孚为风","小过为雷","既济为水","未济为火"];
+    const yaoList = ["1111111","0000000","0011001","0100100","0100000","0101101","0000100","0010100","0101011","1110000","0010001","1100001","1110001","1101000","0011000","1001110","1000011","1011100","0100001","0001111","1110100","1001000","0111000","1110010","1101001","1011011","1001011","0111110","0110000","1001100","1011000","1001001","1110010","1011010","110000","0001100","0110011","1101010","0100010","1001000","0100100","1000011","1110111","1010011","0011010","0000111","1100010","0000001","1110011","1100000","1110000","1010100","1001011","0110011","1100001","0101010","1101011","0011010","1011001","0100101","0110100","1011011","1111001","0000111"];
+    const descList = ["象征天道刚健，积极进取。鼓励人们自强不息，努力追求目标。","象征柔顺包容，强调顺应自然规律，以柔克刚。","象征事物的初始阶段，困难重重，但充满希望。需要耐心等待时机。","象征启蒙和教育，强调学习和培养，为未来发展打下基础。","象征等待和准备，提醒人们在行动前要充分准备，不可急于求成。","象征争执和冲突，提醒人们避免争斗，以和为贵。","象征军队和领导，强调纪律和团结，领导者要以身作则。","象征亲密和合作，鼓励人们团结互助，共同面对困难。","象征小有积累，提醒人们积累财富和资源，但不可贪多","象征谨慎行事，提醒人们在行动中保持谦逊和谨慎。","象征亨通和顺利，象征事物处于和谐状态，提醒人们珍惜和维护这种状态。","象征阻塞和困难，提醒人们在逆境中保持冷静，寻找转机。","象征团结和合作，鼓励人们共同追求目标，实现共赢。","象征丰收和成功，提醒人们在成功时保持谦逊，不可骄傲。","象征谦逊和低调，强调谦虚是成功的关键。","象征喜悦和满足，提醒人们在快乐时保持平和心态。","象征顺从和适应，提醒人们顺应变化，灵活应对。","象征混乱和治理，提醒人们在混乱中寻找秩序，解决问题。","象征亲近和关怀，强调与人亲近，建立良好关系。","象征观察和洞察，提醒人们在行动前仔细观察，了解情况。","象征决断和果断，鼓励人们在关键时刻果断决策。","象征装饰和美化，提醒人们注重内在修养，不可只追求外在。","象征衰退和衰败，提醒人们在衰退时保持冷静，寻找新的机会。","象征复兴和回归，象征事物的复苏，提醒人们抓住机会，重新开始。","象征无为和自然，提醒人们顺应自然规律，不可强求。","象征积累和储备，强调积累资源和智慧，为未来发展做准备。","象征养育和养育，提醒人们注重自身修养和健康。","象征过度和极端，提醒人们在行动中保持适度，不可过头。","象征险境和困难，提醒人们在困境中保持冷静，寻找出路。","象征光明和希望，象征事物的光明前景，提醒人们保持乐观。","象征感应和共鸣，强调人与人之间的相互理解。","象征恒久和坚持，提醒人们在追求目标时保持恒心。","象征退让和回避，提醒人们在不利时选择退让，保存实力。","象征强大和力量，提醒人们在强大时保持谦逊，不可骄傲。","象征进步和提升，象征事业的顺利发展，提醒人们保持努力。","象征光明受阻，提醒人们在逆境中保持希望，寻找转机。","象征家庭和睦，强调家庭关系的重要性，提醒人们珍惜家庭。","象征分离和分歧，提醒人们在分歧中寻找共识，化解矛盾。","象征艰难和阻碍，提醒人们在困难时保持耐心，逐步克服。","象征解脱和化解，提醒人们在困境中寻找解决办法。","象征减少和舍弃，提醒人们在必要时舍弃一些东西，以换取更大的利益。","象征增加和收益，提醒人们在追求利益时注重长远发展。","象征决裂和断绝，提醒人们在必要时果断决策，避免拖延。","象征相遇和机遇，提醒人们抓住机遇，顺势而为。","象征聚集和团结，强调团结协作的重要性。","象征提升和上升，象征事业的顺利发展，提醒人们保持努力。","象征困境和挫折，提醒人们在逆境中保持坚韧，寻找出路。","象征水源和资源，提醒人们珍惜资源，合理利用。","象征变革和创新，鼓励人们在必要时进行变革，推动发展。","象征稳定和秩序，提醒人们在变革中保持稳定。","象征震动和行动，鼓励人们果断行动，抓住机会。","象征静止和停止，提醒人们在行动前保持冷静，避免冲动。","象征渐进和稳步，提醒人们在行动中保持耐心，循序渐进。","象征归顺和依附，提醒人们在必要时选择依附，保存实力。","象征丰收和成功，提醒人们在成功时保持谦逊，不可骄傲。","象征旅行和漂泊，提醒人们在旅途中保持谨慎，适应环境。","象征顺从和适应，提醒人们在变化中保持灵活，顺势而为。","象征喜悦和满足，提醒人们在快乐时保持平和心态。","象征分散和离散，提醒人们在分散时寻找团结的机会。","象征节制和约束，提醒人们在行动中保持节制，不可过度。","象征诚信和信任，强调诚信的重要性，提醒人们保持信任。","象征小有过错，提醒人们在行动中保持适度，避免过头。","象征完成和成功，提醒人们在成功后保持谨慎，防止懈怠。","象征未完成和未成功，提醒人们在未完成时保持耐心，继续努力。"];
     const container = document.getElementById("container");
     const radius = 300; // 圆的半径
 
@@ -89,7 +86,7 @@
         let color;
         do {
             const h = Math.floor(Math.random() * 360); // 色相
-            const s = 100; // 饱和度
+            const s = 300; // 饱和度
             const l = Math.floor(Math.random() * 40 + 60); // 亮度，60-100之间
             color = `hsl(${h}, ${s}%, ${l}%)`;
         } while (usedColors.has(color)); // 检查颜色是否已使用
@@ -102,52 +99,87 @@
     const radiusY = 200; // 椭圆的Y轴半径
 
     // 动态生成卡片
-    items.forEach((item, index) => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.textContent = item;
+    init();
+    function init(){
+        //清理所有child
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+        //清理文案
+        const descDiv = document.getElementById("desc");
+        descDiv.textContent = '';
 
-        // 设置随机颜色
-        card.style.backgroundColor = getRandomPastelColor();
 
-        const angle = (index / items.length) * (2 * Math.PI); // 计算角度
-        const x = Math.min(Math.max(radiusX * Math.cos(angle), -300), 600); // 限制X轴范围
-        const z = radiusY * Math.sin(angle) + (index * 10); // 根据索引调整Z轴值，越靠前的卡片Z轴值越大
-        card.style.transform = `translateX(${x}px) translateZ(${z}px)`;
-        // 根据角度调整明暗和透明度
-        const distanceFromFront = Math.abs(Math.cos(angle)); // 距离正前方的距离
-        const brightness = 0.5 + distanceFromFront * 0.5; // 亮度范围
-        const opacity = Math.max(0.5, 1 - distanceFromFront); // 透明度范围，最低为0.3
-        card.style.filter = `brightness(${brightness})`;
-        card.style.opacity = opacity;
+        items.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.textContent = item;
 
-        container.appendChild(card);
-    });
+            // 设置随机颜色
+            card.style.backgroundColor = getRandomPastelColor();
+
+            //计算角度，保证卡片在椭圆上均匀分布
+            // const angle = (index / items.length) * (2 * Math.PI); // 计算角度
+            const angle = (index / items.length) * (2 * Math.PI) + Math.PI;
+            console.log(angle);
+            const x = radiusX * Math.cos(angle); // X轴
+            const z = radiusY * Math.sin(angle);// 根据索引调整Z轴值，越靠前的卡片Z轴值越大
+            card.style.transform = `translateX(${x}px) translateY(${z * 0.5}px) translateZ(${z}px)`;
+
+            // 根据角度调整明暗和透明度
+            const distanceFromFront = Math.abs(Math.cos(angle)); // 距离正前方的距离
+            const brightness = 0.3 + distanceFromFront * 0.5; // 亮度范围
+            card.style.filter = `brightness(${brightness})`;
+
+            //z轴越大亮度越高，最低0.1
+            let opacity = 0.1;
+            if(z > 0){
+                opacity = z/100.0 * 1;
+            } else{
+                opacity = 0.1;
+            }
+            card.style.opacity = opacity;
+
+
+            container.appendChild(card);
+        });
+    }
+
 
     function startLottery() {
+        //初始化
+        init();
+
         const cards = document.querySelectorAll('.card');
         let rotation = 0;
         const interval = setInterval(() => {
             rotation += 10; // 每次旋转10度
             cards.forEach((card, index) => {
-                const angle = (index / items.length) * (2 * Math.PI) + rotation * (Math.PI / 180);
-                const x = Math.min(Math.max(radiusX * Math.cos(angle), -300), 600); // 限制X轴范围
+                const angle = (index / items.length) * (2 * Math.PI) + rotation * (Math.PI / 180) + Math.PI;
+                const x = radiusX * Math.cos(angle); // X轴
                 const z = radiusY * Math.sin(angle);
-                card.style.transform = `translateX(${x}px) translateZ(${z}px)`;
+                card.style.transform = `translateX(${x}px) translateY(${z * 0.5}px) translateZ(${z}px)`;
+                //z轴越大亮度越高，最低0.1
+                let opacity = 0.1;
+                if(z > 0){
+                    opacity = Math.max(z/100.0 * 1, 0.8);
+                } else{
+                    opacity = 0.1;
+                }
 
                 // 更新明暗和透明度
                 const distanceFromFront = Math.abs(Math.cos(angle));
-                const brightness = 0.5 + distanceFromFront * 0.5;
-                const opacity = Math.max(0.3, 1 - distanceFromFront); // 透明度范围，最低为0.3
+                const brightness = 0.3 + distanceFromFront * 0.5;
                 card.style.filter = `brightness(${brightness})`;
                 card.style.opacity = opacity;
             });
         }, 100);
 
+        //随机数，1500-4000之间
+        const randomNumber = getRandomNumber(1500, 6000);
+
         setTimeout(() => {
             clearInterval(interval);
-            const randomIndex = Math.floor(Math.random() * items.length);
-            const selectedCard = cards[randomIndex];
 
             // 找到最前方的卡片
             const frontCard = Array.from(cards).reduce((prev, curr) => {
@@ -158,14 +190,34 @@
 
             // 仅为最前方的卡片添加闪烁效果
             if (frontCard) {
+                //获取下标
+                const index = Array.from(cards).indexOf(frontCard);
+                const yao = yaoList[index];
+                const desc = descList[index];
+                //追加文案
+                frontCard.textContent = frontCard.textContent+ "\n"+yao;
+                //在按钮上方展示文字
+                const descDiv = document.getElementById("desc");
+                descDiv.textContent = desc;
+
                 frontCard.style.animation = 'blink-card 0.5s infinite'; // 添加闪烁动画
+                //最前方的卡片慢速向上平移，卡片变大，快速还原动画
+                frontCard.style.transition = 'transform 0.5s ease-in-out';
+                frontCard.style.transform = `translateY(-100px) scale(1.2)`;
+                frontCard.style.filter = `brightness(1)`;
+                frontCard.style.opacity = 1;
 
                 // 3秒后移除闪烁效果
                 setTimeout(() => {
                     frontCard.style.animation = ''; // 移除闪烁动画
-                }, 3000);
+                }, 2000);
             }
-        }, 3000); // 3秒后停止旋转
+        }, randomNumber); // N毫秒后停止旋转
+    }
+
+    //生成随机数
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 </script>
 </body>
