@@ -378,7 +378,8 @@ categories:
 - [Nostalgist.js](https://github.com/arianrhodsandlot/nostalgist)
    一个在浏览器中运行怀旧游戏主机模拟器的 JavaScript 库，比如运行任天堂FC 模拟器、世嘉 MD 模拟器、街机模拟器等等
 - [RetroAssembly-复古游戏收藏柜](https://github.com/arianrhodsandlot/retro-assembly)
-- <a href="/game/snick.html" target="_blank">贪吃蛇</a>
+- <a href="/game/snick.html" target="_blank">🐍贪吃蛇</a>
+- <a href="/game/search.html" target="_blank">☯占卜</a>
 
 ### 副业
 - [副业开发心得](https://javayhu.com/2018-nian-yi-ge-xiao-fu-ye-de-kai-fa-xin-de/)
