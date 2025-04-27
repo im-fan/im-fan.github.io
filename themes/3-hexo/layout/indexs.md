@@ -51,7 +51,7 @@
     <span><a href="https://www.shidianguji.com/">识典古籍</a>&nbsp;&nbsp;</span>
 </div>
 <div>
-    <span><a href="/game/search.html" target="_blank">☯占卜-娱乐一下</a></span>
+    <span><a href="/game/gua.html" target="_blank">☯占卜-娱乐一下</a></span>
 </div>
 
 
