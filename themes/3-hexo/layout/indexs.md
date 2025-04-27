@@ -50,6 +50,9 @@
 <div>
     <span><a href="https://www.shidianguji.com/">识典古籍</a>&nbsp;&nbsp;</span>
 </div>
+<div>
+    <span><a href="/game/search.html" target="_blank">☯占卜-娱乐一下</a></span>
+</div>
 
 
 总文章:<code class="article_number"></code>篇，所有文章总字数：<code class="site_word_count"></code>字<p>
