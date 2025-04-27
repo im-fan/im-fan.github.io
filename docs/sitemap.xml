@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wiki.aistart.cc/2025/04/27/other/nas/</loc>
+    
+    <lastmod>2025-04-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://wiki.aistart.cc/2022/03/08/devops/shell/</loc>
     
     <lastmod>2025-04-27</lastmod>
@@ -603,56 +612,14 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/tags/arthas/</loc>
+    <loc>https://wiki.aistart.cc/tags/%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/tags/istio/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/docker/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/devops/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/ldap/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/nginx/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/skywalking/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/shell%E5%91%BD%E4%BB%A4/</loc>
+    <loc>https://wiki.aistart.cc/tags/elasticsearch/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -680,6 +647,62 @@
   </url>
   
   <url>
+    <loc>https://wiki.aistart.cc/tags/docker/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/arthas/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/devops/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/istio/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/ldap/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/nginx/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/shell%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/skywalking/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://wiki.aistart.cc/tags/vue/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -694,42 +717,7 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/tags/%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/elasticsearch/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/test/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://wiki.aistart.cc/tags/url/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/%E9%98%85%E8%AF%BB/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/%E6%80%9D%E8%80%83/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -743,7 +731,28 @@
   </url>
   
   <url>
+    <loc>https://wiki.aistart.cc/tags/%E6%80%9D%E8%80%83/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/%E9%98%85%E8%AF%BB/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://wiki.aistart.cc/tags/%E6%80%BB%E7%BB%93%E6%96%B9%E6%B3%95%E8%AE%BA/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/test/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -764,7 +773,14 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/tags/AIGC-SD-StableDiffusion/</loc>
+    <loc>https://wiki.aistart.cc/tags/ai%E7%9B%B8%E5%85%B3/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/prompt/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -785,14 +801,7 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/tags/ai%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/prompt/</loc>
+    <loc>https://wiki.aistart.cc/tags/AIGC-SD-StableDiffusion/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -918,6 +927,13 @@
   </url>
   
   <url>
+    <loc>https://wiki.aistart.cc/tags/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://wiki.aistart.cc/tags/es/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -946,42 +962,7 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/tags/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://wiki.aistart.cc/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/io/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/tags/utils/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -995,7 +976,28 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/tags/eureka/</loc>
+    <loc>https://wiki.aistart.cc/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/io/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/utils/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1003,6 +1005,13 @@
   
   <url>
     <loc>https://wiki.aistart.cc/tags/SpringFramework/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/tags/eureka/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1032,7 +1041,7 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/categories/%E8%BF%90%E7%BB%B4/</loc>
+    <loc>https://wiki.aistart.cc/categories/%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1040,6 +1049,13 @@
   
   <url>
     <loc>https://wiki.aistart.cc/categories/%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wiki.aistart.cc/categories/%E8%BF%90%E7%BB%B4/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1054,13 +1070,6 @@
   
   <url>
     <loc>https://wiki.aistart.cc/categories/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wiki.aistart.cc/categories/%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1151,14 +1160,14 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91/</loc>
+    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%AF%91/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
+    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1172,14 +1181,14 @@
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%AF%91/</loc>
+    <loc>https://wiki.aistart.cc/categories/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2025-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
