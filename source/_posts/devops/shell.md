@@ -69,8 +69,8 @@ if [ "$1" == "" ]; then
 fi
 
 
-# 获取所有分支
-branches=$(git branch -a | grep 'origin' | grep -v 'HEAD')
+# 获取所有远程分支
+branches=$(git branch -a | grep 'remotes/origin/' | grep -v 'HEAD')
 
 # 创建一个空数组用于存储结果
 declare -a result
@@ -86,14 +86,20 @@ for branch in $branches; do
     last_commit=$(git log -1 --pretty=format:"%H" $branch)
 
     # 判断指定分支是否包含该提交记录
-    if git branch --contains $last_commit | grep -w 'master'; then
-        result+=("$branch: 已合并到 $targetBranch")
+    mergeFlag=$(git branch --contains $last_commit | grep -w 'master');
+
+    if [ "$mergeFlag" == '' ]; then
+        # 移除指定字符
+        branch=${branch//remotes\/origin\//}
+        result+=("$branch")
     fi
 done
 
-# 输出结果
+# 输出结果，文字标红加粗
+echo -e "以下分支未合并至\033[1;31m[$targetBranch]\033[0m分支"
 for res in "${result[@]}"; do
-    echo $res
+#    文字蓝色
+    echo -e "\033[1;34m$res\033[0m"
 done
 
 ```
