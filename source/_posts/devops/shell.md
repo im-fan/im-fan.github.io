@@ -96,7 +96,7 @@ for branch in $branches; do
 done
 
 # 输出结果，文字标红加粗
-echo -e "以下分支未合并至\033[1;31m[$targetBranch]\033[0m分支"
+echo -e "以下分支已合并至\033[1;31m[$targetBranch]\033[0m分支"
 for res in "${result[@]}"; do
 #    文字蓝色
     echo -e "\033[1;34m$res\033[0m"
