@@ -54,6 +54,13 @@
     <span><a href="/game/gua.html" target="_blank">☯占卜-娱乐一下</a></span>
 </div>
 
+<div>
+<span><a href="https://taurl.cn/air" target="_blank">❄小空调</a></span>
+<span><a href="https://taurl.cn/itv" target="_blank">📺小电视</a></span>
+<span><a href="https://taurl.cn/ikk" target="_blank">📟小掌机</a></span>
+<span><a href="https://taurl.cn/ibw" target="_blank">🎮小霸王</a></span>
+</div>
+
 
 总文章:<code class="article_number"></code>篇，所有文章总字数：<code class="site_word_count"></code>字<p>
 历史访问人数：<code class="site_uv"></code>人，历史访问量：<code class="site_pv"></code>次
