@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>☯占卜-娱乐一下</title>
     <style>
+        /*背景毛玻璃效果，亮灰白色，半透明*/
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -12,8 +13,12 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            overflow: hidden;
+            background-color: rgba(158, 204, 236, 0.78); /* 亮灰白色，50%透明度 */
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /*overflow: hidden;*/
         }
         .container {
             position: relative;
@@ -49,6 +54,19 @@
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 浮雕效果 */
         }
+        .desc {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 浮雕效果 */
+            background-color: rgba(255, 255, 255, 0.8); /* 设置背景颜色和透明度 */
+            z-index: 10; /* 确保desc在最上层 */
+        }
 
         @keyframes blink-card {
             0% { opacity: 1; }
@@ -68,7 +86,7 @@
     <div class="main_page">
         <div class="container" id="container"></div>
         <div class="desc" id="desc"></div>
-        <button class="button" onclick="startLottery()">开始抽奖</button>
+        <button class="button" onclick="startLottery()">抽个签</button>
     </div>
 
 <script>
@@ -121,7 +139,6 @@
             //计算角度，保证卡片在椭圆上均匀分布
             // const angle = (index / items.length) * (2 * Math.PI); // 计算角度
             const angle = (index / items.length) * (2 * Math.PI) + Math.PI;
-            console.log(angle);
             const x = radiusX * Math.cos(angle); // X轴
             const z = radiusY * Math.sin(angle);// 根据索引调整Z轴值，越靠前的卡片Z轴值越大
             card.style.transform = `translateX(${x}px) translateY(${z * 0.5}px) translateZ(${z}px)`;
@@ -162,7 +179,7 @@
                 //z轴越大亮度越高，最低0.1
                 let opacity = 0.1;
                 if(z > 0){
-                    opacity = Math.max(z/100.0 * 1, 0.8);
+                    opacity = Math.max(Math.min(z/100.0 * 1, 0.5),0.8);
                 } else{
                     opacity = 0.1;
                 }
@@ -192,7 +209,7 @@
             if (frontCard) {
                 //获取下标
                 const index = Array.from(cards).indexOf(frontCard);
-                const yao = yaoList[index];
+                const yao = convertToTrigrams(yaoList[index]);
                 const desc = descList[index];
                 //追加文案
                 frontCard.textContent = frontCard.textContent+ "\n"+yao;
@@ -218,6 +235,21 @@
     //生成随机数
     function getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    //根据1=一，0=--,将字符串101010转换为2个为一组，竖向排布的卦象
+    function convertToTrigrams(inputString) {
+        // 分割字符串为两个字符一组
+        const pairs = inputString.match(/.{1,2}/g);
+
+        // 转换每个字符为对应的卦象符号
+        let trigrams = "";
+        for (let i = 0; i < pairs.length; i++){
+            trigrams += pairs[i] === "1" ? "一" : "--";
+            trigrams +="\n";
+        }
+        console.log(trigrams)
+        return trigrams;
     }
 </script>
 </body>
