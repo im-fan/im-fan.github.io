@@ -10,6 +10,7 @@ categories:
 ---
 
 # 有趣的链接
+- [万物博物馆](https://mayeclair.itch.io/museum-of-all-things)
 - [古诗文网](https://www.gushiwen.cn/?ref=javayhu.com)
 - [GitHub Insights Pro](https://github-insights-pro.toolsnav.top/)
   GitHub 的数据分析与可视化平台，提供项目和用户的各种统计信息，以及排行榜和趋势榜。
