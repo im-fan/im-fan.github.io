@@ -680,18 +680,18 @@
         </a>
         
         <a  class="全部文章 AI "
-           href="/2023/09/06/ai/gc/stable-diffusion-02/"
-           data-tag="AIGC,SD,StableDiffusion"
-           data-author="" >
-            <span class="post-title" title="Stable Diffusion Web UI(二)-资源">Stable Diffusion Web UI(二)-资源</span>
-            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
-        </a>
-        
-        <a  class="全部文章 AI "
            href="/2023/09/06/ai/gc/stable-diffusion-01/"
            data-tag="AIGC,SD,StableDiffusion"
            data-author="" >
             <span class="post-title" title="Stable Diffusion Web UI(一)-部署">Stable Diffusion Web UI(一)-部署</span>
+            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/2023/09/06/ai/gc/stable-diffusion-02/"
+           data-tag="AIGC,SD,StableDiffusion"
+           data-author="" >
+            <span class="post-title" title="Stable Diffusion Web UI(二)-资源">Stable Diffusion Web UI(二)-资源</span>
             <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
         </a>
         
@@ -720,18 +720,18 @@
         </a>
         
         <a  class="全部文章 后端 服务治理 "
-           href="/2023/03/16/backend/service/eureka/eureka-2/"
-           data-tag="注册中心,eureka"
-           data-author="" >
-            <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
-            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
-        </a>
-        
-        <a  class="全部文章 后端 服务治理 "
            href="/2023/03/16/backend/service/eureka/eureka/"
            data-tag="注册中心,eureka"
            data-author="" >
             <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
+            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2023/03/16/backend/service/eureka/eureka-2/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
             <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
         </a>
         
@@ -1211,12 +1211,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-04-27 10:52:06'>2022-03-08 11:13</time>
+            发布时间 : <time class="date" title='最后更新: 2025-05-28 17:46:45'>2022-03-08 11:13</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:487</span>
+        <span>字数:493</span>
         
         
         <!-- <span id="busuanzi_container_page_pv">
@@ -1310,7 +1310,9 @@ for branch in $branches; do
     # 判断指定分支是否包含该提交记录
     mergeFlag=$(git branch --contains $last_commit | grep -w &#39;master&#39;);
 
-    if [ &quot;$mergeFlag&quot; == &#39;&#39; ]; then
+#    echo &quot;$branch ==&gt; $mergeFlag&quot;
+
+    if [ &quot;$mergeFlag&quot; != &#39;&#39; ]; then
         # 移除指定字符
         branch=$&#123;branch//remotes\/origin\//&#125;
         result+=(&quot;$branch&quot;)
@@ -1323,6 +1325,7 @@ for res in &quot;$&#123;result[@]&#125;&quot;; do
 #    文字蓝色
     echo -e &quot;\033[1;34m$res\033[0m&quot;
 done
+
 </code></pre>
 
       
@@ -1337,10 +1340,10 @@ done
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>Shell命令记录</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">487</span></p>
+    <p><span class="copy-title">字数:</span><span class="post-count">493</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
     <p><span class="copy-title">发布时间:</span>2022-03-08, 11:13:00</p>
-    <p><span class="copy-title">最后更新:</span>2025-04-27, 10:52:06</p>
+    <p><span class="copy-title">最后更新:</span>2025-05-28, 17:46:45</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/03/08/devops/shell/" title="Shell命令记录">https://wiki.aistart.cc/2022/03/08/devops/shell/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。

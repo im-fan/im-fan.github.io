@@ -88,7 +88,9 @@ for branch in $branches; do
     # 判断指定分支是否包含该提交记录
     mergeFlag=$(git branch --contains $last_commit | grep -w 'master');
 
-    if [ "$mergeFlag" == '' ]; then
+#    echo "$branch ==> $mergeFlag"
+
+    if [ "$mergeFlag" != '' ]; then
         # 移除指定字符
         branch=${branch//remotes\/origin\//}
         result+=("$branch")
@@ -101,5 +103,6 @@ for res in "${result[@]}"; do
 #    文字蓝色
     echo -e "\033[1;34m$res\033[0m"
 done
+
 
 ```
