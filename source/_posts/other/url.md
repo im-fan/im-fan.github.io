@@ -10,6 +10,12 @@ categories:
 ---
 
 # 有趣的链接
+- [Lynx Proxy-开源服务器](https://github.com/suxin2017/lynx-server)
+  开源服务器，代理 HTTP/HTTPS 和 WebSocket 流量，内置 Web 管理界面。
+- [Folda-Scan](https://github.com/oldjs/web-code-agent)
+  一个与代码库对话的 Web 应用，可以扫描本地文件夹，对其建立本地索引，从而用自然语言库对话。
+- [ntfy.sh-消息推送工具](https://github.com/binwiederhier/ntfy)
+  消息推送工具，向手机和桌面电脑推送消息，可以自搭建，也可以使用官方服务器
 - [万物博物馆](https://mayeclair.itch.io/museum-of-all-things)
 - [古诗文网](https://www.gushiwen.cn/?ref=javayhu.com)
 - [GitHub Insights Pro](https://github-insights-pro.toolsnav.top/)
