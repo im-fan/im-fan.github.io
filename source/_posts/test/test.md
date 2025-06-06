@@ -425,6 +425,19 @@ class FunctionTest{
 }
 ```
 
+### Tk.mybatis
+```java
+
+@ExtendWith(MockitoExtension.class)
+class FunctionTest{
+    @BeforeEach
+    void setUp() {
+        Config config = new Config();
+        EntityHelper.initEntityNameMap(XXX.class, config);
+    }
+}
+```
+
 ### Liteflow框架
 
 - mock上下文

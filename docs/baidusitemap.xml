@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wiki.aistart.cc/2021/11/15/test/test/</loc>
+    <lastmod>2025-06-06</lastmod>
+  </url>
+  <url>
     <loc>https://wiki.aistart.cc/2025/02/01/other/url/</loc>
     <lastmod>2025-05-30</lastmod>
   </url>
@@ -19,10 +23,6 @@
   <url>
     <loc>https://wiki.aistart.cc/2025/04/27/other/nas/</loc>
     <lastmod>2025-04-27</lastmod>
-  </url>
-  <url>
-    <loc>https://wiki.aistart.cc/2021/11/15/test/test/</loc>
-    <lastmod>2025-04-14</lastmod>
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2022/01/10/thinking/design/</loc>
@@ -117,11 +117,11 @@
     <lastmod>2022-08-11</lastmod>
   </url>
   <url>
-    <loc>https://wiki.aistart.cc/2020/10/02/backend/storage/mysql-other/</loc>
+    <loc>https://wiki.aistart.cc/2020/10/02/backend/storage/canal/</loc>
     <lastmod>2022-08-11</lastmod>
   </url>
   <url>
-    <loc>https://wiki.aistart.cc/2020/10/02/backend/storage/canal/</loc>
+    <loc>https://wiki.aistart.cc/2020/10/02/backend/storage/mysql-other/</loc>
     <lastmod>2022-08-11</lastmod>
   </url>
   <url>
