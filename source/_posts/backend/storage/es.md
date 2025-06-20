@@ -760,7 +760,7 @@ PUT user_index_bak
     }
 }
 
-#复制数据
+# 复制数据
 POST _reindex
 {
   "source": {
@@ -771,7 +771,7 @@ POST _reindex
   }
 }
 
-#查询复制的数据
+# 查询复制的数据
 GET user_index_bak/_search
 {"query":{"match_all":{}}}
 
@@ -779,54 +779,24 @@ GET user_index_bak/_search
 GET user_index_bak/_mapping
 GET user_index_bak/_settings
 
-# 删除索引
-DELETE  user_index
-
-#重建
-PUT user_index
-{   
-    "settings":{
-        "number_of_replicas": 1,
-        "number_of_shards": 1
-        -- 分词器设置
-    },
-    "mappings":{
-        "user_index_bak":{
-            "properties":{
-                "id":{
-                    "type": "keyword"
-                }
-            }
-        }
-    }
-}
-
-# 创建索引别名
-PUT _alias
-{
-  "actions" : [{"add" : {"index" : "user_index" , "alias" : "user_index_alias"}}]
-}
-
-
-# 复制数据
-POST _reindex
-{
-  "source": {
-    "index": "user_index_bak"
-  },
-  "dest": {
-    "index": "user_index_alias"
-  }
-}
-
 # 查询数据
 POST user_index_alias/_search
 {"query":{"match_all":{}}}
 
-# 查询配置
-GET user_index_alias/_mapping
-GET user_index_alias/_settings
+# 创建索引别名
+PUT _alias
+{
+  "actions" : [{"add" : {"index" : "user_index_bak" , "alias" : "user_index_alias"}}]
+}
 
-#删除备份索引
-DELETE  user_index_bak
+# 删除原索引引用
+PUT _alias
+{
+  "actions" : [
+    {"remove": {"index": "user_index", "alias": "user_index_alias"}}
+  ]
+}
+
+# 删除备份索引
+DELETE  user_index
 ```

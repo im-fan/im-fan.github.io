@@ -680,14 +680,6 @@
         </a>
         
         <a  class="全部文章 AI "
-           href="/2023/09/06/ai/gc/stable-diffusion-02/"
-           data-tag="AIGC,SD,StableDiffusion"
-           data-author="" >
-            <span class="post-title" title="Stable Diffusion Web UI(二)-资源">Stable Diffusion Web UI(二)-资源</span>
-            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
-        </a>
-        
-        <a  class="全部文章 AI "
            href="/2023/09/06/ai/gc/stable-diffusion-01/"
            data-tag="AIGC,SD,StableDiffusion"
            data-author="" >
@@ -696,11 +688,11 @@
         </a>
         
         <a  class="全部文章 AI "
-           href="/2023/04/11/ai/gpt/gpt/"
-           data-tag="ai相关"
+           href="/2023/09/06/ai/gc/stable-diffusion-02/"
+           data-tag="AIGC,SD,StableDiffusion"
            data-author="" >
-            <span class="post-title" title="GPT-AI介绍">GPT-AI介绍</span>
-            <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
+            <span class="post-title" title="Stable Diffusion Web UI(二)-资源">Stable Diffusion Web UI(二)-资源</span>
+            <span class="post-date" title="2023-09-06 00:00:00">2023/09/06</span>
         </a>
         
         <a  class="全部文章 LLM "
@@ -708,6 +700,14 @@
            data-tag="AI,LLM"
            data-author="" >
             <span class="post-title" title="LLM-AI介绍">LLM-AI介绍</span>
+            <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
+        </a>
+        
+        <a  class="全部文章 AI "
+           href="/2023/04/11/ai/gpt/gpt/"
+           data-tag="ai相关"
+           data-author="" >
+            <span class="post-title" title="GPT-AI介绍">GPT-AI介绍</span>
             <span class="post-date" title="2023-04-11 00:00:00">2023/04/11</span>
         </a>
         
@@ -720,18 +720,18 @@
         </a>
         
         <a  class="全部文章 后端 服务治理 "
-           href="/2023/03/16/backend/service/eureka/eureka/"
-           data-tag="注册中心,eureka"
-           data-author="" >
-            <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
-            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
-        </a>
-        
-        <a  class="全部文章 后端 服务治理 "
            href="/2023/03/16/backend/service/eureka/eureka-2/"
            data-tag="注册中心,eureka"
            data-author="" >
             <span class="post-title" title="Eureka源码学习笔记(二)">Eureka源码学习笔记(二)</span>
+            <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 服务治理 "
+           href="/2023/03/16/backend/service/eureka/eureka/"
+           data-tag="注册中心,eureka"
+           data-author="" >
+            <span class="post-title" title="Eureka源码学习笔记汇总">Eureka源码学习笔记汇总</span>
             <span class="post-date" title="2023-03-16 17:10:00">2023/03/16</span>
         </a>
         
@@ -1211,7 +1211,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-08-11 20:15:12'>2022-02-15 13:38</time>
+            发布时间 : <time class="date" title='最后更新: 2025-06-20 10:16:12'>2022-02-15 13:38</time>
         
     </div>
     <div class="article-meta">
@@ -1812,7 +1812,7 @@ PUT user_index_bak
     &#125;
 &#125;
 
-#复制数据
+# 复制数据
 POST _reindex
 &#123;
   &quot;source&quot;: &#123;
@@ -1823,7 +1823,7 @@ POST _reindex
   &#125;
 &#125;
 
-#查询复制的数据
+# 查询复制的数据
 GET user_index_bak/_search
 &#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;&#125;
 
@@ -1831,56 +1831,26 @@ GET user_index_bak/_search
 GET user_index_bak/_mapping
 GET user_index_bak/_settings
 
-# 删除索引
-DELETE  user_index
-
-#重建
-PUT user_index
-&#123;   
-    &quot;settings&quot;:&#123;
-        &quot;number_of_replicas&quot;: 1,
-        &quot;number_of_shards&quot;: 1
-        -- 分词器设置
-    &#125;,
-    &quot;mappings&quot;:&#123;
-        &quot;user_index_bak&quot;:&#123;
-            &quot;properties&quot;:&#123;
-                &quot;id&quot;:&#123;
-                    &quot;type&quot;: &quot;keyword&quot;
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-&#125;
-
-# 创建索引别名
-PUT _alias
-&#123;
-  &quot;actions&quot; : [&#123;&quot;add&quot; : &#123;&quot;index&quot; : &quot;user_index&quot; , &quot;alias&quot; : &quot;user_index_alias&quot;&#125;&#125;]
-&#125;
-
-
-# 复制数据
-POST _reindex
-&#123;
-  &quot;source&quot;: &#123;
-    &quot;index&quot;: &quot;user_index_bak&quot;
-  &#125;,
-  &quot;dest&quot;: &#123;
-    &quot;index&quot;: &quot;user_index_alias&quot;
-  &#125;
-&#125;
-
 # 查询数据
 POST user_index_alias/_search
 &#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;&#125;
 
-# 查询配置
-GET user_index_alias/_mapping
-GET user_index_alias/_settings
+# 创建索引别名
+PUT _alias
+&#123;
+  &quot;actions&quot; : [&#123;&quot;add&quot; : &#123;&quot;index&quot; : &quot;user_index_bak&quot; , &quot;alias&quot; : &quot;user_index_alias&quot;&#125;&#125;]
+&#125;
 
-#删除备份索引
-DELETE  user_index_bak
+# 删除原索引引用
+PUT _alias
+&#123;
+  &quot;actions&quot; : [
+    &#123;&quot;remove&quot;: &#123;&quot;index&quot;: &quot;user_index&quot;, &quot;alias&quot;: &quot;user_index_alias&quot;&#125;&#125;
+  ]
+&#125;
+
+# 删除备份索引
+DELETE  user_index
 </code></pre>
 
       
@@ -1898,7 +1868,7 @@ DELETE  user_index_bak
     <p><span class="copy-title">字数:</span><span class="post-count">8k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="imfan">imfan</a></p>
     <p><span class="copy-title">发布时间:</span>2022-02-15, 13:38:00</p>
-    <p><span class="copy-title">最后更新:</span>2022-08-11, 20:15:12</p>
+    <p><span class="copy-title">最后更新:</span>2025-06-20, 10:16:12</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2022/02/15/backend/storage/es/" title="ES官方文档笔记">https://wiki.aistart.cc/2022/02/15/backend/storage/es/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
