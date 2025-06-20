@@ -10,6 +10,7 @@ categories:
 ---
 
 # 有趣的链接
+- [数学小游戏](https://jrmf.org/puzzle/)
 - [Lynx Proxy-开源服务器](https://github.com/suxin2017/lynx-server)
   开源服务器，代理 HTTP/HTTPS 和 WebSocket 流量，内置 Web 管理界面。
 - [Folda-Scan](https://github.com/oldjs/web-code-agent)
@@ -230,6 +231,7 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [Unbound-自搭建的家用 DNS 服务器](https://www.nlnetlabs.nl/projects/unbound)
 - [业务逻辑不要放入数据库](https://www.infoworld.com/article/2269523/put-business-logic-in-the-application-not-the-database.html)
   本文提出，数据库最好只用来存放数据，不要加入业务逻辑，让应用程序处理业务逻辑。
 - [逆向工程教程](https://0xinfection.github.io/reversing/)
