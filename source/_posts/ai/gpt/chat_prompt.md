@@ -1,5 +1,5 @@
 ---
-title: Chat Prompt学习资料
+title: Chat Prompt学习资料(一)
 description: Chat Prompt学习资料、模版
 date: 2024-10-31 09:21:01
 tags:

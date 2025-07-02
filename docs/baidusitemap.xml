@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wiki.aistart.cc/2025/07/02/ai/gpt/chat_prompt2/</loc>
+    <lastmod>2025-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://wiki.aistart.cc/2024/10/31/ai/gpt/chat_prompt/</loc>
+    <lastmod>2025-07-02</lastmod>
+  </url>
+  <url>
     <loc>https://wiki.aistart.cc/2025/02/01/other/url/</loc>
     <lastmod>2025-06-20</lastmod>
   </url>
@@ -46,10 +54,6 @@
   </url>
   <url>
     <loc>https://wiki.aistart.cc/2022/01/10/thinking/famous/</loc>
-    <lastmod>2024-10-31</lastmod>
-  </url>
-  <url>
-    <loc>https://wiki.aistart.cc/2024/10/31/ai/gpt/chat_prompt/</loc>
     <lastmod>2024-10-31</lastmod>
   </url>
   <url>
@@ -249,11 +253,11 @@
     <lastmod>2021-07-26</lastmod>
   </url>
   <url>
-    <loc>https://wiki.aistart.cc/2021/05/19/devops/skywalking/</loc>
+    <loc>https://wiki.aistart.cc/2021/02/18/devops/ldap/</loc>
     <lastmod>2021-07-26</lastmod>
   </url>
   <url>
-    <loc>https://wiki.aistart.cc/2021/02/18/devops/ldap/</loc>
+    <loc>https://wiki.aistart.cc/2021/05/19/devops/skywalking/</loc>
     <lastmod>2021-07-26</lastmod>
   </url>
   <url>
