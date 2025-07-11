@@ -285,6 +285,13 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [Ech0](https://github.com/lin-snow/Ech0)
+  一个开源的个人微博平台
+- [免费拼图工具](https://img.ops-coffee.cn/zh/app/)
+- [4colors](https://www.iamsajid.com/colors/)
+  网站色彩搭配
+- [TTS Omni](https://www.ttsomni.com/)
+  免费的文本转语音网站，基于 Qwen-TTS。
 - [独立开发者工具](https://github.com/yaolifeng0629/Awesome-independent-tools)
 - [UICloner Extension](https://github.com/AndySpider/uicloner-extension)
   浏览器插件，一键克隆任意网页 UI 组件，生成代码。
