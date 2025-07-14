@@ -14,8 +14,8 @@ categories:
 ## Prompt词学习
 
 ### prompt词库
-- [元素魔法典-01](https://docs.qq.com/doc/DWFdSTHJtQWRzYk9k)
-- [元素魔法典-02](https://docs.qq.com/doc/DWHl3am5Zb05QbGVs?dver=)
+- [元素魔法典-Novel AI-01](https://docs.qq.com/doc/DWFdSTHJtQWRzYk9k)
+- [元素魔法典-Novel AI-02](https://docs.qq.com/doc/DWHl3am5Zb05QbGVs)
 - [各种角色魔法典](https://danbooru.donmai.us/wiki_pages/tag_groups)
 - [Tag网站](https://thereisnospon.github.io/NovelAiTag/)
 
