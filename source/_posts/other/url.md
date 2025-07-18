@@ -10,6 +10,11 @@ categories:
 ---
 
 # 有趣的链接
+- [PoPo](https://github.com/AmyangXYZ/PoPo)
+  - [在线试用](https://popo.love/)
+    一个很有意思的开源应用，使用自然语言发出指令（“弯腰”、“大笑”等等），控制网页上的 3D 模型人
+- [Kite](https://kite.kagi.com/)
+  搜索引擎公司 Kagi 推出的一个新闻网站，完全由 AI 驱动：AI 选择新闻，提炼出摘要，并翻译成用户指定的语言。
 - [数学小游戏](https://jrmf.org/puzzle/)
 - [Lynx Proxy-开源服务器](https://github.com/suxin2017/lynx-server)
   开源服务器，代理 HTTP/HTTPS 和 WebSocket 流量，内置 Web 管理界面。
@@ -231,6 +236,7 @@ categories:
     - [3](https://github.com/xxxily/hello-ai/blob/main/home/FreeChatGPTSiteList.md)
 
 ### 技术
+- [x86-64 汇编语言入门](https://gpfault.net/posts/asm-tut-0.txt.html)
 - [Unbound-自搭建的家用 DNS 服务器](https://www.nlnetlabs.nl/projects/unbound)
 - [业务逻辑不要放入数据库](https://www.infoworld.com/article/2269523/put-business-logic-in-the-application-not-the-database.html)
   本文提出，数据库最好只用来存放数据，不要加入业务逻辑，让应用程序处理业务逻辑。
