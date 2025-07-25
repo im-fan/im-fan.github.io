@@ -10,6 +10,7 @@ categories:
 ---
 
 # 有趣的链接
+- [手机博物馆](https://chaz.fun/)
 - [PoPo](https://github.com/AmyangXYZ/PoPo)
   - [在线试用](https://popo.love/)
     一个很有意思的开源应用，使用自然语言发出指令（“弯腰”、“大笑”等等），控制网页上的 3D 模型人
