@@ -10,6 +10,10 @@ categories:
 ---
 
 # 有趣的链接
+- [microSD 卡可靠吗？](https://old.reddit.com/r/raspberry_pi/comments/1l0v25s/how_reliable_are_microsd_cards_well_as_it_turns/)
+- [通辽宇宙知识库](https://www.tongliaouniverse.cn)
+- [Reddit Top](https://reddit-top.pages.dev/)
+- [美国地址生成器](https://www.usaddrgen.com/zh/)
 - [手机博物馆](https://chaz.fun/)
 - [PoPo](https://github.com/AmyangXYZ/PoPo)
   - [在线试用](https://popo.love/)
