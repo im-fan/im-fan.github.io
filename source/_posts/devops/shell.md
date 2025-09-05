@@ -7,7 +7,21 @@ categories:
 - 运维
 ---
 
-# 快捷打开软件
+### 查询Macos本机IP变化
+```shell
+# 可用
+log show --predicate 'process == "ipconfigd" or subsystem == "com.apple.wifip2pd"' --info --last 30d | grep 'Initialized value for en0 IPv4 address to'
+
+log show --info --last 7d --predicate 'process == "ipconfigd" or subsystem == "com.apple.networkd"'
+
+log show --info --start "2025-08-20" | grep "en0" | grep "192.168"
+
+# 结果 
+#2025-09-04 01:02:08.750861+0800 0xa12b69   Default     0x0                  14595  0    wifip2pd: [com.apple.wifip2pd:interface] Initialized value for en0 IPv4 address to 192.168.223.8
+
+```
+
+### 快捷打开软件
 ```shell
 alias sublime='open -a "Sublime Text"'
 ```
