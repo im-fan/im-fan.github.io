@@ -297,6 +297,9 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [RethinkApp-Android网络可视化工具](https://github.com/celzero/rethink-app)
+   google-play可下载
+
 - 开源输入法-Rime
   - [Rime](https://rime.im/)
   - [oh-my-rime](https://www.mintimate.cc/zh/guide/installRime.html)
