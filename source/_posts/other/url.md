@@ -297,6 +297,9 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- 开源输入法-Rime
+  - [Rime](https://rime.im/)
+  - [oh-my-rime](https://www.mintimate.cc/zh/guide/installRime.html)
 - [免费在线物化生仿真程序](https://phet.colorado.edu/zh_CN/)
 - [Ech0](https://github.com/lin-snow/Ech0)
   一个开源的个人微博平台
