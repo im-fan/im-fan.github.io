@@ -401,6 +401,7 @@ categories:
 - [去图片背景](http://idphoto.aistart.cc/)
 
 ### 音乐
+- [全球儿歌乐园](https://beddysongs.com/zh)
 - [Sound Box](https://soundbox.fun)
   一个在线音效网站，提供多种自然环境音效以及白噪音。
 - [EarTrainX](https://www.eartrainx.com/)
