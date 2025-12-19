@@ -10,6 +10,7 @@ categories:
 ---
 
 # 有趣的链接
+- [预测网站](https://polymarket.com/)
 - [microSD 卡可靠吗？](https://old.reddit.com/r/raspberry_pi/comments/1l0v25s/how_reliable_are_microsd_cards_well_as_it_turns/)
 - [通辽宇宙知识库](https://www.tongliaouniverse.cn)
 - [Reddit Top](https://reddit-top.pages.dev/)
@@ -297,6 +298,7 @@ categories:
 - [为什么 SQLite 如此适合边缘计算](https://blog.turso.tech/why-sqlite-is-so-great-for-the-edge-ee00a3a9a55f)
 
 ### 工具
+- [文本转语音](https://starling-speak.online/)
 - [RethinkApp-Android网络可视化工具](https://github.com/celzero/rethink-app)
    google-play可下载
 
