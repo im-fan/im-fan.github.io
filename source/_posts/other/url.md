@@ -160,6 +160,7 @@ categories:
 - [算法面试心得](https://javayhu.com/2016-nian-mian-shi-zhi-nan-zhi-suan-fa-mian-shi-xin-de/)
 
 ### 大模型相关
+- [waytoaig-AGI国内社区](https://www.waytoagi.com/zh)
 - [AIGC-文生图-GoogleAiStudio](https://aistudio.google.com/prompts/new_image)
 - [DeepSeek Coder](https://github.com/sing1ee/deepseekCoder)
 - [AI 抠图](https://github.com/pangxiaobin/image-matting)
