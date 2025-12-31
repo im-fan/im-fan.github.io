@@ -7,6 +7,8 @@ rebuild() {
     hexo generate
     echo "编译完成====》》》"
     sleep 2
+
+    github-my
     git add db.json
     git commit -a -m 'rebuild'
     sleep 2
