@@ -1,5 +1,5 @@
 ---
-title: MCP学习文档
+title: Vibe Coding工具教程
 date: 2026-03-17
 tags:
 - VibeCoding,AICoding
