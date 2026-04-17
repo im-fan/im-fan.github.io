@@ -422,3 +422,4 @@ categories:
 
 ### 副业
 - [副业开发心得](https://javayhu.com/2018-nian-yi-ge-xiao-fu-ye-de-kai-fa-xin-de/)
+- [精益运营](https://stevehanov.ca/blog/how-i-run-multiple-10k-mrr-companies-on-a-20month-tech-stack)
