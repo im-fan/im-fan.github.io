@@ -148,6 +148,7 @@ categories:
 - [HorusPass](https://horuspass.com/send)
 
 ### 资讯类
+- [Github Star History & Top](https://www.star-history.com/?repos=thedotmack%2Fclaude-mem&type=date&legend=top-left)
 - [2023年的总结](https://medium.com/magnetic/52-things-i-learned-in-2023-a3bbb9f9323d)
 - [中文版黑客新闻](https://dizkaz.com/)
 - [阮一峰周刊的 Chat 服务](https://www.ahavs.com/chat-ruanyifeng)
